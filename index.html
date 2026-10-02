@@ -5,8 +5,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f6f7f9" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#454747" media="(prefers-color-scheme: dark)" />
     <title>Vision 1 &middot; Grade 10 English</title>
+    <script>
+      // Apply the saved theme before the first paint.  Without this the page would show
+      // the light background for a moment before the app switched to the dark one.
+      (function () {
+        try {
+          var stored = localStorage.getItem('vision:theme')
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="app"><div id="view"><p class="muted">Loading…</p></div></div>
