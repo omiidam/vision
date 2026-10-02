@@ -95,7 +95,6 @@ body {
 }
 .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
 .card h2 { margin: 2px 0 8px; font-size: 1.15rem; }
-.toc { margin: 0 0 12px; color: var(--muted); font-size: 0.85rem; }
 .badge {
   background: var(--accent-soft);
   color: var(--accent-ink);

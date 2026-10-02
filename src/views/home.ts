@@ -35,7 +35,6 @@ export function renderHome(root: HTMLElement, grade: number): void {
               </div>
               <span class="badge">${bdi(counts)}</span>
             </div>
-            <p class="toc">${bdi(lesson.tocLine)}</p>
             <a class="button" href="#/lesson/${lesson.id}">${escapeHtml(openLabel)}</a>
           </article>
         `

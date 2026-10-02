@@ -89,7 +89,7 @@ export class LessonView {
     return `
       <header class="page-header" lang="en" dir="ltr">
         <a class="back" href="#/">${back} All lessons</a>
-        <p class="eyebrow">Lesson ${bdi(String(lesson.number))} &middot; ${bdi(lesson.tocLine)}</p>
+        <p class="eyebrow">Lesson ${bdi(String(lesson.number))} &middot; ${bdi(`pages ${lesson.pages[0]}–${lesson.pages[1]}`)}</p>
         <h1>${escapeHtml(lesson.title)}</h1>
       </header>
 
