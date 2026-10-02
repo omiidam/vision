@@ -14,7 +14,6 @@
      the solid --accent is reserved for filled surfaces, where the label sits on it. */
   --accent-ink: #1f57d6;
   --on-accent: #ffffff;
-  --tab-bg: #ffffff;
   --error: #b42318;
   --untimed: #6b7280;
   --active-bg: #fbfcff;
@@ -22,6 +21,24 @@
   --word-bg: #ffe08a;
   --word-ink: #241a00;
   color-scheme: light;
+
+  /* Frosted glass.  A surface is a translucent fill plus a blur of what is behind it, a
+     hairline that catches the light along the top, and a soft shadow for depth.  The
+     translucency is what the blur acts on, so it is set per theme here and nowhere else. */
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.78);
+  --glass-inset: rgba(255, 255, 255, 0.34);
+  --glass-edge: rgba(255, 255, 255, 0.9);
+  --glass-hairline: rgba(16, 24, 40, 0.1);
+  --glass-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 8px 24px rgba(16, 24, 40, 0.09);
+  --glass-shadow-hover: 0 2px 4px rgba(16, 24, 40, 0.06), 0 12px 28px rgba(16, 24, 40, 0.13);
+  --glass-blur: 14px;
+  --glass-blur-strong: 20px;
+  /* The page behind the glass.  A flat fill gives a blur nothing to do, so the page is a
+     soft tint that the glass picks up; it is the same colour family as --bg. */
+  --page-glow: rgba(47, 109, 246, 0.1);
+  --page-glow-2: rgba(120, 87, 214, 0.08);
 }
 
 :root[data-theme='dark'] {
@@ -35,7 +52,6 @@
   --accent-soft: #33405e;
   --accent-ink: #a8c6ff;
   --on-accent: #16181d;
-  --tab-bg: #3e4040;
   --error: #ff9d94;
   --untimed: #b0b5bc;
   --active-bg: #4a4d4d;
@@ -43,16 +59,107 @@
   --word-bg: #b98900;
   --word-ink: #1a1400;
   color-scheme: dark;
+
+  /* The same glass, tuned for a dark page: less light in the fill, a brighter hairline
+     where the light catches it, and a deeper shadow to lift the surface off the page. */
+  --glass: rgba(28, 30, 30, 0.55);
+  --glass-strong: rgba(28, 30, 30, 0.72);
+  --glass-inset: rgba(0, 0, 0, 0.22);
+  --glass-edge: rgba(255, 255, 255, 0.16);
+  --glass-hairline: rgba(255, 255, 255, 0.1);
+  --glass-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 1px 2px rgba(0, 0, 0, 0.28), 0 10px 30px rgba(0, 0, 0, 0.3);
+  --glass-shadow-hover: 0 2px 5px rgba(0, 0, 0, 0.32), 0 14px 34px rgba(0, 0, 0, 0.36);
+  --glass-blur: 14px;
+  --glass-blur-strong: 20px;
+  --page-glow: rgba(122, 162, 255, 0.09);
+  --page-glow-2: rgba(150, 120, 220, 0.07);
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  /* Fixed, so the tints stay put while the reader scrolls: a moving backdrop would drag
+     the frosted surfaces with it. */
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1100px 620px at 12% -8%, var(--page-glow), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, var(--page-glow-2), transparent 58%);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
+}
+
+/* The glass surface.  Every panel, card and control is built from this one recipe, so a
+   screen added later is frosted by using it rather than by restating the effect.
+     - a translucent fill, so the blur behind it shows through
+     - a blur of that backdrop, with a wider one for the surfaces that sit on top
+     - a hairline border and an inner highlight along the top edge, for the glass to read
+       as a lit edge rather than a flat tint
+     - a soft shadow for depth, so a surface sits above the page
+   Where backdrop-filter is not supported the fill alone still reads as a panel, because
+   the fallback below is the same colour without the translucency. */
+.glass,
+.card,
+.button,
+.tab,
+.rate-option,
+.theme-toggle,
+.badge,
+.field,
+select,
+input[type='text'],
+input[type='search'] {
+  background: var(--glass);
+  border: 1px solid var(--glass-hairline);
+  box-shadow: var(--glass-shadow), var(--glass-sheen);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass,
+  .card,
+  .button,
+  .tab,
+  .rate-option,
+  .theme-toggle,
+  .badge,
+  .field,
+  select,
+  input[type='text'],
+  input[type='search'] {
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    /* A translucent layer must not let what is behind it tint the text on top. */
+    -webkit-backdrop-saturate(1.4) brightness(1.06);
+    backdrop-saturate(1.4) brightness(1.06);
+  }
+
+  /* The reader is the one surface large enough for the stronger blur to pay off, and the
+     card it sits in needs it too so the two layers do not read as separate materials. */
+  .card,
+  .reader-body {
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    backdrop-filter: blur(var(--glass-blur-strong));
+  }
+}
+
+/* Without blur the translucency alone would leave text sitting on the page gradient, so
+   the surfaces go back to being solid.  Nothing is lost but the effect: the colour comes
+   from the theme's own card value, so a theme still decides it. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root,
+  :root[data-theme='light'] { --glass: var(--card); --glass-strong: var(--card); }
+  :root[data-theme='dark'] { --glass: var(--card); --glass-strong: var(--card); }
+}
+
+/* Controls that take focus must show it.  The ring is drawn outside the surface so it is
+   never clipped by the hairline, and it is the same accent everywhere. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 #app {
@@ -69,13 +176,13 @@ body {
   position: absolute;
   inset-block-start: 14px;
   inset-inline-end: 14px;
-  background: var(--tab-bg);
+  /* The frosted surface comes from the shared rule above. */
   color: var(--muted);
-  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 5px 12px;
   font-size: 0.8rem;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 .theme-toggle:hover { color: var(--ink); }
 
@@ -87,17 +194,19 @@ body {
 .back { display: inline-block; margin-block-end: 10px; color: var(--accent-ink); text-decoration: none; }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 16px;
   margin-block-end: 16px;
 }
 .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
 .card h2 { margin: 2px 0 8px; font-size: 1.15rem; }
 .badge {
-  background: var(--accent-soft);
+  /* A badge sits on the card, so it is a lighter pane of the same glass rather than a
+     solid fill: it reads as a label resting on the surface, not a chip cut out of it. */
+  background: var(--glass-inset);
   color: var(--accent-ink);
+  border: 1px solid var(--glass-hairline);
+  box-shadow: none;
   border-radius: 999px;
   padding: 2px 10px;
   font-size: 0.75rem;
@@ -107,14 +216,20 @@ body {
 
 .button {
   display: inline-block;
-  background: var(--accent);
-  color: var(--on-accent);
+  color: var(--ink);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px 14px;
   font-size: 0.9rem;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
-.button.ghost { background: transparent; color: var(--accent-ink); border: 1px solid var(--line); }
+.button:hover { box-shadow: var(--glass-shadow-hover), var(--glass-sheen); }
+/* A filled button is the one control that keeps a solid fill, because its label has to
+   stay legible on it in both themes.  It is written as a plain `.button` on purpose: the
+   frosted look belongs to the surrounding surface, not to the one button the eye has to
+   land on first. */
+.button:not(.ghost) { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.button.ghost { background: var(--glass); color: var(--accent-ink); }
 
 .tabs {
   display: flex;
@@ -127,14 +242,21 @@ body {
 .tab {
   flex: 0 0 auto;
   padding: 6px 12px;
-  border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--tab-bg);
   color: var(--muted);
   text-decoration: none;
   font-size: 0.85rem;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
 }
-.tab.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.tab:hover { color: var(--ink); }
+/* The open tab is filled rather than tinted, so the current section is unmistakable at a
+   glance and in either theme. */
+.tab.active {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+  box-shadow: var(--glass-shadow), var(--glass-sheen);
+}
 
 .reader-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
 .reader-head h2 { margin: 0; }
@@ -147,7 +269,9 @@ body {
   padding-block: 4px;
   /* Room for the scrollbar, which sits on the inline-end side in both directions. */
   padding-inline-end: 8px;
-  border-block: 1px solid var(--line);
+  /* The text itself is the one thing that must not be read through a blur, so the panel
+     behind it is the solid card colour; the card around it carries the glass. */
+  border-block: 1px solid var(--glass-hairline);
   font-size: 1.05rem;
   line-height: 2.05;
 }
@@ -171,18 +295,24 @@ body {
 .play {
   width: 42px; height: 42px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid transparent;
   background: var(--accent);
   color: var(--on-accent);
+  box-shadow: var(--glass-shadow), var(--glass-sheen);
   font-size: 1rem;
   cursor: pointer;
   flex: 0 0 auto;
+  transition: box-shadow 0.15s ease;
 }
+.play:hover { box-shadow: var(--glass-shadow-hover), var(--glass-sheen); }
 .track {
   position: relative;
   flex: 1;
   height: 8px;
-  background: var(--line);
+  /* A recessed glass groove: an inset shadow reads as a channel the fill slides along. */
+  background: var(--glass-inset);
+  border: 1px solid var(--glass-hairline);
+  box-shadow: inset 0 1px 2px var(--glass-inset);
   border-radius: 999px;
   cursor: pointer;
 }
@@ -193,18 +323,37 @@ body {
    the reading direction; the selected one is marked by colour and weight only. */
 .rate { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; }
 .rate-option {
-  border: 1px solid var(--line);
-  background: transparent;
   color: var(--muted);
   border-radius: 999px;
   padding: 3px 9px;
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
 }
-.rate-option.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.rate-option:hover { color: var(--ink); }
+.rate-option.active { background: var(--accent); border-color: transparent; color: var(--on-accent); font-weight: 600; }
 
 .pager { display: flex; justify-content: space-between; gap: 10px; }
+
+/* Form controls.  There are none in the reader today, so these are the shared recipe a
+   future form inherits: the same fill, blur, hairline and shadow as the panels above,
+   declared once here so a screen that adds a field is frosted by using it. */
+.field,
+select,
+input[type='text'],
+input[type='search'] {
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+select { cursor: pointer; }
+/* The drop-down arrow is drawn by the platform, so the control keeps its own arrow in
+   both themes rather than a second, mismatched glyph. */
+select option { background: var(--card); color: var(--ink); }
+input::placeholder { color: var(--muted); opacity: 1; }
 
 .vocab { margin-block: 0 0; }
 .vocab h3 { margin-block: 0 8px; font-size: 1rem; }
@@ -227,4 +376,26 @@ body {
   .transport { gap: 8px; flex-wrap: wrap; }
   /* `end` follows the writing direction, unlike flex-end. */
   .rate { flex: 1 0 100%; justify-content: end; }
+}
+
+/* Someone who has asked the system for less transparency gets plain panels.  The effect
+   is decoration, so it is the first thing to go, and the text colours are unchanged, so
+   nothing becomes harder to read. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass: var(--card);
+    --glass-strong: var(--card);
+    --glass-inset: var(--card);
+  }
+  .glass, .card, .button, .tab, .rate-option, .theme-toggle, .badge, .field,
+  select, input[type='text'], input[type='search'] {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* A blur that repaints on every scroll frame is expensive on a phone, so the surfaces
+   that move with the text drop it when the reader asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
