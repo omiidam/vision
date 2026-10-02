@@ -67,9 +67,9 @@ def speech_from(transcript_path: Path) -> tuple[list[tuple[str, float, float]], 
 def vocabulary_items(entries: list[vocabulary.VocabularyEntry]) -> list[dict]:
     """The lesson's vocabulary list in the shape the reader renders.
 
-    ``source`` and ``sectionId`` travel with each entry so a word bank word can be told
-    apart from a glossary entry, instead of being shown as if the book had left its
-    definition out.
+    ``source``, ``sectionId`` and ``part`` travel with each entry, so a word can be told
+    where it was printed and which part of the page it belongs to, instead of being shown
+    as if the book had left its definition out.
     """
     return [
         {
@@ -82,6 +82,8 @@ def vocabulary_items(entries: list[vocabulary.VocabularyEntry]) -> list[dict]:
             "page": entry.page,
             "source": entry.source,
             "sectionId": entry.section_id,
+            "part": entry.part,
+            "partTitle": entry.part_title,
         }
         for entry in entries
     ]
@@ -166,6 +168,12 @@ def build() -> dict:
         sections[lesson.lesson_id] = {}
         for section in lesson.sections:
             lines = section_lines(doc, section)
+            if section.section_id == vocabulary.NEW_WORDS_SECTION_ID:
+                # The vocabulary page shows the parts that teach words.  The same parts
+                # decide the vocabulary below, so the two cannot disagree.
+                lines = vocabulary.vocabulary_page_lines(
+                    doc, tuple(section.pages), section.section_id
+                ) or lines
             blocks, flat = textmod.build_blocks(lines)
             sections[lesson.lesson_id][section.section_id] = {
                 "meta": section,
@@ -233,7 +241,6 @@ def build() -> dict:
         listed = vocabulary.entries_by_section(
             doc,
             [(s.section_id, tuple(s.pages)) for s in published],
-            {s.section_id: sections[lesson_id][s.section_id]["lines"] for s in published},
         )
         new_words_listing = listed.get(vocabulary.NEW_WORDS_SECTION_ID, [])
 

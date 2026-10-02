@@ -5,7 +5,7 @@
  "sourceAudioFile": "new words and expressions1.mp3",
  "duration": 74.736,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.6364,
+ "confidence": 0.7,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-01' + file name 'new words and expressions' (match 1.00)",
@@ -1057,110 +1057,6 @@
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " future"
-  },
-  {
-   "word": "C.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Go",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Part",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "III",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "of",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "your",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Workbook",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "do",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "A",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "B.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   }
  ],
  "sentences": [
@@ -1296,20 +1192,6 @@
    "start": 60.4,
    "end": 64.08,
    "text": "future: the time after now Everyone needs to plan for the future."
-  },
-  {
-   "first": 130,
-   "last": 130,
-   "start": null,
-   "end": null,
-   "text": "C."
-  },
-  {
-   "first": 131,
-   "last": 142,
-   "start": null,
-   "end": null,
-   "text": "Go to Part III of your Workbook and do A and B."
   }
  ],
  "unspokenAudio": [

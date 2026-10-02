@@ -206,8 +206,12 @@ body {
 
 .pager { display: flex; justify-content: space-between; gap: 10px; }
 
-.vocab { margin-block: 18px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
+.vocab { margin-block: 0 0; }
 .vocab h3 { margin-block: 0 8px; font-size: 1rem; }
+
+/* Each part of the vocabulary page is its own block, in the order the book prints them. */
+.vocab-part { margin-block: 16px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
+.vocab-part h4 { margin-block: 0 8px; font-size: 0.92rem; }
 .vocab-item { display: grid; grid-template-columns: minmax(90px, 26%) 1fr; gap: 10px; padding-block: 7px; border-block-end: 1px solid var(--line-soft); }
 .vocab-item dt { font-weight: 600; }
 .vocab-item dd { margin: 0; font-size: 0.92rem; }

@@ -1,7 +1,7 @@
 import { loadLesson, loadSectionText, loadSync, loadVocabulary, assetUrl } from '../content'
 import { AudioPlayer, PLAYBACK_RATES, formatRate } from '../player'
 import { SyncEngine } from '../sync'
-import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary } from '../types'
+import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary, VocabularyEntry } from '../types'
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
 
 export interface ReaderHandlers {
@@ -384,28 +384,67 @@ export class LessonView {
   private renderVocabulary(vocabulary: Vocabulary): void {
     const host = this.root.querySelector<HTMLElement>('#vocabulary')
     if (!host || vocabulary.items.length === 0) return
+
+    // The words are grouped by the part the book prints them in, in the order the data
+    // lists them: each part of the page first, then the lesson's word bank.  Grouping is
+    // driven by the part on each entry, so a lesson whose page is set out differently
+    // needs no change here.
+    const groups: { key: string; title: string; items: VocabularyEntry[] }[] = []
+    for (const item of vocabulary.items) {
+      let group = groups.find((candidate) => candidate.key === item.part)
+      if (!group) {
+        // A part is headed by the letter the book gives it and the title it prints beside
+        // it, so the reader sees "A. Look, Read and Practice."  The word bank is not a
+        // lettered part and is headed by its own title.
+        const lettered = /^[a-z]$/.test(item.part)
+        group = {
+          key: item.part,
+          title: lettered ? `${item.part.toUpperCase()}. ${item.partTitle}` : item.partTitle,
+          items: [],
+        }
+        groups.push(group)
+      }
+      group.items.push(item)
+    }
+
+    const itemHtml = (item: VocabularyEntry) => {
+      const headword = escapeHtml(item.word)
+      // The Persian gloss is empty in the source book, so it is only rendered when
+      // there is something to show; it carries dir="rtl" and lang="fa" on its own.
+      const persian = item.meaningFa
+        ? `<span class="meaning-fa" lang="fa" dir="rtl">${escapeHtml(item.meaningFa)}</span>`
+        : ''
+      // A word the book points at rather than defines has no definition to show, and
+      // saying so would read as a gap in the book.
+      const meaning = item.meaningEn
+        ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>`
+        : item.source === 'practice'
+          ? ''
+          : '<span class="muted">not given in the book</span>'
+      return `
+      <div class="vocab-item">
+        <dt lang="en" dir="ltr">${headword}</dt>
+        <dd>
+          ${meaning}
+          ${persian}
+          ${item.examples.map((example) => `<span class="example" lang="en" dir="ltr">${escapeHtml(example)}</span>`).join('')}
+        </dd>
+      </div>`
+    }
+
     host.innerHTML = `
       <h3>New Words &amp; Expressions <span class="muted small">${bdi(`page ${vocabulary.source.definitionPages[0]}`)}</span></h3>
-      <dl class="vocab">
-        ${vocabulary.items.map((item) => {
-          const headword = escapeHtml(item.word)
-          // The Persian gloss is empty in the source book, so it is only rendered when
-          // there is something to show; it carries dir="rtl" and lang="fa" on its own.
-          const persian = item.meaningFa
-            ? `<span class="meaning-fa" lang="fa" dir="rtl">${escapeHtml(item.meaningFa)}</span>`
-            : ''
-          return `
-          <div class="vocab-item">
-            <dt lang="en" dir="ltr">${headword}</dt>
-            <dd>
-              ${item.meaningEn ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>` : '<span class="muted">not given in the book</span>'}
-              ${persian}
-              ${item.examples.map((example) => `<span class="example" lang="en" dir="ltr">${escapeHtml(example)}</span>`).join('')}
-            </dd>
-          </div>
-        `
-        }).join('')}
-      </dl>
+      ${groups
+        .map(
+          (group) => `
+        <section class="vocab-part" data-part="${escapeHtml(group.key)}">
+          <h4>${escapeHtml(group.title)}</h4>
+          <dl class="vocab">
+            ${group.items.map(itemHtml).join('')}
+          </dl>
+        </section>`,
+        )
+        .join('')}
     `
     host.setAttribute('lang', 'en')
     host.setAttribute('dir', 'ltr')

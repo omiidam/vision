@@ -5,7 +5,7 @@
  "sourceAudioFile": "New Words & Expressions2.mp3",
  "duration": 76.173,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.6213,
+ "confidence": 0.6731,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'new words and expressions' (match 0.92)",
@@ -1265,110 +1265,6 @@
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " sun."
-  },
-  {
-   "word": "C.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Go",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Part",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "III",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "of",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "your",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Workbook",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "do",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "A",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "B.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   }
  ],
  "sentences": [
@@ -1511,20 +1407,6 @@
    "start": 62.84,
    "end": 65.96,
    "text": "fact: things that are true or that really happened It's a fact that Earth goes around the Sun."
-  },
-  {
-   "first": 156,
-   "last": 156,
-   "start": null,
-   "end": null,
-   "text": "C."
-  },
-  {
-   "first": 157,
-   "last": 168,
-   "start": null,
-   "end": null,
-   "text": "Go to Part III of your Workbook and do A and B."
   }
  ],
  "unspokenAudio": [

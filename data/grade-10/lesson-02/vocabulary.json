@@ -16,48 +16,121 @@
  ],
  "items": [
   {
-   "word": "near",
+   "word": "liquid",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 47,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "rocky",
+   "word": "drops",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 47,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "orbit",
+   "word": "cells",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 47,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "powerful",
+   "word": "thousand",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 47,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "Doing",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "exercise",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "microbes",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "pumps",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 49,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "clear",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 49,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
    "word": "healthy",
@@ -71,7 +144,9 @@
    "audio": null,
    "page": 49,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "defend",
@@ -84,7 +159,9 @@
    "audio": null,
    "page": 49,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "carry",
@@ -97,7 +174,9 @@
    "audio": null,
    "page": 49,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "collect",
@@ -110,7 +189,9 @@
    "audio": null,
    "page": 49,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "fact",
@@ -123,7 +204,61 @@
    "audio": null,
    "page": 49,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
+  },
+  {
+   "word": "near",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "rocky",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "orbit",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "powerful",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
   }
  ]
 }

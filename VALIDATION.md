@@ -21,7 +21,7 @@ exactly Lesson 1 and Lesson 2.
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | lesson-01 | Get Ready | 15-18 | Introduction to the Lesson | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | Conversation | 19 | Visiting the Museum of Nature and Wildlife | 137 | 100 | 93 | 2 | 62.6s | confirmed |
-| lesson-01 | New Words & Expressions | 20-21 | Learning Vocabulary of Reading | 143 | 109 | 84 | 7 | 74.7s | confirmed |
+| lesson-01 | New Words & Expressions | 20-21 | Learning Vocabulary of Reading | 130 | 109 | 84 | 7 | 74.7s | confirmed |
 | lesson-01 | Reading | 22 | Reading Comprehension / Endangered Animals | 160 | 157 | 155 | 1 | 83.5s | confirmed |
 | lesson-01 | Grammar | 24-29 | Future tense (will) / See Also (be going to) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | Listening & Speaking | 30-31 | Talking about Schedules/Plans | 245 | 138 | 73 | 8 | 75.6s | confirmed |
@@ -29,7 +29,7 @@ exactly Lesson 1 and Lesson 2.
 | lesson-01 | What You Learned | 40-41 | Reviewing Lesson 1 | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Get Ready | 44-46 | Introduction to the Lesson | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Conversation | 47 | Visiting Iranian National Observatory | 200 | 158 | 151 | 2 | 86.3s | confirmed |
-| lesson-02 | New Words & Expressions | 48-49 | Learning Vocabulary of Reading | 169 | 109 | 101 | 4 | 76.2s | confirmed |
+| lesson-02 | New Words & Expressions | 48-49 | Learning Vocabulary of Reading | 156 | 109 | 101 | 4 | 76.2s | confirmed |
 | lesson-02 | Reading | 50 | Reading Comprehension / A Wonderful Liquid | 171 | 168 | 165 | 3 | 87.3s | confirmed |
 | lesson-02 | Grammar | 52-57 | See Also (comparative and / Adjectives / superlative adjectives) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Listening & Speaking | 58-59 | Asking about Details | 242 | 147 | 63 | 7 | 85.2s | confirmed |
@@ -41,7 +41,7 @@ whose recognised form matched the printed word character for character; `fuzzy` 
 matched despite a recognition difference (for example the recording says "cut trees" where the
 book prints "cut down trees" - the book is displayed).
 
-Overall word-timing coverage across every section with audio: **1086/1467 (74.0%)**.
+Overall word-timing coverage across every section with audio: **1086/1441 (75.4%)**.
 
 ## Audio files detected and mapped
 

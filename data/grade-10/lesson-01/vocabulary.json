@@ -17,59 +17,108 @@
  ],
  "items": [
   {
-   "word": "endangered",
+   "word": "Earth",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 19,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 20,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "alive",
+   "word": "tiger",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 19,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 20,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "increase",
+   "word": "Forest",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 19,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 20,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "hear",
+   "word": "destroying",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 19,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 20,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "protect",
+   "word": "died out",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
    "examples": [],
    "audio": null,
-   "page": 19,
-   "source": "word-bank",
-   "sectionId": "conversation"
+   "page": 20,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "natural",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 21,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "Plain",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 21,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "hope",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 21,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
   },
   {
    "word": "a few",
@@ -82,7 +131,9 @@
    "audio": null,
    "page": 21,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "human",
@@ -95,7 +146,9 @@
    "audio": null,
    "page": 21,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "instead",
@@ -108,7 +161,9 @@
    "audio": null,
    "page": 21,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
   },
   {
    "word": "future",
@@ -121,7 +176,74 @@
    "audio": null,
    "page": 21,
    "source": "glossary",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "new-words-and-expressions",
+   "part": "b",
+   "partTitle": "Read and Practice."
+  },
+  {
+   "word": "endangered",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "alive",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "increase",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "hear",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
+  },
+  {
+   "word": "protect",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation",
+   "part": "word-bank",
+   "partTitle": "Word Bank"
   }
  ]
 }

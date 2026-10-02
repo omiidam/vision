@@ -186,6 +186,18 @@ test('vocabulary comes from the book and invents no Persian text', () => {
     assert.ok(vocab.targetWords.length >= 4)
     const glossary = vocab.items.filter((item) => item.source === 'glossary')
     assert.ok(glossary.length >= 4, `${lessonId} has too few defined words`)
+    // The page is read as its own parts followed by the word bank, and every item says
+    // which part it belongs to, so the reader can group them without knowing the lesson.
+    const parts = []
+    for (const item of vocab.items) {
+      if (parts[parts.length - 1] !== item.part) parts.push(item.part)
+      assert.ok(item.partTitle, `${item.word}: the part has no title`)
+    }
+    assert.equal(parts[parts.length - 1], 'word-bank', `${lessonId}: the word bank is not last`)
+    assert.ok(
+      vocab.items.some((item) => item.part !== 'word-bank'),
+      `${lessonId} lists only word bank words`,
+    )
     for (const item of vocab.items) {
       assert.ok(item.word.length > 0)
       assert.equal(item.meaningFa, '', 'Persian meanings are not in the source, so they stay empty')
@@ -197,6 +209,45 @@ test('vocabulary comes from the book and invents no Persian text', () => {
       } else {
         assert.equal(item.meaningEn, '', `${item.word} was given a meaning the book does not print`)
       }
+    }
+  }
+})
+
+test('each part is headed by the letter and title the book prints for it', () => {
+  // The reader groups the page by the part on each entry, so the heading it shows has to
+  // be built from the data rather than written out here.
+  const source = fs.readFileSync(path.join(ROOT, 'src', 'views', 'lesson.ts'), 'utf8')
+  const render = source.slice(source.indexOf('private renderVocabulary'))
+  assert.match(render, /groups\.find\(\(candidate\) => candidate\.key === item\.part\)/)
+  assert.match(render, /item\.partTitle/)
+  assert.match(render, /vocab-part/)
+  // The words stay inside the part they are printed in: one section per group, in the
+  // order the data lists them, and nothing dropped between two groups.
+  assert.match(render, /group\.items\.map\(itemHtml\)\.join\(''\)/)
+})
+
+test('the New Words page shows the parts the book prints and no pointer to the workbook', () => {
+  for (const lessonId of ['lesson-01', 'lesson-02']) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    // A part such as "C. Go to Part III of your Workbook and do A and B." teaches no words
+    // and is not part of the reader's page, so neither its heading nor its words are here.
+    assert.ok(
+      !/Workbook/i.test(data.text),
+      `${lessonId}: the page still sends the reader to the workbook`,
+    )
+    for (const entry of data.vocabulary) {
+      assert.ok(
+        !/Workbook/i.test(entry.word),
+        `${lessonId}: "${entry.word}" came from the part that points at the workbook`,
+      )
+    }
+    // Every part the page does show is listed under the heading the book prints for it.
+    for (const entry of data.vocabulary) {
+      if (entry.part === 'word-bank') continue
+      assert.ok(
+        data.text.includes(`${entry.part.toUpperCase()}. ${entry.partTitle}`),
+        `${lessonId}: the heading of part ${entry.part} is not in the page's text`,
+      )
     }
   }
 })

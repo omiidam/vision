@@ -70,8 +70,16 @@ export interface SectionVocabularyEntry {
   page: number
   /** Order within the list this entry appears in, starting at 0. */
   position: number
-  /** How the book identifies the word: 'word-bank' or 'glossary'. */
-  source: 'word-bank' | 'glossary'
+  /** How the book identifies the word: 'word-bank', 'practice' or 'glossary'. */
+  source: 'word-bank' | 'practice' | 'glossary'
+  /**
+   * The part of the vocabulary page the word belongs to: the letter of the printed part,
+   * or 'word-bank' for the lesson's word bank words.  The listing runs in printed order,
+   * so the parts appear in the order the book sets them out.
+   */
+  part: string
+  /** The part's heading as printed, e.g. "A. Look, Read and Practice." */
+  partTitle: string
   meaningEn: string
   meaningFa: string
   pronunciation: string
@@ -147,10 +155,14 @@ export interface VocabularyEntry {
   examples: string[]
   audio: string | null
   page: number
-  /** How the book identifies the word: 'word-bank' or 'glossary'. */
-  source: 'word-bank' | 'glossary'
-  /** The section that teaches the word, which is not always the New Words page. */
+  /** How the book identifies the word: 'word-bank', 'practice' or 'glossary'. */
+  source: 'word-bank' | 'practice' | 'glossary'
+  /** The section the word was printed in, which is not always the New Words page. */
   sectionId: string
+  /** The part of the vocabulary page the word belongs to, in printed order. */
+  part: string
+  /** The part's heading as printed, e.g. "A. Look, Read and Practice." */
+  partTitle: string
 }
 
 export interface Vocabulary {

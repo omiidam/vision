@@ -47,12 +47,22 @@ const BANKS = [
   'a',
   'powerful,',
 ]
-const GLOSSARY_LINES = [
-  [21, 'human: a person'],
-  [21, 'All humans must take care of nature.'],
-  [21, 'A. Look, Read and Practice.'],
-  [21, 'instead: in place of someone or something else'],
-]
+// The two kinds of part a vocabulary page is printed in, and the third kind that is not a
+// part at all: a heading that sends the reader to another book teaches nothing here.
+const PART_CASES = {
+  glossary: [
+    [21, 'human: a person'],
+    [21, 'All humans must take care of nature.'],
+    [21, 'A. Look, Read and Practice.'],
+    [21, 'instead: in place of someone or something else'],
+  ],
+  practice: [
+    [21, 'A. Look, Read and Practice.'],
+    [21, 'The Earth is our only home.', ['Earth']],
+    [21, 'Many animals died out there.', ['died out']],
+  ],
+  pointer: [[21, 'C. Go to Part III of your Workbook and do A and B.', []]],
+}
 /**
  * The word banks read straight out of the book, per lesson and section.  This is an
  * oracle taken from the PDF rather than from the generated data, so a test can tell
@@ -90,22 +100,50 @@ print(json.dumps(out))
   ),
 )
 
+/**
+ * Run the real extractor over the shapes above and over the book's own vocabulary pages,
+ * so the tests check the code that builds the data rather than a copy of it.
+ */
 const EXTRACTED = JSON.parse(
   execFileSync(
     'python',
     [
       '-c',
       `
-import sys, json
+import sys, json, pymupdf
 sys.path.insert(0, "tools")
-import vocabulary as V
+import textbook, vocabulary as V
+doc = pymupdf.open("10th-class/" + textbook.BOOK_FILENAME)
+SECTION_ID = "new-words-and-expressions"
+
+def lines_of(case):
+    return [V.Line(page=row[0], text=row[1], highlights=list(row[2] if len(row) > 2 else []))
+            for row in case]
+
+def describe(parts):
+    return [[p.letter, p.title, [[e.word, e.source, e.part, e.meaning_en, e.examples]
+                                  for e in V.part_entries(p, SECTION_ID)]]
+            for p in parts]
+
+cases = json.loads(sys.argv[2])
+parts = {name: V.split_parts(lines_of(case)) for name, case in cases.items()}
+pages = json.loads(sys.argv[3])
+printed = V.split_parts(V.page_lines(doc, tuple(pages)))
 print(json.dumps({
     "banks": [V.word_bank_items(x) for x in json.loads(sys.argv[1])],
-    "glossary": V.glossary_entries([tuple(x) for x in json.loads(sys.argv[2])]),
+    "cases": {name: describe(found) for name, found in parts.items()},
+    "taught": {name: [p.letter for p in found if V.part_entries(p, SECTION_ID)]
+               for name, found in parts.items()},
+    "printed": describe(printed),
+    "shown": [p.letter for p in V.vocabulary_page_parts(doc, tuple(pages), SECTION_ID)],
+    "lines": [[line.text, line.highlights] for line in V.page_lines(doc, tuple(pages))],
 }))
 `,
       JSON.stringify(BANKS),
-      JSON.stringify(GLOSSARY_LINES),
+      JSON.stringify(PART_CASES),
+      JSON.stringify(
+        SECTION_PAGES['lesson-01']['new-words-and-expressions'],
+      ),
     ],
     { cwd: ROOT, encoding: 'utf8' },
   ),
@@ -235,20 +273,83 @@ test('the words the book prints in a word bank are not listed twice anywhere', (
   }
 })
 
-test('the New Words page lists the word bank words before its own glossary', () => {
+test('the New Words page lists its own parts first and the word bank words last', () => {
   for (const lessonId of LESSON_IDS) {
     const newWords = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
     const sources = newWords.vocabulary.map((e) => e.source)
-    const firstGlossary = sources.indexOf('glossary')
-    const lastWordBank = sources.lastIndexOf('word-bank')
-    assert.ok(lastWordBank >= 0, `${lessonId}: no word bank words on the New Words page`)
-    if (firstGlossary >= 0) {
+    const firstWordBank = sources.indexOf('word-bank')
+    assert.ok(firstWordBank >= 0, `${lessonId}: no word bank words on the New Words page`)
+    assert.ok(
+      sources.slice(firstWordBank).every((source) => source === 'word-bank'),
+      `${lessonId}: a word of the page's own parts is listed after the word bank`,
+    )
+  }
+})
+
+test('the New Words page is read as parts, each listed once and in the printed order', () => {
+  // Nothing here names a part: the parts come from the book, the word bank is the group
+  // the data puts last, and the letters have to run in the order they are printed.
+  for (const lessonId of LESSON_IDS) {
+    const newWords = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    const parts = []
+    for (const entry of newWords.vocabulary) {
+      // A part's words are one run: nothing from a part comes back after another part.
+      if (parts[parts.length - 1] !== entry.part) parts.push(entry.part)
+      assert.ok(entry.part, `${lessonId}/${entry.word}: the entry names no part`)
+      assert.ok(entry.partTitle, `${lessonId}/${entry.word}: the part has no title`)
+    }
+    assert.equal(new Set(parts).size, parts.length, `${lessonId}: a part is listed in pieces`)
+    assert.equal(parts[parts.length - 1], 'word-bank', `${lessonId}: the word bank is not last`)
+    const letters = parts.filter((part) => part !== 'word-bank')
+    assert.deepEqual(
+      letters,
+      [...letters].sort(),
+      `${lessonId}: the parts are not in the order the book prints them`,
+    )
+    // A part's words are read the way the book marks them, and the word bank is the only
+    // part made of words the page itself does not print.
+    for (const entry of newWords.vocabulary) {
+      assert.equal(
+        entry.source === 'word-bank',
+        entry.part === 'word-bank',
+        `${entry.word}: the part and the source disagree`,
+      )
       assert.ok(
-        lastWordBank < firstGlossary,
-        `${lessonId}: the glossary and the word bank words are interleaved`,
+        ['practice', 'glossary', 'word-bank'].includes(entry.source),
+        `${lessonId}: "${entry.word}" is listed as ${entry.source}`,
       )
     }
   }
+})
+
+test('a part that teaches nothing is neither listed nor left in the text', () => {
+  // The parts the book prints, straight from the PDF.  One that teaches no words has to
+  // be gone from the data, and its own heading gone from the text the reader shows, so
+  // that nothing of a part such as "go to the workbook" survives on the page.
+  const file = sectionFiles.find(
+    (s) => s.lessonId === 'lesson-01' && s.section.id === 'new-words-and-expressions',
+  ).file
+  const data = readJson(file)
+  const listed = new Set(data.vocabulary.map((entry) => entry.part))
+  let dropped = 0
+  for (const [letter, title, entries] of EXTRACTED.printed) {
+    if (entries.length > 0) {
+      assert.ok(listed.has(letter.toLowerCase()), `part ${letter} teaches words but is not listed`)
+      continue
+    }
+    dropped += 1
+    assert.ok(!listed.has(letter.toLowerCase()), `part ${letter} teaches nothing yet is listed`)
+    assert.ok(
+      !data.text.includes(`${letter}. ${title}`),
+      `the text still carries a part that teaches nothing: ${letter}. ${title}`,
+    )
+  }
+  assert.ok(dropped > 0, 'the book printed no part that teaches nothing, so nothing was checked')
+  assert.deepEqual(
+    EXTRACTED.shown,
+    EXTRACTED.printed.filter(([, , entries]) => entries.length > 0).map(([letter]) => letter),
+    'the extractor did not leave out exactly the parts that teach nothing',
+  )
 })
 
 test('a word bank word keeps its own section and page on the New Words page', () => {
@@ -399,11 +500,48 @@ test('the extractor reads a word bank list and drops its labels', () => {
   assert.deepEqual(oneWord, [], 'a single trailing comma is not a word bank')
 })
 
-test('the extractor reads the printed glossary entries and their examples', () => {
-  assert.deepEqual(EXTRACTED.glossary, [
-    [21, 'human', 'a person', ['All humans must take care of nature.']],
-    [21, 'instead', 'in place of someone or something else', []],
+test('a part that prints headwords is read as a glossary, with its examples', () => {
+  // The headword before the lettered heading opens the page, the one after it opens the
+  // part the heading names; each is read with the part it is printed in.
+  assert.deepEqual(EXTRACTED.cases.glossary, [
+    ['', '', [['human', 'glossary', '', 'a person', ['All humans must take care of nature.']]]],
+    ['A', 'Look, Read and Practice.', [
+      ['instead', 'glossary', 'a', 'in place of someone or something else', []],
+    ]],
   ])
+})
+
+test('a part that only prints sentences is read as a practice part', () => {
+  // One entry per word the book points at, in the order it prints them.
+  assert.deepEqual(EXTRACTED.cases.practice, [
+    ['A', 'Look, Read and Practice.', [
+      ['Earth', 'practice', 'a', '', []],
+      ['died out', 'practice', 'a', '', []],
+    ]],
+  ])
+})
+
+test('a part heading is never read as a word of the lesson', () => {
+  // The letter of a part heading is printed in the same bold colour as a target word, so
+  // it is flagged as one.  The heading is a heading, though: it opens a part and is not
+  // read out of it, so the letter never becomes vocabulary.
+  const headings = EXTRACTED.lines.filter(([text]) => /^[A-Z]\.\s/.test(text))
+  assert.ok(headings.length > 0, 'the page prints no lettered heading to check')
+  for (const { file } of sectionFiles) {
+    for (const entry of readJson(file).vocabulary) {
+      assert.ok(entry.word.length > 1, `${entry.word} is too short to be a word`)
+      assert.ok(!/^[A-Z]$/.test(entry.word), `${entry.word} is a part letter, not a word`)
+    }
+  }
+})
+
+test('a part that points at another book teaches no words here', () => {
+  // "C. Go to Part III of your Workbook and do A and B." is a heading with nothing under
+  // it, so it becomes a part with no entries and is left out of the vocabulary page.
+  assert.deepEqual(EXTRACTED.cases.pointer, [
+    ['C', 'Go to Part III of your Workbook and do A and B.', []],
+  ])
+  assert.deepEqual(EXTRACTED.taught.pointer, [], 'a pointer to another book was taught')
 })
 
 test('nothing in the extractor names the words of these lessons', () => {

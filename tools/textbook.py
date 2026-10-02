@@ -200,13 +200,17 @@ def _is_running_furniture(text: str) -> bool:
     return False
 
 
-def page_lines(doc: pymupdf.Document, printed_page: int) -> list[str]:
-    """Return the visible lines of a printed page in reading order.
+def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[dict]]]:
+    """Return each visible line of a printed page with the spans it was built from.
+
+    The text is exactly what :func:`page_lines` returns, in the same order; the spans
+    carry the typeface and colour, which is how a word the book is pointing at is told
+    from the running text around it.
 
     Printed page numbers in this book equal the 1-based PDF page index.
     """
     page = doc[printed_page - 1]
-    collected: list[tuple[float, float, str]] = []
+    collected: list[tuple[float, float, str, list[dict]]] = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
             continue
@@ -218,17 +222,26 @@ def page_lines(doc: pymupdf.Document, printed_page: int) -> list[str]:
             # drop lines that are mostly outside the printable text column
             if x1 < 40 or x0 > 580:
                 continue
-            collected.append((y0, x0, text))
+            collected.append((y0, x0, text, list(line["spans"])))
     # Band lines into visual rows so that text drawn a couple of points apart on the
     # same row (common in this book's two-column pages) is ordered left to right.
     collected.sort(key=lambda item: (item[0], item[1]))
-    rows: list[list[tuple[float, float, str]]] = []
+    rows: list[list[tuple[float, float, str, list[dict]]]] = []
     for item in collected:
         if rows and item[0] - rows[-1][-1][0] < 6:
             rows[-1].append(item)
         else:
             rows.append([item])
-    return [text for row in rows for _, _, text in sorted(row, key=lambda i: i[1])]
+    return [
+        (text, spans)
+        for row in rows
+        for _, _, text, spans in sorted(row, key=lambda i: i[1])
+    ]
+
+
+def page_lines(doc: pymupdf.Document, printed_page: int) -> list[str]:
+    """Return the visible lines of a printed page in reading order."""
+    return [text for text, _ in page_rows(doc, printed_page)]
 
 
 def load_textbook(source_dir: str) -> tuple[pymupdf.Document, list[LessonInfo]]:
