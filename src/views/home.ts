@@ -1,5 +1,6 @@
 import { loadGrade } from '../content'
 import { applyLanguage, bdi, escapeHtml } from '../direction'
+import { formatPageRange } from '../pages'
 
 export function renderHome(root: HTMLElement, grade: number): void {
   const heading = `Grade ${grade} English`
@@ -23,7 +24,7 @@ export function renderHome(root: HTMLElement, grade: number): void {
   loadGrade(grade)
     .then((manifest) => {
       container.innerHTML = manifest.lessons.map((lesson) => {
-        const pages = `pages ${lesson.pages[0]}–${lesson.pages[1]}`
+        const pages = formatPageRange(lesson.pages)
         const counts = `${lesson.audioCount}/${lesson.sectionCount} sections with audio`
         const openLabel = `Open Lesson ${lesson.number}`
         return `

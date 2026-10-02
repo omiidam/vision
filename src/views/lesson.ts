@@ -3,6 +3,7 @@ import { AudioPlayer, PLAYBACK_RATES, formatRate } from '../player'
 import { SyncEngine } from '../sync'
 import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary, VocabularyEntry } from '../types'
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
+import { formatPageRange } from '../pages'
 
 export interface ReaderHandlers {
   /** Called every animation frame while the recording is playing. */
@@ -89,7 +90,7 @@ export class LessonView {
     return `
       <header class="page-header" lang="en" dir="ltr">
         <a class="back" href="#/">${back} All lessons</a>
-        <p class="eyebrow">Lesson ${bdi(String(lesson.number))} &middot; ${bdi(`pages ${lesson.pages[0]}–${lesson.pages[1]}`)}</p>
+        <p class="eyebrow">Lesson ${bdi(String(lesson.number))} &middot; ${bdi(formatPageRange(lesson.pages))}</p>
         <h1>${escapeHtml(lesson.title)}</h1>
       </header>
 
@@ -146,7 +147,10 @@ export class LessonView {
     // Every section switch starts from an empty vocabulary block.
     this.root.querySelector<HTMLElement>('#vocabulary')!.innerHTML = ''
 
-    sub.innerHTML = `${escapeHtml(section.title)} &middot; ${bdi(`pages ${section.pages[0]}–${section.pages[1]}`)}`
+    // The heading above already names the section, so this line carries only where it is
+    // printed.  The book's own subtitle for the section is kept in the manifest rather
+    // than repeated here.
+    sub.innerHTML = bdi(formatPageRange(section.pages))
     applyLanguage(sub, sub.textContent ?? '')
     body.innerHTML = '<p class="muted">Loading text...</p>'
     controls.innerHTML = ''
