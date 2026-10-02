@@ -1,0 +1,124 @@
+/** Shapes of the generated content tree in `data/grade-10`. */
+
+export interface GradeManifest {
+  grade: number
+  subject: string
+  textbook: string
+  lessons: GradeLessonEntry[]
+}
+
+export interface GradeLessonEntry {
+  id: string
+  number: number
+  title: string
+  tocLine: string
+  pages: [number, number]
+  manifest: string
+  sectionCount: number
+  audioCount: number
+}
+
+export interface LessonManifest {
+  id: string
+  number: number
+  title: string
+  grade: number
+  subject: string
+  tocLine: string
+  pages: [number, number]
+  sections: SectionEntry[]
+  vocabulary: string
+}
+
+export interface SectionEntry {
+  id: string
+  label: string
+  title: string
+  pages: [number, number]
+  text: string
+  audio: string | null
+  duration: number
+  sync: string | null
+  syncConfidence: number | null
+  syncStatus: 'confirmed' | 'uncertain' | 'unmapped' | 'no-audio'
+}
+
+export interface TextBlock {
+  page: number
+  lines: string[]
+}
+
+export interface SectionText {
+  id: string
+  lessonId: string
+  label: string
+  title: string
+  source: { pdf: string; pages: [number, number] }
+  blocks: TextBlock[]
+  text: string
+}
+
+export type WordMatch = 'exact' | 'fuzzy' | 'interpolated' | 'low'
+
+export interface SyncWord {
+  word: string
+  /** Seconds on the audio timeline, or null when the recording does not speak it. */
+  start: number | null
+  end: number | null
+  match: WordMatch | null
+  similarity: number | null
+  spokenAs: string | null
+}
+
+export interface SyncSentence {
+  /** Index range of the words that make up this sentence. */
+  first: number
+  last: number
+  start: number | null
+  end: number | null
+  text: string
+}
+
+export interface SpokenIsland {
+  start: number
+  end: number
+  transcript: string
+}
+
+export interface SyncData {
+  sectionId: string
+  lessonId: string
+  audio: string
+  sourceAudioFile: string
+  duration: number
+  method: string
+  confidence: number
+  mapping: {
+    status: string
+    method: string
+    contentScore: number
+    runnerUp: { score: number; lessonId: string; sectionId: string } | null
+    notes: string[]
+  }
+  words: SyncWord[]
+  sentences: SyncSentence[]
+  /** Parts of the recording with no printed counterpart (e.g. listening exercises). */
+  unspokenAudio: SpokenIsland[]
+}
+
+export interface VocabularyEntry {
+  word: string
+  pronunciation: string
+  meaningEn: string
+  meaningFa: string
+  examples: string[]
+  audio: string | null
+  page: number
+}
+
+export interface Vocabulary {
+  lessonId: string
+  source: { pdf: string; definitionPages: [number, number]; previewPage: number | null }
+  targetWords: string[]
+  items: VocabularyEntry[]
+}

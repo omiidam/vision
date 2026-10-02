@@ -1,0 +1,32 @@
+# dependencies / build
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# capacitor / android generated output
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+*.apk
+*.aab
+*.keystore
+
+# generated pipeline artifacts
+.work/
+__pycache__/
+*.pyc
+
+# misc
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

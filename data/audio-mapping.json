@@ -1,0 +1,127 @@
+{
+ "generatedBy": "tools/build_content.py",
+ "sourceDirectory": "10th-class",
+ "audio": [
+  {
+   "file": "conversation1.mp3",
+   "duration": 62.589,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "confidence": 0.9752,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.7921,
+    "lessonId": "lesson-01",
+    "sectionId": "reading"
+   },
+   "notes": []
+  },
+  {
+   "file": "conversation2.mp3",
+   "duration": 86.309,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "confidence": 0.9812,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.7438,
+    "lessonId": "lesson-01",
+    "sectionId": "conversation"
+   },
+   "notes": []
+  },
+  {
+   "file": "Listening & Speaking2.mp3",
+   "duration": 85.238,
+   "lessonId": "lesson-02",
+   "sectionId": "listening-and-speaking",
+   "confidence": 0.8649,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.7635,
+    "lessonId": "lesson-02",
+    "sectionId": "pronunciation"
+   },
+   "notes": []
+  },
+  {
+   "file": "listening and speaking1.mp3",
+   "duration": 75.624,
+   "lessonId": "lesson-01",
+   "sectionId": "listening-and-speaking",
+   "confidence": 0.9058,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.808,
+    "lessonId": "lesson-01",
+    "sectionId": "pronunciation"
+   },
+   "notes": []
+  },
+  {
+   "file": "New Words & Expressions2.mp3",
+   "duration": 76.173,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "confidence": 0.9703,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.7415,
+    "lessonId": "lesson-02",
+    "sectionId": "reading"
+   },
+   "notes": []
+  },
+  {
+   "file": "new words and expressions1.mp3",
+   "duration": 74.736,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "confidence": 0.9513,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.7655,
+    "lessonId": "lesson-01",
+    "sectionId": "reading"
+   },
+   "notes": []
+  },
+  {
+   "file": "reading1.mp3",
+   "duration": 83.513,
+   "lessonId": "lesson-01",
+   "sectionId": "reading",
+   "confidence": 0.9906,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.775,
+    "lessonId": "lesson-01",
+    "sectionId": "conversation"
+   },
+   "notes": []
+  },
+  {
+   "file": "reading2.mp3",
+   "duration": 87.327,
+   "lessonId": "lesson-02",
+   "sectionId": "reading",
+   "confidence": 0.9855,
+   "status": "confirmed",
+   "method": "transcript-similarity+filename",
+   "runnerUp": {
+    "score": 0.8256,
+    "lessonId": "lesson-02",
+    "sectionId": "new-words-and-expressions"
+   },
+   "notes": []
+  }
+ ],
+ "unmapped": []
+}

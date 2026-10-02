@@ -1,0 +1,150 @@
+{
+ "id": "lesson-01",
+ "number": 1,
+ "title": "Saving Nature",
+ "grade": 10,
+ "subject": "English",
+ "tocLine": "Lesson 1: Saving Nature )15-41(",
+ "pages": [
+  15,
+  41
+ ],
+ "sections": [
+  {
+   "id": "get-ready",
+   "label": "Get Ready",
+   "title": "Introduction to the Lesson",
+   "pages": [
+    15,
+    18
+   ],
+   "text": "data/grade-10/lesson-01/sections/get-ready.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "conversation",
+   "label": "Conversation",
+   "title": "Visiting the Museum of Nature and Wildlife",
+   "pages": [
+    19,
+    19
+   ],
+   "text": "data/grade-10/lesson-01/sections/conversation.json",
+   "audio": "audio/grade-10/lesson-01/conversation.mp3",
+   "duration": 62.589,
+   "sync": "data/grade-10/lesson-01/synchronization/conversation.sync.json",
+   "syncConfidence": 0.9752,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "new-words-and-expressions",
+   "label": "New Words & Expressions",
+   "title": "Learning Vocabulary of Reading",
+   "pages": [
+    20,
+    21
+   ],
+   "text": "data/grade-10/lesson-01/sections/new-words-and-expressions.json",
+   "audio": "audio/grade-10/lesson-01/new-words-and-expressions.mp3",
+   "duration": 74.736,
+   "sync": "data/grade-10/lesson-01/synchronization/new-words-and-expressions.sync.json",
+   "syncConfidence": 0.9513,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "title": "Reading Comprehension / Endangered Animals",
+   "pages": [
+    22,
+    22
+   ],
+   "text": "data/grade-10/lesson-01/sections/reading.json",
+   "audio": "audio/grade-10/lesson-01/reading.mp3",
+   "duration": 83.513,
+   "sync": "data/grade-10/lesson-01/synchronization/reading.sync.json",
+   "syncConfidence": 0.9906,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "grammar",
+   "label": "Grammar",
+   "title": "Future tense (will) / See Also (be going to)",
+   "pages": [
+    24,
+    29
+   ],
+   "text": "data/grade-10/lesson-01/sections/grammar.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "listening-and-speaking",
+   "label": "Listening & Speaking",
+   "title": "Talking about Schedules/Plans",
+   "pages": [
+    30,
+    31
+   ],
+   "text": "data/grade-10/lesson-01/sections/listening-and-speaking.json",
+   "audio": "audio/grade-10/lesson-01/listening-and-speaking.mp3",
+   "duration": 75.624,
+   "sync": "data/grade-10/lesson-01/synchronization/listening-and-speaking.sync.json",
+   "syncConfidence": 0.9058,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "pronunciation",
+   "label": "Pronunciation",
+   "title": "Falling Intonation",
+   "pages": [
+    32,
+    33
+   ],
+   "text": "data/grade-10/lesson-01/sections/pronunciation.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "writing",
+   "label": "Writing",
+   "title": "Noun Singular & Plural Types of Nouns Noun Markers",
+   "pages": [
+    34,
+    39
+   ],
+   "text": "data/grade-10/lesson-01/sections/writing.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "what-you-learned",
+   "label": "What You Learned",
+   "title": "Reviewing Lesson 1",
+   "pages": [
+    40,
+    41
+   ],
+   "text": "data/grade-10/lesson-01/sections/what-you-learned.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  }
+ ],
+ "vocabulary": "data/grade-10/lesson-01/vocabulary.json"
+}

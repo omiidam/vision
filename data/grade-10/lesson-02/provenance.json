@@ -1,0 +1,109 @@
+{
+ "lessonId": "lesson-02",
+ "textbook": {
+  "file": "10th-class/10th.pdf",
+  "sha256": "c3c79b552efd3fec60c9b209d45ab5c5a1b490a8bd80d33bee9a40906b8b4d56"
+ },
+ "tocLine": "Lesson 2: Wonders of Creation )43-69(",
+ "sections": [
+  {
+   "id": "get-ready",
+   "label": "Get Ready",
+   "contentsDescription": "Introduction to the Lesson",
+   "pages": [
+    44,
+    46
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "conversation",
+   "label": "Conversation",
+   "contentsDescription": "Visiting Iranian National Observatory",
+   "pages": [
+    47,
+    47
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "conversation2.mp3"
+  },
+  {
+   "id": "new-words-and-expressions",
+   "label": "New Words & Expressions",
+   "contentsDescription": "Learning Vocabulary of Reading",
+   "pages": [
+    48,
+    49
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "New Words & Expressions2.mp3"
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "contentsDescription": "Reading Comprehension / A Wonderful Liquid",
+   "pages": [
+    50,
+    50
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "reading2.mp3"
+  },
+  {
+   "id": "grammar",
+   "label": "Grammar",
+   "contentsDescription": "See Also (comparative and / Adjectives / superlative adjectives)",
+   "pages": [
+    52,
+    57
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "listening-and-speaking",
+   "label": "Listening & Speaking",
+   "contentsDescription": "Asking about Details",
+   "pages": [
+    58,
+    59
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "Listening & Speaking2.mp3"
+  },
+  {
+   "id": "pronunciation",
+   "label": "Pronunciation",
+   "contentsDescription": "Rising Intonation",
+   "pages": [
+    60,
+    61
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "writing",
+   "label": "Writing",
+   "contentsDescription": "Adjective Kinds of Adjectives Place of Adjectives Spelling Hints",
+   "pages": [
+    62,
+    67
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "what-you-learned",
+   "label": "What You Learned",
+   "contentsDescription": "Reviewing Lesson 2",
+   "pages": [
+    68,
+    69
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  }
+ ]
+}

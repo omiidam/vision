@@ -1,0 +1,109 @@
+{
+ "lessonId": "lesson-01",
+ "textbook": {
+  "file": "10th-class/10th.pdf",
+  "sha256": "c3c79b552efd3fec60c9b209d45ab5c5a1b490a8bd80d33bee9a40906b8b4d56"
+ },
+ "tocLine": "Lesson 1: Saving Nature )15-41(",
+ "sections": [
+  {
+   "id": "get-ready",
+   "label": "Get Ready",
+   "contentsDescription": "Introduction to the Lesson",
+   "pages": [
+    15,
+    18
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "conversation",
+   "label": "Conversation",
+   "contentsDescription": "Visiting the Museum of Nature and Wildlife",
+   "pages": [
+    19,
+    19
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "conversation1.mp3"
+  },
+  {
+   "id": "new-words-and-expressions",
+   "label": "New Words & Expressions",
+   "contentsDescription": "Learning Vocabulary of Reading",
+   "pages": [
+    20,
+    21
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "new words and expressions1.mp3"
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "contentsDescription": "Reading Comprehension / Endangered Animals",
+   "pages": [
+    22,
+    22
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "reading1.mp3"
+  },
+  {
+   "id": "grammar",
+   "label": "Grammar",
+   "contentsDescription": "Future tense (will) / See Also (be going to)",
+   "pages": [
+    24,
+    29
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "listening-and-speaking",
+   "label": "Listening & Speaking",
+   "contentsDescription": "Talking about Schedules/Plans",
+   "pages": [
+    30,
+    31
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": "listening and speaking1.mp3"
+  },
+  {
+   "id": "pronunciation",
+   "label": "Pronunciation",
+   "contentsDescription": "Falling Intonation",
+   "pages": [
+    32,
+    33
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "writing",
+   "label": "Writing",
+   "contentsDescription": "Noun Singular & Plural Types of Nouns Noun Markers",
+   "pages": [
+    34,
+    39
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  },
+  {
+   "id": "what-you-learned",
+   "label": "What You Learned",
+   "contentsDescription": "Reviewing Lesson 1",
+   "pages": [
+    40,
+    41
+   ],
+   "textSource": "verbatim PDF text extraction (pymupdf)",
+   "audio": null
+  }
+ ]
+}

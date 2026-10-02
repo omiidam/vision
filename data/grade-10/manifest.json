@@ -1,0 +1,33 @@
+{
+ "grade": 10,
+ "subject": "English",
+ "textbook": "Vision 1 - English for Schools",
+ "lessons": [
+  {
+   "id": "lesson-01",
+   "number": 1,
+   "title": "Saving Nature",
+   "tocLine": "Lesson 1: Saving Nature )15-41(",
+   "pages": [
+    15,
+    41
+   ],
+   "manifest": "data/grade-10/lesson-01/manifest.json",
+   "sectionCount": 9,
+   "audioCount": 4
+  },
+  {
+   "id": "lesson-02",
+   "number": 2,
+   "title": "Wonders of Creation",
+   "tocLine": "Lesson 2: Wonders of Creation )43-69(",
+   "pages": [
+    43,
+    69
+   ],
+   "manifest": "data/grade-10/lesson-02/manifest.json",
+   "sectionCount": 9,
+   "audioCount": 4
+  }
+ ]
+}

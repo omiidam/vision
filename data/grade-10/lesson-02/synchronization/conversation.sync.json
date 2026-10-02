@@ -1,0 +1,1834 @@
+{
+ "sectionId": "conversation",
+ "lessonId": "lesson-02",
+ "audio": "audio/grade-10/lesson-02/conversation.mp3",
+ "sourceAudioFile": "conversation2.mp3",
+ "duration": 86.309,
+ "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+ "confidence": 0.765,
+ "mapping": {
+  "status": "confirmed",
+  "method": "transcript-similarity+filename",
+  "contentScore": 0.9812,
+  "runnerUp": {
+   "score": 0.7438,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation"
+  },
+  "notes": []
+ },
+ "words": [
+  {
+   "word": "near,",
+   "start": 4.88,
+   "end": 5.66,
+   "match": "low",
+   "similarity": 0.545,
+   "spokenAs": " Wonders"
+  },
+  {
+   "word": "rocky,",
+   "start": 5.66,
+   "end": 6.22,
+   "match": "low",
+   "similarity": 0.286,
+   "spokenAs": " of"
+  },
+  {
+   "word": "orbit,",
+   "start": 6.22,
+   "end": 6.98,
+   "match": "low",
+   "similarity": 0.154,
+   "spokenAs": " Creation"
+  },
+  {
+   "word": "powerful",
+   "start": 8.68,
+   "end": 9.32,
+   "match": "low",
+   "similarity": 0.3,
+   "spokenAs": " Conversation"
+  },
+  {
+   "word": "Alireza",
+   "start": 10.98,
+   "end": 11.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Alireza"
+  },
+  {
+   "word": "is",
+   "start": 11.62,
+   "end": 11.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "visiting",
+   "start": 11.84,
+   "end": 12.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " visiting"
+  },
+  {
+   "word": "an",
+   "start": 12.28,
+   "end": 12.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " an"
+  },
+  {
+   "word": "observatory.",
+   "start": 12.54,
+   "end": 13.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " observatory."
+  },
+  {
+   "word": "He",
+   "start": 14.04,
+   "end": 14.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " He"
+  },
+  {
+   "word": "is",
+   "start": 14.04,
+   "end": 14.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "talking",
+   "start": 14.16,
+   "end": 14.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " talking"
+  },
+  {
+   "word": "to",
+   "start": 14.44,
+   "end": 14.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "Ms.",
+   "start": 14.7,
+   "end": 14.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Ms."
+  },
+  {
+   "word": "Tabesh",
+   "start": 15.16,
+   "end": 15.48,
+   "match": "fuzzy",
+   "similarity": 0.833,
+   "spokenAs": " Tabesz,"
+  },
+  {
+   "word": "who",
+   "start": 15.52,
+   "end": 15.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " who"
+  },
+  {
+   "word": "works",
+   "start": 15.7,
+   "end": 15.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " works"
+  },
+  {
+   "word": "there.",
+   "start": 15.94,
+   "end": 16.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " there."
+  },
+  {
+   "word": "Ms.Tabesh:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Are",
+   "start": 19.56,
+   "end": 19.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Are"
+  },
+  {
+   "word": "you",
+   "start": 19.74,
+   "end": 19.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " you"
+  },
+  {
+   "word": "interested",
+   "start": 19.9,
+   "end": 20.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " interested"
+  },
+  {
+   "word": "in",
+   "start": 20.24,
+   "end": 20.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "the",
+   "start": 20.58,
+   "end": 20.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "planets?",
+   "start": 20.78,
+   "end": 21.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " planets?"
+  },
+  {
+   "word": "Alireza:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Yes!",
+   "start": 21.66,
+   "end": 21.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Yes,"
+  },
+  {
+   "word": "They",
+   "start": 22.16,
+   "end": 22.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "are",
+   "start": 22.7,
+   "end": 22.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "really",
+   "start": 22.84,
+   "end": 23.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " really"
+  },
+  {
+   "word": "interesting",
+   "start": 23.16,
+   "end": 23.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " interesting"
+  },
+  {
+   "word": "for",
+   "start": 23.56,
+   "end": 23.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " for"
+  },
+  {
+   "word": "me,",
+   "start": 23.86,
+   "end": 24.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " me."
+  },
+  {
+   "word": "but",
+   "start": 24.76,
+   "end": 25.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " But"
+  },
+  {
+   "word": "I",
+   "start": 25.0,
+   "end": 25.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " I"
+  },
+  {
+   "word": "don't",
+   "start": 25.14,
+   "end": 25.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " don't"
+  },
+  {
+   "word": "know",
+   "start": 25.34,
+   "end": 25.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " know"
+  },
+  {
+   "word": "much",
+   "start": 25.5,
+   "end": 25.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " much"
+  },
+  {
+   "word": "about",
+   "start": 25.7,
+   "end": 25.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " about"
+  },
+  {
+   "word": "them.",
+   "start": 25.98,
+   "end": 26.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them."
+  },
+  {
+   "word": "Ms.Tabesh:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Planets",
+   "start": 26.34,
+   "end": 27.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Planets"
+  },
+  {
+   "word": "are",
+   "start": 27.28,
+   "end": 27.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "really",
+   "start": 27.46,
+   "end": 27.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " really"
+  },
+  {
+   "word": "amazing",
+   "start": 27.82,
+   "end": 28.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " amazing,"
+  },
+  {
+   "word": "but",
+   "start": 28.54,
+   "end": 28.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " but"
+  },
+  {
+   "word": "not",
+   "start": 28.66,
+   "end": 28.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " not"
+  },
+  {
+   "word": "so",
+   "start": 28.9,
+   "end": 29.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " so"
+  },
+  {
+   "word": "much",
+   "start": 29.12,
+   "end": 29.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " much"
+  },
+  {
+   "word": "alike.",
+   "start": 29.36,
+   "end": 29.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " alike."
+  },
+  {
+   "word": "Do",
+   "start": 30.44,
+   "end": 30.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Do"
+  },
+  {
+   "word": "you",
+   "start": 30.56,
+   "end": 30.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " you"
+  },
+  {
+   "word": "know",
+   "start": 30.66,
+   "end": 30.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " know"
+  },
+  {
+   "word": "how",
+   "start": 30.8,
+   "end": 31.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " how"
+  },
+  {
+   "word": "they",
+   "start": 31.08,
+   "end": 31.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "are",
+   "start": 31.28,
+   "end": 31.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "different?",
+   "start": 31.42,
+   "end": 31.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " different?"
+  },
+  {
+   "word": "Alireza:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Umm...",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "I",
+   "start": 33.3,
+   "end": 33.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " I"
+  },
+  {
+   "word": "know",
+   "start": 33.94,
+   "end": 34.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " know"
+  },
+  {
+   "word": "they",
+   "start": 34.14,
+   "end": 34.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "go",
+   "start": 34.42,
+   "end": 34.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " go"
+  },
+  {
+   "word": "around",
+   "start": 34.62,
+   "end": 34.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " around"
+  },
+  {
+   "word": "the",
+   "start": 34.88,
+   "end": 35.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "Sun",
+   "start": 35.08,
+   "end": 35.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " sun"
+  },
+  {
+   "word": "in",
+   "start": 35.3,
+   "end": 35.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "different",
+   "start": 35.5,
+   "end": 35.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " different"
+  },
+  {
+   "word": "orbits.",
+   "start": 35.8,
+   "end": 36.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " orbits."
+  },
+  {
+   "word": "Ms.Tabesh:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "That's",
+   "start": 36.86,
+   "end": 37.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " That's"
+  },
+  {
+   "word": "right.",
+   "start": 37.14,
+   "end": 37.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " right."
+  },
+  {
+   "word": "They",
+   "start": 38.04,
+   "end": 38.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " They"
+  },
+  {
+   "word": "have",
+   "start": 38.22,
+   "end": 38.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " have"
+  },
+  {
+   "word": "different",
+   "start": 38.44,
+   "end": 38.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " different"
+  },
+  {
+   "word": "colors",
+   "start": 38.96,
+   "end": 39.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " colors"
+  },
+  {
+   "word": "and",
+   "start": 39.38,
+   "end": 39.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "sizes,",
+   "start": 39.7,
+   "end": 40.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " sizes"
+  },
+  {
+   "word": "too.",
+   "start": 40.14,
+   "end": 40.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " too."
+  },
+  {
+   "word": "Some",
+   "start": 41.02,
+   "end": 41.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Some"
+  },
+  {
+   "word": "are",
+   "start": 41.12,
+   "end": 41.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "rocky",
+   "start": 41.28,
+   "end": 41.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " rocky"
+  },
+  {
+   "word": "like",
+   "start": 41.66,
+   "end": 41.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " like"
+  },
+  {
+   "word": "Mars,",
+   "start": 41.98,
+   "end": 42.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Mars,"
+  },
+  {
+   "word": "some",
+   "start": 42.86,
+   "end": 43.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "have",
+   "start": 43.12,
+   "end": 43.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " have"
+  },
+  {
+   "word": "rings",
+   "start": 43.4,
+   "end": 43.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " rings"
+  },
+  {
+   "word": "like",
+   "start": 43.72,
+   "end": 44.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " like"
+  },
+  {
+   "word": "Saturn",
+   "start": 44.06,
+   "end": 44.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Saturn,"
+  },
+  {
+   "word": "and",
+   "start": 44.92,
+   "end": 45.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "some",
+   "start": 45.16,
+   "end": 45.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "have",
+   "start": 45.4,
+   "end": 45.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " have"
+  },
+  {
+   "word": "moons",
+   "start": 45.68,
+   "end": 46.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " moons"
+  },
+  {
+   "word": "like",
+   "start": 46.02,
+   "end": 46.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " like"
+  },
+  {
+   "word": "Uranus.",
+   "start": 46.5,
+   "end": 47.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Uranus."
+  },
+  {
+   "word": "Alireza:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "How",
+   "start": 47.44,
+   "end": 47.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " How"
+  },
+  {
+   "word": "wonderful!",
+   "start": 47.62,
+   "end": 48.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " wonderful!"
+  },
+  {
+   "word": "Can",
+   "start": 48.66,
+   "end": 48.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Can"
+  },
+  {
+   "word": "we",
+   "start": 48.82,
+   "end": 48.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " we"
+  },
+  {
+   "word": "see",
+   "start": 48.98,
+   "end": 49.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " see"
+  },
+  {
+   "word": "them",
+   "start": 49.26,
+   "end": 49.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them"
+  },
+  {
+   "word": "without",
+   "start": 49.46,
+   "end": 49.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " without"
+  },
+  {
+   "word": "a",
+   "start": 49.82,
+   "end": 50.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "telescope?",
+   "start": 50.06,
+   "end": 50.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " telescope?"
+  },
+  {
+   "word": "Ms.Tabesh:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Yeah...,",
+   "start": 51.0,
+   "end": 51.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Yeah,"
+  },
+  {
+   "word": "we",
+   "start": 51.64,
+   "end": 52.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " we"
+  },
+  {
+   "word": "can",
+   "start": 52.0,
+   "end": 52.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " can"
+  },
+  {
+   "word": "see",
+   "start": 52.22,
+   "end": 52.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " see"
+  },
+  {
+   "word": "the",
+   "start": 52.58,
+   "end": 52.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "planets",
+   "start": 52.9,
+   "end": 53.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " planets"
+  },
+  {
+   "word": "nearer",
+   "start": 53.32,
+   "end": 53.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " nearer"
+  },
+  {
+   "word": "to",
+   "start": 53.7,
+   "end": 54.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "us",
+   "start": 54.06,
+   "end": 54.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " us"
+  },
+  {
+   "word": "without",
+   "start": 54.26,
+   "end": 54.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " without"
+  },
+  {
+   "word": "a",
+   "start": 54.66,
+   "end": 54.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "telescope,",
+   "start": 54.9,
+   "end": 55.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " telescope,"
+  },
+  {
+   "word": "such",
+   "start": 55.36,
+   "end": 55.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " such"
+  },
+  {
+   "word": "as",
+   "start": 55.86,
+   "end": 56.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " as"
+  },
+  {
+   "word": "Mercury,",
+   "start": 56.14,
+   "end": 56.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Mercury,"
+  },
+  {
+   "word": "Venus,",
+   "start": 57.52,
+   "end": 57.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Venus,"
+  },
+  {
+   "word": "Mars,",
+   "start": 58.14,
+   "end": 58.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Mars,"
+  },
+  {
+   "word": "Jupiter",
+   "start": 58.88,
+   "end": 59.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Jupiter,"
+  },
+  {
+   "word": "and",
+   "start": 59.54,
+   "end": 59.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Saturn.",
+   "start": 59.88,
+   "end": 60.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Saturn."
+  },
+  {
+   "word": "We",
+   "start": 60.8,
+   "end": 61.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " We"
+  },
+  {
+   "word": "can",
+   "start": 61.0,
+   "end": 61.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " can"
+  },
+  {
+   "word": "see",
+   "start": 61.22,
+   "end": 61.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " see"
+  },
+  {
+   "word": "Uranus",
+   "start": 61.5,
+   "end": 62.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Uranus"
+  },
+  {
+   "word": "and",
+   "start": 62.08,
+   "end": 62.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Neptune",
+   "start": 62.48,
+   "end": 63.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Neptune"
+  },
+  {
+   "word": "only",
+   "start": 63.02,
+   "end": 63.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " only"
+  },
+  {
+   "word": "with",
+   "start": 63.58,
+   "end": 63.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " with"
+  },
+  {
+   "word": "powerful",
+   "start": 63.92,
+   "end": 64.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " powerful"
+  },
+  {
+   "word": "telescopes.",
+   "start": 64.48,
+   "end": 65.1,
+   "match": "fuzzy",
+   "similarity": 0.947,
+   "spokenAs": " telescope."
+  },
+  {
+   "word": "Alireza:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "And",
+   "start": 65.74,
+   "end": 66.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " And"
+  },
+  {
+   "word": "which",
+   "start": 66.12,
+   "end": 66.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " which"
+  },
+  {
+   "word": "planet",
+   "start": 66.72,
+   "end": 67.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " planet"
+  },
+  {
+   "word": "is",
+   "start": 67.1,
+   "end": 67.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "the",
+   "start": 67.42,
+   "end": 67.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "largest",
+   "start": 67.58,
+   "end": 67.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " largest"
+  },
+  {
+   "word": "of",
+   "start": 67.96,
+   "end": 68.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "all?",
+   "start": 68.22,
+   "end": 68.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " all?"
+  },
+  {
+   "word": "Ms.Tabesh:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Jupiter",
+   "start": 69.02,
+   "end": 69.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Jupiter"
+  },
+  {
+   "word": "is",
+   "start": 69.34,
+   "end": 69.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "the",
+   "start": 69.68,
+   "end": 69.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "largest",
+   "start": 69.86,
+   "end": 70.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " largest"
+  },
+  {
+   "word": "one.",
+   "start": 70.38,
+   "end": 70.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " one."
+  },
+  {
+   "word": "It",
+   "start": 71.08,
+   "end": 71.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " It"
+  },
+  {
+   "word": "has",
+   "start": 71.28,
+   "end": 71.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " has"
+  },
+  {
+   "word": "more",
+   "start": 71.5,
+   "end": 71.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " more"
+  },
+  {
+   "word": "than",
+   "start": 71.8,
+   "end": 72.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " than"
+  },
+  {
+   "word": "sixty",
+   "start": 72.08,
+   "end": 72.42,
+   "match": "low",
+   "similarity": 0.0,
+   "spokenAs": " 60"
+  },
+  {
+   "word": "moons.",
+   "start": 72.42,
+   "end": 72.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " moons."
+  },
+  {
+   "word": "Do",
+   "start": 73.46,
+   "end": 73.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Do"
+  },
+  {
+   "word": "you",
+   "start": 73.56,
+   "end": 73.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " you"
+  },
+  {
+   "word": "want",
+   "start": 73.66,
+   "end": 73.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " want"
+  },
+  {
+   "word": "to",
+   "start": 73.84,
+   "end": 74.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "look",
+   "start": 74.0,
+   "end": 74.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " look"
+  },
+  {
+   "word": "at",
+   "start": 74.18,
+   "end": 74.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " at"
+  },
+  {
+   "word": "it?",
+   "start": 74.32,
+   "end": 74.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it?"
+  },
+  {
+   "word": "Alireza:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "I",
+   "start": 74.98,
+   "end": 75.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " I"
+  },
+  {
+   "word": "really",
+   "start": 75.3,
+   "end": 75.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " really"
+  },
+  {
+   "word": "like",
+   "start": 75.54,
+   "end": 75.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " like"
+  },
+  {
+   "word": "that.",
+   "start": 75.84,
+   "end": 76.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " that."
+  },
+  {
+   "word": "Answer",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "following",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "questions",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "orally.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "1.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "How",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "are",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "planets",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "different?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "2.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Can",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "we",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "see",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "all",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "planets",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "without",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "a",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "telescope?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "3.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Do",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "you",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "know",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "names",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "of",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "planets",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "in",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Persian?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  }
+ ],
+ "sentences": [
+  {
+   "first": 0,
+   "last": 8,
+   "start": 4.88,
+   "end": 13.3,
+   "text": "near, rocky, orbit, powerful Alireza is visiting an observatory."
+  },
+  {
+   "first": 9,
+   "last": 13,
+   "start": 14.04,
+   "end": 14.92,
+   "text": "He is talking to Ms."
+  },
+  {
+   "first": 14,
+   "last": 17,
+   "start": 15.16,
+   "end": 16.62,
+   "text": "Tabesh who works there."
+  },
+  {
+   "first": 18,
+   "last": 24,
+   "start": 19.56,
+   "end": 21.1,
+   "text": "Ms.Tabesh: Are you interested in the planets?"
+  },
+  {
+   "first": 25,
+   "last": 26,
+   "start": 21.66,
+   "end": 21.98,
+   "text": "Alireza: Yes!"
+  },
+  {
+   "first": 27,
+   "last": 39,
+   "start": 22.16,
+   "end": 26.34,
+   "text": "They are really interesting for me, but I don't know much about them."
+  },
+  {
+   "first": 40,
+   "last": 49,
+   "start": 26.34,
+   "end": 29.86,
+   "text": "Ms.Tabesh: Planets are really amazing but not so much alike."
+  },
+  {
+   "first": 50,
+   "last": 56,
+   "start": 30.44,
+   "end": 31.88,
+   "text": "Do you know how they are different?"
+  },
+  {
+   "first": 57,
+   "last": 58,
+   "start": null,
+   "end": null,
+   "text": "Alireza: Umm..."
+  },
+  {
+   "first": 59,
+   "last": 68,
+   "start": 33.3,
+   "end": 36.18,
+   "text": "I know they go around the Sun in different orbits."
+  },
+  {
+   "first": 69,
+   "last": 71,
+   "start": 36.86,
+   "end": 37.5,
+   "text": "Ms.Tabesh: That's right."
+  },
+  {
+   "first": 72,
+   "last": 78,
+   "start": 38.04,
+   "end": 40.54,
+   "text": "They have different colors and sizes, too."
+  },
+  {
+   "first": 79,
+   "last": 94,
+   "start": 41.02,
+   "end": 47.06,
+   "text": "Some are rocky like Mars, some have rings like Saturn and some have moons like Uranus."
+  },
+  {
+   "first": 95,
+   "last": 97,
+   "start": 47.44,
+   "end": 48.02,
+   "text": "Alireza: How wonderful!"
+  },
+  {
+   "first": 98,
+   "last": 104,
+   "start": 48.66,
+   "end": 50.4,
+   "text": "Can we see them without a telescope?"
+  },
+  {
+   "first": 105,
+   "last": 125,
+   "start": 51.0,
+   "end": 60.38,
+   "text": "Ms.Tabesh: Yeah..., we can see the planets nearer to us without a telescope, such as Mercury, Venus, Mars, Jupiter and Saturn."
+  },
+  {
+   "first": 126,
+   "last": 135,
+   "start": 60.8,
+   "end": 65.1,
+   "text": "We can see Uranus and Neptune only with powerful telescopes."
+  },
+  {
+   "first": 136,
+   "last": 144,
+   "start": 65.74,
+   "end": 68.42,
+   "text": "Alireza: And which planet is the largest of all?"
+  },
+  {
+   "first": 145,
+   "last": 150,
+   "start": 69.02,
+   "end": 70.88,
+   "text": "Ms.Tabesh: Jupiter is the largest one."
+  },
+  {
+   "first": 151,
+   "last": 156,
+   "start": 71.08,
+   "end": 72.96,
+   "text": "It has more than sixty moons."
+  },
+  {
+   "first": 157,
+   "last": 163,
+   "start": 73.46,
+   "end": 74.52,
+   "text": "Do you want to look at it?"
+  },
+  {
+   "first": 164,
+   "last": 168,
+   "start": 74.98,
+   "end": 76.16,
+   "text": "Alireza: I really like that."
+  },
+  {
+   "first": 169,
+   "last": 173,
+   "start": null,
+   "end": null,
+   "text": "Answer the following questions orally."
+  },
+  {
+   "first": 174,
+   "last": 174,
+   "start": null,
+   "end": null,
+   "text": "1."
+  },
+  {
+   "first": 175,
+   "last": 179,
+   "start": null,
+   "end": null,
+   "text": "How are the planets different?"
+  },
+  {
+   "first": 180,
+   "last": 180,
+   "start": null,
+   "end": null,
+   "text": "2."
+  },
+  {
+   "first": 181,
+   "last": 188,
+   "start": null,
+   "end": null,
+   "text": "Can we see all planets without a telescope?"
+  },
+  {
+   "first": 189,
+   "last": 189,
+   "start": null,
+   "end": null,
+   "text": "3."
+  },
+  {
+   "first": 190,
+   "last": 199,
+   "start": null,
+   "end": null,
+   "text": "Do you know the names of the planets in Persian?"
+  }
+ ],
+ "unspokenAudio": [
+  {
+   "start": 3.6,
+   "end": 4.88,
+   "transcript": " Lesson  2"
+  }
+ ]
+}

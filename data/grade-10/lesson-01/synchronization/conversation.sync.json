@@ -1,0 +1,1317 @@
+{
+ "sectionId": "conversation",
+ "lessonId": "lesson-01",
+ "audio": "audio/grade-10/lesson-01/conversation.mp3",
+ "sourceAudioFile": "conversation1.mp3",
+ "duration": 62.589,
+ "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+ "confidence": 0.6934,
+ "mapping": {
+  "status": "confirmed",
+  "method": "transcript-similarity+filename",
+  "contentScore": 0.9752,
+  "runnerUp": {
+   "score": 0.7921,
+   "lessonId": "lesson-01",
+   "sectionId": "reading"
+  },
+  "notes": []
+ },
+ "words": [
+  {
+   "word": "endangered,",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "alive,",
+   "start": 3.18,
+   "end": 3.88,
+   "match": "low",
+   "similarity": 0.364,
+   "spokenAs": " Lesson"
+  },
+  {
+   "word": "increase,",
+   "start": 3.88,
+   "end": 4.46,
+   "match": "low",
+   "similarity": 0.0,
+   "spokenAs": " 1"
+  },
+  {
+   "word": "hear,",
+   "start": 4.46,
+   "end": 5.78,
+   "match": "low",
+   "similarity": 0.2,
+   "spokenAs": " Saving"
+  },
+  {
+   "word": "protect,",
+   "start": 5.78,
+   "end": 6.88,
+   "match": "low",
+   "similarity": 0.308,
+   "spokenAs": " Nature"
+  },
+  {
+   "word": "for",
+   "start": 8.68,
+   "end": 9.38,
+   "match": "low",
+   "similarity": 0.267,
+   "spokenAs": " Conversation"
+  },
+  {
+   "word": "example",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Maryam",
+   "start": 10.92,
+   "end": 11.62,
+   "match": "fuzzy",
+   "similarity": 0.833,
+   "spokenAs": " Mariam"
+  },
+  {
+   "word": "is",
+   "start": 11.62,
+   "end": 11.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "visiting",
+   "start": 11.82,
+   "end": 12.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " visiting"
+  },
+  {
+   "word": "the",
+   "start": 12.28,
+   "end": 12.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "Museum",
+   "start": 12.52,
+   "end": 13.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Museum"
+  },
+  {
+   "word": "of",
+   "start": 13.0,
+   "end": 13.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "Nature",
+   "start": 13.38,
+   "end": 13.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Nature"
+  },
+  {
+   "word": "and",
+   "start": 13.76,
+   "end": 13.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Wildlife.",
+   "start": 13.96,
+   "end": 14.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Wildlife."
+  },
+  {
+   "word": "She's",
+   "start": 15.26,
+   "end": 15.28,
+   "match": "fuzzy",
+   "similarity": 0.75,
+   "spokenAs": " She"
+  },
+  {
+   "word": "talking",
+   "start": 15.4,
+   "end": 15.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " talking"
+  },
+  {
+   "word": "to",
+   "start": 15.68,
+   "end": 15.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "Mr.",
+   "start": 15.94,
+   "end": 16.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Mr."
+  },
+  {
+   "word": "Razavi,",
+   "start": 16.5,
+   "end": 16.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Razavi,"
+  },
+  {
+   "word": "who",
+   "start": 17.14,
+   "end": 17.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " who"
+  },
+  {
+   "word": "works",
+   "start": 17.18,
+   "end": 17.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " works"
+  },
+  {
+   "word": "in",
+   "start": 17.5,
+   "end": 17.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "the",
+   "start": 17.86,
+   "end": 17.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "museum.",
+   "start": 17.98,
+   "end": 18.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " museum."
+  },
+  {
+   "word": "Maryam:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Excuse",
+   "start": 23.18,
+   "end": 23.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Excuse"
+  },
+  {
+   "word": "me,",
+   "start": 23.64,
+   "end": 23.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " me,"
+  },
+  {
+   "word": "what",
+   "start": 24.3,
+   "end": 24.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " what"
+  },
+  {
+   "word": "is",
+   "start": 24.56,
+   "end": 24.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "it?",
+   "start": 24.76,
+   "end": 25.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it?"
+  },
+  {
+   "word": "Is",
+   "start": 25.64,
+   "end": 25.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Is"
+  },
+  {
+   "word": "it",
+   "start": 25.88,
+   "end": 25.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it"
+  },
+  {
+   "word": "a",
+   "start": 25.98,
+   "end": 26.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "leopard?",
+   "start": 26.16,
+   "end": 26.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " leopard?"
+  },
+  {
+   "word": "Mr.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Razavi:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "No,",
+   "start": 27.1,
+   "end": 27.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " No,"
+  },
+  {
+   "word": "it",
+   "start": 27.84,
+   "end": 27.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it"
+  },
+  {
+   "word": "is",
+   "start": 27.98,
+   "end": 28.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "a",
+   "start": 28.16,
+   "end": 28.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "cheetah.",
+   "start": 28.3,
+   "end": 28.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetah."
+  },
+  {
+   "word": "Maryam:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Oh,",
+   "start": 29.28,
+   "end": 29.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Oh,"
+  },
+  {
+   "word": "a",
+   "start": 29.86,
+   "end": 30.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "cheetah?",
+   "start": 30.02,
+   "end": 30.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetah?"
+  },
+  {
+   "word": "Mr.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Razavi:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Yeah,",
+   "start": 30.84,
+   "end": 31.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Yeah,"
+  },
+  {
+   "word": "an",
+   "start": 31.48,
+   "end": 31.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " an"
+  },
+  {
+   "word": "Iranian",
+   "start": 31.66,
+   "end": 32.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Iranian"
+  },
+  {
+   "word": "cheetah.",
+   "start": 32.08,
+   "end": 32.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetah."
+  },
+  {
+   "word": "It",
+   "start": 32.92,
+   "end": 33.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " It"
+  },
+  {
+   "word": "is",
+   "start": 33.04,
+   "end": 33.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "an",
+   "start": 33.22,
+   "end": 33.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " an"
+  },
+  {
+   "word": "endangered",
+   "start": 33.36,
+   "end": 33.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " endangered"
+  },
+  {
+   "word": "animal.",
+   "start": 33.9,
+   "end": 34.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animal."
+  },
+  {
+   "word": "Maryam:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "I",
+   "start": 35.02,
+   "end": 35.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " I"
+  },
+  {
+   "word": "know.",
+   "start": 35.16,
+   "end": 35.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " know,"
+  },
+  {
+   "word": "I",
+   "start": 35.72,
+   "end": 36.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " I"
+  },
+  {
+   "word": "heard",
+   "start": 36.12,
+   "end": 36.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " heard"
+  },
+  {
+   "word": "around",
+   "start": 36.36,
+   "end": 36.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " around"
+  },
+  {
+   "word": "70",
+   "start": 36.66,
+   "end": 36.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " 70"
+  },
+  {
+   "word": "of",
+   "start": 36.98,
+   "end": 37.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "them",
+   "start": 37.42,
+   "end": 37.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them"
+  },
+  {
+   "word": "are",
+   "start": 37.62,
+   "end": 37.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "alive.",
+   "start": 37.84,
+   "end": 38.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " alive,"
+  },
+  {
+   "word": "Yes?",
+   "start": 38.46,
+   "end": 38.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " yes?"
+  },
+  {
+   "word": "Mr.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Razavi:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Right,",
+   "start": 39.18,
+   "end": 39.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Right,"
+  },
+  {
+   "word": "but",
+   "start": 39.84,
+   "end": 40.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " but"
+  },
+  {
+   "word": "the",
+   "start": 40.04,
+   "end": 40.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "number",
+   "start": 40.2,
+   "end": 40.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " number"
+  },
+  {
+   "word": "will",
+   "start": 40.44,
+   "end": 40.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " will"
+  },
+  {
+   "word": "increase.",
+   "start": 40.72,
+   "end": 41.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " increase."
+  },
+  {
+   "word": "Maryam:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Really?!",
+   "start": 41.78,
+   "end": 42.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Really?"
+  },
+  {
+   "word": "How?",
+   "start": 42.44,
+   "end": 42.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " How?"
+  },
+  {
+   "word": "Mr.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Razavi:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Well,",
+   "start": 43.22,
+   "end": 43.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Well,"
+  },
+  {
+   "word": "we",
+   "start": 43.64,
+   "end": 43.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " we"
+  },
+  {
+   "word": "have",
+   "start": 43.94,
+   "end": 44.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " have"
+  },
+  {
+   "word": "some",
+   "start": 44.08,
+   "end": 44.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "plans.",
+   "start": 44.28,
+   "end": 44.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " plans."
+  },
+  {
+   "word": "For",
+   "start": 45.0,
+   "end": 45.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " For"
+  },
+  {
+   "word": "example,",
+   "start": 45.16,
+   "end": 45.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " example,"
+  },
+  {
+   "word": "we",
+   "start": 45.86,
+   "end": 46.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " we"
+  },
+  {
+   "word": "are",
+   "start": 46.1,
+   "end": 46.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "going",
+   "start": 46.22,
+   "end": 46.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " going"
+  },
+  {
+   "word": "to",
+   "start": 46.4,
+   "end": 46.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "protect",
+   "start": 46.56,
+   "end": 46.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " protect"
+  },
+  {
+   "word": "their",
+   "start": 46.9,
+   "end": 47.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " their"
+  },
+  {
+   "word": "homes,",
+   "start": 47.12,
+   "end": 47.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " homes,"
+  },
+  {
+   "word": "to",
+   "start": 47.92,
+   "end": 48.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "make",
+   "start": 48.1,
+   "end": 48.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " make"
+  },
+  {
+   "word": "movies",
+   "start": 48.32,
+   "end": 48.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " movies"
+  },
+  {
+   "word": "about",
+   "start": 48.66,
+   "end": 48.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " about"
+  },
+  {
+   "word": "their",
+   "start": 48.96,
+   "end": 49.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " their"
+  },
+  {
+   "word": "life,",
+   "start": 49.18,
+   "end": 49.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " life,"
+  },
+  {
+   "word": "and",
+   "start": 49.84,
+   "end": 50.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "to",
+   "start": 50.1,
+   "end": 50.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "teach",
+   "start": 50.24,
+   "end": 50.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " teach"
+  },
+  {
+   "word": "people",
+   "start": 50.44,
+   "end": 50.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " people"
+  },
+  {
+   "word": "how",
+   "start": 50.78,
+   "end": 51.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " how"
+  },
+  {
+   "word": "to",
+   "start": 51.04,
+   "end": 51.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "take",
+   "start": 51.22,
+   "end": 51.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " take"
+  },
+  {
+   "word": "more",
+   "start": 51.46,
+   "end": 51.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " more"
+  },
+  {
+   "word": "care",
+   "start": 51.76,
+   "end": 52.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " care"
+  },
+  {
+   "word": "of",
+   "start": 52.02,
+   "end": 52.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "them.",
+   "start": 52.18,
+   "end": 52.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them."
+  },
+  {
+   "word": "Answer",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "following",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "questions",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "orally.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "1.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Where",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "are",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "they",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "talking?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "2.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Are",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "there",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "many",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "cheetahs",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "alive?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "3.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Do",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "you",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "take",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "care",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "of",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "animals?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  }
+ ],
+ "sentences": [
+  {
+   "first": 0,
+   "last": 15,
+   "start": 3.18,
+   "end": 14.46,
+   "text": "endangered, alive, increase, hear, protect, for example Maryam is visiting the Museum of Nature and Wildlife."
+  },
+  {
+   "first": 16,
+   "last": 19,
+   "start": 15.26,
+   "end": 16.2,
+   "text": "She's talking to Mr."
+  },
+  {
+   "first": 20,
+   "last": 25,
+   "start": 16.5,
+   "end": 18.46,
+   "text": "Razavi, who works in the museum."
+  },
+  {
+   "first": 26,
+   "last": 31,
+   "start": 23.18,
+   "end": 25.06,
+   "text": "Maryam: Excuse me, what is it?"
+  },
+  {
+   "first": 32,
+   "last": 35,
+   "start": 25.64,
+   "end": 26.5,
+   "text": "Is it a leopard?"
+  },
+  {
+   "first": 36,
+   "last": 36,
+   "start": null,
+   "end": null,
+   "text": "Mr."
+  },
+  {
+   "first": 37,
+   "last": 42,
+   "start": 27.1,
+   "end": 28.76,
+   "text": "Razavi: No, it is a cheetah."
+  },
+  {
+   "first": 43,
+   "last": 46,
+   "start": 29.28,
+   "end": 30.58,
+   "text": "Maryam: Oh, a cheetah?"
+  },
+  {
+   "first": 47,
+   "last": 47,
+   "start": null,
+   "end": null,
+   "text": "Mr."
+  },
+  {
+   "first": 48,
+   "last": 52,
+   "start": 30.84,
+   "end": 32.64,
+   "text": "Razavi: Yeah, an Iranian cheetah."
+  },
+  {
+   "first": 53,
+   "last": 57,
+   "start": 32.92,
+   "end": 34.46,
+   "text": "It is an endangered animal."
+  },
+  {
+   "first": 58,
+   "last": 60,
+   "start": 35.02,
+   "end": 35.48,
+   "text": "Maryam: I know."
+  },
+  {
+   "first": 61,
+   "last": 68,
+   "start": 35.72,
+   "end": 38.22,
+   "text": "I heard around 70 of them are alive."
+  },
+  {
+   "first": 69,
+   "last": 69,
+   "start": 38.46,
+   "end": 38.74,
+   "text": "Yes?"
+  },
+  {
+   "first": 70,
+   "last": 70,
+   "start": null,
+   "end": null,
+   "text": "Mr."
+  },
+  {
+   "first": 71,
+   "last": 77,
+   "start": 39.18,
+   "end": 41.1,
+   "text": "Razavi: Right, but the number will increase."
+  },
+  {
+   "first": 78,
+   "last": 79,
+   "start": 41.78,
+   "end": 42.18,
+   "text": "Maryam: Really?!"
+  },
+  {
+   "first": 80,
+   "last": 80,
+   "start": 42.44,
+   "end": 42.76,
+   "text": "How?"
+  },
+  {
+   "first": 81,
+   "last": 81,
+   "start": null,
+   "end": null,
+   "text": "Mr."
+  },
+  {
+   "first": 82,
+   "last": 87,
+   "start": 43.22,
+   "end": 44.62,
+   "text": "Razavi: Well, we have some plans."
+  },
+  {
+   "first": 88,
+   "last": 113,
+   "start": 45.0,
+   "end": 52.4,
+   "text": "For example, we are going to protect their homes, to make movies about their life, and to teach people how to take more care of them."
+  },
+  {
+   "first": 114,
+   "last": 118,
+   "start": null,
+   "end": null,
+   "text": "Answer the following questions orally."
+  },
+  {
+   "first": 119,
+   "last": 119,
+   "start": null,
+   "end": null,
+   "text": "1."
+  },
+  {
+   "first": 120,
+   "last": 123,
+   "start": null,
+   "end": null,
+   "text": "Where are they talking?"
+  },
+  {
+   "first": 124,
+   "last": 124,
+   "start": null,
+   "end": null,
+   "text": "2."
+  },
+  {
+   "first": 125,
+   "last": 129,
+   "start": null,
+   "end": null,
+   "text": "Are there many cheetahs alive?"
+  },
+  {
+   "first": 130,
+   "last": 130,
+   "start": null,
+   "end": null,
+   "text": "3."
+  },
+  {
+   "first": 131,
+   "last": 136,
+   "start": null,
+   "end": null,
+   "text": "Do you take care of animals?"
+  }
+ ],
+ "unspokenAudio": []
+}

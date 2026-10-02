@@ -1,0 +1,65 @@
+{
+ "lessonId": "lesson-01",
+ "source": {
+  "pdf": "10th-class/10th.pdf",
+  "definitionPages": [
+   20,
+   21
+  ],
+  "previewPage": 19
+ },
+ "targetWords": [
+  "endangered",
+  "alive",
+  "increase",
+  "hear",
+  "protect",
+  "for example"
+ ],
+ "items": [
+  {
+   "word": "a few",
+   "pronunciation": "",
+   "meaningEn": "not many; a small number of things or people",
+   "meaningFa": "",
+   "examples": [
+    "There are a few Iranian cheetahs."
+   ],
+   "audio": null,
+   "page": 21
+  },
+  {
+   "word": "human",
+   "pronunciation": "",
+   "meaningEn": "a person",
+   "meaningFa": "",
+   "examples": [
+    "All humans must take care of nature."
+   ],
+   "audio": null,
+   "page": 21
+  },
+  {
+   "word": "instead",
+   "pronunciation": "",
+   "meaningEn": "in place of someone or something else",
+   "meaningFa": "",
+   "examples": [
+    "There's no coffee. Would you like a cup of tea instead?"
+   ],
+   "audio": null,
+   "page": 21
+  },
+  {
+   "word": "future",
+   "pronunciation": "",
+   "meaningEn": "the time after now",
+   "meaningFa": "",
+   "examples": [
+    "Everyone needs to plan for the future."
+   ],
+   "audio": null,
+   "page": 21
+  }
+ ]
+}

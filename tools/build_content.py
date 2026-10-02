@@ -1,0 +1,410 @@
+"""Builds the processed content tree consumed by the application.
+
+Output layout (committed to the repository; no lesson content is hardcoded in the UI)::
+
+    data/grade-10/
+      manifest.json
+      lesson-01/
+        manifest.json
+        sections/<section-id>.json
+        vocabulary.json
+        synchronization/<section-id>.sync.json
+        provenance.json
+      lesson-02/...
+
+    audio/grade-10/lesson-01/<section-id>.mp3
+
+Every field is either lifted verbatim from the textbook PDF or derived from a transcript;
+nothing is written by hand.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import shutil
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import audio_map
+import text as textmod
+import textbook as book
+import transcribe
+from align import align
+
+ROOT = Path(__file__).resolve().parent.parent
+WORK = ROOT / ".work"
+DATA = ROOT / "data" / "grade-10"
+AUDIO_OUT = ROOT / "audio" / "grade-10"
+
+GENERATED_BY = "tools/build_content.py"
+BOOK_SHA = None  # filled in at runtime
+
+
+def write_json(path: Path, payload) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=1)
+        handle.write("\n")
+
+
+def section_lines(doc, section) -> list[tuple[int, str]]:
+    lines: list[tuple[int, str]] = []
+    for page in range(section.pages[0], section.pages[1] + 1):
+        lines.extend((page, text) for text in book.page_lines(doc, page))
+    return lines
+
+
+def speech_from(transcript_path: Path) -> tuple[list[tuple[str, float, float]], float]:
+    if not transcript_path.exists():
+        return [], 0.0
+    data = json.loads(transcript_path.read_text(encoding="utf-8"))
+    return transcribe.speech_words(data), float(data["duration"])
+
+
+_HEADWORD_RE = re.compile(r"^([a-z][A-Za-z '\-]{0,28}):\s*(.*)$")
+_SECTION_MARKER_RE = re.compile(r"^[A-Z]\.\s|^C\.\s")
+
+
+def _collect_vocabulary(lines: list[tuple[int, str]]) -> list[dict]:
+    """Recover the ``word: definition`` + example blocks of the New Words page.
+
+    The book prints ``headword: definition`` on one line and the example sentence(s)
+    on the lines that follow, so the entries are read back exactly as printed.
+    """
+    items: list[dict] = []
+    current: dict | None = None
+    for page, line in lines:
+        head = _HEADWORD_RE.match(line.strip())
+        if head and not _SECTION_MARKER_RE.match(line.strip()):
+            current = {
+                "word": head.group(1).strip(),
+                "meaningEn": head.group(2).strip(),
+                "examples": [],
+                "page": page,
+            }
+            items.append(current)
+            continue
+        if current is None or _SECTION_MARKER_RE.match(line.strip()):
+            continue
+        stripped = line.strip()
+        if re.match(r"^\d+\.\s", stripped):          # a numbered second sense
+            current["meaningEn"] = (current["meaningEn"] + " " + stripped).strip()
+        else:
+            current["examples"].append(stripped)
+    return items
+
+
+def _target_words(conversation_lines: list[tuple[int, str]]) -> list[str]:
+    """The comma-separated preview list printed above the Conversation."""
+    words: list[str] = []
+    for _, line in conversation_lines:
+        stripped = line.strip()
+        if stripped.endswith(".") or ":" in stripped:
+            break
+        for piece in stripped.split(","):
+            piece = piece.strip().strip(".")
+            if piece and re.fullmatch(r"[A-Za-z][A-Za-z '\-]{0,28}", piece):
+                words.append(piece)
+    return words
+
+
+def vocabulary_from(lines: list[tuple[int, str]]) -> list[dict]:
+    """New Words & Expressions, straight from the printed page."""
+    return [
+        {
+            "word": item["word"],
+            "pronunciation": "",
+            "meaningEn": item["meaningEn"],
+            "meaningFa": "",
+            "examples": item["examples"],
+            "audio": None,
+            "page": item["page"],
+        }
+        for item in _collect_vocabulary(lines)
+    ]
+
+
+def build_sync(words, speech, duration, mapping, section, lesson_id) -> dict:
+    tokens, islands, confidence = align(words, speech)
+    sentences = textmod.split_sentences(words)
+    sentence_rows = []
+    for i0, i1 in sentences:
+        timed = [t for t in tokens[i0:i1] if t.start is not None]
+        sentence_rows.append({
+            "first": i0,
+            "last": i1 - 1,
+            "start": timed[0].start if timed else None,
+            "end": timed[-1].end if timed else None,
+            "text": " ".join(words[i0:i1]),
+        })
+    return {
+        "sectionId": section.section_id,
+        "lessonId": lesson_id,
+        "audio": f"audio/grade-10/{lesson_id}/{section.section_id}.mp3",
+        "sourceAudioFile": mapping.audio.name,
+        "duration": round(duration, 3),
+        "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+        "confidence": confidence,
+        "mapping": {
+            "status": mapping.status,
+            "method": mapping.method,
+            "contentScore": round(mapping.confidence, 4),
+            "runnerUp": (
+                {"score": round(mapping.runner_up[0], 4),
+                 "lessonId": mapping.runner_up[1],
+                 "sectionId": mapping.runner_up[2]}
+                if mapping.runner_up else None
+            ),
+            "notes": mapping.notes,
+        },
+        "words": [
+            {
+                "word": t.text,
+                "start": t.start,
+                "end": t.end,
+                "match": (
+                    None if t.similarity is None
+                    else ("exact" if t.similarity >= 0.999 else
+                          "fuzzy" if t.similarity >= 0.62 else
+                          "interpolated" if t.interpolated else "low")
+                ),
+                "similarity": t.similarity,
+                "spokenAs": t.spoken_as,
+            }
+            for t in tokens
+        ],
+        "sentences": sentence_rows,
+        "unspokenAudio": [
+            {"start": round(i.start, 3), "end": round(i.end, 3), "transcript": i.text}
+            for i in islands if i.end - i.start >= 0.8
+        ],
+    }
+
+
+def build() -> dict:
+    source_dir = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT.parent / "10th-class")
+    doc, lessons = book.load_textbook(str(source_dir))
+    book_path = source_dir / book.BOOK_FILENAME
+    import hashlib
+    book_sha = hashlib.sha256(book_path.read_bytes()).hexdigest()
+
+    # ---- 1. textbook text -------------------------------------------------------
+    sections: dict[str, dict[str, dict]] = {}
+    for lesson in lessons:
+        sections[lesson.lesson_id] = {}
+        for section in lesson.sections:
+            lines = section_lines(doc, section)
+            blocks, flat = textmod.build_blocks(lines)
+            sections[lesson.lesson_id][section.section_id] = {
+                "meta": section,
+                "lines": lines,
+                "blocks": blocks,
+                "words": flat,
+            }
+
+    # ---- 2. audio inventory + mapping ------------------------------------------
+    audio_files = audio_map.scan(source_dir)
+    transcripts: dict[str, dict] = {}
+    for audio in audio_files:
+        words, duration = speech_from(WORK / "transcripts" / f"{audio.stem}.json")
+        audio.duration = duration
+        audio.transcript_words = words                       # type: ignore[attr-defined]
+        path = WORK / "transcripts" / f"{audio.stem}.json"
+        if path.exists():
+            transcripts[audio.stem] = json.loads(path.read_text(encoding="utf-8"))
+
+    section_text = {
+        (lesson_id, section_id): [textmod.normalize_word(w) for w in data["words"]]
+        for lesson_id, lesson_sections in sections.items()
+        for section_id, data in lesson_sections.items()
+    }
+
+    mappings = [
+        audio_map.build_mapping(
+            audio, [w for w, _, _ in getattr(audio, "transcript_words", [])],
+            section_text, book.SECTION_IDS,
+        )
+        for audio in audio_files
+    ]
+
+    claimed: dict[tuple[str, str], str] = {}
+    for mapping in mappings:
+        if mapping.section_id is None:
+            continue
+        key = (mapping.lesson_id, mapping.section_id)
+        if key in claimed:
+            mapping.notes.append(
+                f"conflicts with {claimed[key]}, which scored "
+                f"{max(m.confidence for m in mappings if (m.lesson_id, m.section_id) == key):.3f}"
+            )
+            continue
+        claimed[key] = mapping.audio.name
+
+    # ---- 3. write the content tree --------------------------------------------
+    grade_manifest = {"grade": 10, "subject": "English", "textbook": "Vision 1 - English for Schools", "lessons": []}
+
+    for lesson in lessons:
+        lesson_id = lesson.lesson_id
+        lesson_sections = []
+        for section in lesson.sections:
+            data = sections[lesson_id][section.section_id]
+            mapping = next(
+                (m for m in mappings if m.lesson_id == lesson_id and m.section_id == section.section_id),
+                None,
+            )
+            audio_name = None
+            audio_duration = 0.0
+            if mapping and mapping.section_id:
+                audio_name = f"audio/grade-10/{lesson_id}/{section.section_id}.mp3"
+                audio_duration = mapping.audio.duration
+
+            write_json(
+                DATA / lesson_id / "sections" / f"{section.section_id}.json",
+                {
+                    "id": section.section_id,
+                    "lessonId": lesson_id,
+                    "label": section.label,
+                    "title": section.description or section.label,
+                    "source": {"pdf": "10th-class/" + book.BOOK_FILENAME, "pages": list(section.pages)},
+                    "blocks": [
+                        {"page": b["page"], "lines": b["lines"]}
+                        for b in data["blocks"]
+                    ],
+                    "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),
+                },
+            )
+
+            lesson_sections.append({
+                "id": section.section_id,
+                "label": section.label,
+                "title": section.description or section.label,
+                "pages": list(section.pages),
+                "text": "data/grade-10/%s/sections/%s.json" % (lesson_id, section.section_id),
+                "audio": audio_name,
+                "duration": round(audio_duration, 3),
+                "sync": (
+                    "data/grade-10/%s/synchronization/%s.sync.json" % (lesson_id, section.section_id)
+                    if audio_name else None
+                ),
+                "syncConfidence": round(mapping.confidence, 4) if mapping else None,
+                "syncStatus": mapping.status if mapping else "no-audio",
+            })
+
+            if audio_name:
+                write_json(
+                    DATA / lesson_id / "synchronization" / f"{section.section_id}.sync.json",
+                    build_sync(data["words"], mapping.audio.transcript_words, audio_duration,
+                               mapping, section, lesson_id),
+                )
+                target = AUDIO_OUT / lesson_id / f"{section.section_id}.mp3"
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(mapping.audio.path, target)
+
+        write_json(
+            DATA / lesson_id / "manifest.json",
+            {
+                "id": lesson_id,
+                "number": lesson.number,
+                "title": lesson.title,
+                "grade": 10,
+                "subject": "English",
+                "tocLine": lesson.toc_line,
+                "pages": list(lesson.page_range),
+                "sections": lesson_sections,
+                "vocabulary": f"data/grade-10/{lesson_id}/vocabulary.json",
+            },
+        )
+
+        vocab_section = sections[lesson_id].get("new-words-and-expressions")
+        convo_section = sections[lesson_id].get("conversation")
+        write_json(
+            DATA / lesson_id / "vocabulary.json",
+            {
+                "lessonId": lesson_id,
+                "source": {
+                    "pdf": "10th-class/" + book.BOOK_FILENAME,
+                    "definitionPages": list(vocab_section["meta"].pages) if vocab_section else [],
+                    "previewPage": convo_section["meta"].pages[0] if convo_section else None,
+                },
+                "targetWords": _target_words(convo_section["lines"]) if convo_section else [],
+                "items": vocabulary_from(vocab_section["lines"]) if vocab_section else [],
+            },
+        )
+
+        grade_manifest["lessons"].append({
+            "id": lesson_id,
+            "number": lesson.number,
+            "title": lesson.title,
+            "tocLine": lesson.toc_line,
+            "pages": list(lesson.page_range),
+            "manifest": f"data/grade-10/{lesson_id}/manifest.json",
+            "sectionCount": len(lesson_sections),
+            "audioCount": sum(1 for s in lesson_sections if s["audio"]),
+        })
+
+    write_json(DATA / "manifest.json", grade_manifest)
+
+    for lesson in lessons:
+        write_json(
+            DATA / lesson.lesson_id / "provenance.json",
+            {
+                "lessonId": lesson.lesson_id,
+                "textbook": {"file": "10th-class/" + book.BOOK_FILENAME, "sha256": book_sha},
+                "tocLine": lesson.toc_line,
+                "sections": [
+                    {
+                        "id": s.section_id,
+                        "label": s.label,
+                        "contentsDescription": s.description,
+                        "pages": list(s.pages),
+                        "textSource": "verbatim PDF text extraction (pymupdf)",
+                        "audio": next(
+                            (m.audio.name for m in mappings
+                             if m.lesson_id == lesson.lesson_id and m.section_id == s.section_id),
+                            None,
+                        ),
+                    }
+                    for s in lesson.sections
+                ],
+            },
+        )
+
+    unmapped = [m for m in mappings if m.section_id is None]
+    write_json(
+        ROOT / "data" / "audio-mapping.json",
+        {
+            "generatedBy": GENERATED_BY,
+            "sourceDirectory": "10th-class",
+            "audio": [
+                {
+                    "file": m.audio.name,
+                    "duration": round(m.audio.duration, 3),
+                    "lessonId": m.lesson_id,
+                    "sectionId": m.section_id,
+                    "confidence": round(m.confidence, 4),
+                    "status": m.status,
+                    "method": m.method,
+                    "runnerUp": (
+                        {"score": round(m.runner_up[0], 4), "lessonId": m.runner_up[1],
+                         "sectionId": m.runner_up[2]} if m.runner_up else None
+                    ),
+                    "notes": m.notes,
+                }
+                for m in mappings
+            ],
+            "unmapped": [m.audio.name for m in unmapped],
+        },
+    )
+
+    return {"lessons": lessons, "sections": sections, "mappings": mappings,
+            "transcripts": transcripts, "book_sha": book_sha}
+
+
+if __name__ == "__main__":
+    result = build()
+    for mapping in result["mappings"]:
+        print(f"{mapping.audio.name:32s} -> {mapping.lesson_id}/{mapping.section_id} "
+              f"conf={mapping.confidence:.3f} status={mapping.status} notes={mapping.notes}")

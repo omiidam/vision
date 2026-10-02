@@ -1,0 +1,145 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #16181d;
+  --muted: #6b7280;
+  --line: #e3e6ea;
+  --accent: #2f6df6;
+  --accent-soft: #e8efff;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+#app {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px 14px 48px;
+}
+
+.page-header { margin-bottom: 18px; }
+.page-header h1 { margin: 2px 0 6px; font-size: 1.6rem; }
+.eyebrow { margin: 0; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.muted { color: var(--muted); }
+.small { font-size: 0.82rem; }
+.back { display: inline-block; margin-bottom: 10px; color: var(--accent); text-decoration: none; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.card h2 { margin: 2px 0 8px; font-size: 1.15rem; }
+.toc { margin: 0 0 12px; color: var(--muted); font-size: 0.85rem; }
+.badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.error { color: #b42318; }
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+}
+.button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: thin;
+}
+.tab {
+  flex: 0 0 auto;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.reader-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.reader-head h2 { margin: 0; }
+.reader-head p { margin: 2px 0 0; font-size: 0.85rem; }
+
+.reader-body {
+  margin-top: 14px;
+  max-height: 52vh;
+  overflow-y: auto;
+  padding: 4px 8px 4px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+  line-height: 2.05;
+}
+.paragraph { margin: 0.9em 0; transition: background-color 0.2s; }
+.paragraph.active { background: #fbfcff; box-shadow: inset 3px 0 0 var(--accent-soft); }
+
+.word { border-radius: 4px; padding: 1px 1px; }
+.word.timed { cursor: pointer; }
+.word.timed:hover { background: var(--accent-soft); }
+.word.untimed { color: #9aa1ac; }
+.word.active { background: #ffe08a; color: #241a00; }
+
+.transport { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.play {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.track {
+  position: relative;
+  flex: 1;
+  height: 8px;
+  background: var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.track-fill { height: 100%; width: 0; background: var(--accent); border-radius: 999px; }
+.time { font-variant-numeric: tabular-nums; font-size: 0.85rem; color: var(--muted); flex: 0 0 auto; }
+
+.pager { display: flex; justify-content: space-between; gap: 10px; }
+
+.vocab { margin: 18px 0 0; border-top: 1px solid var(--line); padding-top: 12px; }
+.vocab h3 { margin: 0 0 8px; font-size: 1rem; }
+.vocab-item { display: grid; grid-template-columns: minmax(90px, 26%) 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f1f2f4; }
+.vocab-item dt { font-weight: 600; }
+.vocab-item dd { margin: 0; font-size: 0.92rem; }
+.example { display: block; color: var(--muted); font-style: italic; }
+
+@media (max-width: 640px) {
+  #app { padding: 12px 10px 40px; }
+  .reader-body { max-height: 46vh; font-size: 1rem; line-height: 1.95; }
+  .vocab-item { grid-template-columns: 1fr; gap: 2px; }
+  .transport { gap: 8px; }
+}

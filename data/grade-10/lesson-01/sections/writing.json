@@ -1,0 +1,618 @@
+{
+ "id": "writing",
+ "lessonId": "lesson-01",
+ "label": "Writing",
+ "title": "Noun Singular & Plural Types of Nouns Noun Markers",
+ "source": {
+  "pdf": "10th-class/10th.pdf",
+  "pages": [
+   34,
+   39
+  ]
+ },
+ "blocks": [
+  {
+   "page": 34,
+   "lines": [
+    "Noun"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "A noun names something.",
+    "A noun is a person, an animal, a place, a thing or an idea."
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "1) A Person or an Animal"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "farmer, brother, Maryam"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "a cow"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "2) A Place"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "school, cinema, sea"
+   ]
+  },
+  {
+   "page": 34,
+   "lines": [
+    "a park"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "3) A Thing"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "computer, apple, car"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "a book"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "4) An Idea"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "pain, attention, danger"
+   ]
+  },
+  {
+   "page": 35,
+   "lines": [
+    "love of country"
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "A. Read the second paragraph of the 'Reading'. Find the nouns and write",
+    "them in the correct circles of the word web. You can add more circles."
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "People/Animals"
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "Places"
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "Nouns"
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "Ideas"
+   ]
+  },
+  {
+   "page": 36,
+   "lines": [
+    "Things"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "Singular and Plural"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "Most nouns can be made plural by adding 's' or 'es' to the"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "end of the word. However, some are irregular"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "and they don't follow the same rule."
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "book"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "books"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "lake"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "lakes"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "1) Regular:"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "girl"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "girls"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "hen"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "hens"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "box"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "boxes"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "bus"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "buses"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "man"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "men"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "foot"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "feet"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "2) Irregular:"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "woman"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "women"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "life"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "lives"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "child"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "children"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "wolf"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "wolves"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "B. Write the appropriate form of each noun."
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "1. Ali's (brother)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "is a hard-working (postman)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "2. She sat down at her (desk)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "and worked for two (hour)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "3. There are two (bus stop)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "near your (school)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "4. I saw an old (man)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "and two young (woman)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "sitting near the lake of the (park)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    "5. Frank is a (farmer)"
+   ]
+  },
+  {
+   "page": 37,
+   "lines": [
+    ". He has four (child)"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "Types of Nouns"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "Common nouns / Proper nouns"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "1) Common nouns"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "boy"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "tree"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "bear"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "2) Proper nouns"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "Avicenna Damavand"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "Milad Tower"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "C . Circle the correct answer."
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "1. Today, (Iran / iran)'s mountains and plains are the natural (Home /",
+    "home) of many animals. One of them is the black (Bear / bear)",
+    "which lives in a few (Parts / parts) of the country."
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "2. Amin (Askari / askari) is a pilot. He is 40 (Years / years) old. He",
+    "lives with his (Wife / wife) and his son and daughter in (Mashhad /"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "mashhad). He loves his job."
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "3. The (Persian / persian) Gulf is a very important sea between Iran",
+    "and some (Arab / arab) countries. Its (Wildlife / wildlife) is amazing.",
+    "You can see some beautiful (Sea / sea) animals such as (Dolphins /"
+   ]
+  },
+  {
+   "page": 38,
+   "lines": [
+    "dolphins) there."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "Noun Markers"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "Here are some words that often come before a noun"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "a / an"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "a hunter / a leopard"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "an elephant / an ear"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "the"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "the child / the boy"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "the women / the cars"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "this / that"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "this bird / this door"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "that tiger / that chair"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "these / those"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "these chairs / these children"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "those men / those mice"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "my / your / our / his /",
+    "his goat / our car / my friends / their towns"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "her / its / our / their"
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "D. Read the following sentences and circle the nouns."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "1. The weather is beautiful in the spring."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "2. This is a low mountain, but those mountains are high."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "3. Nasim read a book on the bus last week."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "4. Some people do not take care of animals."
+   ]
+  },
+  {
+   "page": 39,
+   "lines": [
+    "5. I saw two wolves in the zoo."
+   ]
+  }
+ ],
+ "text": "Noun\nA noun names something. A noun is a person, an animal, a place, a thing or an idea.\n1) A Person or an Animal\nfarmer, brother, Maryam\na cow\n2) A Place\nschool, cinema, sea\na park\n3) A Thing\ncomputer, apple, car\na book\n4) An Idea\npain, attention, danger\nlove of country\nA. Read the second paragraph of the 'Reading'. Find the nouns and write them in the correct circles of the word web. You can add more circles.\nPeople/Animals\nPlaces\nNouns\nIdeas\nThings\nSingular and Plural\nMost nouns can be made plural by adding 's' or 'es' to the\nend of the word. However, some are irregular\nand they don't follow the same rule.\nbook\nbooks\nlake\nlakes\n1) Regular:\ngirl\ngirls\nhen\nhens\nbox\nboxes\nbus\nbuses\nman\nmen\nfoot\nfeet\n2) Irregular:\nwoman\nwomen\nlife\nlives\nchild\nchildren\nwolf\nwolves\nB. Write the appropriate form of each noun.\n1. Ali's (brother)\nis a hard-working (postman)\n2. She sat down at her (desk)\nand worked for two (hour)\n3. There are two (bus stop)\nnear your (school)\n4. I saw an old (man)\nand two young (woman)\nsitting near the lake of the (park)\n5. Frank is a (farmer)\n. He has four (child)\nTypes of Nouns\nCommon nouns / Proper nouns\n1) Common nouns\nboy\ntree\nbear\n2) Proper nouns\nAvicenna Damavand\nMilad Tower\nC . Circle the correct answer.\n1. Today, (Iran / iran)'s mountains and plains are the natural (Home / home) of many animals. One of them is the black (Bear / bear) which lives in a few (Parts / parts) of the country.\n2. Amin (Askari / askari) is a pilot. He is 40 (Years / years) old. He lives with his (Wife / wife) and his son and daughter in (Mashhad /\nmashhad). He loves his job.\n3. The (Persian / persian) Gulf is a very important sea between Iran and some (Arab / arab) countries. Its (Wildlife / wildlife) is amazing. You can see some beautiful (Sea / sea) animals such as (Dolphins /\ndolphins) there.\nNoun Markers\nHere are some words that often come before a noun\na / an\na hunter / a leopard\nan elephant / an ear\nthe\nthe child / the boy\nthe women / the cars\nthis / that\nthis bird / this door\nthat tiger / that chair\nthese / those\nthese chairs / these children\nthose men / those mice\nmy / your / our / his / his goat / our car / my friends / their towns\nher / its / our / their\nD. Read the following sentences and circle the nouns.\n1. The weather is beautiful in the spring.\n2. This is a low mountain, but those mountains are high.\n3. Nasim read a book on the bus last week.\n4. Some people do not take care of animals.\n5. I saw two wolves in the zoo."
+}

@@ -1,0 +1,1542 @@
+{
+ "sectionId": "new-words-and-expressions",
+ "lessonId": "lesson-02",
+ "audio": "audio/grade-10/lesson-02/new-words-and-expressions.mp3",
+ "sourceAudioFile": "New Words & Expressions2.mp3",
+ "duration": 76.173,
+ "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+ "confidence": 0.6213,
+ "mapping": {
+  "status": "confirmed",
+  "method": "transcript-similarity+filename",
+  "contentScore": 0.9703,
+  "runnerUp": {
+   "score": 0.7415,
+   "lessonId": "lesson-02",
+   "sectionId": "reading"
+  },
+  "notes": []
+ },
+ "words": [
+  {
+   "word": "A.",
+   "start": 3.84,
+   "end": 4.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " A."
+  },
+  {
+   "word": "Look,",
+   "start": 5.6,
+   "end": 5.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Look,"
+  },
+  {
+   "word": "Read",
+   "start": 6.62,
+   "end": 6.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " read"
+  },
+  {
+   "word": "and",
+   "start": 6.64,
+   "end": 7.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Practice.",
+   "start": 7.0,
+   "end": 7.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " practice"
+  },
+  {
+   "word": "Water",
+   "start": 9.04,
+   "end": 9.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Water"
+  },
+  {
+   "word": "is",
+   "start": 9.68,
+   "end": 10.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "a",
+   "start": 10.02,
+   "end": 10.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "type",
+   "start": 10.16,
+   "end": 10.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " type"
+  },
+  {
+   "word": "of",
+   "start": 10.38,
+   "end": 10.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "liquid.",
+   "start": 10.56,
+   "end": 11.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " liquid."
+  },
+  {
+   "word": "There",
+   "start": 12.28,
+   "end": 12.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " There"
+  },
+  {
+   "word": "are",
+   "start": 12.38,
+   "end": 12.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "some",
+   "start": 12.5,
+   "end": 12.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "drops",
+   "start": 12.72,
+   "end": 12.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " drops"
+  },
+  {
+   "word": "of",
+   "start": 12.98,
+   "end": 13.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "paint",
+   "start": 13.22,
+   "end": 13.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " paint"
+  },
+  {
+   "word": "on",
+   "start": 13.44,
+   "end": 13.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " on"
+  },
+  {
+   "word": "his",
+   "start": 13.62,
+   "end": 13.8,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " its"
+  },
+  {
+   "word": "shirt.",
+   "start": 13.8,
+   "end": 14.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " shirt."
+  },
+  {
+   "word": "Blood",
+   "start": 15.9,
+   "end": 16.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Blood"
+  },
+  {
+   "word": "cells",
+   "start": 16.0,
+   "end": 16.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cells"
+  },
+  {
+   "word": "are",
+   "start": 16.26,
+   "end": 16.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "red",
+   "start": 16.52,
+   "end": 16.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " red"
+  },
+  {
+   "word": "and",
+   "start": 16.76,
+   "end": 16.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "white.",
+   "start": 16.96,
+   "end": 17.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " white."
+  },
+  {
+   "word": "About",
+   "start": 18.88,
+   "end": 19.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " About"
+  },
+  {
+   "word": "one",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "thousand",
+   "start": 19.12,
+   "end": 19.8,
+   "match": "low",
+   "similarity": 0.0,
+   "spokenAs": " 1000"
+  },
+  {
+   "word": "people",
+   "start": 19.8,
+   "end": 20.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " people"
+  },
+  {
+   "word": "live",
+   "start": 20.38,
+   "end": 20.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " live"
+  },
+  {
+   "word": "in",
+   "start": 20.62,
+   "end": 20.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "this",
+   "start": 20.8,
+   "end": 20.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " this"
+  },
+  {
+   "word": "village.",
+   "start": 20.98,
+   "end": 21.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " village."
+  },
+  {
+   "word": "There",
+   "start": 22.74,
+   "end": 22.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " There"
+  },
+  {
+   "word": "are",
+   "start": 22.88,
+   "end": 23.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "many",
+   "start": 23.02,
+   "end": 23.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " many"
+  },
+  {
+   "word": "different",
+   "start": 23.24,
+   "end": 23.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " different"
+  },
+  {
+   "word": "Doing",
+   "start": 25.88,
+   "end": 26.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Doing"
+  },
+  {
+   "word": "daily",
+   "start": 26.24,
+   "end": 26.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " daily"
+  },
+  {
+   "word": "exercise",
+   "start": 26.7,
+   "end": 27.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " exercise"
+  },
+  {
+   "word": "is",
+   "start": 27.16,
+   "end": 27.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "types",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "of",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "microbes.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "useful",
+   "start": 27.58,
+   "end": 27.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " useful"
+  },
+  {
+   "word": "for",
+   "start": 27.92,
+   "end": 28.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " for"
+  },
+  {
+   "word": "everyone.",
+   "start": 28.24,
+   "end": 28.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " everyone."
+  },
+  {
+   "word": "Gahar",
+   "start": 30.04,
+   "end": 30.78,
+   "match": "fuzzy",
+   "similarity": 0.769,
+   "spokenAs": " Gaharlik"
+  },
+  {
+   "word": "Lake",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "is",
+   "start": 30.78,
+   "end": 30.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "famous",
+   "start": 30.96,
+   "end": 31.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " famous"
+  },
+  {
+   "word": "for",
+   "start": 31.2,
+   "end": 31.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " for"
+  },
+  {
+   "word": "its",
+   "start": 31.48,
+   "end": 31.64,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " his"
+  },
+  {
+   "word": "The",
+   "start": 33.38,
+   "end": 33.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " The"
+  },
+  {
+   "word": "heart",
+   "start": 33.56,
+   "end": 33.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " heart"
+  },
+  {
+   "word": "pumps",
+   "start": 33.86,
+   "end": 34.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " pumps"
+  },
+  {
+   "word": "blood",
+   "start": 34.18,
+   "end": 34.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood"
+  },
+  {
+   "word": "clear",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "water.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "round",
+   "start": 34.54,
+   "end": 34.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " round"
+  },
+  {
+   "word": "the",
+   "start": 34.9,
+   "end": 35.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "body.",
+   "start": 35.06,
+   "end": 35.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body."
+  },
+  {
+   "word": "B.",
+   "start": 38.62,
+   "end": 38.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " B."
+  },
+  {
+   "word": "Read",
+   "start": 39.74,
+   "end": 39.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Read"
+  },
+  {
+   "word": "and",
+   "start": 39.84,
+   "end": 40.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Practice.",
+   "start": 40.12,
+   "end": 40.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " practice"
+  },
+  {
+   "word": "healthy:",
+   "start": 41.66,
+   "end": 42.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Healthy,"
+  },
+  {
+   "word": "1.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "strong",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "and",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "well",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "He",
+   "start": 42.76,
+   "end": 43.14,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " he's"
+  },
+  {
+   "word": "is",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "a",
+   "start": 43.14,
+   "end": 43.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "healthy",
+   "start": 43.28,
+   "end": 43.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " healthy"
+  },
+  {
+   "word": "boy.",
+   "start": 43.56,
+   "end": 43.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " boy."
+  },
+  {
+   "word": "2.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "good",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "for",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "your",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "body",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "A",
+   "start": 44.6,
+   "end": 44.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " A"
+  },
+  {
+   "word": "healthy",
+   "start": 44.72,
+   "end": 45.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " healthy"
+  },
+  {
+   "word": "breakfast",
+   "start": 45.12,
+   "end": 45.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " breakfast"
+  },
+  {
+   "word": "can",
+   "start": 45.64,
+   "end": 46.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " can"
+  },
+  {
+   "word": "give",
+   "start": 46.1,
+   "end": 46.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " give"
+  },
+  {
+   "word": "you",
+   "start": 46.32,
+   "end": 46.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " you"
+  },
+  {
+   "word": "more",
+   "start": 46.54,
+   "end": 46.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " more"
+  },
+  {
+   "word": "energy.",
+   "start": 46.8,
+   "end": 47.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " energy."
+  },
+  {
+   "word": "defend:",
+   "start": 48.46,
+   "end": 48.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Defend,"
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "protect",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "someone",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "or",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "something",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "from",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "danger",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "The",
+   "start": 49.26,
+   "end": 49.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "brave",
+   "start": 49.38,
+   "end": 49.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " brave"
+  },
+  {
+   "word": "soldiers",
+   "start": 49.76,
+   "end": 50.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " soldiers"
+  },
+  {
+   "word": "defended",
+   "start": 50.3,
+   "end": 51.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " defended"
+  },
+  {
+   "word": "our",
+   "start": 51.04,
+   "end": 51.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "country.",
+   "start": 51.44,
+   "end": 51.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " country"
+  },
+  {
+   "word": "carry:",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "move",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "someone",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "or",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "something",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "from",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "one",
+   "start": 51.9,
+   "end": 52.1,
+   "match": "low",
+   "similarity": 0.4,
+   "spokenAs": " in"
+  },
+  {
+   "word": "place",
+   "start": 52.1,
+   "end": 52.46,
+   "match": "low",
+   "similarity": 0.25,
+   "spokenAs": " war."
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "another",
+   "start": 53.46,
+   "end": 53.66,
+   "match": "low",
+   "similarity": 0.333,
+   "spokenAs": " Carry,"
+  },
+  {
+   "word": "Monkeys",
+   "start": 54.24,
+   "end": 54.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " monkeys"
+  },
+  {
+   "word": "carry",
+   "start": 54.66,
+   "end": 55.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " carry"
+  },
+  {
+   "word": "their",
+   "start": 55.1,
+   "end": 55.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " their"
+  },
+  {
+   "word": "babies",
+   "start": 55.42,
+   "end": 55.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " babies"
+  },
+  {
+   "word": "all",
+   "start": 55.92,
+   "end": 56.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " all"
+  },
+  {
+   "word": "day",
+   "start": 56.34,
+   "end": 56.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " day"
+  },
+  {
+   "word": "long.",
+   "start": 56.56,
+   "end": 57.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " long."
+  },
+  {
+   "word": "collect:",
+   "start": 57.12,
+   "end": 58.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Collect,"
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "go",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "and",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "get",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "someone",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "or",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "something",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "The",
+   "start": 58.76,
+   "end": 58.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "school",
+   "start": 58.94,
+   "end": 59.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " school"
+  },
+  {
+   "word": "bus",
+   "start": 59.34,
+   "end": 59.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " bus"
+  },
+  {
+   "word": "collects",
+   "start": 59.68,
+   "end": 60.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " collects"
+  },
+  {
+   "word": "the",
+   "start": 60.14,
+   "end": 60.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "children",
+   "start": 60.42,
+   "end": 60.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " children"
+  },
+  {
+   "word": "each",
+   "start": 60.82,
+   "end": 61.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " each"
+  },
+  {
+   "word": "morning.",
+   "start": 61.18,
+   "end": 61.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " morning."
+  },
+  {
+   "word": "fact:",
+   "start": 62.84,
+   "end": 62.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Fact,"
+  },
+  {
+   "word": "things",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "that",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "are",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "true",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "or",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "that",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "really",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "happened",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "It's",
+   "start": 63.5,
+   "end": 63.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it's"
+  },
+  {
+   "word": "a",
+   "start": 63.7,
+   "end": 63.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "fact",
+   "start": 63.84,
+   "end": 64.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " fact"
+  },
+  {
+   "word": "that",
+   "start": 64.06,
+   "end": 64.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " that"
+  },
+  {
+   "word": "Earth",
+   "start": 64.34,
+   "end": 64.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " earth"
+  },
+  {
+   "word": "goes",
+   "start": 64.64,
+   "end": 65.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " goes"
+  },
+  {
+   "word": "around",
+   "start": 65.04,
+   "end": 65.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " around"
+  },
+  {
+   "word": "the",
+   "start": 65.44,
+   "end": 65.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "Sun.",
+   "start": 65.66,
+   "end": 65.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " sun."
+  },
+  {
+   "word": "C.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Go",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Part",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "III",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "of",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "your",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Workbook",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "and",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "do",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "A",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "and",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "B.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  }
+ ],
+ "sentences": [
+  {
+   "first": 0,
+   "last": 0,
+   "start": 3.84,
+   "end": 4.94,
+   "text": "A."
+  },
+  {
+   "first": 1,
+   "last": 4,
+   "start": 5.6,
+   "end": 7.56,
+   "text": "Look, Read and Practice."
+  },
+  {
+   "first": 5,
+   "last": 10,
+   "start": 9.04,
+   "end": 11.0,
+   "text": "Water is a type of liquid."
+  },
+  {
+   "first": 11,
+   "last": 19,
+   "start": 12.28,
+   "end": 14.12,
+   "text": "There are some drops of paint on his shirt."
+  },
+  {
+   "first": 20,
+   "last": 25,
+   "start": 15.9,
+   "end": 17.32,
+   "text": "Blood cells are red and white."
+  },
+  {
+   "first": 26,
+   "last": 33,
+   "start": 18.88,
+   "end": 21.4,
+   "text": "About one thousand people live in this village."
+  },
+  {
+   "first": 34,
+   "last": 44,
+   "start": 22.74,
+   "end": 27.58,
+   "text": "There are many different Doing daily exercise is types of microbes."
+  },
+  {
+   "first": 45,
+   "last": 47,
+   "start": 27.58,
+   "end": 28.84,
+   "text": "useful for everyone."
+  },
+  {
+   "first": 48,
+   "last": 59,
+   "start": 30.04,
+   "end": 34.54,
+   "text": "Gahar Lake is famous for its The heart pumps blood clear water."
+  },
+  {
+   "first": 60,
+   "last": 62,
+   "start": 34.54,
+   "end": 35.52,
+   "text": "round the body."
+  },
+  {
+   "first": 63,
+   "last": 63,
+   "start": 38.62,
+   "end": 38.94,
+   "text": "B."
+  },
+  {
+   "first": 64,
+   "last": 66,
+   "start": 39.74,
+   "end": 40.62,
+   "text": "Read and Practice."
+  },
+  {
+   "first": 67,
+   "last": 68,
+   "start": 41.66,
+   "end": 42.4,
+   "text": "healthy: 1."
+  },
+  {
+   "first": 69,
+   "last": 76,
+   "start": 42.76,
+   "end": 43.9,
+   "text": "strong and well He is a healthy boy."
+  },
+  {
+   "first": 77,
+   "last": 77,
+   "start": null,
+   "end": null,
+   "text": "2."
+  },
+  {
+   "first": 78,
+   "last": 89,
+   "start": 44.6,
+   "end": 47.4,
+   "text": "good for your body A healthy breakfast can give you more energy."
+  },
+  {
+   "first": 90,
+   "last": 103,
+   "start": 48.46,
+   "end": 51.9,
+   "text": "defend: to protect someone or something from danger The brave soldiers defended our country."
+  },
+  {
+   "first": 104,
+   "last": 121,
+   "start": 51.9,
+   "end": 57.12,
+   "text": "carry: to move someone or something from one place to another Monkeys carry their babies all day long."
+  },
+  {
+   "first": 122,
+   "last": 137,
+   "start": 57.12,
+   "end": 61.74,
+   "text": "collect: to go and get someone or something The school bus collects the children each morning."
+  },
+  {
+   "first": 138,
+   "last": 155,
+   "start": 62.84,
+   "end": 65.96,
+   "text": "fact: things that are true or that really happened It's a fact that Earth goes around the Sun."
+  },
+  {
+   "first": 156,
+   "last": 156,
+   "start": null,
+   "end": null,
+   "text": "C."
+  },
+  {
+   "first": 157,
+   "last": 168,
+   "start": null,
+   "end": null,
+   "text": "Go to Part III of your Workbook and do A and B."
+  }
+ ],
+ "unspokenAudio": [
+  {
+   "start": 1.96,
+   "end": 3.84,
+   "transcript": " New  words  and  expressions"
+  },
+  {
+   "start": 23.64,
+   "end": 24.68,
+   "transcript": " types  of  microbes."
+  }
+ ]
+}

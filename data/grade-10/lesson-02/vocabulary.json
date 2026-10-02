@@ -1,0 +1,75 @@
+{
+ "lessonId": "lesson-02",
+ "source": {
+  "pdf": "10th-class/10th.pdf",
+  "definitionPages": [
+   48,
+   49
+  ],
+  "previewPage": 47
+ },
+ "targetWords": [
+  "near",
+  "rocky",
+  "orbit",
+  "powerful"
+ ],
+ "items": [
+  {
+   "word": "healthy",
+   "pronunciation": "",
+   "meaningEn": "1. strong and well 2. good for your body",
+   "meaningFa": "",
+   "examples": [
+    "He is a healthy boy.",
+    "A healthy breakfast can give you more energy."
+   ],
+   "audio": null,
+   "page": 49
+  },
+  {
+   "word": "defend",
+   "pronunciation": "",
+   "meaningEn": "to protect someone or something from danger",
+   "meaningFa": "",
+   "examples": [
+    "The brave soldiers defended our country."
+   ],
+   "audio": null,
+   "page": 49
+  },
+  {
+   "word": "carry",
+   "pronunciation": "",
+   "meaningEn": "to move someone or something from one place to another",
+   "meaningFa": "",
+   "examples": [
+    "Monkeys carry their babies all day long."
+   ],
+   "audio": null,
+   "page": 49
+  },
+  {
+   "word": "collect",
+   "pronunciation": "",
+   "meaningEn": "to go and get someone or something",
+   "meaningFa": "",
+   "examples": [
+    "The school bus collects the children each morning."
+   ],
+   "audio": null,
+   "page": 49
+  },
+  {
+   "word": "fact",
+   "pronunciation": "",
+   "meaningEn": "things that are true or that really happened",
+   "meaningFa": "",
+   "examples": [
+    "It's a fact that Earth goes around the Sun."
+   ],
+   "audio": null,
+   "page": 49
+  }
+ ]
+}

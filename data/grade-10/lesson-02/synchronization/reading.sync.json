@@ -1,0 +1,1525 @@
+{
+ "sectionId": "reading",
+ "lessonId": "lesson-02",
+ "audio": "audio/grade-10/lesson-02/reading.mp3",
+ "sourceAudioFile": "reading2.mp3",
+ "duration": 87.327,
+ "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+ "confidence": 0.9825,
+ "mapping": {
+  "status": "confirmed",
+  "method": "transcript-similarity+filename",
+  "contentScore": 0.9855,
+  "runnerUp": {
+   "score": 0.8256,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions"
+  },
+  "notes": []
+ },
+ "words": [
+  {
+   "word": "A",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Wonderful",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Liquid",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "The",
+   "start": 10.4,
+   "end": 10.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " The"
+  },
+  {
+   "word": "human",
+   "start": 10.96,
+   "end": 11.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " human"
+  },
+  {
+   "word": "body",
+   "start": 11.52,
+   "end": 11.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "is",
+   "start": 11.98,
+   "end": 12.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "a",
+   "start": 12.28,
+   "end": 12.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "real",
+   "start": 12.42,
+   "end": 12.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " real"
+  },
+  {
+   "word": "wonder.",
+   "start": 12.68,
+   "end": 13.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " wonder."
+  },
+  {
+   "word": "It",
+   "start": 14.1,
+   "end": 14.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " It"
+  },
+  {
+   "word": "is",
+   "start": 14.22,
+   "end": 14.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "sometimes",
+   "start": 14.4,
+   "end": 14.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " sometimes"
+  },
+  {
+   "word": "good",
+   "start": 14.76,
+   "end": 15.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " good"
+  },
+  {
+   "word": "to",
+   "start": 15.08,
+   "end": 15.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "think",
+   "start": 15.34,
+   "end": 15.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " think"
+  },
+  {
+   "word": "about",
+   "start": 15.6,
+   "end": 15.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " about"
+  },
+  {
+   "word": "our",
+   "start": 15.96,
+   "end": 16.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "body",
+   "start": 16.38,
+   "end": 16.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "and",
+   "start": 16.72,
+   "end": 16.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "how",
+   "start": 16.92,
+   "end": 17.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " how"
+  },
+  {
+   "word": "it",
+   "start": 17.14,
+   "end": 17.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it"
+  },
+  {
+   "word": "works.",
+   "start": 17.28,
+   "end": 17.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " works."
+  },
+  {
+   "word": "Our",
+   "start": 18.56,
+   "end": 18.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Our"
+  },
+  {
+   "word": "body",
+   "start": 18.72,
+   "end": 19.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "is",
+   "start": 19.0,
+   "end": 19.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "doing",
+   "start": 19.22,
+   "end": 19.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " doing"
+  },
+  {
+   "word": "millions",
+   "start": 19.5,
+   "end": 19.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " millions"
+  },
+  {
+   "word": "of",
+   "start": 19.86,
+   "end": 20.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "jobs",
+   "start": 20.08,
+   "end": 20.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " jobs"
+  },
+  {
+   "word": "all",
+   "start": 20.5,
+   "end": 20.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " all"
+  },
+  {
+   "word": "the",
+   "start": 20.8,
+   "end": 20.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "time.",
+   "start": 20.96,
+   "end": 21.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " time."
+  },
+  {
+   "word": "One",
+   "start": 22.36,
+   "end": 22.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " One"
+  },
+  {
+   "word": "of",
+   "start": 22.48,
+   "end": 22.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "the",
+   "start": 22.64,
+   "end": 22.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "most",
+   "start": 22.76,
+   "end": 23.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " most"
+  },
+  {
+   "word": "important",
+   "start": 23.04,
+   "end": 23.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " important"
+  },
+  {
+   "word": "parts",
+   "start": 23.48,
+   "end": 23.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " parts"
+  },
+  {
+   "word": "of",
+   "start": 23.82,
+   "end": 24.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "the",
+   "start": 24.0,
+   "end": 24.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "body",
+   "start": 24.14,
+   "end": 24.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "is",
+   "start": 24.42,
+   "end": 24.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "blood.",
+   "start": 24.68,
+   "end": 25.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood."
+  },
+  {
+   "word": "The",
+   "start": 25.96,
+   "end": 26.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " The"
+  },
+  {
+   "word": "heart",
+   "start": 26.22,
+   "end": 26.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " heart"
+  },
+  {
+   "word": "pumps",
+   "start": 26.48,
+   "end": 26.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " pumps"
+  },
+  {
+   "word": "this",
+   "start": 26.78,
+   "end": 27.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " this"
+  },
+  {
+   "word": "red",
+   "start": 27.02,
+   "end": 27.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " red"
+  },
+  {
+   "word": "liquid",
+   "start": 27.3,
+   "end": 27.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " liquid"
+  },
+  {
+   "word": "around",
+   "start": 27.68,
+   "end": 27.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " around"
+  },
+  {
+   "word": "the",
+   "start": 27.98,
+   "end": 28.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "body.",
+   "start": 28.18,
+   "end": 28.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body."
+  },
+  {
+   "word": "This",
+   "start": 29.28,
+   "end": 29.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " This"
+  },
+  {
+   "word": "keeps",
+   "start": 29.58,
+   "end": 29.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " keeps"
+  },
+  {
+   "word": "us",
+   "start": 29.88,
+   "end": 30.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " us"
+  },
+  {
+   "word": "healthy",
+   "start": 30.18,
+   "end": 30.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " healthy"
+  },
+  {
+   "word": "and",
+   "start": 30.48,
+   "end": 30.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "alive.",
+   "start": 30.68,
+   "end": 31.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " alive."
+  },
+  {
+   "word": "More",
+   "start": 32.36,
+   "end": 32.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " More"
+  },
+  {
+   "word": "than",
+   "start": 32.44,
+   "end": 32.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " than"
+  },
+  {
+   "word": "half",
+   "start": 32.64,
+   "end": 32.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " half"
+  },
+  {
+   "word": "of",
+   "start": 32.88,
+   "end": 33.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "blood",
+   "start": 33.12,
+   "end": 33.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood"
+  },
+  {
+   "word": "is",
+   "start": 33.42,
+   "end": 33.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "plasma.",
+   "start": 33.72,
+   "end": 34.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " plasma."
+  },
+  {
+   "word": "This",
+   "start": 35.02,
+   "end": 35.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " This"
+  },
+  {
+   "word": "is",
+   "start": 35.16,
+   "end": 35.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "a",
+   "start": 35.3,
+   "end": 35.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "clear",
+   "start": 35.42,
+   "end": 35.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " clear"
+  },
+  {
+   "word": "and",
+   "start": 35.72,
+   "end": 35.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "yellow",
+   "start": 35.98,
+   "end": 36.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " yellow"
+  },
+  {
+   "word": "liquid.",
+   "start": 36.3,
+   "end": 36.84,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " liquid."
+  },
+  {
+   "word": "It",
+   "start": 37.84,
+   "end": 38.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " It"
+  },
+  {
+   "word": "carries",
+   "start": 38.04,
+   "end": 38.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " carries"
+  },
+  {
+   "word": "red",
+   "start": 38.44,
+   "end": 38.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " red"
+  },
+  {
+   "word": "and",
+   "start": 38.74,
+   "end": 38.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "white",
+   "start": 38.9,
+   "end": 39.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " white"
+  },
+  {
+   "word": "cells.",
+   "start": 39.16,
+   "end": 39.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cells."
+  },
+  {
+   "word": "There",
+   "start": 40.54,
+   "end": 40.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " There"
+  },
+  {
+   "word": "are",
+   "start": 40.72,
+   "end": 40.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "millions",
+   "start": 40.96,
+   "end": 41.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " millions"
+  },
+  {
+   "word": "of",
+   "start": 41.26,
+   "end": 41.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "red",
+   "start": 41.62,
+   "end": 41.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " red"
+  },
+  {
+   "word": "blood",
+   "start": 41.86,
+   "end": 42.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood"
+  },
+  {
+   "word": "cells",
+   "start": 42.12,
+   "end": 42.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cells"
+  },
+  {
+   "word": "in",
+   "start": 42.46,
+   "end": 42.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "one",
+   "start": 42.74,
+   "end": 43.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " one"
+  },
+  {
+   "word": "small",
+   "start": 43.06,
+   "end": 43.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " small"
+  },
+  {
+   "word": "drop",
+   "start": 43.38,
+   "end": 43.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " drop"
+  },
+  {
+   "word": "of",
+   "start": 43.64,
+   "end": 43.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "blood.",
+   "start": 43.82,
+   "end": 44.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood."
+  },
+  {
+   "word": "They",
+   "start": 45.08,
+   "end": 45.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " They"
+  },
+  {
+   "word": "carry",
+   "start": 45.42,
+   "end": 45.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " carry"
+  },
+  {
+   "word": "oxygen",
+   "start": 45.74,
+   "end": 46.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " oxygen"
+  },
+  {
+   "word": "round",
+   "start": 46.24,
+   "end": 46.62,
+   "match": "fuzzy",
+   "similarity": 0.909,
+   "spokenAs": " around"
+  },
+  {
+   "word": "the",
+   "start": 46.62,
+   "end": 46.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "body",
+   "start": 46.78,
+   "end": 47.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "and",
+   "start": 47.08,
+   "end": 47.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "collect",
+   "start": 47.5,
+   "end": 47.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " collect"
+  },
+  {
+   "word": "carbon",
+   "start": 47.92,
+   "end": 48.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " carbon"
+  },
+  {
+   "word": "dioxide",
+   "start": 48.48,
+   "end": 48.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " dioxide"
+  },
+  {
+   "word": "from",
+   "start": 48.98,
+   "end": 49.42,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " from"
+  },
+  {
+   "word": "body",
+   "start": 49.42,
+   "end": 49.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "parts.",
+   "start": 49.74,
+   "end": 50.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " parts."
+  },
+  {
+   "word": "There",
+   "start": 50.98,
+   "end": 51.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " There"
+  },
+  {
+   "word": "are",
+   "start": 51.08,
+   "end": 51.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "thousands",
+   "start": 51.3,
+   "end": 51.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " thousands"
+  },
+  {
+   "word": "of",
+   "start": 51.64,
+   "end": 51.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "white",
+   "start": 51.94,
+   "end": 52.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " white"
+  },
+  {
+   "word": "cells",
+   "start": 52.18,
+   "end": 52.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cells"
+  },
+  {
+   "word": "in",
+   "start": 52.5,
+   "end": 52.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "a",
+   "start": 52.72,
+   "end": 52.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "drop",
+   "start": 52.86,
+   "end": 53.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " drop"
+  },
+  {
+   "word": "of",
+   "start": 53.02,
+   "end": 53.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "blood.",
+   "start": 53.24,
+   "end": 53.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood."
+  },
+  {
+   "word": "They",
+   "start": 54.3,
+   "end": 54.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " They"
+  },
+  {
+   "word": "are",
+   "start": 54.54,
+   "end": 54.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "bigger",
+   "start": 54.66,
+   "end": 54.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " bigger"
+  },
+  {
+   "word": "than",
+   "start": 54.9,
+   "end": 55.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " than"
+  },
+  {
+   "word": "red",
+   "start": 55.2,
+   "end": 55.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " red"
+  },
+  {
+   "word": "cells.",
+   "start": 55.46,
+   "end": 55.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cells."
+  },
+  {
+   "word": "They",
+   "start": 55.86,
+   "end": 56.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " They"
+  },
+  {
+   "word": "defend",
+   "start": 56.76,
+   "end": 57.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " defend"
+  },
+  {
+   "word": "our",
+   "start": 57.12,
+   "end": 57.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "body",
+   "start": 57.36,
+   "end": 57.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "against",
+   "start": 57.72,
+   "end": 58.34,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " against"
+  },
+  {
+   "word": "microbes.",
+   "start": 58.34,
+   "end": 58.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " microbes."
+  },
+  {
+   "word": "This",
+   "start": 60.18,
+   "end": 60.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " This"
+  },
+  {
+   "word": "wonderful",
+   "start": 60.3,
+   "end": 60.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " wonderful"
+  },
+  {
+   "word": "liquid",
+   "start": 60.82,
+   "end": 61.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " liquid"
+  },
+  {
+   "word": "is",
+   "start": 61.28,
+   "end": 61.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "a",
+   "start": 61.7,
+   "end": 61.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "great",
+   "start": 61.92,
+   "end": 62.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " great"
+  },
+  {
+   "word": "gift",
+   "start": 62.18,
+   "end": 62.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " gift"
+  },
+  {
+   "word": "from",
+   "start": 62.6,
+   "end": 62.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " from"
+  },
+  {
+   "word": "Allah.",
+   "start": 62.86,
+   "end": 63.32,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " Ella."
+  },
+  {
+   "word": "We",
+   "start": 64.02,
+   "end": 64.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " We"
+  },
+  {
+   "word": "can",
+   "start": 64.18,
+   "end": 64.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " can"
+  },
+  {
+   "word": "thank",
+   "start": 64.36,
+   "end": 64.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " thank"
+  },
+  {
+   "word": "Allah",
+   "start": 64.64,
+   "end": 65.16,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " Ella"
+  },
+  {
+   "word": "by",
+   "start": 65.16,
+   "end": 65.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " by"
+  },
+  {
+   "word": "keeping",
+   "start": 65.6,
+   "end": 65.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " keeping"
+  },
+  {
+   "word": "our",
+   "start": 65.86,
+   "end": 66.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "body",
+   "start": 66.18,
+   "end": 66.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " body"
+  },
+  {
+   "word": "healthy.",
+   "start": 66.44,
+   "end": 66.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " healthy."
+  },
+  {
+   "word": "One",
+   "start": 68.12,
+   "end": 68.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " One"
+  },
+  {
+   "word": "way",
+   "start": 68.36,
+   "end": 68.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " way"
+  },
+  {
+   "word": "to",
+   "start": 68.5,
+   "end": 68.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "do",
+   "start": 68.66,
+   "end": 68.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " do"
+  },
+  {
+   "word": "that",
+   "start": 68.82,
+   "end": 69.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " that"
+  },
+  {
+   "word": "is",
+   "start": 69.12,
+   "end": 69.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "eating",
+   "start": 69.36,
+   "end": 69.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " eating"
+  },
+  {
+   "word": "healthy",
+   "start": 69.7,
+   "end": 70.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " healthy"
+  },
+  {
+   "word": "food",
+   "start": 70.06,
+   "end": 70.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " food"
+  },
+  {
+   "word": "and",
+   "start": 70.44,
+   "end": 70.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "doing",
+   "start": 70.98,
+   "end": 71.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " doing"
+  },
+  {
+   "word": "daily",
+   "start": 71.26,
+   "end": 71.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " daily"
+  },
+  {
+   "word": "exercises.",
+   "start": 71.74,
+   "end": 72.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " exercises."
+  },
+  {
+   "word": "Another",
+   "start": 73.52,
+   "end": 73.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Another"
+  },
+  {
+   "word": "way",
+   "start": 73.86,
+   "end": 74.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " way"
+  },
+  {
+   "word": "is",
+   "start": 74.26,
+   "end": 74.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "to",
+   "start": 74.58,
+   "end": 74.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "donate",
+   "start": 74.74,
+   "end": 75.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " donate"
+  },
+  {
+   "word": "our",
+   "start": 75.02,
+   "end": 75.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "blood",
+   "start": 75.26,
+   "end": 75.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " blood"
+  },
+  {
+   "word": "to",
+   "start": 75.58,
+   "end": 75.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "those",
+   "start": 75.94,
+   "end": 76.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " those"
+  },
+  {
+   "word": "who",
+   "start": 76.18,
+   "end": 76.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " who"
+  },
+  {
+   "word": "need",
+   "start": 76.4,
+   "end": 76.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " need"
+  },
+  {
+   "word": "it.",
+   "start": 76.62,
+   "end": 76.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it."
+  }
+ ],
+ "sentences": [
+  {
+   "first": 0,
+   "last": 9,
+   "start": 10.4,
+   "end": 13.22,
+   "text": "A Wonderful Liquid The human body is a real wonder."
+  },
+  {
+   "first": 10,
+   "last": 22,
+   "start": 14.1,
+   "end": 17.76,
+   "text": "It is sometimes good to think about our body and how it works."
+  },
+  {
+   "first": 23,
+   "last": 32,
+   "start": 18.56,
+   "end": 21.28,
+   "text": "Our body is doing millions of jobs all the time."
+  },
+  {
+   "first": 33,
+   "last": 43,
+   "start": 22.36,
+   "end": 25.0,
+   "text": "One of the most important parts of the body is blood."
+  },
+  {
+   "first": 44,
+   "last": 52,
+   "start": 25.96,
+   "end": 28.48,
+   "text": "The heart pumps this red liquid around the body."
+  },
+  {
+   "first": 53,
+   "last": 58,
+   "start": 29.28,
+   "end": 31.1,
+   "text": "This keeps us healthy and alive."
+  },
+  {
+   "first": 59,
+   "last": 65,
+   "start": 32.36,
+   "end": 34.26,
+   "text": "More than half of blood is plasma."
+  },
+  {
+   "first": 66,
+   "last": 72,
+   "start": 35.02,
+   "end": 36.84,
+   "text": "This is a clear and yellow liquid."
+  },
+  {
+   "first": 73,
+   "last": 78,
+   "start": 37.84,
+   "end": 39.48,
+   "text": "It carries red and white cells."
+  },
+  {
+   "first": 79,
+   "last": 91,
+   "start": 40.54,
+   "end": 44.2,
+   "text": "There are millions of red blood cells in one small drop of blood."
+  },
+  {
+   "first": 92,
+   "last": 104,
+   "start": 45.08,
+   "end": 50.16,
+   "text": "They carry oxygen round the body and collect carbon dioxide from body parts."
+  },
+  {
+   "first": 105,
+   "last": 115,
+   "start": 50.98,
+   "end": 53.62,
+   "text": "There are thousands of white cells in a drop of blood."
+  },
+  {
+   "first": 116,
+   "last": 121,
+   "start": 54.3,
+   "end": 55.86,
+   "text": "They are bigger than red cells."
+  },
+  {
+   "first": 122,
+   "last": 127,
+   "start": 55.86,
+   "end": 58.9,
+   "text": "They defend our body against microbes."
+  },
+  {
+   "first": 128,
+   "last": 136,
+   "start": 60.18,
+   "end": 63.32,
+   "text": "This wonderful liquid is a great gift from Allah."
+  },
+  {
+   "first": 137,
+   "last": 145,
+   "start": 64.02,
+   "end": 66.94,
+   "text": "We can thank Allah by keeping our body healthy."
+  },
+  {
+   "first": 146,
+   "last": 158,
+   "start": 68.12,
+   "end": 72.54,
+   "text": "One way to do that is eating healthy food and doing daily exercises."
+  },
+  {
+   "first": 159,
+   "last": 170,
+   "start": 73.52,
+   "end": 76.94,
+   "text": "Another way is to donate our blood to those who need it."
+  }
+ ],
+ "unspokenAudio": [
+  {
+   "start": 85.9,
+   "end": 87.3,
+   "transcript": " Thank  you  for  watching!"
+  }
+ ]
+}

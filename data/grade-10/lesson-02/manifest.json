@@ -1,0 +1,150 @@
+{
+ "id": "lesson-02",
+ "number": 2,
+ "title": "Wonders of Creation",
+ "grade": 10,
+ "subject": "English",
+ "tocLine": "Lesson 2: Wonders of Creation )43-69(",
+ "pages": [
+  43,
+  69
+ ],
+ "sections": [
+  {
+   "id": "get-ready",
+   "label": "Get Ready",
+   "title": "Introduction to the Lesson",
+   "pages": [
+    44,
+    46
+   ],
+   "text": "data/grade-10/lesson-02/sections/get-ready.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "conversation",
+   "label": "Conversation",
+   "title": "Visiting Iranian National Observatory",
+   "pages": [
+    47,
+    47
+   ],
+   "text": "data/grade-10/lesson-02/sections/conversation.json",
+   "audio": "audio/grade-10/lesson-02/conversation.mp3",
+   "duration": 86.309,
+   "sync": "data/grade-10/lesson-02/synchronization/conversation.sync.json",
+   "syncConfidence": 0.9812,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "new-words-and-expressions",
+   "label": "New Words & Expressions",
+   "title": "Learning Vocabulary of Reading",
+   "pages": [
+    48,
+    49
+   ],
+   "text": "data/grade-10/lesson-02/sections/new-words-and-expressions.json",
+   "audio": "audio/grade-10/lesson-02/new-words-and-expressions.mp3",
+   "duration": 76.173,
+   "sync": "data/grade-10/lesson-02/synchronization/new-words-and-expressions.sync.json",
+   "syncConfidence": 0.9703,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "title": "Reading Comprehension / A Wonderful Liquid",
+   "pages": [
+    50,
+    50
+   ],
+   "text": "data/grade-10/lesson-02/sections/reading.json",
+   "audio": "audio/grade-10/lesson-02/reading.mp3",
+   "duration": 87.327,
+   "sync": "data/grade-10/lesson-02/synchronization/reading.sync.json",
+   "syncConfidence": 0.9855,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "grammar",
+   "label": "Grammar",
+   "title": "See Also (comparative and / Adjectives / superlative adjectives)",
+   "pages": [
+    52,
+    57
+   ],
+   "text": "data/grade-10/lesson-02/sections/grammar.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "listening-and-speaking",
+   "label": "Listening & Speaking",
+   "title": "Asking about Details",
+   "pages": [
+    58,
+    59
+   ],
+   "text": "data/grade-10/lesson-02/sections/listening-and-speaking.json",
+   "audio": "audio/grade-10/lesson-02/listening-and-speaking.mp3",
+   "duration": 85.238,
+   "sync": "data/grade-10/lesson-02/synchronization/listening-and-speaking.sync.json",
+   "syncConfidence": 0.8649,
+   "syncStatus": "confirmed"
+  },
+  {
+   "id": "pronunciation",
+   "label": "Pronunciation",
+   "title": "Rising Intonation",
+   "pages": [
+    60,
+    61
+   ],
+   "text": "data/grade-10/lesson-02/sections/pronunciation.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "writing",
+   "label": "Writing",
+   "title": "Adjective Kinds of Adjectives Place of Adjectives Spelling Hints",
+   "pages": [
+    62,
+    67
+   ],
+   "text": "data/grade-10/lesson-02/sections/writing.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  },
+  {
+   "id": "what-you-learned",
+   "label": "What You Learned",
+   "title": "Reviewing Lesson 2",
+   "pages": [
+    68,
+    69
+   ],
+   "text": "data/grade-10/lesson-02/sections/what-you-learned.json",
+   "audio": null,
+   "duration": 0.0,
+   "sync": null,
+   "syncConfidence": null,
+   "syncStatus": "no-audio"
+  }
+ ],
+ "vocabulary": "data/grade-10/lesson-02/vocabulary.json"
+}

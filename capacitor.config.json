@@ -1,0 +1,11 @@
+{
+  "appId": "ir.vision.english",
+  "appName": "Vision English",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

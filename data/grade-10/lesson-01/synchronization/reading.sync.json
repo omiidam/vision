@@ -1,0 +1,1416 @@
+{
+ "sectionId": "reading",
+ "lessonId": "lesson-01",
+ "audio": "audio/grade-10/lesson-01/reading.mp3",
+ "sourceAudioFile": "reading1.mp3",
+ "duration": 83.513,
+ "method": "whisper-word-timestamps + dynamic-programming forced alignment",
+ "confidence": 0.975,
+ "mapping": {
+  "status": "confirmed",
+  "method": "transcript-similarity+filename",
+  "contentScore": 0.9906,
+  "runnerUp": {
+   "score": 0.775,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation"
+  },
+  "notes": []
+ },
+ "words": [
+  {
+   "word": "Endangered",
+   "start": 5.4,
+   "end": 6.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " endangered"
+  },
+  {
+   "word": "Animals",
+   "start": 6.2,
+   "end": 7.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animals"
+  },
+  {
+   "word": "Today,",
+   "start": 7.12,
+   "end": 11.2,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " today"
+  },
+  {
+   "word": "there",
+   "start": 11.2,
+   "end": 11.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " there"
+  },
+  {
+   "word": "are",
+   "start": 11.92,
+   "end": 12.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "some",
+   "start": 12.08,
+   "end": 12.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "endangered",
+   "start": 12.26,
+   "end": 12.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " endangered"
+  },
+  {
+   "word": "animals",
+   "start": 12.76,
+   "end": 13.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animals"
+  },
+  {
+   "word": "on",
+   "start": 13.28,
+   "end": 13.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " on"
+  },
+  {
+   "word": "Earth.",
+   "start": 13.54,
+   "end": 13.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " earth"
+  },
+  {
+   "word": "It",
+   "start": 13.74,
+   "end": 14.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it"
+  },
+  {
+   "word": "means",
+   "start": 14.32,
+   "end": 14.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " means"
+  },
+  {
+   "word": "that",
+   "start": 14.56,
+   "end": 14.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " that"
+  },
+  {
+   "word": "we",
+   "start": 14.86,
+   "end": 15.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " we"
+  },
+  {
+   "word": "can",
+   "start": 15.08,
+   "end": 15.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " can"
+  },
+  {
+   "word": "find",
+   "start": 15.28,
+   "end": 15.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " find"
+  },
+  {
+   "word": "only",
+   "start": 15.6,
+   "end": 16.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " only"
+  },
+  {
+   "word": "a",
+   "start": 16.0,
+   "end": 16.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "few",
+   "start": 16.16,
+   "end": 16.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " few"
+  },
+  {
+   "word": "of",
+   "start": 16.38,
+   "end": 16.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "them",
+   "start": 16.56,
+   "end": 16.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them"
+  },
+  {
+   "word": "around",
+   "start": 16.74,
+   "end": 17.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " around"
+  },
+  {
+   "word": "us.",
+   "start": 17.02,
+   "end": 17.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " us"
+  },
+  {
+   "word": "Some",
+   "start": 17.46,
+   "end": 18.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "examples",
+   "start": 18.0,
+   "end": 18.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " examples"
+  },
+  {
+   "word": "are",
+   "start": 18.52,
+   "end": 18.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "whales,",
+   "start": 18.8,
+   "end": 19.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " whales"
+  },
+  {
+   "word": "pandas,",
+   "start": 19.18,
+   "end": 20.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " pandas"
+  },
+  {
+   "word": "tigers",
+   "start": 20.1,
+   "end": 20.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " tigers"
+  },
+  {
+   "word": "and",
+   "start": 20.86,
+   "end": 21.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "Asian",
+   "start": 21.58,
+   "end": 22.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Asian"
+  },
+  {
+   "word": "elephants.",
+   "start": 22.02,
+   "end": 22.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " elephants"
+  },
+  {
+   "word": "Humans",
+   "start": 22.5,
+   "end": 23.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " humans"
+  },
+  {
+   "word": "destroy",
+   "start": 23.9,
+   "end": 24.48,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " destroy"
+  },
+  {
+   "word": "the",
+   "start": 24.48,
+   "end": 24.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "natural",
+   "start": 24.7,
+   "end": 25.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " natural"
+  },
+  {
+   "word": "homes",
+   "start": 25.12,
+   "end": 25.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " homes"
+  },
+  {
+   "word": "of",
+   "start": 25.46,
+   "end": 25.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "the",
+   "start": 25.72,
+   "end": 25.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "animals",
+   "start": 25.92,
+   "end": 26.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animals"
+  },
+  {
+   "word": "in",
+   "start": 26.32,
+   "end": 26.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "the",
+   "start": 26.58,
+   "end": 26.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "forests,",
+   "start": 26.74,
+   "end": 27.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " forests"
+  },
+  {
+   "word": "lakes,",
+   "start": 27.16,
+   "end": 27.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " lakes"
+  },
+  {
+   "word": "and",
+   "start": 27.96,
+   "end": 28.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "plains.",
+   "start": 28.44,
+   "end": 28.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " plains"
+  },
+  {
+   "word": "When",
+   "start": 28.76,
+   "end": 29.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " when"
+  },
+  {
+   "word": "the",
+   "start": 29.6,
+   "end": 29.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "number",
+   "start": 29.78,
+   "end": 30.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " number"
+  },
+  {
+   "word": "of",
+   "start": 30.02,
+   "end": 30.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "people",
+   "start": 30.22,
+   "end": 30.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " people"
+  },
+  {
+   "word": "on",
+   "start": 30.52,
+   "end": 30.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " on"
+  },
+  {
+   "word": "Earth",
+   "start": 30.72,
+   "end": 30.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " earth"
+  },
+  {
+   "word": "increases,",
+   "start": 30.92,
+   "end": 31.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " increases"
+  },
+  {
+   "word": "they",
+   "start": 31.62,
+   "end": 32.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "need",
+   "start": 32.4,
+   "end": 32.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " need"
+  },
+  {
+   "word": "more",
+   "start": 32.58,
+   "end": 32.82,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " more"
+  },
+  {
+   "word": "places",
+   "start": 32.82,
+   "end": 33.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " places"
+  },
+  {
+   "word": "for",
+   "start": 33.24,
+   "end": 33.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " for"
+  },
+  {
+   "word": "living.",
+   "start": 33.54,
+   "end": 33.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " living"
+  },
+  {
+   "word": "They",
+   "start": 33.9,
+   "end": 34.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "cut",
+   "start": 34.88,
+   "end": 35.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cut"
+  },
+  {
+   "word": "down",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "trees",
+   "start": 35.12,
+   "end": 35.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " trees"
+  },
+  {
+   "word": "and",
+   "start": 35.44,
+   "end": 35.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "destroy",
+   "start": 35.68,
+   "end": 36.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " destroy"
+  },
+  {
+   "word": "lakes.",
+   "start": 36.02,
+   "end": 36.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " lakes"
+  },
+  {
+   "word": "They",
+   "start": 36.46,
+   "end": 37.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "make",
+   "start": 37.18,
+   "end": 37.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " make"
+  },
+  {
+   "word": "homes",
+   "start": 37.4,
+   "end": 37.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " homes"
+  },
+  {
+   "word": "and",
+   "start": 37.74,
+   "end": 37.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "roads",
+   "start": 37.98,
+   "end": 38.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " roads"
+  },
+  {
+   "word": "instead.",
+   "start": 38.28,
+   "end": 38.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " instead"
+  },
+  {
+   "word": "Then",
+   "start": 38.92,
+   "end": 39.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " then"
+  },
+  {
+   "word": "the",
+   "start": 39.98,
+   "end": 40.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "animals",
+   "start": 40.16,
+   "end": 40.6,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animals"
+  },
+  {
+   "word": "won't",
+   "start": 40.6,
+   "end": 41.0,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " won't"
+  },
+  {
+   "word": "have",
+   "start": 41.0,
+   "end": 41.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " have"
+  },
+  {
+   "word": "a",
+   "start": 41.18,
+   "end": 41.32,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "place",
+   "start": 41.32,
+   "end": 41.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " place"
+  },
+  {
+   "word": "to",
+   "start": 41.5,
+   "end": 41.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "live.",
+   "start": 41.76,
+   "end": 41.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " live"
+  },
+  {
+   "word": "They",
+   "start": 41.98,
+   "end": 42.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " they"
+  },
+  {
+   "word": "will",
+   "start": 42.56,
+   "end": 42.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " will"
+  },
+  {
+   "word": "die",
+   "start": 42.76,
+   "end": 42.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " die"
+  },
+  {
+   "word": "out.",
+   "start": 42.96,
+   "end": 43.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " out"
+  },
+  {
+   "word": "The",
+   "start": 43.7,
+   "end": 44.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "Iranian",
+   "start": 44.3,
+   "end": 44.74,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Iranian"
+  },
+  {
+   "word": "cheetah",
+   "start": 44.74,
+   "end": 45.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetah"
+  },
+  {
+   "word": "is",
+   "start": 45.18,
+   "end": 45.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "among",
+   "start": 45.36,
+   "end": 45.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " among"
+  },
+  {
+   "word": "these",
+   "start": 45.64,
+   "end": 45.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " these"
+  },
+  {
+   "word": "animals.",
+   "start": 45.94,
+   "end": 46.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animals"
+  },
+  {
+   "word": "This",
+   "start": 46.4,
+   "end": 47.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " this"
+  },
+  {
+   "word": "wild",
+   "start": 47.06,
+   "end": 47.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " wild"
+  },
+  {
+   "word": "animal",
+   "start": 47.36,
+   "end": 47.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animal"
+  },
+  {
+   "word": "lives",
+   "start": 47.8,
+   "end": 48.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " lives"
+  },
+  {
+   "word": "only",
+   "start": 48.14,
+   "end": 48.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " only"
+  },
+  {
+   "word": "in",
+   "start": 48.64,
+   "end": 48.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "the",
+   "start": 48.8,
+   "end": 48.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "plains",
+   "start": 48.9,
+   "end": 49.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " plains"
+  },
+  {
+   "word": "of",
+   "start": 49.18,
+   "end": 49.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "Iran.",
+   "start": 49.38,
+   "end": 49.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Iran"
+  },
+  {
+   "word": "Now",
+   "start": 49.68,
+   "end": 50.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " now"
+  },
+  {
+   "word": "there",
+   "start": 50.58,
+   "end": 50.8,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " there"
+  },
+  {
+   "word": "are",
+   "start": 50.8,
+   "end": 50.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " are"
+  },
+  {
+   "word": "only",
+   "start": 50.96,
+   "end": 51.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " only"
+  },
+  {
+   "word": "a",
+   "start": 51.24,
+   "end": 51.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " a"
+  },
+  {
+   "word": "few",
+   "start": 51.36,
+   "end": 51.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " few"
+  },
+  {
+   "word": "Iranian",
+   "start": 51.66,
+   "end": 52.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Iranian"
+  },
+  {
+   "word": "cheetahs",
+   "start": 52.16,
+   "end": 52.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetahs"
+  },
+  {
+   "word": "alive.",
+   "start": 52.66,
+   "end": 53.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " alive"
+  },
+  {
+   "word": "If",
+   "start": 53.1,
+   "end": 53.94,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " if"
+  },
+  {
+   "word": "people",
+   "start": 53.94,
+   "end": 54.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " people"
+  },
+  {
+   "word": "take",
+   "start": 54.16,
+   "end": 54.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " take"
+  },
+  {
+   "word": "care",
+   "start": 54.44,
+   "end": 54.72,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " care"
+  },
+  {
+   "word": "of",
+   "start": 54.72,
+   "end": 54.9,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "them,",
+   "start": 54.9,
+   "end": 55.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " them"
+  },
+  {
+   "word": "there",
+   "start": 55.18,
+   "end": 55.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " there"
+  },
+  {
+   "word": "is",
+   "start": 55.88,
+   "end": 56.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "hope",
+   "start": 56.02,
+   "end": 56.28,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " hope"
+  },
+  {
+   "word": "for",
+   "start": 56.28,
+   "end": 56.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " for"
+  },
+  {
+   "word": "this",
+   "start": 56.56,
+   "end": 56.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " this"
+  },
+  {
+   "word": "beautiful",
+   "start": 56.86,
+   "end": 57.24,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " beautiful"
+  },
+  {
+   "word": "animal",
+   "start": 57.24,
+   "end": 57.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " animal"
+  },
+  {
+   "word": "to",
+   "start": 57.62,
+   "end": 57.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "live.",
+   "start": 57.88,
+   "end": 58.14,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " live"
+  },
+  {
+   "word": "Recently,",
+   "start": 58.14,
+   "end": 59.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " recently"
+  },
+  {
+   "word": "families",
+   "start": 59.64,
+   "end": 60.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " families"
+  },
+  {
+   "word": "pay",
+   "start": 60.84,
+   "end": 61.1,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " paying"
+  },
+  {
+   "word": "more",
+   "start": 61.1,
+   "end": 61.38,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " more"
+  },
+  {
+   "word": "attention",
+   "start": 61.38,
+   "end": 61.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " attention"
+  },
+  {
+   "word": "to",
+   "start": 61.76,
+   "end": 62.1,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "nature,",
+   "start": 62.1,
+   "end": 62.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " nature"
+  },
+  {
+   "word": "students",
+   "start": 62.96,
+   "end": 63.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " students"
+  },
+  {
+   "word": "learn",
+   "start": 63.36,
+   "end": 63.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " learn"
+  },
+  {
+   "word": "about",
+   "start": 63.68,
+   "end": 64.08,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " about"
+  },
+  {
+   "word": "saving",
+   "start": 64.08,
+   "end": 64.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " saving"
+  },
+  {
+   "word": "wildlife,",
+   "start": 64.52,
+   "end": 65.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " wildlife"
+  },
+  {
+   "word": "and",
+   "start": 65.16,
+   "end": 65.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
+  },
+  {
+   "word": "some",
+   "start": 65.92,
+   "end": 66.18,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " some"
+  },
+  {
+   "word": "hunters",
+   "start": 66.18,
+   "end": 66.62,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " hunters"
+  },
+  {
+   "word": "don't",
+   "start": 66.62,
+   "end": 67.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " don't"
+  },
+  {
+   "word": "go",
+   "start": 67.36,
+   "end": 67.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " go"
+  },
+  {
+   "word": "hunting",
+   "start": 67.58,
+   "end": 67.98,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " hunting"
+  },
+  {
+   "word": "anymore.",
+   "start": 67.98,
+   "end": 68.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " anymore"
+  },
+  {
+   "word": "In",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "this",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "way,",
+   "start": 68.5,
+   "end": 69.58,
+   "match": "low",
+   "similarity": 0.167,
+   "spokenAs": " hopefully"
+  },
+  {
+   "word": "the",
+   "start": 69.58,
+   "end": 70.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "number",
+   "start": 70.22,
+   "end": 70.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " number"
+  },
+  {
+   "word": "of",
+   "start": 70.58,
+   "end": 70.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "cheetahs",
+   "start": 70.78,
+   "end": 71.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cheetahs"
+  },
+  {
+   "word": "is",
+   "start": 71.26,
+   "end": 71.5,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " is"
+  },
+  {
+   "word": "going",
+   "start": 71.5,
+   "end": 71.76,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " going"
+  },
+  {
+   "word": "to",
+   "start": 71.76,
+   "end": 71.96,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
+  },
+  {
+   "word": "increase",
+   "start": 71.96,
+   "end": 72.36,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " increase"
+  },
+  {
+   "word": "in",
+   "start": 72.36,
+   "end": 72.64,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " in"
+  },
+  {
+   "word": "the",
+   "start": 72.64,
+   "end": 72.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "future.",
+   "start": 72.78,
+   "end": 73.16,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " future"
+  }
+ ],
+ "sentences": [
+  {
+   "first": 0,
+   "last": 9,
+   "start": 5.4,
+   "end": 13.74,
+   "text": "Endangered Animals Today, there are some endangered animals on Earth."
+  },
+  {
+   "first": 10,
+   "last": 22,
+   "start": 13.74,
+   "end": 17.46,
+   "text": "It means that we can find only a few of them around us."
+  },
+  {
+   "first": 23,
+   "last": 31,
+   "start": 17.46,
+   "end": 22.5,
+   "text": "Some examples are whales, pandas, tigers and Asian elephants."
+  },
+  {
+   "first": 32,
+   "last": 45,
+   "start": 22.5,
+   "end": 28.76,
+   "text": "Humans destroy the natural homes of the animals in the forests, lakes, and plains."
+  },
+  {
+   "first": 46,
+   "last": 59,
+   "start": 28.76,
+   "end": 33.9,
+   "text": "When the number of people on Earth increases, they need more places for living."
+  },
+  {
+   "first": 60,
+   "last": 66,
+   "start": 33.9,
+   "end": 36.46,
+   "text": "They cut down trees and destroy lakes."
+  },
+  {
+   "first": 67,
+   "last": 72,
+   "start": 36.46,
+   "end": 38.92,
+   "text": "They make homes and roads instead."
+  },
+  {
+   "first": 73,
+   "last": 81,
+   "start": 38.92,
+   "end": 41.98,
+   "text": "Then the animals won't have a place to live."
+  },
+  {
+   "first": 82,
+   "last": 85,
+   "start": 41.98,
+   "end": 43.26,
+   "text": "They will die out."
+  },
+  {
+   "first": 86,
+   "last": 92,
+   "start": 43.7,
+   "end": 46.4,
+   "text": "The Iranian cheetah is among these animals."
+  },
+  {
+   "first": 93,
+   "last": 102,
+   "start": 46.4,
+   "end": 49.68,
+   "text": "This wild animal lives only in the plains of Iran."
+  },
+  {
+   "first": 103,
+   "last": 111,
+   "start": 49.68,
+   "end": 53.1,
+   "text": "Now there are only a few Iranian cheetahs alive."
+  },
+  {
+   "first": 112,
+   "last": 126,
+   "start": 53.1,
+   "end": 58.14,
+   "text": "If people take care of them, there is hope for this beautiful animal to live."
+  },
+  {
+   "first": 127,
+   "last": 145,
+   "start": 58.14,
+   "end": 68.5,
+   "text": "Recently, families pay more attention to nature, students learn about saving wildlife, and some hunters don't go hunting anymore."
+  },
+  {
+   "first": 146,
+   "last": 159,
+   "start": 68.5,
+   "end": 73.16,
+   "text": "In this way, the number of cheetahs is going to increase in the future."
+  }
+ ],
+ "unspokenAudio": [
+  {
+   "start": 4.6,
+   "end": 5.4,
+   "transcript": " reading"
+  }
+ ]
+}
