@@ -22,6 +22,11 @@ need data, not code.
 * The **PDF is the canonical text**. Every displayed sentence is extracted verbatim.
 * The **audio supplies the timing only**. Word timestamps come from speech recognition and
   are aligned onto the printed words, so the reader always shows the textbook's wording.
+* The **file name assigns each recording to a section**. The recordings are named
+  `<section name><lesson number>.mp3`, so `conversation1.mp3` is the Conversation of
+  Lesson 1 and `New Words & Expressions2.mp3` is the New Words & Expressions of Lesson 2.
+  The transcript is still scored against that section, but only to corroborate the name -
+  it never moves a recording, and any disagreement is recorded in `data/audio-mapping.json`.
 * The UI contains **no lesson content at all**. It fetches manifests from `data/` at
   runtime, so Lesson 3+ is a data task.
 
@@ -37,7 +42,7 @@ tools/                      ingestion pipeline (Python)
   textbook.py               reads the book: contents pages, section pages, page text
   text.py                   splits extracted lines into blocks / sentences / words
   transcribe.py             faster-whisper word-level timestamps
-  audio_map.py              evidence-based audio -> section mapping
+  audio_map.py              file-name based audio -> section mapping, with corroboration
   align.py                  forced alignment of textbook words onto the audio timeline
   build_content.py          writes the whole data/ tree
   validate.py               regenerates the validation report
@@ -50,7 +55,7 @@ data/grade-10/              processed content (committed, fetched at runtime)
     synchronization/*.json  word + sentence timestamps for one section
     vocabulary.json         New Words & Expressions, as printed
     provenance.json         which pages and which recording each section came from
-  audio-mapping.json        every recording, its mapping, its evidence and its caveats
+  audio-mapping.json        every recording, the section its file name points at, and any caveat
 
 audio/grade-10/lesson-01|02/   the recordings, renamed to their section id
 

@@ -54,10 +54,12 @@ def main() -> int:
 
     audio_rows = []
     for entry in mapping["audio"]:
-        runner = entry["runnerUp"]
+        best = entry["contentBest"]
         evidence = (
-            f"{entry['method']}, content score {entry['confidence']:.3f}"
-            + (f"; runner-up {runner['lessonId']}/{runner['sectionId']} {runner['score']:.3f}" if runner else "")
+            f"file name; transcript overlap {entry['contentScore']:.3f}"
+            + (f"; closest section by transcript {best['lessonId']}/{best['sectionId']} {best['score']:.3f}"
+               if best and (best["lessonId"], best["sectionId"]) != (entry["lessonId"], entry["sectionId"])
+               else "")
         )
         audio_rows.append(
             f"| `{entry['file']}` | {entry['duration']:.1f}s | {entry['lessonId'] or '-'} | "
@@ -120,18 +122,31 @@ Overall word-timing coverage across every section with audio: **{total_timed}/{t
 Eight recordings were found in the source folder and eight are mapped; no recording is left
 unassigned and no section claims a recording that does not exist.
 
-The mapping is **derived, not assumed**. Every recording's transcript is scored against the
-text of all 18 lesson sections; the winning section must also agree with the section name
-encoded in the file name. A disagreement, a near-tie, or a low score is recorded as an
-uncertainty instead of being resolved by guessing.
+The mapping is taken from the **file names**, which follow a single convention: the section
+name followed by the lesson number.
+
+| file name | section | lesson |
+| --- | --- | --- |
+| `<section name><lesson number>.mp3` | the named section | the numbered lesson |
+
+`conversation1.mp3` is the Conversation of Lesson 1, `New Words & Expressions2.mp3` is the
+New Words & Expressions of Lesson 2, and so on for all eight recordings. Section names are
+matched on their words, so `&` versus `and` and differences in capitalisation between the
+recordings are handled; a name that does not follow the convention is reported as unmapped
+rather than guessed.
+
+Transcript similarity is still computed, but only to **corroborate** the assignment - it can
+never move a recording to a different section. A disagreement or a weak overlap is written
+into `data/audio-mapping.json` as a note, so a wrong file name stays visible instead of
+being silently smoothed over.
 
 """
     if notes:
         report += "### Uncertain mappings\n\n" + "\n".join(notes) + "\n\n"
     else:
         report += (
-            "### Uncertain mappings\n\nNone. Every recording was confirmed independently by "
-            "content score and file name, with a clear margin over the runner-up.\n\n"
+            "### Uncertain mappings\n\nNone. All eight file names follow the convention, and in "
+            "every case the transcript independently agrees with the section the name points at.\n\n"
         )
 
     report += """## Synchronization status

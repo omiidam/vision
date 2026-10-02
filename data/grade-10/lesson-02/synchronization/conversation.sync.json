@@ -8,11 +8,11 @@
  "confidence": 0.765,
  "mapping": {
   "status": "confirmed",
-  "method": "transcript-similarity+filename",
+  "method": "filename (conversation, name match 1.00)",
   "contentScore": 0.9812,
-  "runnerUp": {
-   "score": 0.7438,
-   "lessonId": "lesson-01",
+  "contentBest": {
+   "score": 0.9812,
+   "lessonId": "lesson-02",
    "sectionId": "conversation"
   },
   "notes": []

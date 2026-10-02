@@ -1,19 +1,30 @@
 {
  "generatedBy": "tools/build_content.py",
  "sourceDirectory": "10th-class",
+ "rule": {
+  "authoritative": "filename",
+  "pattern": "<section name><lesson number>.mp3",
+  "examples": {
+   "conversation1.mp3": "lesson-01 / conversation",
+   "New Words & Expressions2.mp3": "lesson-02 / new-words-and-expressions",
+   "Listening & Speaking2.mp3": "lesson-02 / listening-and-speaking"
+  },
+  "contentSimilarity": "corroboration only; it never changes the assignment"
+ },
  "audio": [
   {
    "file": "conversation1.mp3",
    "duration": 62.589,
    "lessonId": "lesson-01",
    "sectionId": "conversation",
-   "confidence": 0.9752,
+   "rule": "filename",
+   "contentScore": 0.9752,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.7921,
+   "method": "filename (conversation, name match 1.00)",
+   "contentBest": {
+    "score": 0.9752,
     "lessonId": "lesson-01",
-    "sectionId": "reading"
+    "sectionId": "conversation"
    },
    "notes": []
   },
@@ -22,12 +33,13 @@
    "duration": 86.309,
    "lessonId": "lesson-02",
    "sectionId": "conversation",
-   "confidence": 0.9812,
+   "rule": "filename",
+   "contentScore": 0.9812,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.7438,
-    "lessonId": "lesson-01",
+   "method": "filename (conversation, name match 1.00)",
+   "contentBest": {
+    "score": 0.9812,
+    "lessonId": "lesson-02",
     "sectionId": "conversation"
    },
    "notes": []
@@ -37,13 +49,14 @@
    "duration": 85.238,
    "lessonId": "lesson-02",
    "sectionId": "listening-and-speaking",
-   "confidence": 0.8649,
+   "rule": "filename",
+   "contentScore": 0.8649,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.7635,
+   "method": "filename (listening and speaking, name match 0.90)",
+   "contentBest": {
+    "score": 0.8649,
     "lessonId": "lesson-02",
-    "sectionId": "pronunciation"
+    "sectionId": "listening-and-speaking"
    },
    "notes": []
   },
@@ -52,13 +65,14 @@
    "duration": 75.624,
    "lessonId": "lesson-01",
    "sectionId": "listening-and-speaking",
-   "confidence": 0.9058,
+   "rule": "filename",
+   "contentScore": 0.9058,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.808,
+   "method": "filename (listening and speaking, name match 1.00)",
+   "contentBest": {
+    "score": 0.9058,
     "lessonId": "lesson-01",
-    "sectionId": "pronunciation"
+    "sectionId": "listening-and-speaking"
    },
    "notes": []
   },
@@ -67,13 +81,14 @@
    "duration": 76.173,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
-   "confidence": 0.9703,
+   "rule": "filename",
+   "contentScore": 0.9703,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.7415,
+   "method": "filename (new words and expressions, name match 0.92)",
+   "contentBest": {
+    "score": 0.9703,
     "lessonId": "lesson-02",
-    "sectionId": "reading"
+    "sectionId": "new-words-and-expressions"
    },
    "notes": []
   },
@@ -82,13 +97,14 @@
    "duration": 74.736,
    "lessonId": "lesson-01",
    "sectionId": "new-words-and-expressions",
-   "confidence": 0.9513,
+   "rule": "filename",
+   "contentScore": 0.9513,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.7655,
+   "method": "filename (new words and expressions, name match 1.00)",
+   "contentBest": {
+    "score": 0.9513,
     "lessonId": "lesson-01",
-    "sectionId": "reading"
+    "sectionId": "new-words-and-expressions"
    },
    "notes": []
   },
@@ -97,13 +113,14 @@
    "duration": 83.513,
    "lessonId": "lesson-01",
    "sectionId": "reading",
-   "confidence": 0.9906,
+   "rule": "filename",
+   "contentScore": 0.9906,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.775,
+   "method": "filename (reading, name match 1.00)",
+   "contentBest": {
+    "score": 0.9906,
     "lessonId": "lesson-01",
-    "sectionId": "conversation"
+    "sectionId": "reading"
    },
    "notes": []
   },
@@ -112,13 +129,14 @@
    "duration": 87.327,
    "lessonId": "lesson-02",
    "sectionId": "reading",
-   "confidence": 0.9855,
+   "rule": "filename",
+   "contentScore": 0.9855,
    "status": "confirmed",
-   "method": "transcript-similarity+filename",
-   "runnerUp": {
-    "score": 0.8256,
+   "method": "filename (reading, name match 1.00)",
+   "contentBest": {
+    "score": 0.9855,
     "lessonId": "lesson-02",
-    "sectionId": "new-words-and-expressions"
+    "sectionId": "reading"
    },
    "notes": []
   }

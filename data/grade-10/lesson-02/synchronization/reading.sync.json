@@ -8,12 +8,12 @@
  "confidence": 0.9825,
  "mapping": {
   "status": "confirmed",
-  "method": "transcript-similarity+filename",
+  "method": "filename (reading, name match 1.00)",
   "contentScore": 0.9855,
-  "runnerUp": {
-   "score": 0.8256,
+  "contentBest": {
+   "score": 0.9855,
    "lessonId": "lesson-02",
-   "sectionId": "new-words-and-expressions"
+   "sectionId": "reading"
   },
   "notes": []
  },

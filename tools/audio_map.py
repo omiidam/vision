@@ -1,14 +1,17 @@
-"""Inventory of the recorded audio and evidence-based mapping to textbook sections.
+"""Inventory of the recorded audio and its mapping to textbook sections.
 
-The mapping is *derived*, never assumed.  Two independent signals are combined:
+**The file name is the authoritative mapping rule.**  The recordings follow a consistent
+convention: the section name followed by the lesson number, for example
+``new words and expressions1.mp3`` -> New Words & Expressions of Lesson 1, and
+``Listening & Speaking2.mp3`` -> Listening & Speaking of Lesson 2.  That pattern assigns
+every recording to exactly one section, so the mapping is read off the name rather than
+inferred.
 
-1. **Filename evidence** - the recorded file names carry a section name and a lesson
-   number (``new words and expressions1.mp3``).  This only produces a *candidate*.
-2. **Content evidence** - each recording's transcript is scored against the textbook
-   text of every section of every lesson.
-
-A candidate is accepted only when the content evidence independently ranks that same
-section first.  Everything else is reported as uncertain instead of being guessed.
+Content similarity is kept, but only as **corroboration**: each recording's transcript is
+still scored against the textbook text of the section the name points at.  A disagreement
+is never allowed to move the assignment - the name decides - but it is recorded as a note
+in the generated metadata instead of being silently dropped.  A name that cannot be parsed
+is reported as unmapped; it is never guessed from content.
 """
 
 from __future__ import annotations
@@ -34,22 +37,29 @@ class AudioMapping:
     audio: AudioFile
     lesson_id: str | None = None
     section_id: str | None = None
-    confidence: float = 0.0
-    method: str = "none"
+    content_score: float = 0.0
+    method: str = "filename"
     notes: list[str] = field(default_factory=list)
-    runner_up: tuple[float, str, str] | None = None
+    content_best: tuple[float, str, str] | None = None
+    blocked: bool = False
 
     @property
-    def certain(self) -> bool:
-        return self.section_id is not None and self.confidence >= 0.55 and not self.notes
+    def assigned(self) -> bool:
+        """True when this recording will actually be wired up to a section."""
+        return self.section_id is not None and not self.blocked
 
     @property
     def status(self) -> str:
+        """``confirmed`` = the name parsed and the content agrees.
+
+        ``uncertain`` = the name parsed and assigned the section, but the transcript does
+        not corroborate it.  The assignment still follows the name; the doubt is recorded.
+        """
         if self.section_id is None:
             return "unmapped"
-        if self.certain:
-            return "confirmed"
-        return "uncertain"
+        if self.blocked:
+            return "conflict"
+        return "confirmed" if self.content_score >= CORROBORATION_FLOOR else "uncertain"
 
 
 def scan(source_dir: Path) -> list[AudioFile]:
@@ -57,8 +67,8 @@ def scan(source_dir: Path) -> list[AudioFile]:
     return [AudioFile(path=p, name=p.name, stem=p.stem) for p in files]
 
 
-def _tokens(text: str) -> list[str]:
-    return [w for w in (normalize_word(t) for t in text.split()) if w]
+CORROBORATION_FLOOR = 0.25   # below this the transcript does not back up the file name
+NAME_MATCH_FLOOR = 0.72     # fuzzy fallback when a name is not written exactly
 
 
 def transcript_similarity(speech: list[str], textbook: list[str]) -> float:
@@ -73,22 +83,32 @@ def transcript_similarity(speech: list[str], textbook: list[str]) -> float:
     return round(0.5 * coverage + 0.5 * min(1.0, density * 3), 4)
 
 
-def filename_candidate(name: str, section_ids: list[str]) -> tuple[str | None, int | None]:
-    """Read a lesson number and section hint out of a recorded file name."""
+def parse_filename(name: str, section_ids: list[str]) -> tuple[str | None, int | None, float]:
+    """Read the section and lesson number out of a recorded file name.
+
+    ``"New Words & Expressions2.mp3"`` -> ``("new-words-and-expressions", 2, 1.0)``.
+    Section names are matched on their words, so ``&`` versus ``and`` and the difference
+    in capitalisation between recordings are both handled.  The third value is how
+    closely the name matched, which is 1.0 for a word-for-word match.
+    """
     stem = Path(name).stem.lower()
-    digits = re.findall(r"\d+", stem)
-    lesson_number = int(digits[-1]) if digits else None
+    numbers = re.findall(r"\d+", stem)
+    lesson_number = int(numbers[-1]) if numbers else None
 
-    squashed = re.sub(r"[^a-z]+", " ", stem)
-    squashed = re.sub(r"\b\d+\b", "", squashed).strip()
-    squashed = re.sub(r"\s+", " ", squashed).strip()
-
+    words = re.sub(r"\d+", " ", stem).split()
     best, best_score = None, 0.0
     for section_id in section_ids:
-        score = difflib.SequenceMatcher(None, squashed, section_id.replace("-", " ")).ratio()
+        target = section_id.replace("-", " ").split()
+        # exact when the name carries every word of the section (and nothing else)
+        if words == target:
+            return section_id, lesson_number, 1.0
+        if set(target) <= set(words):
+            score = 0.95
+        else:
+            score = difflib.SequenceMatcher(None, " ".join(words), " ".join(target)).ratio()
         if score > best_score:
             best, best_score = section_id, score
-    return (best if best_score >= 0.6 else None), lesson_number
+    return (best if best_score >= NAME_MATCH_FLOOR else None), lesson_number, best_score
 
 
 def build_mapping(
@@ -97,44 +117,58 @@ def build_mapping(
     section_text: dict[tuple[str, str], list[str]],
     section_ids: list[str],
 ) -> AudioMapping:
-    transcript = [normalize_word(w) for w in transcript]
-    scores: list[tuple[float, str, str]] = []
-    for (lesson_id, section_id), words in section_text.items():
-        scores.append((transcript_similarity(transcript, words), lesson_id, section_id))
-    scores.sort(key=lambda row: (row[0], row[1], row[2]), reverse=True)
-
+    """Assign the recording named by its file name, then check the transcript agrees."""
     mapping = AudioMapping(audio=audio)
+
+    section_id, lesson_number, name_score = parse_filename(audio.name, section_ids)
+    if section_id is None:
+        mapping.method = "none"
+        mapping.notes.append(
+            f"file name '{audio.name}' does not follow the '<section><lesson number>' "
+            f"convention, so it was not assigned to a section"
+        )
+        return mapping
+    if lesson_number is None:
+        mapping.method = "filename (no lesson number)"
+        mapping.notes.append(
+            f"file name names the section '{section_id}' but carries no lesson number; "
+            f"assigned to lesson 1 by convention"
+        )
+        lesson_number = 1
+
+    mapping.section_id = section_id
+    mapping.lesson_id = f"lesson-{lesson_number:02d}"
+    mapping.method = f"filename ({section_id.replace('-', ' ')}, name match {name_score:.2f})"
+
+    # Corroboration only - it records evidence, it never moves the assignment.
+    transcript = [normalize_word(w) for w in transcript]
+    scores = sorted(
+        ((transcript_similarity(transcript, words), lesson, section)
+         for (lesson, section), words in section_text.items()),
+        key=lambda row: (row[0], row[1], row[2]),
+        reverse=True,
+    )
     if not scores:
-        mapping.notes.append("no section text available")
+        mapping.notes.append("no section text available to corroborate the file name")
         return mapping
 
-    best_score, best_lesson, best_section = scores[0]
-    mapping.runner_up = (scores[1][0], scores[1][1], scores[1][2]) if len(scores) > 1 else None
-    mapping.confidence = best_score
+    mapping.content_best = scores[0]
+    mapping.content_score = next(
+        (score for score, lesson, section in scores
+         if lesson == mapping.lesson_id and section == mapping.section_id),
+        0.0,
+    )
 
-    candidate_section, candidate_lesson = filename_candidate(audio.name, section_ids)
-    expected_lesson = f"lesson-{candidate_lesson:02d}" if candidate_lesson else None
-
-    if best_score < 0.25:
-        mapping.notes.append(f"low transcript similarity to every section (best {best_score})")
-        return mapping
-
-    if candidate_section and best_section != candidate_section:
+    top_score, top_lesson, top_section = scores[0]
+    if (top_lesson, top_section) != (mapping.lesson_id, mapping.section_id):
         mapping.notes.append(
-            f"filename suggests '{candidate_section}' but content matches '{best_section}' better"
+            f"the transcript resembles {top_lesson}/{top_section} most ({top_score:.3f}); "
+            f"the file name is authoritative, so it stays mapped to "
+            f"{mapping.lesson_id}/{mapping.section_id} (score {mapping.content_score:.3f})"
         )
-    if expected_lesson and best_lesson != expected_lesson:
+    if mapping.content_score < CORROBORATION_FLOOR:
         mapping.notes.append(
-            f"filename suggests {expected_lesson} but content matches {best_lesson} better"
+            f"the transcript barely overlaps the text of {mapping.lesson_id}/{mapping.section_id} "
+            f"({mapping.content_score:.3f}); check that this recording really belongs here"
         )
-
-    if mapping.runner_up and best_score - mapping.runner_up[0] < 0.05:
-        mapping.notes.append(
-            f"content score is nearly tied with {mapping.runner_up[1]}/{mapping.runner_up[2]} "
-            f"({mapping.runner_up[0]})"
-        )
-
-    mapping.lesson_id = best_lesson
-    mapping.section_id = best_section
-    mapping.method = "transcript-similarity" + ("+filename" if candidate_section == best_section else "")
     return mapping

@@ -8,12 +8,12 @@
  "confidence": 0.3306,
  "mapping": {
   "status": "confirmed",
-  "method": "transcript-similarity+filename",
+  "method": "filename (listening and speaking, name match 1.00)",
   "contentScore": 0.9058,
-  "runnerUp": {
-   "score": 0.808,
+  "contentBest": {
+   "score": 0.9058,
    "lessonId": "lesson-01",
-   "sectionId": "pronunciation"
+   "sectionId": "listening-and-speaking"
   },
   "notes": []
  },

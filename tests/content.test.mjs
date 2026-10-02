@@ -71,9 +71,50 @@ test('every source recording is mapped and reported', () => {
   assert.equal(mapped.length, sources.length, 'every recording must be mapped to a section')
   assert.deepEqual(mapping.unmapped, [])
   for (const entry of mapping.audio) {
-    assert.ok(entry.confidence > 0.5, `${entry.file} confidence too low: ${entry.confidence}`)
+    assert.equal(entry.rule, 'filename')
+    assert.ok(entry.contentScore > 0.5, `${entry.file} transcript barely corroborates the name`)
     assert.equal(entry.status, 'confirmed')
+    assert.deepEqual(entry.notes, [])
   }
+})
+
+test('the file name alone decides which section a recording belongs to', () => {
+  const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
+  // The recordings follow "<section name><lesson number>.mp3".  This table is derived
+  // from that convention alone; the transcripts are not consulted here on purpose.
+  const expected = {
+    'conversation1.mp3': ['lesson-01', 'conversation'],
+    'conversation2.mp3': ['lesson-02', 'conversation'],
+    'new words and expressions1.mp3': ['lesson-01', 'new-words-and-expressions'],
+    'New Words & Expressions2.mp3': ['lesson-02', 'new-words-and-expressions'],
+    'reading1.mp3': ['lesson-01', 'reading'],
+    'reading2.mp3': ['lesson-02', 'reading'],
+    'listening and speaking1.mp3': ['lesson-01', 'listening-and-speaking'],
+    'Listening & Speaking2.mp3': ['lesson-02', 'listening-and-speaking'],
+  }
+  const byName = Object.fromEntries(mapping.audio.map((entry) => [entry.file, entry]))
+  assert.deepEqual(Object.keys(byName).sort(), Object.keys(expected).sort())
+  for (const [file, [lessonId, sectionId]] of Object.entries(expected)) {
+    assert.equal(byName[file].lessonId, lessonId, `${file} is on the wrong lesson`)
+    assert.equal(byName[file].sectionId, sectionId, `${file} is on the wrong section`)
+  }
+})
+
+test('each mapped recording sits in the manifest of the lesson its name names', () => {
+  const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
+  for (const entry of mapping.audio) {
+    const lesson = readJson(path.join(ROOT, 'data', 'grade-10', entry.lessonId, 'manifest.json'))
+    const section = lesson.sections.find((s) => s.id === entry.sectionId)
+    assert.ok(section, `${entry.file} has no section in ${entry.lessonId}`)
+    assert.ok(section.audio, `${entry.file} is not attached to its section`)
+    assert.equal(section.audio, `audio/grade-10/${entry.lessonId}/${entry.sectionId}.mp3`)
+  }
+})
+
+test('no two recordings claim the same section', () => {
+  const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
+  const claimed = mapping.audio.map((entry) => `${entry.lessonId}/${entry.sectionId}`)
+  assert.equal(new Set(claimed).size, claimed.length, 'a section is claimed twice')
 })
 
 test('word timestamps are monotonic and inside the recording', () => {

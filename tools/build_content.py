@@ -151,12 +151,12 @@ def build_sync(words, speech, duration, mapping, section, lesson_id) -> dict:
         "mapping": {
             "status": mapping.status,
             "method": mapping.method,
-            "contentScore": round(mapping.confidence, 4),
-            "runnerUp": (
-                {"score": round(mapping.runner_up[0], 4),
-                 "lessonId": mapping.runner_up[1],
-                 "sectionId": mapping.runner_up[2]}
-                if mapping.runner_up else None
+            "contentScore": round(mapping.content_score, 4),
+            "contentBest": (
+                {"score": round(mapping.content_best[0], 4),
+                 "lessonId": mapping.content_best[1],
+                 "sectionId": mapping.content_best[2]}
+                if mapping.content_best else None
             ),
             "notes": mapping.notes,
         },
@@ -230,6 +230,9 @@ def build() -> dict:
         for audio in audio_files
     ]
 
+    # Two recordings named after the same section of the same lesson cannot both be used.
+    # The rule cannot break the tie, so the clash is reported and the later name is left
+    # unassigned rather than being resolved by content similarity.
     claimed: dict[tuple[str, str], str] = {}
     for mapping in mappings:
         if mapping.section_id is None:
@@ -237,9 +240,10 @@ def build() -> dict:
         key = (mapping.lesson_id, mapping.section_id)
         if key in claimed:
             mapping.notes.append(
-                f"conflicts with {claimed[key]}, which scored "
-                f"{max(m.confidence for m in mappings if (m.lesson_id, m.section_id) == key):.3f}"
+                f"its name points at {mapping.lesson_id}/{mapping.section_id}, which "
+                f"{claimed[key]} already claims; left unassigned"
             )
+            mapping.blocked = True
             continue
         claimed[key] = mapping.audio.name
 
@@ -252,12 +256,13 @@ def build() -> dict:
         for section in lesson.sections:
             data = sections[lesson_id][section.section_id]
             mapping = next(
-                (m for m in mappings if m.lesson_id == lesson_id and m.section_id == section.section_id),
+                (m for m in mappings if m.assigned
+                 and m.lesson_id == lesson_id and m.section_id == section.section_id),
                 None,
             )
             audio_name = None
             audio_duration = 0.0
-            if mapping and mapping.section_id:
+            if mapping:
                 audio_name = f"audio/grade-10/{lesson_id}/{section.section_id}.mp3"
                 audio_duration = mapping.audio.duration
 
@@ -289,7 +294,7 @@ def build() -> dict:
                     "data/grade-10/%s/synchronization/%s.sync.json" % (lesson_id, section.section_id)
                     if audio_name else None
                 ),
-                "syncConfidence": round(mapping.confidence, 4) if mapping else None,
+                "syncConfidence": round(mapping.content_score, 4) if mapping else None,
                 "syncStatus": mapping.status if mapping else "no-audio",
             })
 
@@ -363,7 +368,8 @@ def build() -> dict:
                         "textSource": "verbatim PDF text extraction (pymupdf)",
                         "audio": next(
                             (m.audio.name for m in mappings
-                             if m.lesson_id == lesson.lesson_id and m.section_id == s.section_id),
+                             if m.assigned and m.lesson_id == lesson.lesson_id
+                             and m.section_id == s.section_id),
                             None,
                         ),
                     }
@@ -372,30 +378,41 @@ def build() -> dict:
             },
         )
 
-    unmapped = [m for m in mappings if m.section_id is None]
+    unmapped = [m.audio.name for m in mappings if not m.assigned]
     write_json(
         ROOT / "data" / "audio-mapping.json",
         {
             "generatedBy": GENERATED_BY,
             "sourceDirectory": "10th-class",
+            "rule": {
+                "authoritative": "filename",
+                "pattern": "<section name><lesson number>.mp3",
+                "examples": {
+                    "conversation1.mp3": "lesson-01 / conversation",
+                    "New Words & Expressions2.mp3": "lesson-02 / new-words-and-expressions",
+                    "Listening & Speaking2.mp3": "lesson-02 / listening-and-speaking",
+                },
+                "contentSimilarity": "corroboration only; it never changes the assignment",
+            },
             "audio": [
                 {
                     "file": m.audio.name,
                     "duration": round(m.audio.duration, 3),
                     "lessonId": m.lesson_id,
                     "sectionId": m.section_id,
-                    "confidence": round(m.confidence, 4),
+                    "rule": "filename",
+                    "contentScore": round(m.content_score, 4),
                     "status": m.status,
                     "method": m.method,
-                    "runnerUp": (
-                        {"score": round(m.runner_up[0], 4), "lessonId": m.runner_up[1],
-                         "sectionId": m.runner_up[2]} if m.runner_up else None
+                    "contentBest": (
+                        {"score": round(m.content_best[0], 4), "lessonId": m.content_best[1],
+                         "sectionId": m.content_best[2]} if m.content_best else None
                     ),
                     "notes": m.notes,
                 }
                 for m in mappings
             ],
-            "unmapped": [m.audio.name for m in unmapped],
+            "unmapped": unmapped,
         },
     )
 
@@ -407,4 +424,5 @@ if __name__ == "__main__":
     result = build()
     for mapping in result["mappings"]:
         print(f"{mapping.audio.name:32s} -> {mapping.lesson_id}/{mapping.section_id} "
-              f"conf={mapping.confidence:.3f} status={mapping.status} notes={mapping.notes}")
+              f"by filename, content={mapping.content_score:.3f} status={mapping.status} "
+              f"notes={mapping.notes}")
