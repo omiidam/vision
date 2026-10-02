@@ -2,7 +2,7 @@ import { loadLesson, loadSectionText, loadSync, loadVocabulary, assetUrl } from 
 import { AudioPlayer } from '../player'
 import { SyncEngine } from '../sync'
 import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary } from '../types'
-import { escapeHtml } from './home'
+import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
 
 export interface ReaderHandlers {
   /** Called every animation frame while the recording is playing. */
@@ -71,14 +71,17 @@ export class LessonView {
     const index = lesson.sections.findIndex((entry) => entry.id === section.id)
     const previous = lesson.sections[index - 1]
     const next = lesson.sections[index + 1]
+    const dir = documentDirection()
+    const back = arrow(dir, 'back')
+    const forward = arrow(dir, 'forward')
     return `
-      <header class="page-header">
-        <a class="back" href="#/">← All lessons</a>
-        <p class="eyebrow">Lesson ${lesson.number} &middot; ${escapeHtml(lesson.tocLine)}</p>
+      <header class="page-header" lang="en" dir="ltr">
+        <a class="back" href="#/">${back} All lessons</a>
+        <p class="eyebrow">Lesson ${bdi(String(lesson.number))} &middot; ${bdi(lesson.tocLine)}</p>
         <h1>${escapeHtml(lesson.title)}</h1>
       </header>
 
-      <nav class="tabs" aria-label="Lesson sections">
+      <nav class="tabs" aria-label="Lesson sections" lang="en" dir="ltr">
         ${lesson.sections.map((entry) => `
           <a class="tab${entry.id === section.id ? ' active' : ''}"
              href="#/lesson/${lesson.id}/${entry.id}">
@@ -90,22 +93,22 @@ export class LessonView {
       <article class="card reader" id="reader">
         <div class="reader-head">
           <div>
-            <h2 id="section-title">${escapeHtml(section.label)}</h2>
-            <p class="muted" id="section-sub"></p>
+            <h2 id="section-title" lang="en" dir="ltr">${escapeHtml(section.label)}</h2>
+            <p class="muted" id="section-sub" lang="en" dir="ltr"></p>
           </div>
-          <span class="badge" id="sync-badge"></span>
+          <span class="badge" id="sync-badge" lang="en" dir="ltr"></span>
         </div>
-        <div class="reader-body" id="reader-body"><p class="muted">Loading text...</p></div>
+        <div class="reader-body" id="reader-body" lang="en" dir="ltr"><p class="muted">Loading text...</p></div>
         <div id="reader-controls"></div>
         <div id="vocabulary"></div>
       </article>
 
-      <nav class="pager">
+      <nav class="pager" lang="en" dir="ltr">
         ${previous
-          ? `<a class="button ghost" href="#/lesson/${lesson.id}/${previous.id}">← ${escapeHtml(previous.label)}</a>`
+          ? `<a class="button ghost" href="#/lesson/${lesson.id}/${previous.id}">${back} ${escapeHtml(previous.label)}</a>`
           : '<span></span>'}
         ${next
-          ? `<a class="button ghost" href="#/lesson/${lesson.id}/${next.id}">${escapeHtml(next.label)} →</a>`
+          ? `<a class="button ghost" href="#/lesson/${lesson.id}/${next.id}">${escapeHtml(next.label)} ${forward}</a>`
           : '<span></span>'}
       </nav>
     `
@@ -129,7 +132,8 @@ export class LessonView {
     this.activeWord = -1
     this.activeSentence = -1
 
-    sub.textContent = `${section.title} · pages ${section.pages[0]}–${section.pages[1]}`
+    sub.innerHTML = `${escapeHtml(section.title)} &middot; ${bdi(`pages ${section.pages[0]}–${section.pages[1]}`)}`
+    applyLanguage(sub, sub.textContent ?? '')
     body.innerHTML = '<p class="muted">Loading text...</p>'
     controls.innerHTML = ''
 
@@ -141,7 +145,7 @@ export class LessonView {
         section.sync ? loadSync(section.sync) : Promise.resolve(null),
       ])
     } catch (error) {
-      body.innerHTML = `<p class="error">${escapeHtml((error as Error).message)}</p>`
+      body.innerHTML = `<p class="error" lang="en" dir="ltr">${escapeHtml((error as Error).message)}</p>`
       return
     }
 
@@ -160,6 +164,9 @@ export class LessonView {
       const paragraph = document.createElement('p')
       paragraph.className = 'paragraph'
       paragraph.dataset.page = String(block.page)
+      // The textbook text is English; tag it from the block's own text so a block that
+      // ever carries Persian is laid out right-to-left by itself.
+      applyLanguage(paragraph, block.lines.join(' '))
 
       const tokens = block.lines.join(' ').split(/\s+/).filter(Boolean)
       for (const token of tokens) {
@@ -168,6 +175,7 @@ export class LessonView {
         const span = document.createElement('span')
         span.className = 'word'
         span.textContent = token
+        applyLanguage(span, token)
         if (timed && timed.start !== null) {
           span.dataset.start = String(timed.start)
           span.dataset.index = String(wordIndex)
@@ -175,6 +183,7 @@ export class LessonView {
           span.setAttribute('role', 'button')
           span.setAttribute('tabindex', '0')
           span.title = `Play from ${timed.start.toFixed(2)}s`
+          span.setAttribute('aria-label', `Play from ${timed.start.toFixed(2)} seconds: ${token}`)
           this.words.set(wordIndex, { el: span, index: wordIndex, start: timed.start })
         } else {
           span.classList.add('untimed')
@@ -205,37 +214,42 @@ export class LessonView {
     if (!host) return
     const entry = section ?? this.currentEntry
     if (!entry || !entry.audio) {
-      host.innerHTML = `<p class="muted">This section has no recording in the source folder, so it is read silently.</p>`
+      host.innerHTML = `<p class="muted" lang="en" dir="ltr">This section has no recording in the source folder, so it is read silently.</p>`
       if (badge) badge.textContent = 'text only'
       return
     }
 
     host.innerHTML = `
-      <div class="transport">
+      <div class="transport" lang="en" dir="ltr">
         <button class="play" id="play" aria-label="Play or pause">▶</button>
-        <div class="track" id="track" role="slider" aria-label="Seek" tabindex="0">
+        <div class="track" id="track" role="slider" aria-label="Seek" tabindex="0" dir="ltr">
           <div class="track-fill" id="track-fill"></div>
         </div>
-        <span class="time"><span id="time-now">0:00</span> / <span id="time-total">${formatTime(entry.duration)}</span></span>
+        <span class="time" dir="ltr"><bdi id="time-now">0:00</bdi> / <bdi id="time-total">${formatTime(entry.duration)}</bdi></span>
       </div>
-      <p class="muted small" id="sync-note"></p>
+      <p class="muted small" id="sync-note" lang="en" dir="ltr"></p>
     `
     this.player.load(assetUrl(entry.audio))
     if (badge) {
-      badge.textContent = `${Math.round((this.engine?.timedRatio ?? 0) * 100)}% word-timed`
+      badge.innerHTML = `${bdi(`${Math.round((this.engine?.timedRatio ?? 0) * 100)}%`)} word-timed`
       badge.title = `Alignment confidence ${(sync?.confidence ?? 0).toFixed(2)}`
     }
     const note = host.querySelector<HTMLElement>('#sync-note')
     if (note) {
-      note.textContent = entry.syncStatus === 'confirmed'
-        ? `Recorded file: ${sync?.sourceAudioFile ?? ''}`
-        : `Mapping is ${entry.syncStatus} - ${sync?.mapping.notes.join('; ') || 'see data/audio-mapping.json'}`
+      // The file name and the mapping notes are the mixed runs here: a name like
+      // "Listening & Speaking2.mp3" must not be reordered inside right-to-left text.
+      note.innerHTML = entry.syncStatus === 'confirmed'
+        ? `Recorded file: ${bdi(sync?.sourceAudioFile ?? '')}`
+        : `Mapping is ${bdi(entry.syncStatus)} - ${bdi(sync?.mapping.notes.join('; ') || 'see data/audio-mapping.json')}`
     }
 
     host.querySelector<HTMLButtonElement>('#play')!.addEventListener('click', () => this.player.toggle())
     const track = host.querySelector<HTMLElement>('#track')!
     const seekFromEvent = (event: MouseEvent) => {
       const rect = track.getBoundingClientRect()
+      if (rect.width === 0) return
+      // The track is marked dir="ltr", so its inline start is always the left edge and
+      // the progress bar fills the same way in either document direction.
       const ratio = (event.clientX - rect.left) / rect.width
       this.seekTo(Math.max(0, Math.min(1, ratio)) * this.totalDuration())
     }
@@ -277,6 +291,8 @@ export class LessonView {
     const now = this.root.querySelector<HTMLElement>('#time-now')
     const total = this.totalDuration()
     if (fill) fill.style.width = total > 0 ? `${Math.min(100, Math.max(0, (time / total) * 100))}%` : '0%'
+    // A <bdi> element keeps its own direction, so "0:31" never becomes "31:0" when the
+    // surrounding text is right-to-left.
     if (now) now.textContent = formatTime(time)
 
     const engine = this.engine
@@ -325,19 +341,30 @@ export class LessonView {
     const host = this.root.querySelector<HTMLElement>('#vocabulary')
     if (!host || vocabulary.items.length === 0) return
     host.innerHTML = `
-      <h3>New Words &amp; Expressions <span class="muted small">page ${vocabulary.source.definitionPages[0]}</span></h3>
+      <h3>New Words &amp; Expressions <span class="muted small">${bdi(`page ${vocabulary.source.definitionPages[0]}`)}</span></h3>
       <dl class="vocab">
-        ${vocabulary.items.map((item) => `
+        ${vocabulary.items.map((item) => {
+          const headword = escapeHtml(item.word)
+          // The Persian gloss is empty in the source book, so it is only rendered when
+          // there is something to show; it carries dir="rtl" and lang="fa" on its own.
+          const persian = item.meaningFa
+            ? `<span class="meaning-fa" lang="fa" dir="rtl">${escapeHtml(item.meaningFa)}</span>`
+            : ''
+          return `
           <div class="vocab-item">
-            <dt>${escapeHtml(item.word)}</dt>
+            <dt lang="en" dir="ltr">${headword}</dt>
             <dd>
-              ${item.meaningEn ? escapeHtml(item.meaningEn) : '<span class="muted">not given in the book</span>'}
-              ${item.examples.map((example) => `<span class="example">${escapeHtml(example)}</span>`).join('')}
+              ${item.meaningEn ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>` : '<span class="muted">not given in the book</span>'}
+              ${persian}
+              ${item.examples.map((example) => `<span class="example" lang="en" dir="ltr">${escapeHtml(example)}</span>`).join('')}
             </dd>
           </div>
-        `).join('')}
+        `
+        }).join('')}
       </dl>
     `
+    host.setAttribute('lang', 'en')
+    host.setAttribute('dir', 'ltr')
   }
 }
 

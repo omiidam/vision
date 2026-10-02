@@ -1,8 +1,6 @@
 import { loadGrade } from '../content'
 import { applyLanguage, bdi, escapeHtml } from '../direction'
 
-export { escapeHtml }
-
 export function renderHome(root: HTMLElement, grade: number): void {
   const heading = `Grade ${grade} English`
   const intro =
