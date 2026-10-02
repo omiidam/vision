@@ -52,7 +52,7 @@ jobs:
           echo "Android platform $compile_sdk, build-tools $build_tools"
 
       - name: Install the Android SDK packages the project needs
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Accept licences and install SDK packages
         run: |
