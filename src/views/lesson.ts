@@ -10,6 +10,12 @@ export interface ReaderHandlers {
   onEnded(): void
 }
 
+/**
+ * The only section that carries the word list.  The vocabulary block is rendered inside
+ * that section and nowhere else, so it never repeats at the bottom of every page.
+ */
+const VOCABULARY_SECTION_ID = 'new-words-and-expressions'
+
 interface WordSpan {
   el: HTMLElement
   index: number
@@ -31,6 +37,9 @@ export class LessonView {
   private frame = 0
   private handlers: ReaderHandlers
   private currentEntry: SectionEntry | null = null
+  private vocabularySource = ''
+  /** Guards against a slow vocabulary fetch overwriting a newer section. */
+  private vocabularyToken = 0
 
   constructor(root: HTMLElement, handlers: ReaderHandlers) {
     this.root = root
@@ -63,8 +72,8 @@ export class LessonView {
 
     this.root.innerHTML = this.shell(lesson, section)
     this.bindNavigation()
+    this.vocabularySource = lesson.vocabulary
     await this.openSection(section)
-    void loadVocabulary(lesson.vocabulary).then((vocab) => this.renderVocabulary(vocab)).catch(() => undefined)
   }
 
   private shell(lesson: LessonManifest, section: SectionEntry): string {
@@ -131,6 +140,8 @@ export class LessonView {
     this.words.clear()
     this.activeWord = -1
     this.activeSentence = -1
+    // Every section switch starts from an empty vocabulary block.
+    this.root.querySelector<HTMLElement>('#vocabulary')!.innerHTML = ''
 
     sub.innerHTML = `${escapeHtml(section.title)} &middot; ${bdi(`pages ${section.pages[0]}–${section.pages[1]}`)}`
     applyLanguage(sub, sub.textContent ?? '')
@@ -153,6 +164,16 @@ export class LessonView {
     this.renderText(body, text, sync)
     this.renderTransport(section, sync)
     this.updateProgress(0)
+
+    if (section.id === VOCABULARY_SECTION_ID) {
+      const token = ++this.vocabularyToken
+      const path = this.vocabularySource
+      void loadVocabulary(path)
+        .then((vocab) => {
+          if (token === this.vocabularyToken) this.renderVocabulary(vocab)
+        })
+        .catch(() => undefined)
+    }
   }
 
   /** Render the canonical textbook text with one element per word. */
