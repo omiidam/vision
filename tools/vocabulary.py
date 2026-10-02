@@ -19,13 +19,13 @@ extracted by the same code with nothing to add here.  Nothing is invented: a wor
 only registered when the book actually prints it as vocabulary.
 
 Every word of a word bank is registered on its own, in the order the book prints it, and
-each one keeps the section and page it was printed on.  Because the New Words &
-Expressions page is the lesson's vocabulary page, it lists the lesson's word bank words
-as well: separately, in that same order, together with its own glossary entries.  A word
-therefore has two things worth telling apart, and both are recorded on every entry:
+each one keeps the section and page it was printed on.  A word bank is printed beside the
+text it belongs to, but the words are the lesson's vocabulary, so they are listed on the
+New Words & Expressions page and on no other section.  A word therefore has two things
+worth telling apart, and both are recorded on every entry:
 
 ``section_id``
-    the section that teaches the word - the word bank's own section.
+    the section whose word bank the word was printed in, which is where it came from.
 
 ``listed_in``
     the section whose vocabulary list the entry is written into.
@@ -105,8 +105,9 @@ class VocabularyEntry:
             "word": self.word,
             "grade": grade,
             "lessonId": lesson_id,
-            # The section that teaches the word, and the section listing it now.  They
-            # differ for a word bank word listed on the New Words page.
+            # The section the word came from, and the section listing it now.  A word
+            # bank word is printed in one section and listed on the lesson's vocabulary
+            # page, so the two are usually different.
             "sectionId": self.section_id,
             "listedIn": listed_in,
             "page": self.page,
@@ -182,7 +183,7 @@ def word_bank_items(run: str) -> list[str]:
 
 
 def word_bank_entries(doc, page_range: tuple[int, int]) -> list[tuple[int, str]]:
-    """The word bank printed on a section's pages, as ``(page, word)`` in reading order.
+    """The word bank printed on some pages, as ``(page, word)`` in reading order.
 
     The page number is the printed page, which is the same number the section's text and
     its audio are already keyed by.
@@ -220,69 +221,45 @@ def glossary_entries(lines: list[tuple[int, str]]) -> list[tuple[int, str, str, 
     return [(page, word, meaning, examples) for page, word, meaning, examples in entries]
 
 
-def entries_for_section(
+def entries_by_section(
     doc,
-    section_id: str,
-    page_range: tuple[int, int],
-    lines: list[tuple[int, str]],
-) -> list[VocabularyEntry]:
-    """Every word the section itself teaches, however the book marks it."""
-    found: list[VocabularyEntry] = []
+    section_pages: list[tuple[str, tuple[int, int]]],
+    section_lines: dict[str, list[tuple[int, str]]],
+) -> dict[str, list[VocabularyEntry]]:
+    """The vocabulary each section of a lesson lists, keyed by section id.
 
-    # One entry per word, in the order the word bank prints them.
-    for page, word in word_bank_entries(doc, page_range):
-        found.append(
-            VocabularyEntry(
-                word=word,
-                page=page,
-                source=WORD_BANK,
-                section_id=section_id,
-                position=len(found),
+    A word bank is printed beside the text it belongs to - a Conversation opens with one -
+    but those words are the lesson's vocabulary rather than that section's, so they are
+    collected here and listed on the New Words & Expressions page.  No other section
+    repeats them: a section's own list holds only the words it defines itself.
+    """
+    word_bank: list[VocabularyEntry] = []
+    for section_id, pages in section_pages:
+        for page, word in word_bank_entries(doc, pages):
+            word_bank.append(
+                VocabularyEntry(word=word, page=page, source=WORD_BANK, section_id=section_id)
             )
+
+    glossary = [
+        VocabularyEntry(
+            word=word,
+            page=page,
+            source=GLOSSARY,
+            section_id=NEW_WORDS_SECTION_ID,
+            meaning_en=meaning,
+            examples=examples,
         )
+        for page, word, meaning, examples in glossary_entries(
+            section_lines.get(NEW_WORDS_SECTION_ID, [])
+        )
+    ]
 
-    if section_id == NEW_WORDS_SECTION_ID:
-        for page, word, meaning, examples in glossary_entries(lines):
-            found.append(
-                VocabularyEntry(
-                    word=word,
-                    page=page,
-                    source=GLOSSARY,
-                    section_id=section_id,
-                    position=len(found),
-                    meaning_en=meaning,
-                    examples=examples,
-                )
-            )
-    return found
+    return {
+        section_id: _renumber(word_bank + glossary) if section_id == NEW_WORDS_SECTION_ID else []
+        for section_id, _ in section_pages
+    }
 
 
 def _renumber(entries: list[VocabularyEntry]) -> list[VocabularyEntry]:
     """Number a list from zero, so ``position`` always describes the list it is in."""
     return [replace(entry, position=index) for index, entry in enumerate(entries)]
-
-
-def listing_for_new_words(
-    per_section: dict[str, list[VocabularyEntry]],
-    section_order: list[str],
-) -> list[VocabularyEntry]:
-    """What the lesson's New Words & Expressions page lists.
-
-    The New Words page is where a lesson keeps its vocabulary, so it lists the word bank
-    words of every section of the lesson - separately, in the order the book prints them -
-    followed by its own glossary entries.  Each word keeps the section and page it was
-    printed on; only its position changes, to number this list.
-
-    The word bank of a section is swept in once even when that section is the New Words
-    page itself, so a word can never be listed twice.
-    """
-    word_bank = [
-        entry
-        for section_id in section_order
-        for entry in per_section.get(section_id, [])
-        if entry.source == WORD_BANK
-    ]
-    glossary = [
-        entry for entry in per_section.get(NEW_WORDS_SECTION_ID, []) if entry.source == GLOSSARY
-    ]
-    return _renumber(word_bank + glossary)

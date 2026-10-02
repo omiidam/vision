@@ -53,6 +53,43 @@ const GLOSSARY_LINES = [
   [21, 'A. Look, Read and Practice.'],
   [21, 'instead: in place of someone or something else'],
 ]
+/**
+ * The word banks read straight out of the book, per lesson and section.  This is an
+ * oracle taken from the PDF rather than from the generated data, so a test can tell
+ * whether the data still holds everything the book prints.
+ */
+const PRINTED_BANKS = JSON.parse(
+  execFileSync(
+    'python',
+    [
+      '-c',
+      `
+import sys, json, pymupdf
+sys.path.insert(0, "tools")
+import vocabulary as V
+doc = pymupdf.open("10th-class/" + __import__("textbook").BOOK_FILENAME)
+out = {}
+for lesson in json.loads(sys.argv[1]):
+    out[lesson] = [
+        [section_id, V.word_bank_entries(doc, tuple(pages))]
+        for section_id, pages in json.loads(sys.argv[2])[lesson]
+    ]
+print(json.dumps(out))
+`,
+      JSON.stringify(LESSON_IDS),
+      JSON.stringify(
+        Object.fromEntries(
+          LESSON_IDS.map((lessonId) => [
+            lessonId,
+            Object.entries(SECTION_PAGES[lessonId]).map(([id, pages]) => [id, pages]),
+          ]),
+        ),
+      ),
+    ],
+    { cwd: ROOT, encoding: 'utf8' },
+  ),
+)
+
 const EXTRACTED = JSON.parse(
   execFileSync(
     'python',
@@ -155,16 +192,10 @@ test('an entry either belongs to the section listing it, or was carried to the N
 
 test('every word bank word appears separately and in order on the New Words page', () => {
   for (const lessonId of LESSON_IDS) {
-    const sections = readJson(path.join(DATA, lessonId, 'manifest.json')).sections
-    // Every word bank the lesson prints, swept in the order the sections are printed in.
-    // An entry is printed by a section when it belongs to the section it is listed in;
-    // the New Words page only carries them, so it is not a source here.
-    const printed = sections.flatMap((s) =>
-      readJson(path.join(ROOT, s.text)).vocabulary
-        .filter((e) => e.source === 'word-bank' && e.sectionId === s.id)
-        .map((e) => e.word),
-    )
-    assert.ok(printed.length > 0, `${lessonId} has no word bank words to carry over`)
+    // Straight from the book: every word of every word bank of the lesson, in the order
+    // the sections and the banks are printed in.
+    const printed = PRINTED_BANKS[lessonId].flatMap(([, words]) => words.map(([, word]) => word))
+    assert.ok(printed.length > 0, `${lessonId} has no word bank words to register`)
 
     const newWords = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
     const listed = newWords.vocabulary.filter((e) => e.source === 'word-bank').map((e) => e.word)
@@ -175,6 +206,31 @@ test('every word bank word appears separately and in order on the New Words page
     assert.equal(new Set(all).size, all.length, `${lessonId}: a word is listed twice`)
     for (const word of printed) {
       assert.equal(all.filter((w) => w === word).length, 1, `${lessonId}: "${word}" is not listed once`)
+    }
+  }
+})
+
+test('no section lists a word bank word except the vocabulary page', () => {
+  for (const { lessonId, section, file } of sectionFiles) {
+    if (section.id === 'new-words-and-expressions') continue
+    const bank = readJson(file).vocabulary.filter((e) => e.source === 'word-bank')
+    assert.deepEqual(
+      bank.map((e) => e.word),
+      [],
+      `${lessonId}/${section.id} repeats word bank words as its own vocabulary`,
+    )
+  }
+})
+
+test('the words the book prints in a word bank are not listed twice anywhere', () => {
+  for (const lessonId of LESSON_IDS) {
+    const printed = PRINTED_BANKS[lessonId].flatMap(([, words]) => words.map(([, word]) => word))
+    const listedEverywhere = sectionFiles
+      .filter((f) => f.lessonId === lessonId)
+      .flatMap(({ file }) => readJson(file).vocabulary.map((e) => e.word))
+    for (const word of printed) {
+      const count = listedEverywhere.filter((w) => w === word).length
+      assert.equal(count, 1, `${lessonId}: "${word}" is listed ${count} times across the lesson`)
     }
   }
 })
@@ -198,19 +254,30 @@ test('the New Words page lists the word bank words before its own glossary', () 
 test('a word bank word keeps its own section and page on the New Words page', () => {
   for (const lessonId of LESSON_IDS) {
     const newWords = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
-    const conversation = readJson(path.join(DATA, lessonId, 'sections', 'conversation.json'))
     const fromBank = newWords.vocabulary.filter((e) => e.source === 'word-bank')
-    assert.deepEqual(
-      fromBank.map((e) => [e.word, e.sectionId, e.page]),
-      conversation.vocabulary
-        .filter((e) => e.source === 'word-bank')
-        .map((e) => [e.word, e.sectionId, e.page]),
-      `${lessonId}: carrying the words over changed where they came from`,
-    )
-    // The listing section is the only thing that changes.
+    assert.ok(fromBank.length > 0, `${lessonId} lists no word bank words`)
+    // Each word still names the section whose word bank it was printed in, and the page
+    // it was printed on; only the list it belongs to changed.
     assert.ok(
       fromBank.every((e) => e.listedIn === 'new-words-and-expressions'),
-      `${lessonId}: a carried word is listed somewhere else`,
+      `${lessonId}: a word bank word is listed somewhere else`,
+    )
+    for (const entry of fromBank) {
+      const pages = SECTION_PAGES[lessonId][entry.sectionId]
+      assert.ok(pages, `${entry.word}: unknown source section ${entry.sectionId}`)
+      assert.ok(
+        entry.page >= pages[0] && entry.page <= pages[1],
+        `${entry.word}: page ${entry.page} is outside ${entry.sectionId}`,
+      )
+    }
+    // The words the book prints, with the section and page that print them.
+    const printed = PRINTED_BANKS[lessonId].flatMap(([sectionId, words]) =>
+      words.map(([page, word]) => [word, sectionId, page]),
+    )
+    assert.deepEqual(
+      fromBank.map((e) => [e.word, e.sectionId, e.page]),
+      printed,
+      `${lessonId}: a word bank word changed where it came from`,
     )
   }
 })
@@ -352,19 +419,16 @@ test('nothing in the extractor names the words of these lessons', () => {
 
 test('the pipeline extracts vocabulary for every section, not a chosen few', () => {
   const build = fs.readFileSync(path.join(ROOT, 'tools', 'build_content.py'), 'utf8')
-  // One call per published section, driven by the section itself, naming none of them.
+  // One call for the whole lesson, driven by the sections it is given, naming none.
   assert.match(build, /for section in published/)
-  assert.match(
-    build,
-    /vocabulary\.entries_for_section\(\s*\n\s*doc, section\.section_id, tuple\(section\.pages\),/,
-  )
-  assert.doesNotMatch(build, /entries_for_section\([^)]*['"]conversation['"]/)
+  assert.match(build, /vocabulary\.entries_by_section\(/)
+  assert.doesNotMatch(build, /entries_by_section\([^)]*['"]conversation['"]/)
 })
 
-test('the New Words listing is built from the whole lesson, in one shared place', () => {
+test('the vocabulary listing is built from the whole lesson, in one shared place', () => {
   const source = fs.readFileSync(path.join(ROOT, 'tools', 'vocabulary.py'), 'utf8')
-  assert.match(source, /def listing_for_new_words\(/)
+  assert.match(source, /def entries_by_section\(/)
   // It must sweep every section it is handed, rather than a section it names itself.
-  assert.match(source, /for section_id in section_order/)
+  assert.match(source, /for section_id, pages in section_pages:/)
   assert.doesNotMatch(source, /['"]conversation['"]/)
 })

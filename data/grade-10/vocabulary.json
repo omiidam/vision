@@ -5,18 +5,8 @@
  "sections": [
   {
    "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "count": 5
-  },
-  {
-   "lessonId": "lesson-01",
    "sectionId": "new-words-and-expressions",
    "count": 9
-  },
-  {
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "count": 4
   },
   {
    "lessonId": "lesson-02",
@@ -25,81 +15,6 @@
   }
  ],
  "entries": [
-  {
-   "word": "endangered",
-   "grade": 10,
-   "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 19,
-   "position": 0,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "alive",
-   "grade": 10,
-   "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 19,
-   "position": 1,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "increase",
-   "grade": 10,
-   "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 19,
-   "position": 2,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "hear",
-   "grade": 10,
-   "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 19,
-   "position": 3,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "protect",
-   "grade": 10,
-   "lessonId": "lesson-01",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 19,
-   "position": 4,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
   {
    "word": "endangered",
    "grade": 10,
@@ -241,66 +156,6 @@
    "examples": [
     "Everyone needs to plan for the future."
    ],
-   "audio": null
-  },
-  {
-   "word": "near",
-   "grade": 10,
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 47,
-   "position": 0,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "rocky",
-   "grade": 10,
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 47,
-   "position": 1,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "orbit",
-   "grade": 10,
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 47,
-   "position": 2,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
-   "audio": null
-  },
-  {
-   "word": "powerful",
-   "grade": 10,
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "listedIn": "conversation",
-   "page": 47,
-   "position": 3,
-   "source": "word-bank",
-   "meaningEn": "",
-   "meaningFa": "",
-   "pronunciation": "",
-   "examples": [],
    "audio": null
   },
   {

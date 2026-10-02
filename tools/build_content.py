@@ -226,32 +226,23 @@ def build() -> dict:
     for lesson in lessons:
         lesson_id = lesson.lesson_id
         published = [s for s in lesson.sections if s.section_id not in book.WITHDRAWN_SECTION_IDS]
-        section_order = [s.section_id for s in published]
 
-        # What each section teaches, worked out for the whole lesson before anything is
-        # written: the New Words page lists the word banks of the sections around it, so
-        # it cannot be built one section at a time.
-        taught = {
-            section.section_id: vocabulary.entries_for_section(
-                doc, section.section_id, tuple(section.pages),
-                sections[lesson_id][section.section_id]["lines"],
-            )
-            for section in published
-        }
-        new_words_listing = vocabulary.listing_for_new_words(taught, section_order)
+        # What each section lists, worked out for the whole lesson before anything is
+        # written: the word banks are printed beside other sections' text but belong to
+        # the lesson's vocabulary page, so they cannot be collected one section at a time.
+        listed = vocabulary.entries_by_section(
+            doc,
+            [(s.section_id, tuple(s.pages)) for s in published],
+            {s.section_id: sections[lesson_id][s.section_id]["lines"] for s in published},
+        )
+        new_words_listing = listed.get(vocabulary.NEW_WORDS_SECTION_ID, [])
 
         lesson_sections = []
         for section in published:
             data = sections[lesson_id][section.section_id]
-            # The vocabulary page lists the lesson's word bank words; every other section
-            # lists the words it teaches itself.
-            listed = (
-                new_words_listing
-                if section.section_id == vocabulary.NEW_WORDS_SECTION_ID
-                else taught[section.section_id]
-            )
             section_vocabulary = [
-                entry.as_json(10, lesson_id, section.section_id) for entry in listed
+                entry.as_json(10, lesson_id, section.section_id)
+                for entry in listed[section.section_id]
             ]
             grade_vocabulary.extend(section_vocabulary)
             mapping = next(
@@ -278,8 +269,9 @@ def build() -> dict:
                         for b in data["blocks"]
                     ],
                     "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),
-                    # Which words this section teaches.  Kept beside the text, not inside
-                    # it: the text stays exactly as printed and is never duplicated here.
+                    # The vocabulary listed on this page.  Kept beside the text, not
+                    # inside it: the text stays exactly as printed, word banks included,
+                    # and a word bank is never repeated here as a vocabulary item.
                     "vocabulary": section_vocabulary,
                 },
             )
@@ -358,8 +350,7 @@ def build() -> dict:
 
     write_json(DATA / "manifest.json", grade_manifest)
     # Counted by the section each entry is listed in, so the totals match the section
-    # files.  A word bank word therefore counts on the New Words page as well as in the
-    # section that prints it, which is what the two lists actually hold.
+    # files.  A word bank word counts once, on the vocabulary page that lists it.
     section_counts: dict[tuple[str, str], int] = {}
     for entry in grade_vocabulary:
         key = (entry["lessonId"], entry["listedIn"])
