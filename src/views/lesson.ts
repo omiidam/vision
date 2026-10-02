@@ -1,5 +1,5 @@
 import { loadLesson, loadSectionText, loadSync, loadVocabulary, assetUrl } from '../content'
-import { AudioPlayer } from '../player'
+import { AudioPlayer, PLAYBACK_RATES, formatRate } from '../player'
 import { SyncEngine } from '../sync'
 import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary } from '../types'
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
@@ -51,6 +51,9 @@ export class LessonView {
       if (playing) this.startTicking()
       else this.stopTicking()
     })
+    // The media element is the single source of truth for the rate, so the control is
+    // re-synced from the player whenever the rate changes - from this UI or elsewhere.
+    this.player.onRateChange(() => this.renderRateControl())
   }
 
   async render(lessonId: string, sectionId: string | undefined): Promise<void> {
@@ -247,6 +250,12 @@ export class LessonView {
           <div class="track-fill" id="track-fill"></div>
         </div>
         <span class="time" dir="ltr"><bdi id="time-now">0:00</bdi> / <bdi id="time-total">${formatTime(entry.duration)}</bdi></span>
+        <div class="rate" id="rate" role="group" aria-label="Playback speed" dir="ltr">
+          ${PLAYBACK_RATES.map((rate) => `
+            <button type="button" class="rate-option" data-rate="${rate}"
+                    aria-pressed="false">${formatRate(rate)}</button>
+          `).join('')}
+        </div>
       </div>
       <p class="muted small" id="sync-note" lang="en" dir="ltr"></p>
     `
@@ -265,6 +274,9 @@ export class LessonView {
     }
 
     host.querySelector<HTMLButtonElement>('#play')!.addEventListener('click', () => this.player.toggle())
+    host.querySelectorAll<HTMLButtonElement>('.rate-option').forEach((option) => {
+      option.addEventListener('click', () => this.player.setRate(Number(option.dataset.rate)))
+    })
     const track = host.querySelector<HTMLElement>('#track')!
     const seekFromEvent = (event: MouseEvent) => {
       const rect = track.getBoundingClientRect()
@@ -280,6 +292,17 @@ export class LessonView {
       if (event.key === 'ArrowLeft') this.player.seek(this.player.currentTime - 5)
     })
     this.renderTransportState()
+    this.renderRateControl()
+  }
+
+  /** Mark the rate the audio element is actually playing at. */
+  private renderRateControl(): void {
+    const rate = this.player.rate
+    this.root.querySelectorAll<HTMLButtonElement>('.rate-option').forEach((option) => {
+      const active = Number(option.dataset.rate) === rate
+      option.classList.toggle('active', active)
+      option.setAttribute('aria-pressed', String(active))
+    })
   }
 
   private totalDuration(): number {

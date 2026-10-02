@@ -137,6 +137,21 @@ body {
 .track-fill { height: 100%; width: 0; background: var(--accent); border-radius: 999px; }
 .time { font-variant-numeric: tabular-nums; font-size: 0.85rem; color: var(--muted); flex: 0 0 auto; }
 
+/* The speed buttons are laid out inline like the rest of the transport, so they follow
+   the reading direction; the selected one is marked by colour and weight only. */
+.rate { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; }
+.rate-option {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.rate-option.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
 .pager { display: flex; justify-content: space-between; gap: 10px; }
 
 .vocab { margin-block: 18px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
@@ -153,5 +168,7 @@ body {
   #app { padding-block: 12px 40px; padding-inline: 10px; }
   .reader-body { max-height: 46vh; font-size: 1rem; line-height: 1.95; }
   .vocab-item { grid-template-columns: 1fr; gap: 2px; }
-  .transport { gap: 8px; }
+  .transport { gap: 8px; flex-wrap: wrap; }
+  /* `end` follows the writing direction, unlike flex-end. */
+  .rate { flex: 1 0 100%; justify-content: end; }
 }

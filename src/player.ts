@@ -1,3 +1,20 @@
+/** The only playback rates the reader offers, in the order they are shown. */
+export const PLAYBACK_RATES = [0.5, 0.75, 1, 1.25, 1.5, 2] as const
+export const DEFAULT_RATE = 1
+
+/** Nearest supported rate to an arbitrary value, so a stale value can never stick. */
+export function nearestRate(value: number): number {
+  if (!Number.isFinite(value)) return DEFAULT_RATE
+  return PLAYBACK_RATES.reduce((best, rate) =>
+    Math.abs(rate - value) < Math.abs(best - value) ? rate : best,
+  )
+}
+
+/** Label for a rate: 1 -> "1x", 0.75 -> "0.75x". */
+export function formatRate(rate: number): string {
+  return `${Number(rate.toFixed(2))}x`
+}
+
 /**
  * A very small wrapper around a single <audio> element.
  *
@@ -7,7 +24,9 @@
 export class AudioPlayer {
   readonly element: HTMLAudioElement
   private listeners = new Set<(playing: boolean) => void>()
+  private rateListeners = new Set<(rate: number) => void>()
   private pendingSeek: number | null = null
+  private currentRate = DEFAULT_RATE
 
   constructor() {
     const element = new Audio()
@@ -22,6 +41,14 @@ export class AudioPlayer {
     element.addEventListener('play', () => this.emit(true))
     element.addEventListener('pause', () => this.emit(false))
     element.addEventListener('ended', () => this.emit(false))
+    element.addEventListener('ratechange', () => {
+      // The media element owns the rate: it can change it by itself (a platform or
+      // user-agent control), so the UI is told to follow the element, not the reverse.
+      if (element.playbackRate !== this.currentRate) {
+        this.currentRate = element.playbackRate
+        this.emitRate()
+      }
+    })
     element.addEventListener('loadedmetadata', () => {
       if (this.pendingSeek !== null) {
         const target = this.pendingSeek
@@ -35,9 +62,35 @@ export class AudioPlayer {
     this.listeners.forEach((listener) => listener(playing))
   }
 
+  private emitRate() {
+    this.rateListeners.forEach((listener) => listener(this.currentRate))
+  }
+
   onPlayingChange(listener: (playing: boolean) => void): () => void {
     this.listeners.add(listener)
     return () => this.listeners.delete(listener)
+  }
+
+  onRateChange(listener: (rate: number) => void): () => void {
+    this.rateListeners.add(listener)
+    return () => this.rateListeners.delete(listener)
+  }
+
+  get rate(): number {
+    return this.currentRate
+  }
+
+  /**
+   * Set the playback rate on the media element itself.  `element.playbackRate` is what
+   * the browser actually plays at, and `currentTime` stays on the same media timeline
+   * at every rate, so word-level synchronization keeps working unchanged.
+   */
+  setRate(rate: number): void {
+    const supported = nearestRate(rate)
+    if (supported === this.currentRate && this.element.playbackRate === supported) return
+    this.currentRate = supported
+    this.element.playbackRate = supported
+    this.emitRate()
   }
 
   get currentTime(): number {
@@ -59,6 +112,8 @@ export class AudioPlayer {
     if (this.element.src === absolute) return
     this.element.pause()
     this.element.src = absolute
+    // load() resets the media element's rate on some platforms, so it is reapplied.
+    this.element.playbackRate = this.currentRate
     this.element.load()
   }
 
