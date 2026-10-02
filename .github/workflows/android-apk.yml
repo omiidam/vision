@@ -84,6 +84,17 @@ jobs:
           [ "$missing" -eq 0 ] || { echo "Required Android files are not committed"; exit 1; }
           chmod +x android/gradlew
 
+      # The content pipeline and the tests that read the book are Python, so the runner
+      # needs the same interpreter and PDF library a developer has locally.  Without them
+      # those tests skip themselves, which would quietly stop checking the extraction.
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install the extractor's dependency
+        run: python -m pip install --upgrade pymupdf
+
       - name: Typecheck, test and build the web app
         run: |
           npm run typecheck

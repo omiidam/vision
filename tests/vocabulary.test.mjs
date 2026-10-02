@@ -64,16 +64,35 @@ const PART_CASES = {
   pointer: [[21, 'C. Go to Part III of your Workbook and do A and B.', []]],
 }
 /**
+ * The extractor is Python, and the book is a PDF, so a few checks have to run the real
+ * one.  Where it cannot be run - a machine with no Python, or without the PDF library -
+ * those checks are reported as skipped rather than failing: the data checks below them
+ * still run, and they are the ones that decide what the reader shows.
+ */
+function runExtractor(source, ...args) {
+  for (const command of ['python', 'python3']) {
+    try {
+      return execFileSync(command, ['-c', source, ...args], {
+        cwd: ROOT,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+      })
+    } catch (error) {
+      // Only an interpreter that is missing counts as "cannot run"; a real error in the
+      // extractor must still fail the suite rather than be passed over.
+      if (error.code !== 'ENOENT') throw error
+    }
+  }
+  return null
+}
+
+/**
  * The word banks read straight out of the book, per lesson and section.  This is an
  * oracle taken from the PDF rather than from the generated data, so a test can tell
  * whether the data still holds everything the book prints.
  */
-const PRINTED_BANKS = JSON.parse(
-  execFileSync(
-    'python',
-    [
-      '-c',
-      `
+const printedBanksOutput = runExtractor(
+  `
 import sys, json, pymupdf
 sys.path.insert(0, "tools")
 import vocabulary as V
@@ -86,30 +105,24 @@ for lesson in json.loads(sys.argv[1]):
     ]
 print(json.dumps(out))
 `,
-      JSON.stringify(LESSON_IDS),
-      JSON.stringify(
-        Object.fromEntries(
-          LESSON_IDS.map((lessonId) => [
-            lessonId,
-            Object.entries(SECTION_PAGES[lessonId]).map(([id, pages]) => [id, pages]),
-          ]),
-        ),
-      ),
-    ],
-    { cwd: ROOT, encoding: 'utf8' },
+  JSON.stringify(LESSON_IDS),
+  JSON.stringify(
+    Object.fromEntries(
+      LESSON_IDS.map((lessonId) => [
+        lessonId,
+        Object.entries(SECTION_PAGES[lessonId]).map(([id, pages]) => [id, pages]),
+      ]),
+    ),
   ),
 )
+const PRINTED_BANKS = printedBanksOutput ? JSON.parse(printedBanksOutput) : null
 
 /**
  * Run the real extractor over the shapes above and over the book's own vocabulary pages,
  * so the tests check the code that builds the data rather than a copy of it.
  */
-const EXTRACTED = JSON.parse(
-  execFileSync(
-    'python',
-    [
-      '-c',
-      `
+const extractedOutput = runExtractor(
+  `
 import sys, json, pymupdf
 sys.path.insert(0, "tools")
 import textbook, vocabulary as V
@@ -139,15 +152,17 @@ print(json.dumps({
     "lines": [[line.text, line.highlights] for line in V.page_lines(doc, tuple(pages))],
 }))
 `,
-      JSON.stringify(BANKS),
-      JSON.stringify(PART_CASES),
-      JSON.stringify(
-        SECTION_PAGES['lesson-01']['new-words-and-expressions'],
-      ),
-    ],
-    { cwd: ROOT, encoding: 'utf8' },
-  ),
+  JSON.stringify(BANKS),
+  JSON.stringify(PART_CASES),
+  JSON.stringify(SECTION_PAGES['lesson-01']['new-words-and-expressions']),
 )
+const EXTRACTED = extractedOutput ? JSON.parse(extractedOutput) : null
+
+const SKIPPED = 'the book and its extractor cannot be read on this machine'
+
+/** A check that has to read the book, so it can only run where Python can read the PDF. */
+const fromBook = (name, fn) =>
+  test(name, { skip: EXTRACTED ? false : SKIPPED }, fn)
 
 test('every published section carries a vocabulary list, even an empty one', () => {
   for (const { lessonId, section, file } of sectionFiles) {
@@ -228,7 +243,7 @@ test('an entry either belongs to the section listing it, or was carried to the N
   }
 })
 
-test('every word bank word appears separately and in order on the New Words page', () => {
+fromBook('every word bank word appears separately and in order on the New Words page', () => {
   for (const lessonId of LESSON_IDS) {
     // Straight from the book: every word of every word bank of the lesson, in the order
     // the sections and the banks are printed in.
@@ -260,7 +275,7 @@ test('no section lists a word bank word except the vocabulary page', () => {
   }
 })
 
-test('the words the book prints in a word bank are not listed twice anywhere', () => {
+fromBook('the words the book prints in a word bank are not listed twice anywhere', () => {
   for (const lessonId of LESSON_IDS) {
     const printed = PRINTED_BANKS[lessonId].flatMap(([, words]) => words.map(([, word]) => word))
     const listedEverywhere = sectionFiles
@@ -322,7 +337,7 @@ test('the New Words page is read as parts, each listed once and in the printed o
   }
 })
 
-test('a part that teaches nothing is neither listed nor left in the text', () => {
+fromBook('a part that teaches nothing is neither listed nor left in the text', () => {
   // The parts the book prints, straight from the PDF.  One that teaches no words has to
   // be gone from the data, and its own heading gone from the text the reader shows, so
   // that nothing of a part such as "go to the workbook" survives on the page.
@@ -352,7 +367,7 @@ test('a part that teaches nothing is neither listed nor left in the text', () =>
   )
 })
 
-test('a word bank word keeps its own section and page on the New Words page', () => {
+fromBook('a word bank word keeps its own section and page on the New Words page', () => {
   for (const lessonId of LESSON_IDS) {
     const newWords = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
     const fromBank = newWords.vocabulary.filter((e) => e.source === 'word-bank')
@@ -490,7 +505,7 @@ test('the section text is left exactly as the book prints it', () => {
   }
 })
 
-test('the extractor reads a word bank list and drops its labels', () => {
+fromBook('the extractor reads a word bank list and drops its labels', () => {
   const [withLabel, plain, heading, title, single, oneWord] = EXTRACTED.banks
   assert.deepEqual(withLabel, ['endangered', 'alive', 'increase', 'hear', 'protect'])
   assert.deepEqual(plain, ['near', 'rocky', 'orbit', 'powerful'])
@@ -500,7 +515,7 @@ test('the extractor reads a word bank list and drops its labels', () => {
   assert.deepEqual(oneWord, [], 'a single trailing comma is not a word bank')
 })
 
-test('a part that prints headwords is read as a glossary, with its examples', () => {
+fromBook('a part that prints headwords is read as a glossary, with its examples', () => {
   // The headword before the lettered heading opens the page, the one after it opens the
   // part the heading names; each is read with the part it is printed in.
   assert.deepEqual(EXTRACTED.cases.glossary, [
@@ -511,7 +526,7 @@ test('a part that prints headwords is read as a glossary, with its examples', ()
   ])
 })
 
-test('a part that only prints sentences is read as a practice part', () => {
+fromBook('a part that only prints sentences is read as a practice part', () => {
   // One entry per word the book points at, in the order it prints them.
   assert.deepEqual(EXTRACTED.cases.practice, [
     ['A', 'Look, Read and Practice.', [
@@ -521,7 +536,7 @@ test('a part that only prints sentences is read as a practice part', () => {
   ])
 })
 
-test('a part heading is never read as a word of the lesson', () => {
+fromBook('a part heading is never read as a word of the lesson', () => {
   // The letter of a part heading is printed in the same bold colour as a target word, so
   // it is flagged as one.  The heading is a heading, though: it opens a part and is not
   // read out of it, so the letter never becomes vocabulary.
@@ -535,7 +550,7 @@ test('a part heading is never read as a word of the lesson', () => {
   }
 })
 
-test('a part that points at another book teaches no words here', () => {
+fromBook('a part that points at another book teaches no words here', () => {
   // "C. Go to Part III of your Workbook and do A and B." is a heading with nothing under
   // it, so it becomes a part with no entries and is left out of the vocabulary page.
   assert.deepEqual(EXTRACTED.cases.pointer, [
