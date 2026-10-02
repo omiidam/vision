@@ -134,7 +134,7 @@ jobs:
           echo "APK verified: $(du -h "$apk" | cut -f1)"
 
       - name: Upload the APK as a workflow artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vision-english-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
