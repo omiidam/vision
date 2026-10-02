@@ -1,0 +1,142 @@
+name: Android APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# The APK is published as a workflow artifact, never committed to the repository.
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      # Capacitor 6 is pinned because Capacitor 7+ requires JDK 21.
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Read the Android SDK versions the project declares
+        id: sdk
+        run: |
+          set -euo pipefail
+          gradle_vars=android/variables.gradle
+          compile_sdk=$(grep -oP 'compileSdkVersion\s*=\s*\K[0-9]+' "$gradle_vars")
+          build_tools=$(grep -oP "buildToolsVersion\s*=\s*'\K[0-9.]+" "$gradle_vars")
+          echo "compile_sdk=$compile_sdk" >> "$GITHUB_OUTPUT"
+          echo "build_tools=$build_tools" >> "$GITHUB_OUTPUT"
+          echo "Android platform $compile_sdk, build-tools $build_tools"
+
+      - name: Install the Android SDK packages the project needs
+        uses: android-actions/setup-android@v3
+
+      - name: Accept licences and install SDK packages
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platform-tools" \
+                    "platforms;android-${{ steps.sdk.outputs.compile_sdk }}" \
+                    "build-tools;${{ steps.sdk.outputs.build_tools }}"
+
+      - name: Verify every required Android file is committed
+        run: |
+          set -euo pipefail
+          missing=0
+          for f in \
+            android/build.gradle \
+            android/settings.gradle \
+            android/variables.gradle \
+            android/gradle.properties \
+            android/gradlew \
+            android/gradlew.bat \
+            android/gradle/wrapper/gradle-wrapper.properties \
+            android/app/build.gradle \
+            android/app/src/main/AndroidManifest.xml \
+            android/app/src/main/java/ir/vision/english/MainActivity.java \
+            capacitor.config.json
+          do
+            if [ ! -f "$f" ]; then echo "MISSING: $f"; missing=1; fi
+          done
+          [ "$missing" -eq 0 ] || { echo "Required Android files are not committed"; exit 1; }
+          chmod +x android/gradlew
+
+      - name: Typecheck, test and build the web app
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+
+      - name: Confirm the recordings are in the web build
+        run: |
+          set -euo pipefail
+          missing=0
+          for lesson in lesson-01 lesson-02; do
+            for section in conversation reading new-words-and-expressions listening-and-speaking; do
+              f="dist/audio/grade-10/$lesson/$section.mp3"
+              if [ ! -s "$f" ]; then echo "MISSING OR EMPTY: $f"; missing=1; fi
+            done
+          done
+          [ "$missing" -eq 0 ] || { echo "Audio missing from the web build"; exit 1; }
+          echo "All 8 recordings present in dist/audio"
+
+      - name: Sync the web build into the Android project
+        run: npx cap sync android
+
+      - name: Confirm the recordings reached the Android assets
+        run: |
+          set -euo pipefail
+          assets=android/app/src/main/assets/public/audio/grade-10
+          for lesson in lesson-01 lesson-02; do
+            count=$(find "$assets/$lesson" -name '*.mp3' -size +0 2>/dev/null | wc -l)
+            echo "$lesson: $count recordings"
+            [ "$count" -eq 4 ] || { echo "Expected 4 recordings for $lesson"; exit 1; }
+          done
+
+      - name: Assemble the debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Confirm the APK contains the content and the recordings
+        run: |
+          set -euo pipefail
+          apk=android/app/build/outputs/apk/debug/app-debug.apk
+          [ -s "$apk" ] || { echo "APK was not produced"; exit 1; }
+          unzip -l "$apk" | grep -q 'assets/public/index.html' || { echo "index.html missing from APK"; exit 1; }
+          unzip -l "$apk" | grep -q 'assets/public/data/grade-10/manifest.json' || { echo "content manifest missing from APK"; exit 1; }
+          for lesson in lesson-01 lesson-02; do
+            unzip -l "$apk" | grep -q "assets/public/audio/grade-10/$lesson/reading.mp3" \
+              || { echo "reading.mp3 for $lesson missing from APK"; exit 1; }
+          done
+          echo "APK verified: $(du -h "$apk" | cut -f1)"
+
+      - name: Upload the APK as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vision-english-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

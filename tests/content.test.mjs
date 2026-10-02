@@ -9,6 +9,25 @@ const DATA = path.join(ROOT, 'data', 'grade-10')
 
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'))
 
+const SOURCE = path.join(ROOT, '10th-class')
+
+/** The source keeps one folder per lesson; every recording is read from there. */
+function sourceRecordings() {
+  const found = []
+  for (const entry of fs.readdirSync(SOURCE, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue
+    const match = /^lesson[\s_-]*0*(\d+)$/i.exec(entry.name)
+    if (!match) continue
+    const lessonId = `lesson-${Number(match[1]).toString().padStart(2, '0')}`
+    for (const name of fs.readdirSync(path.join(SOURCE, entry.name))) {
+      if (name.toLowerCase().endsWith('.mp3')) {
+        found.push({ lessonId, file: name, folder: entry.name })
+      }
+    }
+  }
+  return found
+}
+
 function syncFiles() {
   return fs
     .readdirSync(path.join(DATA, 'lesson-01', 'synchronization'))
@@ -64,9 +83,8 @@ test('audio is only attached to sections whose recording exists on disk', () => 
 
 test('every source recording is mapped and reported', () => {
   const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
-  const sources = fs
-    .readdirSync(path.join(ROOT, '10th-class'))
-    .filter((name) => name.toLowerCase().endsWith('.mp3'))
+  const sources = sourceRecordings()
+  assert.equal(sources.length, 8, 'expected 4 recordings per lesson folder')
   const mapped = mapping.audio.filter((entry) => entry.sectionId !== null)
   assert.equal(mapped.length, sources.length, 'every recording must be mapped to a section')
   assert.deepEqual(mapping.unmapped, [])
@@ -78,29 +96,37 @@ test('every source recording is mapped and reported', () => {
   }
 })
 
+test('the lesson folder decides the lesson and the file name decides the section', () => {
+  const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
+  const byFile = Object.fromEntries(mapping.audio.map((entry) => [entry.file, entry]))
+  for (const { lessonId, file } of sourceRecordings()) {
+    assert.ok(byFile[file], `${file} is missing from audio-mapping.json`)
+    assert.equal(byFile[file].lessonId, lessonId, `${file} should follow its lesson folder`)
+  }
+})
+
 test('the file name alone decides which section a recording belongs to', () => {
   const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
   // The recordings follow "<section name><lesson number>.mp3".  This table is derived
   // from that convention alone; the transcripts are not consulted here on purpose.
   const expected = {
-    'conversation1.mp3': ['lesson-01', 'conversation'],
-    'conversation2.mp3': ['lesson-02', 'conversation'],
-    'new words and expressions1.mp3': ['lesson-01', 'new-words-and-expressions'],
-    'New Words & Expressions2.mp3': ['lesson-02', 'new-words-and-expressions'],
-    'reading1.mp3': ['lesson-01', 'reading'],
-    'reading2.mp3': ['lesson-02', 'reading'],
-    'listening and speaking1.mp3': ['lesson-01', 'listening-and-speaking'],
-    'Listening & Speaking2.mp3': ['lesson-02', 'listening-and-speaking'],
+    'conversation1.mp3': 'conversation',
+    'conversation2.mp3': 'conversation',
+    'new words and expressions1.mp3': 'new-words-and-expressions',
+    'New Words & Expressions2.mp3': 'new-words-and-expressions',
+    'reading1.mp3': 'reading',
+    'reading2.mp3': 'reading',
+    'listening and speaking1.mp3': 'listening-and-speaking',
+    'Listening & Speaking2.mp3': 'listening-and-speaking',
   }
   const byName = Object.fromEntries(mapping.audio.map((entry) => [entry.file, entry]))
   assert.deepEqual(Object.keys(byName).sort(), Object.keys(expected).sort())
-  for (const [file, [lessonId, sectionId]] of Object.entries(expected)) {
-    assert.equal(byName[file].lessonId, lessonId, `${file} is on the wrong lesson`)
+  for (const [file, sectionId] of Object.entries(expected)) {
     assert.equal(byName[file].sectionId, sectionId, `${file} is on the wrong section`)
   }
 })
 
-test('each mapped recording sits in the manifest of the lesson its name names', () => {
+test('each mapped recording sits in the manifest of its lesson folder', () => {
   const mapping = readJson(path.join(ROOT, 'data', 'audio-mapping.json'))
   for (const entry of mapping.audio) {
     const lesson = readJson(path.join(ROOT, 'data', 'grade-10', entry.lessonId, 'manifest.json'))

@@ -20,43 +20,11 @@
    "rule": "filename",
    "contentScore": 0.9752,
    "status": "confirmed",
-   "method": "filename (conversation, name match 1.00)",
+   "method": "lesson folder 'lesson-01' + file name 'conversation' (match 1.00)",
    "contentBest": {
     "score": 0.9752,
     "lessonId": "lesson-01",
     "sectionId": "conversation"
-   },
-   "notes": []
-  },
-  {
-   "file": "conversation2.mp3",
-   "duration": 86.309,
-   "lessonId": "lesson-02",
-   "sectionId": "conversation",
-   "rule": "filename",
-   "contentScore": 0.9812,
-   "status": "confirmed",
-   "method": "filename (conversation, name match 1.00)",
-   "contentBest": {
-    "score": 0.9812,
-    "lessonId": "lesson-02",
-    "sectionId": "conversation"
-   },
-   "notes": []
-  },
-  {
-   "file": "Listening & Speaking2.mp3",
-   "duration": 85.238,
-   "lessonId": "lesson-02",
-   "sectionId": "listening-and-speaking",
-   "rule": "filename",
-   "contentScore": 0.8649,
-   "status": "confirmed",
-   "method": "filename (listening and speaking, name match 0.90)",
-   "contentBest": {
-    "score": 0.8649,
-    "lessonId": "lesson-02",
-    "sectionId": "listening-and-speaking"
    },
    "notes": []
   },
@@ -68,27 +36,11 @@
    "rule": "filename",
    "contentScore": 0.9058,
    "status": "confirmed",
-   "method": "filename (listening and speaking, name match 1.00)",
+   "method": "lesson folder 'lesson-01' + file name 'listening and speaking' (match 1.00)",
    "contentBest": {
     "score": 0.9058,
     "lessonId": "lesson-01",
     "sectionId": "listening-and-speaking"
-   },
-   "notes": []
-  },
-  {
-   "file": "New Words & Expressions2.mp3",
-   "duration": 76.173,
-   "lessonId": "lesson-02",
-   "sectionId": "new-words-and-expressions",
-   "rule": "filename",
-   "contentScore": 0.9703,
-   "status": "confirmed",
-   "method": "filename (new words and expressions, name match 0.92)",
-   "contentBest": {
-    "score": 0.9703,
-    "lessonId": "lesson-02",
-    "sectionId": "new-words-and-expressions"
    },
    "notes": []
   },
@@ -100,7 +52,7 @@
    "rule": "filename",
    "contentScore": 0.9513,
    "status": "confirmed",
-   "method": "filename (new words and expressions, name match 1.00)",
+   "method": "lesson folder 'lesson-01' + file name 'new words and expressions' (match 1.00)",
    "contentBest": {
     "score": 0.9513,
     "lessonId": "lesson-01",
@@ -116,11 +68,59 @@
    "rule": "filename",
    "contentScore": 0.9906,
    "status": "confirmed",
-   "method": "filename (reading, name match 1.00)",
+   "method": "lesson folder 'lesson-01' + file name 'reading' (match 1.00)",
    "contentBest": {
     "score": 0.9906,
     "lessonId": "lesson-01",
     "sectionId": "reading"
+   },
+   "notes": []
+  },
+  {
+   "file": "conversation2.mp3",
+   "duration": 86.309,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "rule": "filename",
+   "contentScore": 0.9812,
+   "status": "confirmed",
+   "method": "lesson folder 'lesson-02' + file name 'conversation' (match 1.00)",
+   "contentBest": {
+    "score": 0.9812,
+    "lessonId": "lesson-02",
+    "sectionId": "conversation"
+   },
+   "notes": []
+  },
+  {
+   "file": "Listening & Speaking2.mp3",
+   "duration": 85.238,
+   "lessonId": "lesson-02",
+   "sectionId": "listening-and-speaking",
+   "rule": "filename",
+   "contentScore": 0.8649,
+   "status": "confirmed",
+   "method": "lesson folder 'lesson-02' + file name 'listening and speaking' (match 0.90)",
+   "contentBest": {
+    "score": 0.8649,
+    "lessonId": "lesson-02",
+    "sectionId": "listening-and-speaking"
+   },
+   "notes": []
+  },
+  {
+   "file": "New Words & Expressions2.mp3",
+   "duration": 76.173,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "rule": "filename",
+   "contentScore": 0.9703,
+   "status": "confirmed",
+   "method": "lesson folder 'lesson-02' + file name 'new words and expressions' (match 0.92)",
+   "contentBest": {
+    "score": 0.9703,
+    "lessonId": "lesson-02",
+    "sectionId": "new-words-and-expressions"
    },
    "notes": []
   },
@@ -132,7 +132,7 @@
    "rule": "filename",
    "contentScore": 0.9855,
    "status": "confirmed",
-   "method": "filename (reading, name match 1.00)",
+   "method": "lesson folder 'lesson-02' + file name 'reading' (match 1.00)",
    "contentBest": {
     "score": 0.9855,
     "lessonId": "lesson-02",

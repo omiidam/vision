@@ -8,7 +8,7 @@
  "confidence": 0.6364,
  "mapping": {
   "status": "confirmed",
-  "method": "filename (new words and expressions, name match 1.00)",
+  "method": "lesson folder 'lesson-01' + file name 'new words and expressions' (match 1.00)",
   "contentScore": 0.9513,
   "contentBest": {
    "score": 0.9513,

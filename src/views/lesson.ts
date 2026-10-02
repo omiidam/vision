@@ -36,7 +36,9 @@ export class LessonView {
     this.root = root
     this.handlers = handlers
     this.player.onPlayingChange((playing) => {
-      this.renderTransport()
+      // Only the button glyph changes here.  Re-rendering (and therefore re-loading) the
+      // media element on play/pause would reset currentTime to 0 and abort playback.
+      this.renderTransportState()
       if (playing) this.startTicking()
       else this.stopTicking()
     })

@@ -27,6 +27,9 @@ need data, not code.
   Lesson 1 and `New Words & Expressions2.mp3` is the New Words & Expressions of Lesson 2.
   The transcript is still scored against that section, but only to corroborate the name -
   it never moves a recording, and any disagreement is recorded in `data/audio-mapping.json`.
+* The **source keeps one folder per lesson**, and the folder decides the lesson while the
+  file name decides the section. Recordings are only ever read from
+  `10th-class/lesson1/` and `10th-class/lesson2/`; nothing is searched across folders.
 * The UI contains **no lesson content at all**. It fetches manifests from `data/` at
   runtime, so Lesson 3+ is a data task.
 
@@ -35,14 +38,19 @@ need data, not code.
 ## Repository layout
 
 ```
-10th-class/                 source material (PDF + the eight recordings)
+10th-class/                 source material
+  10th.pdf                    the Grade 10 Student Book
+  lesson1/                    the four Lesson 1 recordings
+  lesson2/                    the four Lesson 2 recordings
 11th.pdf, 12th.pdf          other books in the same source folder (not processed yet)
+
+.github/workflows/android-apk.yml   builds the debug APK on every push to main
 
 tools/                      ingestion pipeline (Python)
   textbook.py               reads the book: contents pages, section pages, page text
   text.py                   splits extracted lines into blocks / sentences / words
   transcribe.py             faster-whisper word-level timestamps
-  audio_map.py              file-name based audio -> section mapping, with corroboration
+  audio_map.py              lesson-folder + file-name based audio -> section mapping
   align.py                  forced alignment of textbook words onto the audio timeline
   build_content.py          writes the whole data/ tree
   validate.py               regenerates the validation report
@@ -81,7 +89,10 @@ npm test           # engine + data integrity tests
 ```
 
 `data/` and `audio/` are served and copied by a small Vite plugin, so they keep their
-real folder layout in development and in the production build.
+real folder layout in development and in the production build. The dev server sends
+`Content-Length` and supports HTTP range requests for the recordings - without them the
+browser reports `duration` as `NaN`, never advances `currentTime`, and seeking fails
+silently.
 
 ---
 
@@ -112,6 +123,23 @@ Requirements and local settings:
 
 A debug APK was produced successfully from this tree; APKs and Gradle output are
 git-ignored, so a clone starts clean.
+
+### Building the APK with GitHub Actions
+
+`.github/workflows/android-apk.yml` runs on every push and pull request to `main`, and can
+also be started by hand from the Actions tab. It:
+
+1. installs Node 20, JDK 17 and Gradle;
+2. reads `compileSdkVersion` and `buildToolsVersion` out of `android/variables.gradle` and
+   installs exactly those SDK packages, so CI can never drift from the project config;
+3. checks that every required Android file is committed, then runs the typecheck, the tests
+   and the web build;
+4. asserts that all eight recordings reach `dist/audio` and the Android assets;
+5. runs `gradlew assembleDebug` and verifies the APK really contains the content manifest
+   and the recordings;
+6. uploads the APK as a **workflow artifact** (`vision-english-debug-apk`, kept 14 days).
+
+The APK is never committed to the repository. Download it from the run summary page.
 
 ---
 

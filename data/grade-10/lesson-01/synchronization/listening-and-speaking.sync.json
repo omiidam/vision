@@ -8,7 +8,7 @@
  "confidence": 0.3306,
  "mapping": {
   "status": "confirmed",
-  "method": "filename (listening and speaking, name match 1.00)",
+  "method": "lesson folder 'lesson-01' + file name 'listening and speaking' (match 1.00)",
   "contentScore": 0.9058,
   "contentBest": {
    "score": 0.9058,

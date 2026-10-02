@@ -9,6 +9,8 @@ const MIME: Record<string, string> = {
   '.json': 'application/json; charset=utf-8',
   '.mp3': 'audio/mpeg',
   '.wav': 'audio/wav',
+  '.m4a': 'audio/mp4',
+  '.ogg': 'audio/ogg',
 }
 
 /**
@@ -28,8 +30,35 @@ function contentAssets(): Plugin {
         if (!file.startsWith(path.join(ROOT, top)) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
           return next()
         }
-        res.setHeader('Content-Type', MIME[path.extname(file)] ?? 'application/octet-stream')
+        const { size } = fs.statSync(file)
+        res.setHeader('Content-Type', MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream')
+        res.setHeader('Accept-Ranges', 'bytes')
         res.setHeader('Cache-Control', 'no-cache')
+
+        // A media element needs Content-Length and range support: without them the browser
+        // reports duration NaN, never advances currentTime, and seeking silently fails.
+        const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? '')
+        if (range) {
+          const start = range[1] === '' ? Math.max(0, size - Number(range[2])) : Number(range[1])
+          const end = range[2] === '' || range[1] === '' ? size - 1 : Number(range[2])
+          if (start >= size || end < start) {
+            res.statusCode = 416
+            res.setHeader('Content-Range', `bytes */${size}`)
+            res.end()
+            return
+          }
+          res.statusCode = 206
+          res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`)
+          res.setHeader('Content-Length', String(end - start + 1))
+          fs.createReadStream(file, { start, end }).pipe(res)
+          return
+        }
+
+        res.setHeader('Content-Length', String(size))
+        if (req.method === 'HEAD') {
+          res.end()
+          return
+        }
         fs.createReadStream(file).pipe(res)
       })
     },

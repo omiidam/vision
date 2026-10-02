@@ -30,6 +30,9 @@ class AudioFile:
     name: str
     duration: float = 0.0
     stem: str = ""
+    # The lesson folder the recording was found in, e.g. ``lesson-01``.  This is the
+    # source of truth for which lesson a recording belongs to.
+    lesson_folder: str | None = None
 
 
 @dataclass
@@ -62,9 +65,37 @@ class AudioMapping:
         return "confirmed" if self.content_score >= CORROBORATION_FLOOR else "uncertain"
 
 
+_LESSON_FOLDER_RE = re.compile(r"^lesson[\s_-]*0*(\d+)$", re.IGNORECASE)
+
+
+def lesson_folders(source_dir: Path) -> list[tuple[str, Path]]:
+    """Discover the per-lesson folders, e.g. ``lesson1`` -> ``lesson-01``."""
+    found: list[tuple[str, Path]] = []
+    for entry in sorted(source_dir.iterdir(), key=lambda p: p.name.lower()):
+        if not entry.is_dir():
+            continue
+        match = _LESSON_FOLDER_RE.match(entry.name)
+        if match:
+            found.append((f"lesson-{int(match.group(1)):02d}", entry))
+    return found
+
+
 def scan(source_dir: Path) -> list[AudioFile]:
-    files = sorted(source_dir.glob("*.mp3"), key=lambda p: p.name.lower())
-    return [AudioFile(path=p, name=p.name, stem=p.stem) for p in files]
+    """Collect every recording, reading each per-lesson folder in turn.
+
+    The source folder keeps one folder per lesson, so the folder decides the lesson and
+    the file name decides the section.  Recordings sitting loose in the source root are
+    still picked up - the trailing number in their name gives the lesson.
+    """
+    files: list[AudioFile] = []
+    folders = lesson_folders(source_dir)
+    for lesson_id, folder in folders:
+        for path in sorted(folder.glob("*.mp3"), key=lambda p: p.name.lower()):
+            files.append(AudioFile(path=path, name=path.name, stem=path.stem,
+                                   lesson_folder=lesson_id))
+    for path in sorted(source_dir.glob("*.mp3"), key=lambda p: p.name.lower()):
+        files.append(AudioFile(path=path, name=path.name, stem=path.stem))
+    return files
 
 
 CORROBORATION_FLOOR = 0.25   # below this the transcript does not back up the file name
@@ -117,7 +148,7 @@ def build_mapping(
     section_text: dict[tuple[str, str], list[str]],
     section_ids: list[str],
 ) -> AudioMapping:
-    """Assign the recording named by its file name, then check the transcript agrees."""
+    """Assign the recording by its lesson folder and section name, then corroborate."""
     mapping = AudioMapping(audio=audio)
 
     section_id, lesson_number, name_score = parse_filename(audio.name, section_ids)
@@ -128,17 +159,35 @@ def build_mapping(
             f"convention, so it was not assigned to a section"
         )
         return mapping
-    if lesson_number is None:
-        mapping.method = "filename (no lesson number)"
-        mapping.notes.append(
-            f"file name names the section '{section_id}' but carries no lesson number; "
-            f"assigned to lesson 1 by convention"
-        )
-        lesson_number = 1
 
+    # The lesson comes from the folder the recording lives in; the section from its name.
+    if audio.lesson_folder:
+        mapping.lesson_id = audio.lesson_folder
+        if lesson_number is None:
+            mapping.method = "lesson folder + file name (no lesson number in name)"
+        else:
+            mapping.method = (
+                f"lesson folder '{audio.lesson_folder}' + file name "
+                f"'{section_id.replace('-', ' ')}' (match {name_score:.2f})"
+            )
+        if lesson_number is not None and f"lesson-{lesson_number:02d}" != audio.lesson_folder:
+            mapping.notes.append(
+                f"the name ends in {lesson_number} but the file sits in the "
+                f"{audio.lesson_folder} folder; the folder decides, so it stays on "
+                f"{audio.lesson_folder}"
+            )
+    else:
+        if lesson_number is None:
+            mapping.lesson_id = "lesson-01"
+            mapping.method = "file name (no lesson folder, no lesson number in name)"
+            mapping.notes.append(
+                "the recording is not in a lesson folder and its name carries no lesson "
+                "number; assumed Lesson 1"
+            )
+        else:
+            mapping.lesson_id = f"lesson-{lesson_number:02d}"
+            mapping.method = f"file name (no lesson folder; '{section_id.replace('-', ' ')}')"
     mapping.section_id = section_id
-    mapping.lesson_id = f"lesson-{lesson_number:02d}"
-    mapping.method = f"filename ({section_id.replace('-', ' ')}, name match {name_score:.2f})"
 
     # Corroboration only - it records evidence, it never moves the assignment.
     transcript = [normalize_word(w) for w in transcript]

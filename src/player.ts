@@ -7,6 +7,7 @@
 export class AudioPlayer {
   readonly element: HTMLAudioElement
   private listeners = new Set<(playing: boolean) => void>()
+  private pendingSeek: number | null = null
 
   constructor() {
     const element = new Audio()
@@ -21,6 +22,13 @@ export class AudioPlayer {
     element.addEventListener('play', () => this.emit(true))
     element.addEventListener('pause', () => this.emit(false))
     element.addEventListener('ended', () => this.emit(false))
+    element.addEventListener('loadedmetadata', () => {
+      if (this.pendingSeek !== null) {
+        const target = this.pendingSeek
+        this.pendingSeek = null
+        element.currentTime = Math.min(target, this.duration || target)
+      }
+    })
   }
 
   private emit(playing: boolean) {
@@ -45,8 +53,12 @@ export class AudioPlayer {
   }
 
   load(source: string): void {
+    // Never re-load the same source: element.load() resets currentTime to 0 and aborts
+    // whatever is playing, which would break seeking and resume.
+    const absolute = new URL(source, document.baseURI).href
+    if (this.element.src === absolute) return
     this.element.pause()
-    this.element.src = source
+    this.element.src = absolute
     this.element.load()
   }
 
@@ -72,6 +84,14 @@ export class AudioPlayer {
     // and assigning NaN to currentTime throws, so clamp only when it is known.
     const limit = this.duration > 0 ? this.duration : Number.MAX_SAFE_INTEGER
     const target = Math.max(0, Math.min(seconds, limit))
-    if (Number.isFinite(target)) this.element.currentTime = target
+    if (!Number.isFinite(target)) return
+    if (this.element.readyState === 0) {
+      // Metadata has not arrived yet.  Remember the position and apply it as soon as
+      // the browser knows how long the recording is, otherwise the seek is dropped.
+      this.pendingSeek = target
+      return
+    }
+    this.pendingSeek = null
+    this.element.currentTime = target
   }
 }

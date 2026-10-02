@@ -8,7 +8,7 @@
  "confidence": 0.6934,
  "mapping": {
   "status": "confirmed",
-  "method": "filename (conversation, name match 1.00)",
+  "method": "lesson folder 'lesson-01' + file name 'conversation' (match 1.00)",
   "contentScore": 0.9752,
   "contentBest": {
    "score": 0.9752,
