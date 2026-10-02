@@ -28,43 +28,43 @@
   },
   {
    "word": "alive,",
-   "start": 3.18,
-   "end": 3.88,
-   "match": "low",
-   "similarity": 0.364,
-   "spokenAs": " Lesson"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "increase,",
-   "start": 3.88,
-   "end": 4.46,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 1"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "hear,",
-   "start": 4.46,
-   "end": 5.78,
-   "match": "low",
-   "similarity": 0.2,
-   "spokenAs": " Saving"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "protect,",
-   "start": 5.78,
-   "end": 6.88,
-   "match": "low",
-   "similarity": 0.308,
-   "spokenAs": " Nature"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "for",
-   "start": 8.68,
-   "end": 9.38,
-   "match": "low",
-   "similarity": 0.267,
-   "spokenAs": " Conversation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "example",
@@ -1119,7 +1119,7 @@
   {
    "first": 0,
    "last": 15,
-   "start": 3.18,
+   "start": 10.92,
    "end": 14.46,
    "text": "endangered, alive, increase, hear, protect, for example Maryam is visiting the Museum of Nature and Wildlife."
   },
@@ -1313,5 +1313,16 @@
    "text": "Do you take care of animals?"
   }
  ],
- "unspokenAudio": []
+ "unspokenAudio": [
+  {
+   "start": 3.18,
+   "end": 5.78,
+   "transcript": " Lesson  1  Saving"
+  },
+  {
+   "start": 5.78,
+   "end": 9.38,
+   "transcript": " Nature  Conversation"
+  }
+ ]
 }

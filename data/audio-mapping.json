@@ -98,11 +98,11 @@
    "lessonId": "lesson-02",
    "sectionId": "listening-and-speaking",
    "rule": "filename",
-   "contentScore": 0.8649,
+   "contentScore": 0.869,
    "status": "confirmed",
    "method": "lesson folder 'lesson-02' + file name 'listening and speaking' (match 0.90)",
    "contentBest": {
-    "score": 0.8649,
+    "score": 0.869,
     "lessonId": "lesson-02",
     "sectionId": "listening-and-speaking"
    },
@@ -130,11 +130,11 @@
    "lessonId": "lesson-02",
    "sectionId": "reading",
    "rule": "filename",
-   "contentScore": 0.9855,
+   "contentScore": 0.9941,
    "status": "confirmed",
    "method": "lesson folder 'lesson-02' + file name 'reading' (match 1.00)",
    "contentBest": {
-    "score": 0.9855,
+    "score": 0.9941,
     "lessonId": "lesson-02",
     "sectionId": "reading"
    },

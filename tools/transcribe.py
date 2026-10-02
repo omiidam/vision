@@ -87,6 +87,28 @@ def transcribe_file(path: Path, model_name: str = DEFAULT_MODEL) -> dict:
     return result
 
 
+#: Whisper occasionally reports a word with no duration at all - it lands on the same
+#: instant as its neighbour.  Such a word can never be "the word the audio is inside",
+#: because there is no instant inside it, so it would be silently skipped by the reader.
+MIN_WORD_SECONDS = 0.02
+
+
+def _span(start: float, end: float, previous_end: float | None, following_start: float | None) -> tuple[float, float]:
+    """A word's span, widened when the recogniser reported no duration for it.
+
+    The audio either side of the word is what bounds it: the end of the word before and
+    the start of the word after.  The word is given the space between them, so it keeps
+    its place on the timeline and is something the reader can actually land on.
+    """
+    if end > start:
+        return start, end
+    if following_start is not None and following_start > start:
+        return start, following_start
+    if previous_end is not None and previous_end < start:
+        return previous_end, start
+    return start, start + MIN_WORD_SECONDS
+
+
 def speech_words(transcript: dict) -> list[tuple[str, float, float]]:
     """Flatten a transcript into ``(word, start, end)`` triples in timeline order."""
     words: list[tuple[str, float, float]] = []
@@ -94,7 +116,22 @@ def speech_words(transcript: dict) -> list[tuple[str, float, float]]:
         for word in segment["words"]:
             words.append((word["word"], float(word["start"]), float(word["end"])))
     words.sort(key=lambda w: w[1])
-    return words
+
+    # A word and its neighbour sometimes share one instant, so the order between them is
+    # not fixed by the sort alone; it is kept stable so the repair below sees the words in
+    # the order they are spoken.
+    repaired: list[tuple[str, float, float]] = []
+    for position, (text, start, end) in enumerate(words):
+        previous_end = repaired[-1][2] if repaired else None
+        following_start = words[position + 1][1] if position + 1 < len(words) else None
+        fixed_start, fixed_end = _span(start, end, previous_end, following_start)
+        # A word that was given a duration only because it was the very last one has no
+        # audio of its own to describe.  Timing it would invent a highlight the recording
+        # cannot back, so it is left for the aligner to treat as unspoken.
+        if fixed_end - fixed_start <= MIN_WORD_SECONDS and end <= start:
+            continue
+        repaired.append((text, fixed_start, fixed_end))
+    return repaired
 
 
 def main(argv: list[str]) -> int:

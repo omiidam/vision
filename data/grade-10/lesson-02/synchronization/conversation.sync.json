@@ -20,35 +20,35 @@
  "words": [
   {
    "word": "near,",
-   "start": 4.88,
-   "end": 5.66,
-   "match": "low",
-   "similarity": 0.545,
-   "spokenAs": " Wonders"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "rocky,",
-   "start": 5.66,
-   "end": 6.22,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " of"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "orbit,",
-   "start": 6.22,
-   "end": 6.98,
-   "match": "low",
-   "similarity": 0.154,
-   "spokenAs": " Creation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "powerful",
-   "start": 8.68,
-   "end": 9.32,
-   "match": "low",
-   "similarity": 0.3,
-   "spokenAs": " Conversation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Alireza",
@@ -92,7 +92,7 @@
   },
   {
    "word": "He",
-   "start": 14.04,
+   "start": 13.3,
    "end": 14.04,
    "match": "exact",
    "similarity": 1.0,
@@ -1260,11 +1260,11 @@
   },
   {
    "word": "sixty",
-   "start": 72.08,
-   "end": 72.42,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 60"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "moons.",
@@ -1623,14 +1623,14 @@
   {
    "first": 0,
    "last": 8,
-   "start": 4.88,
+   "start": 10.98,
    "end": 13.3,
    "text": "near, rocky, orbit, powerful Alireza is visiting an observatory."
   },
   {
    "first": 9,
    "last": 13,
-   "start": 14.04,
+   "start": 13.3,
    "end": 14.92,
    "text": "He is talking to Ms."
   },
@@ -1827,8 +1827,13 @@
  "unspokenAudio": [
   {
    "start": 3.6,
-   "end": 4.88,
-   "transcript": " Lesson  2"
+   "end": 5.66,
+   "transcript": " Lesson  2  Wonders"
+  },
+  {
+   "start": 5.66,
+   "end": 6.98,
+   "transcript": " of  Creation"
   }
  ]
 }

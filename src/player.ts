@@ -16,6 +16,21 @@ export function formatRate(rate: number): string {
 }
 
 /**
+ * How often the player samples the audio element while it is playing.
+ *
+ * The element's own `timeupdate` event is deliberately coarse - roughly four times a
+ * second - so on its own it would leave the highlight up to a quarter of a second behind
+ * the voice.  This is the interval used to sample between those events.  It is short
+ * enough that the word lit is the word being said, and long enough that the work is a few
+ * dozen cheap reads per second rather than one per animation frame.
+ *
+ * The interval is only ever a *trigger*.  What it reports is `element.currentTime`, the
+ * position the audio has actually reached, so the highlight follows the recording and
+ * cannot drift from it, whatever this is set to.
+ */
+export const SAMPLE_INTERVAL_MS = 40
+
+/**
  * A very small wrapper around a single <audio> element.
  *
  * The synchronization engine only ever reads `currentTime` from here, which is the
@@ -25,8 +40,10 @@ export class AudioPlayer {
   readonly element: HTMLAudioElement
   private listeners = new Set<(playing: boolean) => void>()
   private rateListeners = new Set<(rate: number) => void>()
+  private timeListeners = new Set<() => void>()
   private pendingSeek: number | null = null
   private currentRate = DEFAULT_RATE
+  private sampler: ReturnType<typeof setInterval> | null = null
 
   constructor() {
     const element = new Audio()
@@ -41,6 +58,14 @@ export class AudioPlayer {
     element.addEventListener('play', () => this.emit(true))
     element.addEventListener('pause', () => this.emit(false))
     element.addEventListener('ended', () => this.emit(false))
+    // The element's own report that it has moved.  It fires whether or not the page is
+    // painting, which is what keeps the reader's highlight in step with the audio when
+    // animation frames are not coming - an Android WebView in the background, or a tab
+    // the user has switched away from.  The listener reads `currentTime`, never a clock
+    // of its own, so a change of playback rate cannot make it drift.
+    element.addEventListener('timeupdate', () => this.emitTime())
+    element.addEventListener('seeking', () => this.emitTime())
+    element.addEventListener('seeked', () => this.emitTime())
     element.addEventListener('ratechange', () => {
       // The media element owns the rate: it can change it by itself (a platform or
       // user-agent control), so the UI is told to follow the element, not the reverse.
@@ -64,6 +89,42 @@ export class AudioPlayer {
 
   private emitRate() {
     this.rateListeners.forEach((listener) => listener(this.currentRate))
+  }
+
+  private emitTime() {
+    this.timeListeners.forEach((listener) => listener())
+  }
+
+  /**
+   * Called when the media element reports that it has moved.  The listener reads
+   * `currentTime` from the player, which is the element's own decoded position.
+   */
+  onTimeUpdate(listener: () => void): () => void {
+    this.timeListeners.add(listener)
+    return () => this.timeListeners.delete(listener)
+  }
+
+  offTimeUpdate(): void {
+    this.timeListeners.clear()
+  }
+
+  /**
+   * Start sampling the audio element while it plays.
+   *
+   * `timeupdate` alone is too coarse to keep a word highlight on the voice, and animation
+   * frames are not delivered at all when the page is not painting.  This samples in
+   * between, and reports the element's own position every time - it never advances
+   * anything on its own.
+   */
+  startSampling(): void {
+    if (this.sampler !== null) return
+    this.sampler = setInterval(() => this.emitTime(), SAMPLE_INTERVAL_MS)
+  }
+
+  stopSampling(): void {
+    if (this.sampler === null) return
+    clearInterval(this.sampler)
+    this.sampler = null
   }
 
   onPlayingChange(listener: (playing: boolean) => void): () => void {

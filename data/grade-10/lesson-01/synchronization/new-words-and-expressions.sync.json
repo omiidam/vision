@@ -5,7 +5,7 @@
  "sourceAudioFile": "new words and expressions1.mp3",
  "duration": 74.736,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.7,
+ "confidence": 0.7538,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-01' + file name 'new words and expressions' (match 1.00)",
@@ -76,19 +76,19 @@
   },
   {
    "word": "on",
-   "start": 9.98,
-   "end": 10.16,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " an"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Earth.",
-   "start": 10.16,
-   "end": 10.54,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " F"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "A",
@@ -324,67 +324,67 @@
   },
   {
    "word": "Tooran",
-   "start": 27.82,
-   "end": 28.22,
-   "match": "low",
-   "similarity": 0.182,
-   "spokenAs": " don't"
-  },
-  {
-   "word": "is",
-   "start": 28.22,
-   "end": 28.52,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " swim"
-  },
-  {
-   "word": "the",
-   "start": 28.52,
-   "end": 29.3,
-   "match": "low",
-   "similarity": 0.571,
-   "spokenAs": " here"
-  },
-  {
-   "word": "natural",
    "start": 30.38,
    "end": 31.06,
    "match": "fuzzy",
-   "similarity": 0.667,
+   "similarity": 0.727,
    "spokenAs": " Turan"
   },
   {
-   "word": "home",
+   "word": "is",
    "start": 31.06,
    "end": 31.2,
-   "match": "low",
-   "similarity": 0.0,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " is"
   },
   {
-   "word": "Don't",
-   "start": 31.2,
-   "end": 31.34,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " a"
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
-   "word": "swim",
+   "word": "natural",
    "start": 31.34,
    "end": 31.7,
-   "match": "low",
-   "similarity": 0.0,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " natural"
   },
   {
-   "word": "here.",
+   "word": "home",
    "start": 31.7,
    "end": 31.98,
-   "match": "low",
-   "similarity": 0.5,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " home"
+  },
+  {
+   "word": "Don't",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "swim",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "here.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "of",
@@ -476,75 +476,75 @@
   },
   {
    "word": "They",
-   "start": 36.42,
-   "end": 36.56,
-   "match": "fuzzy",
-   "similarity": 0.857,
-   "spokenAs": " the"
-  },
-  {
-   "word": "hope",
-   "start": 36.56,
-   "end": 36.86,
-   "match": "low",
-   "similarity": 0.308,
-   "spokenAs": " northwest"
-  },
-  {
-   "word": "to",
-   "start": 36.86,
-   "end": 37.22,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " of"
-  },
-  {
-   "word": "save",
-   "start": 37.22,
-   "end": 37.58,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " Iran"
-  },
-  {
-   "word": "the",
    "start": 37.58,
    "end": 38.82,
-   "match": "fuzzy",
-   "similarity": 0.857,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " They"
   },
   {
-   "word": "the",
+   "word": "hope",
    "start": 38.82,
    "end": 39.1,
-   "match": "low",
-   "similarity": 0.571,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " hope"
   },
   {
-   "word": "north-west",
+   "word": "to",
    "start": 39.1,
    "end": 39.26,
-   "match": "low",
-   "similarity": 0.167,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " to"
   },
   {
-   "word": "of",
+   "word": "save",
    "start": 39.26,
    "end": 39.52,
-   "match": "low",
-   "similarity": 0.0,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " save"
   },
   {
-   "word": "Iran.",
+   "word": "the",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
    "start": 39.52,
    "end": 39.74,
-   "match": "low",
-   "similarity": 0.0,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " the"
+  },
+  {
+   "word": "north-west",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "of",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "Iran.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "injured",
@@ -844,11 +844,11 @@
   },
   {
    "word": "someone",
-   "start": 56.36,
-   "end": 56.6,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " there"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "or",
@@ -868,19 +868,19 @@
   },
   {
    "word": "else",
-   "start": 56.6,
-   "end": 56.76,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " is"
-  },
-  {
-   "word": "There's",
    "start": null,
    "end": null,
    "match": null,
    "similarity": null,
    "spokenAs": null
+  },
+  {
+   "word": "There's",
+   "start": 56.36,
+   "end": 56.6,
+   "match": "fuzzy",
+   "similarity": 0.833,
+   "spokenAs": " there"
   },
   {
    "word": "no",
@@ -1078,7 +1078,7 @@
    "first": 5,
    "last": 8,
    "start": 8.98,
-   "end": 10.54,
+   "end": 9.98,
    "text": "We live on Earth."
   },
   {
@@ -1119,7 +1119,7 @@
   {
    "first": 38,
    "last": 45,
-   "start": 27.82,
+   "start": 30.38,
    "end": 31.98,
    "text": "Tooran is the natural home Don't swim here."
   },
@@ -1199,6 +1199,16 @@
    "start": 1.92,
    "end": 3.92,
    "transcript": " New  words  and  expressions"
+  },
+  {
+   "start": 27.82,
+   "end": 29.3,
+   "transcript": " don't  swim  here"
+  },
+  {
+   "start": 36.42,
+   "end": 37.58,
+   "transcript": " the  northwest  of  Iran"
   }
  ]
 }

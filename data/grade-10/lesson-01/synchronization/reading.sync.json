@@ -1204,11 +1204,11 @@
   },
   {
    "word": "way,",
-   "start": 68.5,
-   "end": 69.58,
-   "match": "low",
-   "similarity": 0.167,
-   "spokenAs": " hopefully"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -1401,7 +1401,7 @@
   {
    "first": 146,
    "last": 159,
-   "start": 68.5,
+   "start": 69.58,
    "end": 73.16,
    "text": "In this way, the number of cheetahs is going to increase in the future."
   }
@@ -1411,6 +1411,11 @@
    "start": 4.6,
    "end": 5.4,
    "transcript": " reading"
+  },
+  {
+   "start": 68.5,
+   "end": 69.58,
+   "transcript": " hopefully"
   }
  ]
 }

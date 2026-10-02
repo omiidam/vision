@@ -5,13 +5,13 @@
  "sourceAudioFile": "Listening & Speaking2.mp3",
  "duration": 85.238,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.2893,
+ "confidence": 0.3264,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'listening and speaking' (match 0.90)",
-  "contentScore": 0.8649,
+  "contentScore": 0.869,
   "contentBest": {
-   "score": 0.8649,
+   "score": 0.869,
    "lessonId": "lesson-02",
    "sectionId": "listening-and-speaking"
   },
@@ -284,11 +284,11 @@
   },
   {
    "word": "I",
-   "start": 19.44,
-   "end": 19.74,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " I'm"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "am",
@@ -436,27 +436,27 @@
   },
   {
    "word": "You",
-   "start": 24.8,
-   "end": 25.54,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " B."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "may",
-   "start": 28.54,
-   "end": 28.76,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " Listen"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "use",
-   "start": 28.76,
-   "end": 29.06,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " to"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -476,11 +476,11 @@
   },
   {
    "word": "patterns",
-   "start": 29.6,
-   "end": 30.2,
-   "match": "low",
-   "similarity": 0.381,
-   "spokenAs": " conversations"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -508,115 +508,115 @@
   },
   {
    "word": "answer",
-   "start": 30.84,
-   "end": 31.08,
-   "match": "low",
-   "similarity": 0.182,
-   "spokenAs": " check"
-  },
-  {
-   "word": "about",
-   "start": 31.08,
-   "end": 31.32,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " the"
-  },
-  {
-   "word": "details.",
-   "start": 31.32,
-   "end": 31.68,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " correct"
-  },
-  {
-   "word": "How",
    "start": 31.68,
    "end": 32.38,
-   "match": "low",
-   "similarity": 0.222,
+   "match": "exact",
+   "similarity": 1.0,
    "spokenAs": " answer."
   },
   {
-   "word": "is",
-   "start": 34.42,
-   "end": 34.56,
-   "match": "low",
-   "similarity": 0.143,
-   "spokenAs": " Conversation"
-  },
-  {
-   "word": "(was).......?",
-   "start": 34.56,
-   "end": 35.22,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 1."
-  },
-  {
-   "word": "It",
-   "start": 37.0,
-   "end": 37.0,
-   "match": "fuzzy",
-   "similarity": 0.667,
-   "spokenAs": " I"
-  },
-  {
-   "word": "is",
+   "word": "about",
    "start": 37.0,
    "end": 37.26,
-   "match": "low",
-   "similarity": 0.0,
+   "match": "fuzzy",
+   "similarity": 0.727,
    "spokenAs": " bought"
   },
   {
+   "word": "details.",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "How",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "is",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "(was).......?",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "It",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "is",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
    "word": "(was)",
-   "start": 37.26,
-   "end": 37.48,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " a"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "interesting",
-   "start": 37.48,
-   "end": 37.72,
-   "match": "low",
-   "similarity": 0.375,
-   "spokenAs": " dress"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "/",
-   "start": 37.72,
-   "end": 37.96,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " for"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "beautiful",
-   "start": 37.96,
-   "end": 38.22,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " my"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "/",
-   "start": 38.22,
-   "end": 38.84,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " mother's"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "nice,",
-   "start": 38.84,
-   "end": 39.38,
-   "match": "low",
-   "similarity": 0.167,
-   "spokenAs": " birthday."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "What",
@@ -636,11 +636,11 @@
   },
   {
    "word": "is",
-   "start": 41.12,
-   "end": 41.46,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " was"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "it?",
@@ -660,11 +660,11 @@
   },
   {
    "word": "is",
-   "start": 42.36,
-   "end": 42.56,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " was"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "black",
@@ -684,11 +684,11 @@
   },
   {
    "word": "white",
-   "start": 42.56,
-   "end": 42.84,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " red,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "/",
@@ -708,11 +708,11 @@
   },
   {
    "word": "Was",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 42.36,
+   "end": 42.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " was"
   },
   {
    "word": "it",
@@ -724,35 +724,35 @@
   },
   {
    "word": "a",
-   "start": 43.14,
-   "end": 43.4,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " was"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "modern",
-   "start": 43.4,
-   "end": 43.82,
-   "match": "low",
-   "similarity": 0.167,
-   "spokenAs": " really"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "house?",
-   "start": 43.82,
-   "end": 44.3,
-   "match": "low",
-   "similarity": 0.143,
-   "spokenAs": " beautiful."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Yes,",
-   "start": 45.04,
-   "end": 45.1,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " Was"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "it",
@@ -764,11 +764,11 @@
   },
   {
    "word": "was.",
-   "start": 45.32,
-   "end": 45.86,
-   "match": "low",
-   "similarity": 0.167,
-   "spokenAs": " expensive?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "(No,",
@@ -804,19 +804,19 @@
   },
   {
    "word": "old",
-   "start": 47.74,
-   "end": 47.9,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " Did"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "house).",
-   "start": 47.9,
-   "end": 48.12,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " she"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "B.",
@@ -828,27 +828,27 @@
   },
   {
    "word": "Listen",
-   "start": 48.12,
-   "end": 48.38,
-   "match": "low",
-   "similarity": 0.6,
-   "spokenAs": " like"
-  },
-  {
-   "word": "to",
-   "start": 48.38,
-   "end": 48.66,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " it?"
-  },
-  {
-   "word": "the",
    "start": null,
    "end": null,
    "match": null,
    "similarity": null,
    "spokenAs": null
+  },
+  {
+   "word": "to",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "the",
+   "start": 47.9,
+   "end": 48.12,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " she"
   },
   {
    "word": "following",
@@ -884,11 +884,11 @@
   },
   {
    "word": "the",
-   "start": 48.94,
-   "end": 49.22,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " Yeah,"
+   "start": 49.5,
+   "end": 49.76,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " she"
   },
   {
    "word": "sentences.",
@@ -924,19 +924,19 @@
   },
   {
    "word": "She",
-   "start": 49.5,
-   "end": 49.76,
+   "start": 51.22,
+   "end": 51.4,
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " she"
   },
   {
    "word": "bought",
-   "start": 49.76,
-   "end": 50.04,
-   "match": "low",
-   "similarity": 0.444,
-   "spokenAs": " got"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "2.",
@@ -948,11 +948,11 @@
   },
   {
    "word": "It",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 51.62,
+   "end": 52.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " it."
   },
   {
    "word": "was",
@@ -1004,19 +1004,19 @@
   },
   {
    "word": "conversations",
-   "start": 50.04,
-   "end": 50.52,
-   "match": "low",
-   "similarity": 0.353,
-   "spokenAs": " very"
+   "start": 53.78,
+   "end": 54.4,
+   "match": "fuzzy",
+   "similarity": 0.96,
+   "spokenAs": " Conversation"
   },
   {
    "word": "and",
-   "start": 50.52,
-   "end": 50.92,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " happy"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "tick",
@@ -1028,35 +1028,35 @@
   },
   {
    "word": "what",
-   "start": 50.92,
-   "end": 51.22,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " when"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
-   "start": 51.22,
-   "end": 51.4,
-   "match": "fuzzy",
-   "similarity": 0.667,
-   "spokenAs": " she"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "speaker",
-   "start": 51.4,
-   "end": 51.62,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " saw"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "is",
-   "start": 51.62,
-   "end": 52.02,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " it."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Pair",
@@ -1076,11 +1076,11 @@
   },
   {
    "word": "and",
-   "start": 53.78,
-   "end": 54.4,
-   "match": "low",
-   "similarity": 0.267,
-   "spokenAs": " Conversation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "add",
@@ -1252,27 +1252,27 @@
   },
   {
    "word": "use",
-   "start": 56.38,
-   "end": 56.62,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " cook?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
-   "start": 57.2,
-   "end": 57.58,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " Yes,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "adjectives",
-   "start": 57.76,
-   "end": 58.22,
-   "match": "low",
-   "similarity": 0.526,
-   "spokenAs": " sometimes."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "in",
@@ -1300,19 +1300,19 @@
   },
   {
    "word": "Size:",
-   "start": 58.88,
-   "end": 59.0,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " like"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "long,",
-   "start": 59.0,
-   "end": 59.26,
-   "match": "low",
-   "similarity": 0.545,
-   "spokenAs": " cooking"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "large",
@@ -1324,11 +1324,11 @@
   },
   {
    "word": "Quality:",
-   "start": 59.26,
-   "end": 59.6,
-   "match": "low",
-   "similarity": 0.571,
-   "spokenAs": " healthy"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "beautiful,",
@@ -1380,11 +1380,11 @@
   },
   {
    "word": "likes",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 58.88,
+   "end": 59.0,
+   "match": "fuzzy",
+   "similarity": 0.889,
+   "spokenAs": " like"
   },
   {
    "word": "2.",
@@ -1396,11 +1396,11 @@
   },
   {
    "word": "Cooking",
-   "start": 59.6,
-   "end": 60.08,
-   "match": "low",
-   "similarity": 0.364,
-   "spokenAs": " food."
+   "start": 59.0,
+   "end": 59.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " cooking"
   },
   {
    "word": "is",
@@ -1412,19 +1412,19 @@
   },
   {
    "word": "B.",
-   "start": 60.76,
-   "end": 60.92,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " it"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Listen",
-   "start": 60.92,
-   "end": 61.24,
-   "match": "low",
-   "similarity": 0.267,
-   "spokenAs": " difficult"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -1452,19 +1452,19 @@
   },
   {
    "word": "conversations",
-   "start": 61.54,
-   "end": 61.82,
-   "match": "low",
-   "similarity": 0.353,
-   "spokenAs": " cook?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "and",
-   "start": 62.3,
-   "end": 62.64,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " No,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "tick",
@@ -1476,11 +1476,11 @@
   },
   {
    "word": "what",
-   "start": 63.08,
-   "end": 63.44,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " actually"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -1508,11 +1508,11 @@
   },
   {
    "word": "Pair",
-   "start": 63.72,
-   "end": 64.1,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " very"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "up",
@@ -1524,19 +1524,19 @@
   },
   {
    "word": "and",
-   "start": 64.1,
-   "end": 64.66,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " easy."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "choose",
-   "start": 65.16,
-   "end": 65.4,
-   "match": "low",
-   "similarity": 0.444,
-   "spokenAs": " Who"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "3",
@@ -1548,11 +1548,11 @@
   },
   {
    "word": "adjectives",
-   "start": 65.4,
-   "end": 65.72,
-   "match": "low",
-   "similarity": 0.267,
-   "spokenAs": " helps"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "in",
@@ -1580,27 +1580,27 @@
   },
   {
    "word": "to",
-   "start": 65.72,
-   "end": 65.98,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "describe",
-   "start": 65.98,
-   "end": 66.14,
-   "match": "low",
-   "similarity": 0.167,
-   "spokenAs": " when"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "people,",
-   "start": 66.14,
-   "end": 66.3,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "places,",
@@ -1612,35 +1612,35 @@
   },
   {
    "word": "going",
-   "start": 66.3,
-   "end": 66.54,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " cook?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
-   "start": 66.9,
-   "end": 67.1,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " My"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "do.",
-   "start": 67.1,
-   "end": 67.4,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " mother"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "and",
-   "start": 67.4,
-   "end": 67.74,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " and"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "fruits",
@@ -1676,27 +1676,27 @@
   },
   {
    "word": "Compare",
-   "start": 67.74,
-   "end": 67.92,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " my"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "your",
-   "start": 67.92,
-   "end": 68.22,
+   "start": 65.72,
+   "end": 65.98,
    "match": "fuzzy",
-   "similarity": 0.727,
-   "spokenAs": " younger"
+   "similarity": 0.857,
+   "spokenAs": " you"
   },
   {
    "word": "answers",
-   "start": 68.22,
-   "end": 68.58,
-   "match": "low",
-   "similarity": 0.462,
-   "spokenAs": " sister."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "with",
@@ -1708,11 +1708,11 @@
   },
   {
    "word": "your",
-   "start": 69.1,
-   "end": 69.38,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " How"
+   "start": 66.14,
+   "end": 66.3,
+   "match": "fuzzy",
+   "similarity": 0.857,
+   "spokenAs": " you"
   },
   {
    "word": "friend's.",
@@ -1724,19 +1724,19 @@
   },
   {
    "word": "my",
+   "start": 67.74,
+   "end": 67.92,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " my"
+  },
+  {
+   "word": "best",
    "start": null,
    "end": null,
    "match": null,
    "similarity": null,
    "spokenAs": null
-  },
-  {
-   "word": "best",
-   "start": 69.38,
-   "end": 69.98,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " interesting."
   },
   {
    "word": "friend,",
@@ -1748,11 +1748,11 @@
   },
   {
    "word": "apple,",
-   "start": 71.14,
-   "end": 71.3,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " Can"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "our",
@@ -1788,27 +1788,27 @@
   },
   {
    "word": "yellow,",
-   "start": 71.42,
-   "end": 71.62,
-   "match": "low",
-   "similarity": 0.6,
-   "spokenAs": " tell"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "medium,",
-   "start": 71.62,
-   "end": 71.76,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " me"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "our",
-   "start": 71.76,
-   "end": 71.94,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " how"
+   "start": 73.98,
+   "end": 74.34,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " course."
   },
   {
    "word": "English",
@@ -1820,19 +1820,19 @@
   },
   {
    "word": "teacher,",
-   "start": 71.94,
-   "end": 72.06,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " to"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Boostan",
-   "start": 72.06,
-   "end": 72.32,
-   "match": "low",
-   "similarity": 0.364,
-   "spokenAs": " cook?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Park,",
@@ -1844,11 +1844,11 @@
   },
   {
    "word": "fresh,",
-   "start": 73.28,
-   "end": 73.64,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " Yes,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "red,",
@@ -1868,11 +1868,11 @@
   },
   {
    "word": "careful,",
-   "start": 73.76,
-   "end": 73.98,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " of"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "neat,",
@@ -1892,11 +1892,11 @@
   },
   {
    "word": "nice,",
-   "start": 73.98,
-   "end": 74.34,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " course."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "beautiful,",
@@ -1908,11 +1908,11 @@
   },
   {
    "word": "long,",
-   "start": 83.8,
-   "end": 85.2,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " Thank"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "helpful",
@@ -1924,11 +1924,11 @@
   },
   {
    "word": "Box",
-   "start": 85.2,
-   "end": 85.2,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "1",
@@ -1940,19 +1940,19 @@
   },
   {
    "word": "Box",
-   "start": 85.2,
-   "end": 85.2,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " for"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "2",
-   "start": 85.2,
-   "end": 85.2,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " watching."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   }
  ],
  "sentences": [
@@ -1987,7 +1987,7 @@
   {
    "first": 33,
    "last": 39,
-   "start": 19.44,
+   "start": 19.74,
    "end": 20.82,
    "text": "I am going to watch it again."
   },
@@ -2008,21 +2008,21 @@
   {
    "first": 52,
    "last": 63,
-   "start": 24.8,
-   "end": 31.68,
+   "start": 29.06,
+   "end": 37.26,
    "text": "You may use the following patterns to ask and answer about details."
   },
   {
    "first": 64,
    "last": 66,
-   "start": 31.68,
-   "end": 35.22,
+   "start": null,
+   "end": null,
    "text": "How is (was).......?"
   },
   {
    "first": 67,
    "last": 78,
-   "start": 37.0,
+   "start": 40.5,
    "end": 41.74,
    "text": "It is (was) interesting / beautiful / nice, What color is it?"
   },
@@ -2030,28 +2030,28 @@
    "first": 79,
    "last": 85,
    "start": 42.12,
-   "end": 42.84,
+   "end": 42.36,
    "text": "It is black / white / yellow,....."
   },
   {
    "first": 86,
    "last": 90,
-   "start": 43.06,
-   "end": 44.3,
+   "start": 42.36,
+   "end": 43.14,
    "text": "Was it a modern house?"
   },
   {
    "first": 91,
    "last": 93,
-   "start": 45.04,
-   "end": 45.86,
+   "start": 45.1,
+   "end": 45.32,
    "text": "Yes, it was."
   },
   {
    "first": 94,
    "last": 99,
    "start": 46.46,
-   "end": 48.12,
+   "end": 47.34,
    "text": "(No, it was an old house)."
   },
   {
@@ -2064,8 +2064,8 @@
   {
    "first": 101,
    "last": 109,
-   "start": 48.12,
-   "end": 49.22,
+   "start": 47.9,
+   "end": 49.76,
    "text": "Listen to the following conversations and complete the sentences."
   },
   {
@@ -2078,21 +2078,21 @@
   {
    "first": 113,
    "last": 115,
-   "start": 49.5,
-   "end": 50.04,
+   "start": 51.22,
+   "end": 51.4,
    "text": "She bought 2."
   },
   {
    "first": 116,
    "last": 118,
-   "start": null,
-   "end": null,
+   "start": 51.62,
+   "end": 52.02,
    "text": "It was B."
   },
   {
    "first": 119,
    "last": 146,
-   "start": 50.04,
+   "start": 53.78,
    "end": 56.22,
    "text": "Listen to the following conversations and tick what the speaker is Pair up and add 2 turns to the conversation by asking about the size going to do."
   },
@@ -2113,52 +2113,128 @@
   {
    "first": 160,
    "last": 168,
-   "start": 58.88,
-   "end": 59.6,
+   "start": null,
+   "end": null,
    "text": "Size: long, large Quality: beautiful, nice Conversation 2 1."
   },
   {
    "first": 169,
    "last": 171,
-   "start": null,
-   "end": null,
+   "start": 58.88,
+   "end": 59.0,
    "text": "She likes 2."
   },
   {
    "first": 172,
    "last": 174,
-   "start": 59.6,
-   "end": 60.92,
+   "start": 59.0,
+   "end": 60.76,
    "text": "Cooking is B."
   },
   {
    "first": 175,
    "last": 201,
-   "start": 60.92,
-   "end": 67.4,
+   "start": 61.24,
+   "end": 63.72,
    "text": "Listen to the following conversations and tick what the speaker is Pair up and choose 3 adjectives in box 2 to describe people, places, going to do."
   },
   {
    "first": 202,
    "last": 206,
-   "start": 67.4,
-   "end": 67.74,
+   "start": null,
+   "end": null,
    "text": "and fruits in box 1."
   },
   {
    "first": 207,
    "last": 212,
-   "start": 67.74,
-   "end": 69.38,
+   "start": 65.72,
+   "end": 66.3,
    "text": "Compare your answers with your friend's."
   },
   {
    "first": 213,
    "last": 241,
-   "start": 69.38,
-   "end": 85.2,
+   "start": 67.74,
+   "end": 74.34,
    "text": "my best friend, apple, our school, small, green, yellow, medium, our English teacher, Boostan Park, fresh, red, kind, careful, neat, pepper nice, beautiful, long, helpful Box 1 Box 2"
   }
  ],
- "unspokenAudio": []
+ "unspokenAudio": [
+  {
+   "start": 24.8,
+   "end": 29.06,
+   "transcript": " B.  Listen  to"
+  },
+  {
+   "start": 30.84,
+   "end": 31.68,
+   "transcript": " check  the  correct"
+  },
+  {
+   "start": 34.42,
+   "end": 37.0,
+   "transcript": " Conversation  1.  I"
+  },
+  {
+   "start": 37.26,
+   "end": 40.26,
+   "transcript": " a  dress  for  my  mother's  birthday.  Good,"
+  },
+  {
+   "start": 43.14,
+   "end": 45.1,
+   "transcript": " was  really  beautiful.  Was"
+  },
+  {
+   "start": 48.12,
+   "end": 49.22,
+   "transcript": " like  it?  Yeah,"
+  },
+  {
+   "start": 49.76,
+   "end": 51.22,
+   "transcript": " got  very  happy  when"
+  },
+  {
+   "start": 56.38,
+   "end": 58.22,
+   "transcript": " cook?  Yes,  sometimes."
+  },
+  {
+   "start": 59.26,
+   "end": 60.08,
+   "transcript": " healthy  food."
+  },
+  {
+   "start": 61.54,
+   "end": 63.44,
+   "transcript": " cook?  No,  actually"
+  },
+  {
+   "start": 63.72,
+   "end": 65.72,
+   "transcript": " very  easy.  Who  helps"
+  },
+  {
+   "start": 66.3,
+   "end": 67.74,
+   "transcript": " cook?  My  mother  and"
+  },
+  {
+   "start": 67.92,
+   "end": 71.3,
+   "transcript": " younger  sister.  How  interesting.  Can"
+  },
+  {
+   "start": 71.42,
+   "end": 73.98,
+   "transcript": " tell  me  how  to  cook?  Yes,  of"
+  },
+  {
+   "start": 83.8,
+   "end": 85.2,
+   "transcript": " Thank"
+  }
+ ]
 }

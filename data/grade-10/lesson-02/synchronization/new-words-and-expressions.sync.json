@@ -5,7 +5,7 @@
  "sourceAudioFile": "New Words & Expressions2.mp3",
  "duration": 76.173,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.6731,
+ "confidence": 0.6795,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'new words and expressions' (match 0.92)",
@@ -244,11 +244,11 @@
   },
   {
    "word": "thousand",
-   "start": 19.12,
-   "end": 19.8,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 1000"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "people",
@@ -852,11 +852,11 @@
   },
   {
    "word": "carry:",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 53.46,
+   "end": 53.66,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Carry,"
   },
   {
    "word": "to",
@@ -908,19 +908,19 @@
   },
   {
    "word": "one",
-   "start": 51.9,
-   "end": 52.1,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " in"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "place",
-   "start": 52.1,
-   "end": 52.46,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " war."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -932,11 +932,11 @@
   },
   {
    "word": "another",
-   "start": 53.46,
-   "end": 53.66,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " Carry,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Monkeys",
@@ -1390,7 +1390,7 @@
   {
    "first": 104,
    "last": 121,
-   "start": 51.9,
+   "start": 53.46,
    "end": 57.12,
    "text": "carry: to move someone or something from one place to another Monkeys carry their babies all day long."
   },

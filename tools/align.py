@@ -9,6 +9,14 @@ alignment over normalised tokens:
   * textbook word that was not spoken         cost TEXTBOOK_GAP
   * spoken word absent from the textbook      cost SPEECH_GAP
 
+Two words are only ever paired when they are recognisably the same word.  A match below
+``MATCH_FLOOR`` is not a match at all: the recording said something else at that moment -
+a different word, or the teacher's own instruction - so pairing the two would put the
+textbook's timestamp on audio that is not saying that word.  The highlight would then
+jump early, and every word after it would read as too fast.  Such a word keeps a null
+timestamp and the audio becomes a speech island instead, so the reader holds the last
+word it was sure of rather than running ahead of the recording.
+
 Textbook words that are skipped by the recording (fill-in-the-blank dots, headings that
 are only printed) therefore keep a null timestamp instead of being given a fake one.
 """
@@ -23,6 +31,14 @@ from text import normalize_word
 TEXTBOOK_GAP = 1.10
 SPEECH_GAP = 0.55
 MATCH_CEILING = 0.62        # similarity above which a fuzzy match is trusted
+
+#: Below this similarity two words are not the same word, so they are never paired.  It
+#: is the trust boundary this module already used when reporting confidence: the point at
+#: which a near match stops being believable and becomes an unrelated word that happens to
+#: sit next to it in the recording.  Measured over the book's own recordings, the trusted
+#: matches are overwhelmingly exact and the untrusted ones are a flat tail of noise, so the
+#: two groups are separated rather than graded.
+MATCH_FLOOR = MATCH_CEILING
 
 # Textbook words the recording does not speak keep a null timestamp.  Guessing one would
 # highlight a word at a moment when nothing is being said, so the table stays honest.
@@ -78,10 +94,16 @@ def align(textbook: list[str], speech: list[tuple[str, float, float]]) -> tuple[
         back[i][0] = 1
         for j in range(1, m + 1):
             sim = similarity(ref[i - 1], hyp[j - 1])
-            diag = best[i - 1][j - 1] + (1.0 - sim)
             skip_ref = best[i - 1][j] + TEXTBOOK_GAP
             skip_hyp = best[i][j - 1] + SPEECH_GAP
-            options = ((diag, 0), (skip_ref, 1), (skip_hyp, 2))
+            options = []
+            if sim >= MATCH_FLOOR:
+                # Only a recognisable pair is allowed on the diagonal.  Charging for an
+                # implausible one instead would still let it win when the alternatives
+                # are expensive, so it is not offered at all.
+                options.append((best[i - 1][j - 1] + (1.0 - sim), 0))
+            options.append((skip_ref, 1))
+            options.append((skip_hyp, 2))
             best[i][j], back[i][j] = min(options, key=lambda o: (o[0], o[1]))
 
     path: list[tuple[int, int, float]] = []

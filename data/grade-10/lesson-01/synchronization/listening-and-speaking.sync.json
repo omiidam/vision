@@ -5,7 +5,7 @@
  "sourceAudioFile": "listening and speaking1.mp3",
  "duration": 75.624,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.3306,
+ "confidence": 0.3551,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-01' + file name 'listening and speaking' (match 1.00)",
@@ -116,11 +116,11 @@
   },
   {
    "word": "tense'",
-   "start": 9.92,
-   "end": 10.28,
-   "match": "low",
-   "similarity": 0.545,
-   "spokenAs": " events"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -484,27 +484,27 @@
   },
   {
    "word": "You",
-   "start": 26.2,
-   "end": 26.8,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " B."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "may",
-   "start": 29.22,
-   "end": 29.44,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " Listen"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "use",
-   "start": 29.44,
-   "end": 29.74,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " to"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -524,11 +524,11 @@
   },
   {
    "word": "patterns",
-   "start": 30.24,
-   "end": 30.88,
-   "match": "low",
-   "similarity": 0.381,
-   "spokenAs": " conversations"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -556,11 +556,11 @@
   },
   {
    "word": "answer",
-   "start": 31.58,
-   "end": 31.84,
-   "match": "low",
-   "similarity": 0.182,
-   "spokenAs": " check"
+   "start": 32.42,
+   "end": 33.02,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " answer."
   },
   {
    "word": "about",
@@ -572,35 +572,35 @@
   },
   {
    "word": "the",
-   "start": 31.84,
-   "end": 32.1,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " the"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "future",
-   "start": 32.1,
-   "end": 32.42,
-   "match": "low",
-   "similarity": 0.308,
-   "spokenAs": " correct"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "plans.",
-   "start": 32.42,
-   "end": 33.02,
-   "match": "low",
-   "similarity": 0.545,
-   "spokenAs": " answer."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "What",
-   "start": 34.66,
-   "end": 34.7,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " Conversation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "will",
@@ -628,19 +628,19 @@
   },
   {
    "word": "/",
-   "start": 34.7,
-   "end": 35.42,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 1."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "What",
-   "start": 36.1,
-   "end": 36.1,
-   "match": "low",
-   "similarity": 0.444,
-   "spokenAs": " Where"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "are",
@@ -676,11 +676,11 @@
   },
   {
    "word": "do?",
-   "start": 37.04,
-   "end": 37.3,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " go"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "I",
@@ -700,11 +700,11 @@
   },
   {
    "word": "/",
-   "start": 37.54,
-   "end": 37.82,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " summer?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "I",
@@ -828,19 +828,19 @@
   },
   {
    "word": "I",
-   "start": 39.84,
-   "end": 40.26,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " Brazil."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "will",
-   "start": 41.12,
-   "end": 41.34,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " Really?"
+   "start": 42.16,
+   "end": 42.4,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " will"
   },
   {
    "word": "go",
@@ -876,11 +876,11 @@
   },
   {
    "word": "to",
-   "start": 41.82,
-   "end": 42.16,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " What"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "go",
@@ -900,19 +900,19 @@
   },
   {
    "word": "Listen",
-   "start": 42.16,
-   "end": 42.4,
-   "match": "low",
-   "similarity": 0.2,
-   "spokenAs": " will"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
-   "start": 42.4,
-   "end": 42.56,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -940,11 +940,11 @@
   },
   {
    "word": "and",
-   "start": 42.56,
-   "end": 42.72,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " do"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "complete",
@@ -1060,11 +1060,11 @@
   },
   {
    "word": "Listen",
-   "start": 44.14,
-   "end": 44.46,
-   "match": "low",
-   "similarity": 0.545,
-   "spokenAs": " visit"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
@@ -1084,11 +1084,11 @@
   },
   {
    "word": "following",
-   "start": 44.46,
-   "end": 44.84,
-   "match": "low",
-   "similarity": 0.267,
-   "spokenAs": " people"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "conversations",
@@ -1108,11 +1108,11 @@
   },
   {
    "word": "tick",
-   "start": 45.06,
-   "end": 45.5,
-   "match": "low",
-   "similarity": 0.2,
-   "spokenAs": " places."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "what",
@@ -1140,11 +1140,11 @@
   },
   {
    "word": "is",
-   "start": 46.72,
-   "end": 47.22,
-   "match": "low",
-   "similarity": 0.308,
-   "spokenAs": " interesting"
+   "start": 49.4,
+   "end": 49.58,
+   "match": "fuzzy",
+   "similarity": 0.667,
+   "spokenAs": " it's"
   },
   {
    "word": "Pair",
@@ -1164,11 +1164,11 @@
   },
   {
    "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 49.76,
+   "end": 50.04,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " and"
   },
   {
    "word": "ask",
@@ -1180,19 +1180,19 @@
   },
   {
    "word": "your",
-   "start": 47.22,
-   "end": 47.58,
-   "match": "low",
-   "similarity": 0.444,
-   "spokenAs": " about"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "friends",
-   "start": 47.58,
-   "end": 47.98,
-   "match": "low",
-   "similarity": 0.308,
-   "spokenAs": " Brazil?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "about",
@@ -1204,19 +1204,19 @@
   },
   {
    "word": "the",
-   "start": 48.72,
-   "end": 49.0,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " Well,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "things",
-   "start": 49.4,
-   "end": 49.58,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " it's"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "they",
@@ -1228,67 +1228,67 @@
   },
   {
    "word": "are",
-   "start": 49.58,
-   "end": 49.76,
-   "match": "fuzzy",
-   "similarity": 0.667,
-   "spokenAs": " nature"
+   "start": 55.36,
+   "end": 55.44,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Are"
   },
   {
    "word": "going",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 55.56,
+   "end": 55.7,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " going"
   },
   {
    "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 55.7,
+   "end": 55.86,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
   },
   {
    "word": "do",
-   "start": 49.76,
-   "end": 50.04,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " and"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "this",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 56.3,
+   "end": 56.46,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " this"
   },
   {
    "word": "weekend.",
-   "start": 50.04,
-   "end": 50.26,
-   "match": "low",
-   "similarity": 0.364,
-   "spokenAs": " wild"
+   "start": 56.46,
+   "end": 56.78,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " weekend,"
   },
   {
    "word": "You",
+   "start": 59.74,
+   "end": 59.88,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " you"
+  },
+  {
+   "word": "may",
    "start": null,
    "end": null,
    "match": null,
    "similarity": null,
    "spokenAs": null
-  },
-  {
-   "word": "may",
-   "start": 50.26,
-   "end": 50.84,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " animals."
   },
   {
    "word": "use",
@@ -1308,51 +1308,51 @@
   },
   {
    "word": "verbs",
-   "start": 53.48,
-   "end": 53.92,
-   "match": "low",
-   "similarity": 0.471,
-   "spokenAs": " Conversation"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "in",
-   "start": 53.92,
-   "end": 54.36,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " 2."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
-   "start": 55.36,
-   "end": 55.44,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " Are"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "box.",
-   "start": 55.44,
-   "end": 55.56,
-   "match": "low",
-   "similarity": 0.333,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "going",
-   "start": 55.56,
-   "end": 55.7,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " going"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "to",
-   "start": 55.7,
-   "end": 55.86,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " to"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "do.",
@@ -1364,46 +1364,6 @@
   },
   {
    "word": "stay",
-   "start": 55.86,
-   "end": 56.1,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " stay"
-  },
-  {
-   "word": "home,",
-   "start": 56.1,
-   "end": 56.3,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " home"
-  },
-  {
-   "word": "read",
-   "start": 56.3,
-   "end": 56.46,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " this"
-  },
-  {
-   "word": "a",
-   "start": 56.46,
-   "end": 56.78,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " weekend,"
-  },
-  {
-   "word": "book,",
-   "start": 56.96,
-   "end": 57.18,
-   "match": "low",
-   "similarity": 0.2,
-   "spokenAs": " Shahab?"
-  },
-  {
-   "word": "go",
    "start": null,
    "end": null,
    "match": null,
@@ -1411,20 +1371,60 @@
    "spokenAs": null
   },
   {
+   "word": "home,",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "read",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "a",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "book,",
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
+  },
+  {
+   "word": "go",
+   "start": 59.88,
+   "end": 60.12,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " go?"
+  },
+  {
    "word": "to",
-   "start": 57.62,
-   "end": 57.88,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " No,"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
-   "start": 58.04,
-   "end": 58.06,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " we"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "museum,",
@@ -1436,35 +1436,35 @@
   },
   {
    "word": "visit",
+   "start": 60.84,
+   "end": 61.06,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " visit"
+  },
+  {
+   "word": "our",
+   "start": 61.06,
+   "end": 61.26,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " our"
+  },
+  {
+   "word": "relatives,",
+   "start": 61.26,
+   "end": 61.68,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " relatives"
+  },
+  {
+   "word": "go",
    "start": null,
    "end": null,
    "match": null,
    "similarity": null,
    "spokenAs": null
-  },
-  {
-   "word": "our",
-   "start": 58.06,
-   "end": 58.38,
-   "match": "low",
-   "similarity": 0.222,
-   "spokenAs": " aren't."
-  },
-  {
-   "word": "relatives,",
-   "start": 58.52,
-   "end": 58.66,
-   "match": "low",
-   "similarity": 0.286,
-   "spokenAs": " We'll"
-  },
-  {
-   "word": "go",
-   "start": 58.66,
-   "end": 58.78,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " go"
   },
   {
    "word": "shopping,",
@@ -1540,11 +1540,11 @@
   },
   {
    "word": "to",
-   "start": 58.78,
-   "end": 59.02,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " out."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "2.",
@@ -1556,11 +1556,11 @@
   },
   {
    "word": "His",
-   "start": 59.44,
-   "end": 59.62,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " Where"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "family",
@@ -1572,11 +1572,11 @@
   },
   {
    "word": "will",
-   "start": 59.62,
-   "end": 59.74,
+   "start": 62.62,
+   "end": 62.86,
    "match": "exact",
    "similarity": 1.0,
-   "spokenAs": " will"
+   "spokenAs": " Will"
   },
   {
    "word": "B.",
@@ -1596,11 +1596,11 @@
   },
   {
    "word": "to",
-   "start": 59.74,
-   "end": 59.88,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -1612,11 +1612,11 @@
   },
   {
    "word": "following",
-   "start": 59.88,
-   "end": 60.12,
-   "match": "low",
-   "similarity": 0.182,
-   "spokenAs": " go?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "conversations",
@@ -1652,11 +1652,11 @@
   },
   {
    "word": "the",
-   "start": 60.56,
-   "end": 60.84,
-   "match": "low",
-   "similarity": 0.25,
-   "spokenAs": " We'll"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "speaker",
@@ -1668,11 +1668,11 @@
   },
   {
    "word": "is",
-   "start": 60.84,
-   "end": 61.06,
-   "match": "low",
-   "similarity": 0.571,
-   "spokenAs": " visit"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "Pair",
@@ -1708,19 +1708,19 @@
   },
   {
    "word": "your",
-   "start": 61.06,
-   "end": 61.26,
+   "start": 62.86,
+   "end": 62.98,
    "match": "fuzzy",
    "similarity": 0.857,
-   "spokenAs": " our"
+   "spokenAs": " you"
   },
   {
    "word": "friends",
-   "start": 61.26,
-   "end": 61.68,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " relatives"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "about",
@@ -1740,35 +1740,35 @@
   },
   {
    "word": "things",
-   "start": 61.68,
-   "end": 61.92,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " in"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "they",
-   "start": 61.92,
-   "end": 62.36,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " Varamí."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "will",
-   "start": 62.62,
-   "end": 62.86,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " Will"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "or",
-   "start": 62.86,
-   "end": 62.98,
-   "match": "low",
-   "similarity": 0.4,
-   "spokenAs": " you"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "won't",
@@ -1820,19 +1820,19 @@
   },
   {
    "word": "may",
-   "start": 63.1,
-   "end": 63.32,
-   "match": "low",
-   "similarity": 0.364,
-   "spokenAs": " anything"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "use",
-   "start": 63.32,
-   "end": 63.68,
-   "match": "low",
-   "similarity": 0.571,
-   "spokenAs": " else?"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "the",
@@ -1932,11 +1932,11 @@
   },
   {
    "word": "animals,",
-   "start": 64.46,
-   "end": 64.52,
-   "match": "low",
-   "similarity": 0.444,
-   "spokenAs": " am"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "protect",
@@ -1956,27 +1956,27 @@
   },
   {
    "word": "hunt,",
-   "start": 64.52,
-   "end": 64.64,
-   "match": "low",
-   "similarity": 0.571,
-   "spokenAs": " not"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "hurt",
-   "start": 64.64,
-   "end": 64.96,
-   "match": "low",
-   "similarity": 0.5,
-   "spokenAs": " sure"
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   },
   {
    "word": "animals",
-   "start": 64.96,
-   "end": 65.16,
-   "match": "low",
-   "similarity": 0.0,
-   "spokenAs": " yet."
+   "start": null,
+   "end": null,
+   "match": null,
+   "similarity": null,
+   "spokenAs": null
   }
  ],
  "sentences": [
@@ -2025,22 +2025,22 @@
   {
    "first": 58,
    "last": 71,
-   "start": 26.2,
+   "start": 29.74,
    "end": 33.02,
    "text": "You may use the following patterns to ask and answer about the future plans."
   },
   {
    "first": 72,
    "last": 75,
-   "start": 34.66,
-   "end": 34.7,
+   "start": null,
+   "end": null,
    "text": "What will you do?"
   },
   {
    "first": 76,
    "last": 82,
-   "start": 34.7,
-   "end": 37.3,
+   "start": 36.1,
+   "end": 37.04,
    "text": "/ What are you going to do?"
   },
   {
@@ -2060,14 +2060,14 @@
   {
    "first": 101,
    "last": 109,
-   "start": 39.84,
-   "end": 42.16,
+   "start": 42.16,
+   "end": 42.4,
    "text": "I will go / I'm going to go B."
   },
   {
    "first": 110,
    "last": 118,
-   "start": 42.16,
+   "start": 42.72,
    "end": 43.02,
    "text": "Listen to the following conversations and complete the sentences."
   },
@@ -2095,56 +2095,56 @@
   {
    "first": 130,
    "last": 156,
-   "start": 44.14,
-   "end": 50.26,
+   "start": 44.84,
+   "end": 56.78,
    "text": "Listen to the following conversations and tick what the speaker is Pair up and ask your friends about the things they are going to do this weekend."
   },
   {
    "first": 157,
    "last": 164,
-   "start": 50.26,
-   "end": 55.56,
+   "start": 59.74,
+   "end": 59.88,
    "text": "You may use the verbs in the box."
   },
   {
    "first": 165,
    "last": 167,
-   "start": 55.56,
-   "end": 55.86,
+   "start": null,
+   "end": null,
    "text": "going to do."
   },
   {
    "first": 168,
    "last": 186,
-   "start": 55.86,
-   "end": 58.78,
+   "start": 59.88,
+   "end": 61.68,
    "text": "stay home, read a book, go to the museum, visit our relatives, go shopping, study English Conversation 2 1."
   },
   {
    "first": 187,
    "last": 191,
-   "start": 58.78,
-   "end": 59.02,
+   "start": null,
+   "end": null,
    "text": "Shahab is going to 2."
   },
   {
    "first": 192,
    "last": 195,
-   "start": 59.44,
-   "end": 59.74,
+   "start": 62.62,
+   "end": 62.86,
    "text": "His family will B."
   },
   {
    "first": 196,
    "last": 223,
-   "start": 59.74,
+   "start": 62.86,
    "end": 63.1,
    "text": "Listen to the following conversations and tick what the speaker is Pair up and ask your friends about the things they will or won't do to save nature."
   },
   {
    "first": 224,
    "last": 231,
-   "start": 63.1,
+   "start": 64.26,
    "end": 64.46,
    "text": "You may use the verbs in the box."
   },
@@ -2158,10 +2158,46 @@
   {
    "first": 235,
    "last": 244,
-   "start": 64.46,
-   "end": 65.16,
+   "start": null,
+   "end": null,
    "text": "take care of endangered animals, protect forests, hunt, hurt animals"
   }
  ],
- "unspokenAudio": []
+ "unspokenAudio": [
+  {
+   "start": 26.2,
+   "end": 29.74,
+   "transcript": " B.  Listen  to"
+  },
+  {
+   "start": 31.58,
+   "end": 32.42,
+   "transcript": " check  the  correct"
+  },
+  {
+   "start": 34.66,
+   "end": 36.1,
+   "transcript": " Conversation  1.  Where"
+  },
+  {
+   "start": 39.84,
+   "end": 42.16,
+   "transcript": " Brazil.  Really?  What"
+  },
+  {
+   "start": 46.72,
+   "end": 49.0,
+   "transcript": " interesting  about  Brazil?  Well,"
+  },
+  {
+   "start": 50.04,
+   "end": 54.36,
+   "transcript": " wild  animals.  Conversation  2."
+  },
+  {
+   "start": 56.96,
+   "end": 59.74,
+   "transcript": " Shahab?  No,  we  aren't.  We'll  go  out.  Where  will"
+  }
+ ]
 }

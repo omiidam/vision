@@ -9,9 +9,9 @@
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'reading' (match 1.00)",
-  "contentScore": 0.9855,
+  "contentScore": 0.9941,
   "contentBest": {
-   "score": 0.9855,
+   "score": 0.9941,
    "lessonId": "lesson-02",
    "sectionId": "reading"
   },
@@ -1519,7 +1519,7 @@
   {
    "start": 85.9,
    "end": 87.3,
-   "transcript": " Thank  you  for  watching!"
+   "transcript": " Thank"
   }
  ]
 }

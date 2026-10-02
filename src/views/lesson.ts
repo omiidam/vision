@@ -4,6 +4,7 @@ import { SyncEngine } from '../sync'
 import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary, VocabularyEntry } from '../types'
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
 import { formatPageRange } from '../pages'
+import { isPlaceholder } from '../placeholder'
 
 export interface ReaderHandlers {
   /** Called every animation frame while the recording is playing. */
@@ -41,6 +42,7 @@ export class LessonView {
   private vocabularySource = ''
   /** Guards against a slow vocabulary fetch overwriting a newer section. */
   private vocabularyToken = 0
+  private ticking = false
 
   constructor(root: HTMLElement, handlers: ReaderHandlers) {
     this.root = root
@@ -50,7 +52,12 @@ export class LessonView {
       // media element on play/pause would reset currentTime to 0 and abort playback.
       this.renderTransportState()
       if (playing) this.startTicking()
-      else this.stopTicking()
+      else {
+        this.stopTicking()
+        // Stopping the loop must not leave the highlight where it was: it settles on the
+        // word the audio stopped in, so pausing reads as paused rather than as stale.
+        this.updateProgress(this.player.currentTime)
+      }
     })
     // The media element is the single source of truth for the rate, so the control is
     // re-synced from the player whenever the rate changes - from this UI or elsewhere.
@@ -198,7 +205,12 @@ export class LessonView {
 
       const tokens = block.lines.join(' ').split(/\s+/).filter(Boolean)
       for (const token of tokens) {
-        if (/^[._]{3,}$/.test(token)) continue          // printed fill-in-the-blank rule
+        // The printed fill-in-the-blank rule.  This has to be exactly the rule the
+        // content pipeline uses when it tokenises a line (text.is_placeholder): a run of
+        // dots and underscores of any length.  A narrower rule here would render a word
+        // the timings have no entry for, and every highlight after it would be one word
+        // out of step with the audio for the rest of the section.
+        if (isPlaceholder(token)) continue
         const timed = sync?.words[wordIndex]
         const span = document.createElement('span')
         span.className = 'word'
@@ -320,8 +332,23 @@ export class LessonView {
   }
 
   private startTicking(): void {
-    if (this.frame) return
+    if (this.ticking) return
+    this.ticking = true
+    // Two sources, both reading the audio element's own currentTime.
+    //
+    // `timeupdate` comes from the media element itself, so it keeps arriving when the
+    // page is not painting - an Android WebView in the background, or a browser tab the
+    // user has switched away from.  Between those events the player samples the element's
+    // own position, so the highlight does not sit a quarter of a second behind the voice,
+    // and `requestAnimationFrame` adds the smooth pass just before a paint while the page
+    // is on screen.
+    //
+    // All three report the position the audio has actually reached.  None of them keeps a
+    // clock of its own, so none of them can drift from the recording.
+    this.player.onTimeUpdate(() => this.updateProgress(this.player.currentTime))
+    this.player.startSampling()
     const loop = () => {
+      if (!this.ticking) return
       this.updateProgress(this.player.currentTime)
       this.frame = requestAnimationFrame(loop)
     }
@@ -329,6 +356,9 @@ export class LessonView {
   }
 
   private stopTicking(): void {
+    this.ticking = false
+    this.player.offTimeUpdate()
+    this.player.stopSampling()
     if (this.frame) cancelAnimationFrame(this.frame)
     this.frame = 0
   }
