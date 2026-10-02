@@ -120,6 +120,37 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
+      - name: Confirm the APK ships the web build that was just made
+        run: |
+          set -euo pipefail
+          apk=android/app/build/outputs/apk/debug/app-debug.apk
+
+          # The APK must ship exactly the web build this run produced.  Capacitor adds
+          # these two shims of its own, so they are not part of the comparison.
+          (cd dist && find . -type f | sed 's|^\./||' | sort) > /tmp/dist_files
+          unzip -Z1 "$apk" \
+            | grep -E '^assets/public/' \
+            | sed 's|^assets/public/||' \
+            | grep -vE '^(cordova\.js|cordova_plugins\.js)$' \
+            | sort > /tmp/apk_files
+
+          missing=$(comm -13 /tmp/apk_files /tmp/dist_files)
+          stale=$(comm -23 /tmp/apk_files /tmp/dist_files)
+          if [ -n "$missing" ] || [ -n "$stale" ]; then
+            if [ -n "$missing" ]; then
+              echo "The APK is missing files that are in the web build:"
+              echo "$missing" | head -20
+            fi
+            if [ -n "$stale" ]; then
+              echo "The APK contains files that are not in the web build:"
+              echo "$stale" | head -20
+            fi
+            echo "The app would not match the web version.  Rebuild and sync first:"
+            echo "  npm run build && npx cap sync android"
+            exit 1
+          fi
+          echo "APK ships the current web build ($(wc -l < /tmp/dist_files) files, no stale bundles)"
+
       - name: Confirm the APK contains the content and the recordings
         run: |
           set -euo pipefail
