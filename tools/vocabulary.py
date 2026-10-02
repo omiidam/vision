@@ -18,6 +18,18 @@ Every section of every lesson goes through the same two checks, so a new lesson 
 extracted by the same code with nothing to add here.  Nothing is invented: a word is
 only registered when the book actually prints it as vocabulary.
 
+Every word of a word bank is registered on its own, in the order the book prints it, and
+each one keeps the section and page it was printed on.  Because the New Words &
+Expressions page is the lesson's vocabulary page, it lists the lesson's word bank words
+as well: separately, in that same order, together with its own glossary entries.  A word
+therefore has two things worth telling apart, and both are recorded on every entry:
+
+``section_id``
+    the section that teaches the word - the word bank's own section.
+
+``listed_in``
+    the section whose vocabulary list the entry is written into.
+
 The result is kept separate from the section text.  The words stay in the textbook text
 exactly as printed - this module only records *which* of them the section teaches, and
 where, so that the reader can show them without repeating itself.
@@ -26,7 +38,7 @@ where, so that the reader can show them without repeating itself.
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 #: White lettering is only ever read on top of a coloured panel, so it marks the
 #: callouts (the word bank) rather than the running text.
@@ -39,6 +51,14 @@ _ITEM_RE = re.compile(r"[A-Za-z][A-Za-z'\-]{0,28}")
 #: A panel has to name at least this many words before it counts as a word bank, so a
 #: stray comma in a heading cannot turn into vocabulary.
 MIN_BANK_ITEMS = 2
+
+#: The two ways the book marks vocabulary.
+WORD_BANK = "word-bank"
+GLOSSARY = "glossary"
+
+#: The lesson's vocabulary page.  It lists the lesson's word bank words as well as its
+#: own glossary entries.
+NEW_WORDS_SECTION_ID = "new-words-and-expressions"
 
 #: ``headword: definition`` as printed on the New Words page.
 _HEADWORD_RE = re.compile(r"^([a-z][A-Za-z '\-]{0,28}):\s*(.*)$")
@@ -66,25 +86,29 @@ class Span:
 class VocabularyEntry:
     """One word a section teaches.
 
-    Only ``word``, ``page`` and ``source`` come from the book.  The remaining fields are
-    the slots the reader will fill in later (Persian meaning, pronunciation, examples,
-    audio); they are written empty rather than omitted so that the shape of a section's
-    vocabulary does not change when they are filled.
+    Only ``word``, ``page``, ``source`` and ``section_id`` come from the book.  The
+    remaining fields are the slots the reader will fill in later (Persian meaning,
+    pronunciation, examples, audio); they are written empty rather than omitted so that
+    the shape of a section's vocabulary does not change when they are filled.
     """
 
     word: str
     page: int
     source: str
-    position: int
+    section_id: str
+    position: int = 0
     meaning_en: str = ""
     examples: list[str] = field(default_factory=list)
 
-    def as_json(self, grade: int, lesson_id: str, section_id: str) -> dict:
+    def as_json(self, grade: int, lesson_id: str, listed_in: str) -> dict:
         return {
             "word": self.word,
             "grade": grade,
             "lessonId": lesson_id,
-            "sectionId": section_id,
+            # The section that teaches the word, and the section listing it now.  They
+            # differ for a word bank word listed on the New Words page.
+            "sectionId": self.section_id,
+            "listedIn": listed_in,
             "page": self.page,
             "position": self.position,
             "source": self.source,
@@ -202,22 +226,63 @@ def entries_for_section(
     page_range: tuple[int, int],
     lines: list[tuple[int, str]],
 ) -> list[VocabularyEntry]:
-    """Every word the section teaches, however the book marks it."""
+    """Every word the section itself teaches, however the book marks it."""
     found: list[VocabularyEntry] = []
 
+    # One entry per word, in the order the word bank prints them.
     for page, word in word_bank_entries(doc, page_range):
-        found.append(VocabularyEntry(word=word, page=page, source="word-bank", position=len(found)))
+        found.append(
+            VocabularyEntry(
+                word=word,
+                page=page,
+                source=WORD_BANK,
+                section_id=section_id,
+                position=len(found),
+            )
+        )
 
-    if section_id == "new-words-and-expressions":
+    if section_id == NEW_WORDS_SECTION_ID:
         for page, word, meaning, examples in glossary_entries(lines):
             found.append(
                 VocabularyEntry(
                     word=word,
                     page=page,
-                    source="glossary",
+                    source=GLOSSARY,
+                    section_id=section_id,
                     position=len(found),
                     meaning_en=meaning,
                     examples=examples,
                 )
             )
     return found
+
+
+def _renumber(entries: list[VocabularyEntry]) -> list[VocabularyEntry]:
+    """Number a list from zero, so ``position`` always describes the list it is in."""
+    return [replace(entry, position=index) for index, entry in enumerate(entries)]
+
+
+def listing_for_new_words(
+    per_section: dict[str, list[VocabularyEntry]],
+    section_order: list[str],
+) -> list[VocabularyEntry]:
+    """What the lesson's New Words & Expressions page lists.
+
+    The New Words page is where a lesson keeps its vocabulary, so it lists the word bank
+    words of every section of the lesson - separately, in the order the book prints them -
+    followed by its own glossary entries.  Each word keeps the section and page it was
+    printed on; only its position changes, to number this list.
+
+    The word bank of a section is swept in once even when that section is the New Words
+    page itself, so a word can never be listed twice.
+    """
+    word_bank = [
+        entry
+        for section_id in section_order
+        for entry in per_section.get(section_id, [])
+        if entry.source == WORD_BANK
+    ]
+    glossary = [
+        entry for entry in per_section.get(NEW_WORDS_SECTION_ID, []) if entry.source == GLOSSARY
+    ]
+    return _renumber(word_bank + glossary)

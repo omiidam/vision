@@ -58,10 +58,17 @@ export interface SectionVocabularyEntry {
   word: string
   grade: number
   lessonId: string
+  /** The section that teaches the word: the word bank's own section. */
   sectionId: string
+  /**
+   * The section whose vocabulary list this entry is written into.  It differs from
+   * `sectionId` for a word bank word, which the New Words & Expressions page lists as
+   * well as the section that prints it.
+   */
+  listedIn: string
   /** Printed page the word is identified on. */
   page: number
-  /** Order within the section, starting at 0. */
+  /** Order within the list this entry appears in, starting at 0. */
   position: number
   /** How the book identifies the word: 'word-bank' or 'glossary'. */
   source: 'word-bank' | 'glossary'
@@ -140,6 +147,10 @@ export interface VocabularyEntry {
   examples: string[]
   audio: string | null
   page: number
+  /** How the book identifies the word: 'word-bank' or 'glossary'. */
+  source: 'word-bank' | 'glossary'
+  /** The section that teaches the word, which is not always the New Words page. */
+  sectionId: string
 }
 
 export interface Vocabulary {

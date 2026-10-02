@@ -184,11 +184,19 @@ test('vocabulary comes from the book and invents no Persian text', () => {
     const vocab = readJson(path.join(DATA, lessonId, 'vocabulary.json'))
     assert.ok(vocab.items.length >= 4, `${lessonId} has too few vocabulary entries`)
     assert.ok(vocab.targetWords.length >= 4)
+    const glossary = vocab.items.filter((item) => item.source === 'glossary')
+    assert.ok(glossary.length >= 4, `${lessonId} has too few defined words`)
     for (const item of vocab.items) {
       assert.ok(item.word.length > 0)
-      assert.ok(item.meaningEn.length > 0, `${item.word} has no printed meaning`)
       assert.equal(item.meaningFa, '', 'Persian meanings are not in the source, so they stay empty')
-      assert.ok(item.examples.length > 0, `${item.word} has no printed example`)
+      // The book defines the words of its New Words page and leaves a word bank word
+      // undefined, so only a defined entry is held to having a meaning and an example.
+      if (item.source === 'glossary') {
+        assert.ok(item.meaningEn.length > 0, `${item.word} has no printed meaning`)
+        assert.ok(item.examples.length > 0, `${item.word} has no printed example`)
+      } else {
+        assert.equal(item.meaningEn, '', `${item.word} was given a meaning the book does not print`)
+      }
     }
   }
 })

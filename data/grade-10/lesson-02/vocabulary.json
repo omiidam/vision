@@ -16,6 +16,50 @@
  ],
  "items": [
   {
+   "word": "near",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "rocky",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "orbit",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "powerful",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 47,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
    "word": "healthy",
    "pronunciation": "",
    "meaningEn": "1. strong and well 2. good for your body",
@@ -25,7 +69,9 @@
     "A healthy breakfast can give you more energy."
    ],
    "audio": null,
-   "page": 49
+   "page": 49,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "defend",
@@ -36,7 +82,9 @@
     "The brave soldiers defended our country."
    ],
    "audio": null,
-   "page": 49
+   "page": 49,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "carry",
@@ -47,7 +95,9 @@
     "Monkeys carry their babies all day long."
    ],
    "audio": null,
-   "page": 49
+   "page": 49,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "collect",
@@ -58,7 +108,9 @@
     "The school bus collects the children each morning."
    ],
    "audio": null,
-   "page": 49
+   "page": 49,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "fact",
@@ -69,7 +121,9 @@
     "It's a fact that Earth goes around the Sun."
    ],
    "audio": null,
-   "page": 49
+   "page": 49,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   }
  ]
 }

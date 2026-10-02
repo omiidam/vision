@@ -76,7 +76,7 @@ test('the generator withdraws the section but still parses it from the book', ()
   assert.match(textbook, /WITHDRAWN_SECTION_IDS = frozenset\(\{"pronunciation"\}\)/)
   // ...and only the published list reaches the data tree.
   const build = fs.readFileSync(path.join(ROOT, 'tools', 'build_content.py'), 'utf8')
-  assert.match(build, /if section\.section_id in book\.WITHDRAWN_SECTION_IDS:\s*\n\s*continue/)
+  assert.match(build, /published = \[s for s in lesson\.sections if s\.section_id not in book\.WITHDRAWN_SECTION_IDS\]/)
 })
 
 test('the counts on the lessons list match what is actually published', () => {

@@ -17,6 +17,61 @@
  ],
  "items": [
   {
+   "word": "endangered",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "alive",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "increase",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "hear",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
+   "word": "protect",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [],
+   "audio": null,
+   "page": 19,
+   "source": "word-bank",
+   "sectionId": "conversation"
+  },
+  {
    "word": "a few",
    "pronunciation": "",
    "meaningEn": "not many; a small number of things or people",
@@ -25,7 +80,9 @@
     "There are a few Iranian cheetahs."
    ],
    "audio": null,
-   "page": 21
+   "page": 21,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "human",
@@ -36,7 +93,9 @@
     "All humans must take care of nature."
    ],
    "audio": null,
-   "page": 21
+   "page": 21,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "instead",
@@ -47,7 +106,9 @@
     "There's no coffee. Would you like a cup of tea instead?"
    ],
    "audio": null,
-   "page": 21
+   "page": 21,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   },
   {
    "word": "future",
@@ -58,7 +119,9 @@
     "Everyone needs to plan for the future."
    ],
    "audio": null,
-   "page": 21
+   "page": 21,
+   "source": "glossary",
+   "sectionId": "new-words-and-expressions"
   }
  ]
 }
