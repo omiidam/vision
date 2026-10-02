@@ -127,9 +127,20 @@ jobs:
             [ "$count" -eq 4 ] || { echo "Expected 4 recordings for $lesson"; exit 1; }
           done
 
-      - name: Assemble the debug APK
+      # This is the step that produces the APK.  It runs the project's own Gradle wrapper
+      # so the build uses the committed Gradle version rather than whatever is on the
+      # runner, and it prints the wrapper and the tasks it runs so the log shows plainly
+      # that the build was executed and not skipped.
+      - name: Build APK
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          echo "Gradle wrapper: $(grep distributionUrl gradle/wrapper/gradle-wrapper.properties)"
+          ./gradlew assembleDebug --no-daemon --stacktrace --console=plain
+          apk=app/build/outputs/apk/debug/app-debug.apk
+          [ -s "$apk" ] || { echo "gradlew reported success but produced no APK"; exit 1; }
+          echo "Build APK: produced $apk ($(du -h "$apk" | cut -f1))"
 
       - name: Confirm the APK ships the web build that was just made
         run: |
