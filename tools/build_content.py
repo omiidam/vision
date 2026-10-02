@@ -254,6 +254,8 @@ def build() -> dict:
         lesson_id = lesson.lesson_id
         lesson_sections = []
         for section in lesson.sections:
+            if section.section_id in book.WITHDRAWN_SECTION_IDS:
+                continue    # parsed from the book, but not published in the reader
             data = sections[lesson_id][section.section_id]
             mapping = next(
                 (m for m in mappings if m.assigned
@@ -365,6 +367,9 @@ def build() -> dict:
                         "label": s.label,
                         "contentsDescription": s.description,
                         "pages": list(s.pages),
+                        # The extraction covers every section in the book, including the
+                        # ones the reader does not publish.
+                        "published": s.section_id not in book.WITHDRAWN_SECTION_IDS,
                         "textSource": "verbatim PDF text extraction (pymupdf)",
                         "audio": next(
                             (m.audio.name for m in mappings

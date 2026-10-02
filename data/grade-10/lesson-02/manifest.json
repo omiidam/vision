@@ -101,21 +101,6 @@
    "syncStatus": "confirmed"
   },
   {
-   "id": "pronunciation",
-   "label": "Pronunciation",
-   "title": "Rising Intonation",
-   "pages": [
-    60,
-    61
-   ],
-   "text": "data/grade-10/lesson-02/sections/pronunciation.json",
-   "audio": null,
-   "duration": 0.0,
-   "sync": null,
-   "syncConfidence": null,
-   "syncStatus": "no-audio"
-  },
-  {
    "id": "writing",
    "label": "Writing",
    "title": "Adjective Kinds of Adjectives Place of Adjectives Spelling Hints",

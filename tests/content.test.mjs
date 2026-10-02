@@ -51,7 +51,8 @@ test('grade manifest exposes exactly lessons 1 and 2', () => {
 test('every section of both lessons exists and has real textbook text', () => {
   for (const lessonId of ['lesson-01', 'lesson-02']) {
     const lesson = readJson(path.join(DATA, lessonId, 'manifest.json'))
-    assert.ok(lesson.sections.length >= 9, `${lessonId} should expose every section`)
+    // The pronunciation section is withdrawn from the reader, so eight are published.
+    assert.equal(lesson.sections.length, 8, `${lessonId} should expose every published section`)
     for (const section of lesson.sections) {
       const text = readJson(path.join(ROOT, section.text))
       assert.ok(text.blocks.length > 0, `${lessonId}/${section.id} has no blocks`)

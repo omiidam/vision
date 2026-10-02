@@ -101,21 +101,6 @@
    "syncStatus": "confirmed"
   },
   {
-   "id": "pronunciation",
-   "label": "Pronunciation",
-   "title": "Falling Intonation",
-   "pages": [
-    32,
-    33
-   ],
-   "text": "data/grade-10/lesson-01/sections/pronunciation.json",
-   "audio": null,
-   "duration": 0.0,
-   "sync": null,
-   "syncConfidence": null,
-   "syncStatus": "no-audio"
-  },
-  {
    "id": "writing",
    "label": "Writing",
    "title": "Noun Singular & Plural Types of Nouns Noun Markers",

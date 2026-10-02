@@ -33,6 +33,14 @@ SECTION_IDS = [
     "what-you-learned",
 ]
 
+# Sections the book contains but the reader does not publish.  Parsing still reads every
+# section off the contents page (so the extraction stays verified against the book), and
+# only these are left out of the generated data tree.
+WITHDRAWN_SECTION_IDS = frozenset({"pronunciation"})
+
+# The sections the reader publishes, in book order.
+PUBLISHED_SECTION_IDS = [s for s in SECTION_IDS if s not in WITHDRAWN_SECTION_IDS]
+
 # Printed page ranges (inclusive) for each section of each lesson.  Derived from the
 # table of contents ("Lesson 1: Saving Nature (15-41)") and verified against the page
 # content; see tools/audit_sections.py.

@@ -25,7 +25,6 @@ exactly Lesson 1 and Lesson 2.
 | lesson-01 | Reading | 22 | Reading Comprehension / Endangered Animals | 160 | 157 | 155 | 1 | 83.5s | confirmed |
 | lesson-01 | Grammar | 24-29 | Future tense (will) / See Also (be going to) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | Listening & Speaking | 30-31 | Talking about Schedules/Plans | 245 | 138 | 73 | 8 | 75.6s | confirmed |
-| lesson-01 | Pronunciation | 32-33 | Falling Intonation | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | Writing | 34-39 | Noun Singular & Plural Types of Nouns Noun Markers | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | What You Learned | 40-41 | Reviewing Lesson 1 | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Get Ready | 44-46 | Introduction to the Lesson | 0 | 0 | 0 | 0 | 0.0s | - |
@@ -34,7 +33,6 @@ exactly Lesson 1 and Lesson 2.
 | lesson-02 | Reading | 50 | Reading Comprehension / A Wonderful Liquid | 171 | 168 | 165 | 3 | 87.3s | confirmed |
 | lesson-02 | Grammar | 52-57 | See Also (comparative and / Adjectives / superlative adjectives) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Listening & Speaking | 58-59 | Asking about Details | 242 | 147 | 63 | 7 | 85.2s | confirmed |
-| lesson-02 | Pronunciation | 60-61 | Rising Intonation | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Writing | 62-67 | Adjective Kinds of Adjectives Place of Adjectives Spelling Hints | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | What You Learned | 68-69 | Reviewing Lesson 2 | 0 | 0 | 0 | 0 | 0.0s | - |
 
