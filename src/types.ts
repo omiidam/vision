@@ -48,6 +48,30 @@ export interface TextBlock {
   lines: string[]
 }
 
+/**
+ * A word a section teaches, as identified by the book itself (its word bank, or the
+ * glossary on the New Words page).  The entry carries where it came from so the reader
+ * can group it, and it keeps the slots a later editing pass will fill - the Persian
+ * meaning, pronunciation, examples and audio are present but empty.
+ */
+export interface SectionVocabularyEntry {
+  word: string
+  grade: number
+  lessonId: string
+  sectionId: string
+  /** Printed page the word is identified on. */
+  page: number
+  /** Order within the section, starting at 0. */
+  position: number
+  /** How the book identifies the word: 'word-bank' or 'glossary'. */
+  source: 'word-bank' | 'glossary'
+  meaningEn: string
+  meaningFa: string
+  pronunciation: string
+  examples: string[]
+  audio: string | null
+}
+
 export interface SectionText {
   id: string
   lessonId: string
@@ -56,6 +80,8 @@ export interface SectionText {
   source: { pdf: string; pages: [number, number] }
   blocks: TextBlock[]
   text: string
+  /** Vocabulary this section teaches. Separate from the text, which is never altered. */
+  vocabulary: SectionVocabularyEntry[]
 }
 
 export type WordMatch = 'exact' | 'fuzzy' | 'interpolated' | 'low'

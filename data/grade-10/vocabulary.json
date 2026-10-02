@@ -1,0 +1,300 @@
+{
+ "grade": 10,
+ "subject": "English",
+ "textbook": "Vision 1 - English for Schools",
+ "sections": [
+  {
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "count": 5
+  },
+  {
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "count": 4
+  },
+  {
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "count": 4
+  },
+  {
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "count": 5
+  }
+ ],
+ "entries": [
+  {
+   "word": "endangered",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "page": 19,
+   "position": 0,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "alive",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "page": 19,
+   "position": 1,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "increase",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "page": 19,
+   "position": 2,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "hear",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "page": 19,
+   "position": 3,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "protect",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "conversation",
+   "page": 19,
+   "position": 4,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "a few",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "page": 21,
+   "position": 0,
+   "source": "glossary",
+   "meaningEn": "not many; a small number of things or people",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "There are a few Iranian cheetahs."
+   ],
+   "audio": null
+  },
+  {
+   "word": "human",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "page": 21,
+   "position": 1,
+   "source": "glossary",
+   "meaningEn": "a person",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "All humans must take care of nature."
+   ],
+   "audio": null
+  },
+  {
+   "word": "instead",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "page": 21,
+   "position": 2,
+   "source": "glossary",
+   "meaningEn": "in place of someone or something else",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "There's no coffee. Would you like a cup of tea instead?"
+   ],
+   "audio": null
+  },
+  {
+   "word": "future",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "page": 21,
+   "position": 3,
+   "source": "glossary",
+   "meaningEn": "the time after now",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "Everyone needs to plan for the future."
+   ],
+   "audio": null
+  },
+  {
+   "word": "near",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "page": 47,
+   "position": 0,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "rocky",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "page": 47,
+   "position": 1,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "orbit",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "page": 47,
+   "position": 2,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "powerful",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "conversation",
+   "page": 47,
+   "position": 3,
+   "source": "word-bank",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [],
+   "audio": null
+  },
+  {
+   "word": "healthy",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "page": 49,
+   "position": 0,
+   "source": "glossary",
+   "meaningEn": "1. strong and well 2. good for your body",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "He is a healthy boy.",
+    "A healthy breakfast can give you more energy."
+   ],
+   "audio": null
+  },
+  {
+   "word": "defend",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "page": 49,
+   "position": 1,
+   "source": "glossary",
+   "meaningEn": "to protect someone or something from danger",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "The brave soldiers defended our country."
+   ],
+   "audio": null
+  },
+  {
+   "word": "carry",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "page": 49,
+   "position": 2,
+   "source": "glossary",
+   "meaningEn": "to move someone or something from one place to another",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "Monkeys carry their babies all day long."
+   ],
+   "audio": null
+  },
+  {
+   "word": "collect",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "page": 49,
+   "position": 3,
+   "source": "glossary",
+   "meaningEn": "to go and get someone or something",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "The school bus collects the children each morning."
+   ],
+   "audio": null
+  },
+  {
+   "word": "fact",
+   "grade": 10,
+   "lessonId": "lesson-02",
+   "sectionId": "new-words-and-expressions",
+   "page": 49,
+   "position": 4,
+   "source": "glossary",
+   "meaningEn": "things that are true or that really happened",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "It's a fact that Earth goes around the Sun."
+   ],
+   "audio": null
+  }
+ ]
+}

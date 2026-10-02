@@ -21,7 +21,6 @@ nothing is written by hand.
 from __future__ import annotations
 
 import json
-import re
 import shutil
 import sys
 from pathlib import Path
@@ -32,6 +31,7 @@ import audio_map
 import text as textmod
 import textbook as book
 import transcribe
+import vocabulary
 from align import align
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -64,67 +64,33 @@ def speech_from(transcript_path: Path) -> tuple[list[tuple[str, float, float]], 
     return transcribe.speech_words(data), float(data["duration"])
 
 
-_HEADWORD_RE = re.compile(r"^([a-z][A-Za-z '\-]{0,28}):\s*(.*)$")
-_SECTION_MARKER_RE = re.compile(r"^[A-Z]\.\s|^C\.\s")
-
-
-def _collect_vocabulary(lines: list[tuple[int, str]]) -> list[dict]:
-    """Recover the ``word: definition`` + example blocks of the New Words page.
-
-    The book prints ``headword: definition`` on one line and the example sentence(s)
-    on the lines that follow, so the entries are read back exactly as printed.
-    """
-    items: list[dict] = []
-    current: dict | None = None
-    for page, line in lines:
-        head = _HEADWORD_RE.match(line.strip())
-        if head and not _SECTION_MARKER_RE.match(line.strip()):
-            current = {
-                "word": head.group(1).strip(),
-                "meaningEn": head.group(2).strip(),
-                "examples": [],
-                "page": page,
-            }
-            items.append(current)
-            continue
-        if current is None or _SECTION_MARKER_RE.match(line.strip()):
-            continue
-        stripped = line.strip()
-        if re.match(r"^\d+\.\s", stripped):          # a numbered second sense
-            current["meaningEn"] = (current["meaningEn"] + " " + stripped).strip()
-        else:
-            current["examples"].append(stripped)
-    return items
-
-
-def _target_words(conversation_lines: list[tuple[int, str]]) -> list[str]:
-    """The comma-separated preview list printed above the Conversation."""
-    words: list[str] = []
-    for _, line in conversation_lines:
-        stripped = line.strip()
-        if stripped.endswith(".") or ":" in stripped:
-            break
-        for piece in stripped.split(","):
-            piece = piece.strip().strip(".")
-            if piece and re.fullmatch(r"[A-Za-z][A-Za-z '\-]{0,28}", piece):
-                words.append(piece)
-    return words
-
-
 def vocabulary_from(lines: list[tuple[int, str]]) -> list[dict]:
-    """New Words & Expressions, straight from the printed page."""
+    """New Words & Expressions, straight from the printed page.
+
+    Delegates to the shared extractor so the lesson-level word list and each section's
+    structured vocabulary are read by the same code.
+    """
     return [
         {
-            "word": item["word"],
+            "word": word,
             "pronunciation": "",
-            "meaningEn": item["meaningEn"],
+            "meaningEn": meaning,
             "meaningFa": "",
-            "examples": item["examples"],
+            "examples": examples,
             "audio": None,
-            "page": item["page"],
+            "page": page,
         }
-        for item in _collect_vocabulary(lines)
+        for page, word, meaning, examples in vocabulary.glossary_entries(lines)
     ]
+
+
+def _target_words(doc, section) -> list[str]:
+    """The words a section teaches, read from the page rather than from its text.
+
+    This is the same extraction the section's own vocabulary is built from, so the
+    preview can never drift from the structured data.
+    """
+    return [word for _, word in vocabulary.word_bank_entries(doc, tuple(section.pages))]
 
 
 def build_sync(words, speech, duration, mapping, section, lesson_id) -> dict:
@@ -250,6 +216,10 @@ def build() -> dict:
     # ---- 3. write the content tree --------------------------------------------
     grade_manifest = {"grade": 10, "subject": "English", "textbook": "Vision 1 - English for Schools", "lessons": []}
 
+    # Every section's vocabulary in one file, so a lesson that is added later appears
+    # here by itself without anything else having to change.
+    grade_vocabulary: list[dict] = []
+
     for lesson in lessons:
         lesson_id = lesson.lesson_id
         lesson_sections = []
@@ -257,6 +227,13 @@ def build() -> dict:
             if section.section_id in book.WITHDRAWN_SECTION_IDS:
                 continue    # parsed from the book, but not published in the reader
             data = sections[lesson_id][section.section_id]
+            section_vocabulary = [
+                entry.as_json(10, lesson_id, section.section_id)
+                for entry in vocabulary.entries_for_section(
+                    doc, section.section_id, tuple(section.pages), data["lines"]
+                )
+            ]
+            grade_vocabulary.extend(section_vocabulary)
             mapping = next(
                 (m for m in mappings if m.assigned
                  and m.lesson_id == lesson_id and m.section_id == section.section_id),
@@ -281,6 +258,9 @@ def build() -> dict:
                         for b in data["blocks"]
                     ],
                     "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),
+                    # Which words this section teaches.  Kept beside the text, not inside
+                    # it: the text stays exactly as printed and is never duplicated here.
+                    "vocabulary": section_vocabulary,
                 },
             )
 
@@ -336,7 +316,9 @@ def build() -> dict:
                     "definitionPages": list(vocab_section["meta"].pages) if vocab_section else [],
                     "previewPage": convo_section["meta"].pages[0] if convo_section else None,
                 },
-                "targetWords": _target_words(convo_section["lines"]) if convo_section else [],
+                "targetWords": (
+                    _target_words(doc, convo_section["meta"]) if convo_section else []
+                ),
                 "items": vocabulary_from(vocab_section["lines"]) if vocab_section else [],
             },
         )
@@ -353,6 +335,23 @@ def build() -> dict:
         })
 
     write_json(DATA / "manifest.json", grade_manifest)
+    section_counts: dict[tuple[str, str], int] = {}
+    for entry in grade_vocabulary:
+        key = (entry["lessonId"], entry["sectionId"])
+        section_counts[key] = section_counts.get(key, 0) + 1
+    write_json(
+        DATA / "vocabulary.json",
+        {
+            "grade": 10,
+            "subject": "English",
+            "textbook": "Vision 1 - English for Schools",
+            "sections": [
+                {"lessonId": lesson_id, "sectionId": section_id, "count": count}
+                for (lesson_id, section_id), count in sorted(section_counts.items())
+            ],
+            "entries": grade_vocabulary,
+        },
+    )
 
     for lesson in lessons:
         write_json(
