@@ -18,11 +18,11 @@
    "lessonId": "lesson-01",
    "sectionId": "conversation",
    "rule": "filename",
-   "contentScore": 0.9752,
+   "contentScore": 0.9703,
    "status": "confirmed",
    "method": "lesson folder 'lesson-01' + file name 'conversation' (match 1.00)",
    "contentBest": {
-    "score": 0.9752,
+    "score": 0.9703,
     "lessonId": "lesson-01",
     "sectionId": "conversation"
    },
@@ -82,11 +82,11 @@
    "lessonId": "lesson-02",
    "sectionId": "conversation",
    "rule": "filename",
-   "contentScore": 0.9812,
+   "contentScore": 0.9781,
    "status": "confirmed",
    "method": "lesson folder 'lesson-02' + file name 'conversation' (match 1.00)",
    "contentBest": {
-    "score": 0.9812,
+    "score": 0.9781,
     "lessonId": "lesson-02",
     "sectionId": "conversation"
    },

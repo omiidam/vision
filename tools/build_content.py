@@ -42,6 +42,9 @@ AUDIO_OUT = ROOT / "audio" / "grade-10"
 GENERATED_BY = "tools/build_content.py"
 BOOK_SHA = None  # filled in at runtime
 
+#: The section whose pages are laid out as a dialogue rather than as running text.
+CONVERSATION_SECTION_ID = "conversation"
+
 
 def write_json(path: Path, payload) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -52,6 +55,15 @@ def write_json(path: Path, payload) -> None:
 
 def section_lines(doc, section) -> list[tuple[int, str]]:
     lines: list[tuple[int, str]] = []
+    # A conversation is set out as speaker names beside what is said, and the page also
+    # carries the lesson's word bank and the exercise it closes with.  The conversation
+    # extractor keeps the dialogue itself, one line per turn, and leaves the other two
+    # where the book puts them: the bank is listed on the vocabulary page, and the
+    # exercise is not part of what the speakers say.
+    if section.section_id == CONVERSATION_SECTION_ID:
+        conversation = book.conversation_page_lines(doc, tuple(section.pages))
+        if conversation is not None:
+            return conversation
     for page in range(section.pages[0], section.pages[1] + 1):
         lines.extend((page, text) for text in book.page_lines(doc, page))
     return lines
@@ -174,7 +186,9 @@ def build() -> dict:
                 lines = vocabulary.vocabulary_page_lines(
                     doc, tuple(section.pages), section.section_id
                 ) or lines
-            blocks, flat = textmod.build_blocks(lines)
+            blocks, flat = textmod.build_blocks(
+                lines, conversation=section.section_id == CONVERSATION_SECTION_ID
+            )
             sections[lesson.lesson_id][section.section_id] = {
                 "meta": section,
                 "lines": lines,

@@ -5,51 +5,19 @@
  "sourceAudioFile": "conversation2.mp3",
  "duration": 86.309,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.765,
+ "confidence": 0.9273,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'conversation' (match 1.00)",
-  "contentScore": 0.9812,
+  "contentScore": 0.9781,
   "contentBest": {
-   "score": 0.9812,
+   "score": 0.9781,
    "lessonId": "lesson-02",
    "sectionId": "conversation"
   },
   "notes": []
  },
  "words": [
-  {
-   "word": "near,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "rocky,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "orbit,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "powerful",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
   {
    "word": "Alireza",
    "start": 10.98,
@@ -1369,471 +1337,169 @@
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " that."
-  },
-  {
-   "word": "Answer",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "following",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "questions",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "orally.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "1.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "How",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "are",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "planets",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "different?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "2.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Can",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "we",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "see",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "all",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "planets",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "without",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "a",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "telescope?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "3.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Do",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "you",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "know",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "names",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "of",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "planets",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "in",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Persian?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   }
  ],
  "sentences": [
   {
    "first": 0,
-   "last": 8,
+   "last": 4,
    "start": 10.98,
    "end": 13.3,
-   "text": "near, rocky, orbit, powerful Alireza is visiting an observatory."
+   "text": "Alireza is visiting an observatory."
   },
   {
-   "first": 9,
-   "last": 13,
+   "first": 5,
+   "last": 9,
    "start": 13.3,
    "end": 14.92,
    "text": "He is talking to Ms."
   },
   {
-   "first": 14,
-   "last": 17,
+   "first": 10,
+   "last": 13,
    "start": 15.16,
    "end": 16.62,
    "text": "Tabesh who works there."
   },
   {
-   "first": 18,
-   "last": 24,
+   "first": 14,
+   "last": 20,
    "start": 19.56,
    "end": 21.1,
    "text": "Ms.Tabesh: Are you interested in the planets?"
   },
   {
-   "first": 25,
-   "last": 26,
+   "first": 21,
+   "last": 22,
    "start": 21.66,
    "end": 21.98,
    "text": "Alireza: Yes!"
   },
   {
-   "first": 27,
-   "last": 39,
+   "first": 23,
+   "last": 35,
    "start": 22.16,
    "end": 26.34,
    "text": "They are really interesting for me, but I don't know much about them."
   },
   {
-   "first": 40,
-   "last": 49,
+   "first": 36,
+   "last": 45,
    "start": 26.34,
    "end": 29.86,
    "text": "Ms.Tabesh: Planets are really amazing but not so much alike."
   },
   {
-   "first": 50,
-   "last": 56,
+   "first": 46,
+   "last": 52,
    "start": 30.44,
    "end": 31.88,
    "text": "Do you know how they are different?"
   },
   {
-   "first": 57,
-   "last": 58,
+   "first": 53,
+   "last": 54,
    "start": null,
    "end": null,
    "text": "Alireza: Umm..."
   },
   {
-   "first": 59,
-   "last": 68,
+   "first": 55,
+   "last": 64,
    "start": 33.3,
    "end": 36.18,
    "text": "I know they go around the Sun in different orbits."
   },
   {
-   "first": 69,
-   "last": 71,
+   "first": 65,
+   "last": 67,
    "start": 36.86,
    "end": 37.5,
    "text": "Ms.Tabesh: That's right."
   },
   {
-   "first": 72,
-   "last": 78,
+   "first": 68,
+   "last": 74,
    "start": 38.04,
    "end": 40.54,
    "text": "They have different colors and sizes, too."
   },
   {
-   "first": 79,
-   "last": 94,
+   "first": 75,
+   "last": 90,
    "start": 41.02,
    "end": 47.06,
    "text": "Some are rocky like Mars, some have rings like Saturn and some have moons like Uranus."
   },
   {
-   "first": 95,
-   "last": 97,
+   "first": 91,
+   "last": 93,
    "start": 47.44,
    "end": 48.02,
    "text": "Alireza: How wonderful!"
   },
   {
-   "first": 98,
-   "last": 104,
+   "first": 94,
+   "last": 100,
    "start": 48.66,
    "end": 50.4,
    "text": "Can we see them without a telescope?"
   },
   {
-   "first": 105,
-   "last": 125,
+   "first": 101,
+   "last": 121,
    "start": 51.0,
    "end": 60.38,
    "text": "Ms.Tabesh: Yeah..., we can see the planets nearer to us without a telescope, such as Mercury, Venus, Mars, Jupiter and Saturn."
   },
   {
-   "first": 126,
-   "last": 135,
+   "first": 122,
+   "last": 131,
    "start": 60.8,
    "end": 65.1,
    "text": "We can see Uranus and Neptune only with powerful telescopes."
   },
   {
-   "first": 136,
-   "last": 144,
+   "first": 132,
+   "last": 140,
    "start": 65.74,
    "end": 68.42,
    "text": "Alireza: And which planet is the largest of all?"
   },
   {
-   "first": 145,
-   "last": 150,
+   "first": 141,
+   "last": 146,
    "start": 69.02,
    "end": 70.88,
    "text": "Ms.Tabesh: Jupiter is the largest one."
   },
   {
-   "first": 151,
-   "last": 156,
+   "first": 147,
+   "last": 152,
    "start": 71.08,
    "end": 72.96,
    "text": "It has more than sixty moons."
   },
   {
-   "first": 157,
-   "last": 163,
+   "first": 153,
+   "last": 159,
    "start": 73.46,
    "end": 74.52,
    "text": "Do you want to look at it?"
   },
   {
-   "first": 164,
-   "last": 168,
+   "first": 160,
+   "last": 164,
    "start": 74.98,
    "end": 76.16,
    "text": "Alireza: I really like that."
-  },
-  {
-   "first": 169,
-   "last": 173,
-   "start": null,
-   "end": null,
-   "text": "Answer the following questions orally."
-  },
-  {
-   "first": 174,
-   "last": 174,
-   "start": null,
-   "end": null,
-   "text": "1."
-  },
-  {
-   "first": 175,
-   "last": 179,
-   "start": null,
-   "end": null,
-   "text": "How are the planets different?"
-  },
-  {
-   "first": 180,
-   "last": 180,
-   "start": null,
-   "end": null,
-   "text": "2."
-  },
-  {
-   "first": 181,
-   "last": 188,
-   "start": null,
-   "end": null,
-   "text": "Can we see all planets without a telescope?"
-  },
-  {
-   "first": 189,
-   "last": 189,
-   "start": null,
-   "end": null,
-   "text": "3."
-  },
-  {
-   "first": 190,
-   "last": 199,
-   "start": null,
-   "end": null,
-   "text": "Do you know the names of the planets in Persian?"
   }
  ],
  "unspokenAudio": [
   {
    "start": 3.6,
-   "end": 5.66,
-   "transcript": " Lesson  2  Wonders"
-  },
-  {
-   "start": 5.66,
-   "end": 6.98,
-   "transcript": " of  Creation"
+   "end": 9.32,
+   "transcript": " Lesson  2  Wonders  of  Creation  Conversation"
   }
  ]
 }

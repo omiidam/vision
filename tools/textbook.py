@@ -200,6 +200,19 @@ def _is_running_furniture(text: str) -> bool:
     return False
 
 
+#: White lettering is only ever read on top of a coloured panel, so it marks a callout
+#: (a word bank) rather than the running text.  Same definition as
+#: :data:`vocabulary.CALLOUT_COLOR`, which is where the word bank is read from.
+CALLOUT_COLOR = 0xFFFFFF
+
+#: A speaker label in a conversation, such as ``Maryam:`` or ``Ms.Tabesh:``.  The book
+#: prints the name in a column of its own and sets what is said beside it.
+SPEAKER_RE = re.compile(r"^[A-Z][A-Za-z.]{1,24}(?:\s[A-Z][A-Za-z.]{1,24})*:\s*$")
+
+#: The instruction a conversation page closes with, above the questions it asks.
+_EXERCISE_RE = re.compile(r"^Answer the following questions\b", re.I)
+
+
 def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[dict]]]:
     """Return each visible line of a printed page with the spans it was built from.
 
@@ -208,6 +221,34 @@ def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[
     from the running text around it.
 
     Printed page numbers in this book equal the 1-based PDF page index.
+    """
+    return [(text, spans) for _, text, spans in page_geometry_rows(doc, printed_page)]
+
+
+def page_geometry_rows(
+    doc: pymupdf.Document, printed_page: int
+) -> list[tuple[float, str, list[dict]]]:
+    """Each visible line of a printed page with its left edge and its spans.
+
+    The lines are in the same reading order :func:`page_rows` returns; the left edge is
+    what tells a speaker's name from the words beside it, which the book sets in two
+    columns of one visual row.
+    """
+    return [
+        item
+        for row in _visual_rows(doc, printed_page)
+        for item in row
+    ]
+
+
+def _visual_rows(
+    doc: pymupdf.Document, printed_page: int
+) -> list[list[tuple[float, str, list[dict]]]]:
+    """The page's visible lines banded into visual rows, each ordered left to right.
+
+    Text drawn a couple of points apart on the same row - this book sets a speaker's
+    name beside what they say that way - shares one row here.  Each entry of a row is
+    ``(left edge, text, spans)``.
     """
     page = doc[printed_page - 1]
     collected: list[tuple[float, float, str, list[dict]]] = []
@@ -223,8 +264,6 @@ def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[
             if x1 < 40 or x0 > 580:
                 continue
             collected.append((y0, x0, text, list(line["spans"])))
-    # Band lines into visual rows so that text drawn a couple of points apart on the
-    # same row (common in this book's two-column pages) is ordered left to right.
     collected.sort(key=lambda item: (item[0], item[1]))
     rows: list[list[tuple[float, float, str, list[dict]]]] = []
     for item in collected:
@@ -233,10 +272,59 @@ def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[
         else:
             rows.append([item])
     return [
-        (text, spans)
+        [(x0, text, spans) for _, x0, text, spans in sorted(row, key=lambda i: i[1])]
         for row in rows
-        for _, _, text, spans in sorted(row, key=lambda i: i[1])
     ]
+
+
+def conversation_page_lines(
+    doc: pymupdf.Document, page_range: tuple[int, int]
+) -> list[tuple[int, str]] | None:
+    """The lines of a conversation, one line per speaker turn, or ``None`` if it has none.
+
+    The book sets a conversation out as a column of speaker names with what is said
+    beside it, so a name and the words on its visual row are one printed line and are
+    joined here.  A turn the book wraps over several rows keeps those rows in order, so
+    the turn still reads as the paragraph the reader shows.
+
+    The word bank printed beside the conversation and the questions the page closes
+    with are not part of the conversation: the bank is the lesson's vocabulary, listed
+    on the vocabulary page, and the questions are an exercise that follows the dialogue.
+    """
+    lines: list[tuple[int, str]] = []
+    for printed_page in range(page_range[0], page_range[1] + 1):
+        rows = page_geometry_rows(doc, printed_page)
+        if not any(SPEAKER_RE.match(text) for _, text, _ in rows):
+            return None
+        for row in _visual_rows(doc, printed_page):
+            for text in _join_speaker_row(row):
+                if _is_word_bank(text[2]):
+                    continue
+                if _EXERCISE_RE.match(text[1]):
+                    return lines
+                lines.append((printed_page, text[1]))
+    return lines
+
+
+def _join_speaker_row(row: list[tuple[float, str, list[dict]]]) -> list[tuple[float, str, list[dict]]]:
+    """A visual row of a conversation, with a speaker's name joined onto its words.
+
+    The name is set in a column of its own, so it is the leftmost run on the row and
+    everything to its right is what that speaker says.  A row without a name is returned
+    unchanged, and a row the book already set as one line is returned as it stands.
+    """
+    if not row or not SPEAKER_RE.match(row[0][1]):
+        return row
+    return [(row[0][0], " ".join(item[1] for item in row), row[0][2])]
+
+
+def _is_word_bank(spans: list[dict]) -> bool:
+    """True for a line the book sets as a callout panel rather than as running text.
+
+    White lettering can only have been laid over a coloured panel, which is what the
+    word bank printed beside a conversation is.
+    """
+    return bool(spans) and all(span["color"] == CALLOUT_COLOR for span in spans)
 
 
 def page_lines(doc: pymupdf.Document, printed_page: int) -> list[str]:

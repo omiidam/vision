@@ -14,25 +14,6 @@
   {
    "page": 19,
    "lines": [
-    "endangered,"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "alive, increase,"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "hear, protect,"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "for example",
     "Maryam is visiting the Museum of Nature and Wildlife. She's",
     "talking to Mr. Razavi, who works in the museum."
    ]
@@ -40,111 +21,54 @@
   {
    "page": 19,
    "lines": [
-    "Maryam:"
+    "Maryam: Excuse me, what is it? Is it a leopard?"
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Excuse me, what is it? Is it a leopard?"
+    "Mr. Razavi: No, it is a cheetah."
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Mr. Razavi:"
+    "Maryam: Oh, a cheetah?"
    ]
   },
   {
    "page": 19,
    "lines": [
-    "No, it is a cheetah."
+    "Mr. Razavi: Yeah, an Iranian cheetah. It is an endangered animal."
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Maryam:"
+    "Maryam: I know. I heard around 70 of them are alive. Yes?"
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Oh, a cheetah?"
+    "Mr. Razavi: Right, but the number will increase."
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Mr. Razavi:",
-    "Yeah, an Iranian cheetah. It is an endangered animal."
+    "Maryam: Really?! How?"
    ]
   },
   {
    "page": 19,
    "lines": [
-    "Maryam:",
-    "I know. I heard around 70 of them are alive. Yes?"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Mr. Razavi:"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Right, but the number will increase."
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Maryam:"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Really?! How?"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Mr. Razavi:",
-    "Well, we have some plans. For example, we are going",
+    "Mr. Razavi: Well, we have some plans. For example, we are going",
     "to protect their homes, to make movies about their life,",
     "and to teach people how to take more care of them."
    ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "Answer the following questions orally."
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "1. Where are they talking?"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "2. Are there many cheetahs alive?"
-   ]
-  },
-  {
-   "page": 19,
-   "lines": [
-    "3. Do you take care of animals?"
-   ]
   }
  ],
- "text": "endangered,\nalive, increase,\nhear, protect,\nfor example Maryam is visiting the Museum of Nature and Wildlife. She's talking to Mr. Razavi, who works in the museum.\nMaryam:\nExcuse me, what is it? Is it a leopard?\nMr. Razavi:\nNo, it is a cheetah.\nMaryam:\nOh, a cheetah?\nMr. Razavi: Yeah, an Iranian cheetah. It is an endangered animal.\nMaryam: I know. I heard around 70 of them are alive. Yes?\nMr. Razavi:\nRight, but the number will increase.\nMaryam:\nReally?! How?\nMr. Razavi: Well, we have some plans. For example, we are going to protect their homes, to make movies about their life, and to teach people how to take more care of them.\nAnswer the following questions orally.\n1. Where are they talking?\n2. Are there many cheetahs alive?\n3. Do you take care of animals?",
+ "text": "Maryam is visiting the Museum of Nature and Wildlife. She's talking to Mr. Razavi, who works in the museum.\nMaryam: Excuse me, what is it? Is it a leopard?\nMr. Razavi: No, it is a cheetah.\nMaryam: Oh, a cheetah?\nMr. Razavi: Yeah, an Iranian cheetah. It is an endangered animal.\nMaryam: I know. I heard around 70 of them are alive. Yes?\nMr. Razavi: Right, but the number will increase.\nMaryam: Really?! How?\nMr. Razavi: Well, we have some plans. For example, we are going to protect their homes, to make movies about their life, and to teach people how to take more care of them.",
  "vocabulary": []
 }

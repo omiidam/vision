@@ -40,6 +40,18 @@ def tokenize_line(line: str) -> list[str]:
 
 _SENTENCE_END = re.compile(r"[.!?…]['\")\]”’]*$")
 
+#: A speaker label at the start of a line, as the book prints it in a conversation.
+_TURN_RE = re.compile(r"^[A-Z][A-Za-z.]{1,24}(?:\s[A-Z][A-Za-z.]{1,24})*:\s")
+
+
+def _opens_a_turn(line: str) -> bool:
+    """True for a line that begins with the name of who is speaking.
+
+    A conversation gives every speaker their own paragraph, so a name followed by a
+    colon starts a turn even when the line is long enough to run on from the one above.
+    """
+    return bool(_TURN_RE.match(line))
+
 
 def split_sentences(tokens: list[str]) -> list[tuple[int, int]]:
     """Group a flat token list into ``(start, end)`` sentence ranges."""
@@ -58,12 +70,20 @@ def split_sentences(tokens: list[str]) -> list[tuple[int, int]]:
     return sentences or [(0, len(tokens))]
 
 
-def build_blocks(lines: list[tuple[int, str]]) -> tuple[list[dict], list[str]]:
+def build_blocks(
+    lines: list[tuple[int, str]], conversation: bool = False
+) -> tuple[list[dict], list[str]]:
     """Group extracted page lines into displayable blocks.
 
     Returns ``(blocks, flat_tokens)``.  Each block is ``{"page", "lines"}`` where a block
     is one paragraph or one short exercise line, so the reader UI can lay it out the way
     the book does.
+
+    ``conversation`` groups a dialogue by who is speaking rather than by line length:
+    every turn is a block of its own, and a line the book wrapped onto the next row
+    stays with the turn it belongs to however short that line is.  On a page of running
+    text the rule is the opposite - a short line there is a line of its own, not the tail
+    of the paragraph above it.
     """
     flat: list[str] = []
     blocks: list[dict] = []
@@ -74,16 +94,20 @@ def build_blocks(lines: list[tuple[int, str]]) -> tuple[list[dict], list[str]]:
         tokens = tokenize_line(line)
         if not tokens:
             continue
-        # A new page, a heading-like line, or an exercise marker starts a new block.
-        heading = bool(re.match(r"^[A-Z][A-Za-z0-9 &/'-]{2,}$", line)) and len(line) < 60
-        numbered = bool(re.match(r"^[A-Z]\.\s|^[a-z]\.\s|^\d+[-.\)]\s", line))
-        starts_block = (
-            current is None
-            or page != previous_page
-            or heading
-            or numbered
-            or len(line) < 45
-        )
+        if conversation:
+            # Only a change of speaker, or of page, opens the next block.
+            starts_block = current is None or page != previous_page or _opens_a_turn(line)
+        else:
+            # A new page, a heading-like line, or an exercise marker starts a new block.
+            heading = bool(re.match(r"^[A-Z][A-Za-z0-9 &/'-]{2,}$", line)) and len(line) < 60
+            numbered = bool(re.match(r"^[A-Z]\.\s|^[a-z]\.\s|^\d+[-.\)]\s", line))
+            starts_block = (
+                current is None
+                or page != previous_page
+                or heading
+                or numbered
+                or len(line) < 45
+            )
         if starts_block:
             current = {"page": page, "lines": [line], "tokens": list(tokens)}
             blocks.append(current)

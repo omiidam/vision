@@ -118,6 +118,41 @@ print(json.dumps(out))
 const PRINTED_BANKS = printedBanksOutput ? JSON.parse(printedBanksOutput) : null
 
 /**
+ * Every visible line of every published section's printed pages, taken from the PDF.
+ * A word the book marks for a section has to be printed on that section's pages: some of
+ * them sit in the running text, and some in a callout panel such as the word bank beside
+ * a conversation, which the reader's text for the section leaves out.
+ */
+const printedPagesOutput = runExtractor(
+  `
+import sys, json, pymupdf
+sys.path.insert(0, "tools")
+import textbook as B
+doc = pymupdf.open("10th-class/" + B.BOOK_FILENAME)
+out = {}
+for lesson, sections in json.loads(sys.argv[1]).items():
+    out[lesson] = {
+        section_id: " ".join(
+            text
+            for page in range(pages[0], pages[1] + 1)
+            for text in B.page_lines(doc, page)
+        ).lower()
+        for section_id, pages in sections
+    }
+print(json.dumps(out))
+`,
+  JSON.stringify(
+    Object.fromEntries(
+      LESSON_IDS.map((lessonId) => [
+        lessonId,
+        Object.entries(SECTION_PAGES[lessonId]),
+      ]),
+    ),
+  ),
+)
+const PRINTED_PAGES = printedPagesOutput ? JSON.parse(printedPagesOutput) : null
+
+/**
  * Run the real extractor over the shapes above and over the book's own vocabulary pages,
  * so the tests check the code that builds the data rather than a copy of it.
  */
@@ -159,6 +194,38 @@ print(json.dumps({
 const EXTRACTED = extractedOutput ? JSON.parse(extractedOutput) : null
 
 const SKIPPED = 'the book and its extractor cannot be read on this machine'
+
+/**
+ * The two conversations as the book prints them: the introduction the page opens with,
+ * then one entry per turn with the words of the turn the book wrapped onto the next
+ * printed row joined back together.
+ */
+const CONVERSATION_TURNS = {
+  'lesson-01': [
+    "Maryam is visiting the Museum of Nature and Wildlife. She's talking to Mr. Razavi, who works in the museum.",
+    'Maryam: Excuse me, what is it? Is it a leopard?',
+    'Mr. Razavi: No, it is a cheetah.',
+    'Maryam: Oh, a cheetah?',
+    'Mr. Razavi: Yeah, an Iranian cheetah. It is an endangered animal.',
+    'Maryam: I know. I heard around 70 of them are alive. Yes?',
+    'Mr. Razavi: Right, but the number will increase.',
+    'Maryam: Really?! How?',
+    'Mr. Razavi: Well, we have some plans. For example, we are going to protect their homes, to make movies about their life, and to teach people how to take more care of them.',
+  ],
+  'lesson-02': [
+    'Alireza is visiting an observatory. He is talking to Ms. Tabesh who works there.',
+    'Ms.Tabesh: Are you interested in the planets?',
+    "Alireza: Yes! They are really interesting for me, but I don't know much about them.",
+    'Ms.Tabesh: Planets are really amazing but not so much alike. Do you know how they are different?',
+    'Alireza: Umm... I know they go around the Sun in different orbits.',
+    "Ms.Tabesh: That's right. They have different colors and sizes, too. Some are rocky like Mars, some have rings like Saturn and some have moons like Uranus.",
+    'Alireza: How wonderful! Can we see them without a telescope?',
+    'Ms.Tabesh: Yeah..., we can see the planets nearer to us without a telescope, such as Mercury, Venus, Mars, Jupiter and Saturn. We can see Uranus and Neptune only with powerful telescopes.',
+    'Alireza: And which planet is the largest of all?',
+    'Ms.Tabesh: Jupiter is the largest one. It has more than sixty moons. Do you want to look at it?',
+    'Alireza: I really like that.',
+  ],
+}
 
 /** A check that has to read the book, so it can only run where Python can read the PDF. */
 const fromBook = (name, fn) =>
@@ -436,8 +503,11 @@ test('the index counts every section that has vocabulary, and no others', () => 
 
 test('vocabulary is never invented: every word is printed where it comes from', () => {
   // The book puts a word in a section's word bank because that section teaches it, so
-  // the word has to appear in the text of the section the entry names as its source.
+  // the word has to be printed on the pages the entry names as its source.  Most are in
+  // the running text of the section; a word bank is printed as a callout panel beside it,
+  // which is on the page but not in the text the reader shows for the section.
   // A glossary headword can be a phrase such as "a few", so every word of it is checked.
+  const pageTextOf = (lessonId, sectionId) => PRINTED_PAGES?.[lessonId]?.[sectionId] ?? null
   for (const lessonId of LESSON_IDS) {
     const manifests = readJson(path.join(DATA, lessonId, 'manifest.json')).sections
     const textOf = Object.fromEntries(
@@ -447,9 +517,13 @@ test('vocabulary is never invented: every word is printed where it comes from', 
       for (const entry of readJson(file).vocabulary) {
         const source = textOf[entry.sectionId]
         assert.ok(source !== undefined, `${entry.word}: unknown source section ${entry.sectionId}`)
+        // Where the book can be read, the printed page is the authority; where it cannot,
+        // the generated text is all there is, and a word bank is in both.
+        const printed = pageTextOf(inLesson, entry.sectionId)
+        const where = printed === null ? source : `${source} ${printed}`
         for (const word of entry.word.toLowerCase().match(/[a-z][a-z'-]*/g) ?? []) {
           assert.ok(
-            new RegExp(`\\b${word}\\b`).test(source),
+            new RegExp(`\\b${word}\\b`).test(where),
             `${inLesson}/${entry.sectionId}: "${word}" is not printed in the section it comes from`,
           )
         }
@@ -584,4 +658,39 @@ test('the vocabulary listing is built from the whole lesson, in one shared place
   // It must sweep every section it is handed, rather than a section it names itself.
   assert.match(source, /for section_id, pages in section_pages:/)
   assert.doesNotMatch(source, /['"]conversation['"]/)
+})
+
+fromBook('a conversation is read as the dialogue it is, one block per turn', () => {
+  // The book prints a conversation as a column of speaker names with what is said beside
+  // it, and the page also carries the lesson's word bank and the exercise it closes with.
+  // A conversation is the dialogue: every speaker's name with their own words, and
+  // nothing else from the page.
+  for (const [lessonId, expected] of Object.entries(CONVERSATION_TURNS)) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'conversation.json'))
+    const spoken = data.blocks.map((b) => b.lines.join(' '))
+    assert.deepEqual(spoken, expected, `${lessonId}: conversation no longer reads as the book prints it`)
+    // The word bank is vocabulary, and the exercise is not something anyone says, so
+    // neither may end up inside the conversation.
+    assert.ok(
+      !data.text.includes('Answer the following questions'),
+      `${lessonId}: the exercise after the conversation leaked into it`,
+    )
+    assert.deepEqual(
+      data.vocabulary, [],
+      `${lessonId}: the conversation must not list vocabulary of its own`,
+    )
+  }
+})
+
+fromBook('every word of a conversation turn belongs to the speaker who says it', () => {
+  // A turn that the book wrapped onto the next printed row stays one block, so a speaker
+  // is never credited with the tail of what the speaker above them said.
+  const turns = readJson(path.join(DATA, 'lesson-01', 'sections', 'conversation.json')).blocks
+  for (const block of turns) {
+    const text = block.lines.join(' ')
+    assert.ok(
+      text.split(':').length <= 2,
+      `a turn holds more than one speaker: ${JSON.stringify(text)}`,
+    )
+  }
 })

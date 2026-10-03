@@ -5,75 +5,19 @@
  "sourceAudioFile": "conversation1.mp3",
  "duration": 62.589,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.6934,
+ "confidence": 0.8879,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-01' + file name 'conversation' (match 1.00)",
-  "contentScore": 0.9752,
+  "contentScore": 0.9703,
   "contentBest": {
-   "score": 0.9752,
+   "score": 0.9703,
    "lessonId": "lesson-01",
    "sectionId": "conversation"
   },
   "notes": []
  },
  "words": [
-  {
-   "word": "endangered,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "alive,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "increase,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "hear,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "protect,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "for",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "example",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
   {
    "word": "Maryam",
    "start": 10.92,
@@ -929,400 +873,162 @@
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " them."
-  },
-  {
-   "word": "Answer",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "following",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "questions",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "orally.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "1.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Where",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "are",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "they",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "talking?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "2.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Are",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "there",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "many",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "cheetahs",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "alive?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "3.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Do",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "you",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "take",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "care",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "of",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "animals?",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   }
  ],
  "sentences": [
   {
    "first": 0,
-   "last": 15,
+   "last": 8,
    "start": 10.92,
    "end": 14.46,
-   "text": "endangered, alive, increase, hear, protect, for example Maryam is visiting the Museum of Nature and Wildlife."
+   "text": "Maryam is visiting the Museum of Nature and Wildlife."
   },
   {
-   "first": 16,
-   "last": 19,
+   "first": 9,
+   "last": 12,
    "start": 15.26,
    "end": 16.2,
    "text": "She's talking to Mr."
   },
   {
-   "first": 20,
-   "last": 25,
+   "first": 13,
+   "last": 18,
    "start": 16.5,
    "end": 18.46,
    "text": "Razavi, who works in the museum."
   },
   {
-   "first": 26,
-   "last": 31,
+   "first": 19,
+   "last": 24,
    "start": 23.18,
    "end": 25.06,
    "text": "Maryam: Excuse me, what is it?"
   },
   {
-   "first": 32,
-   "last": 35,
+   "first": 25,
+   "last": 28,
    "start": 25.64,
    "end": 26.5,
    "text": "Is it a leopard?"
   },
   {
-   "first": 36,
-   "last": 36,
+   "first": 29,
+   "last": 29,
    "start": null,
    "end": null,
    "text": "Mr."
   },
   {
-   "first": 37,
-   "last": 42,
+   "first": 30,
+   "last": 35,
    "start": 27.1,
    "end": 28.76,
    "text": "Razavi: No, it is a cheetah."
   },
   {
-   "first": 43,
-   "last": 46,
+   "first": 36,
+   "last": 39,
    "start": 29.28,
    "end": 30.58,
    "text": "Maryam: Oh, a cheetah?"
   },
   {
-   "first": 47,
-   "last": 47,
+   "first": 40,
+   "last": 40,
    "start": null,
    "end": null,
    "text": "Mr."
   },
   {
-   "first": 48,
-   "last": 52,
+   "first": 41,
+   "last": 45,
    "start": 30.84,
    "end": 32.64,
    "text": "Razavi: Yeah, an Iranian cheetah."
   },
   {
-   "first": 53,
-   "last": 57,
+   "first": 46,
+   "last": 50,
    "start": 32.92,
    "end": 34.46,
    "text": "It is an endangered animal."
   },
   {
-   "first": 58,
-   "last": 60,
+   "first": 51,
+   "last": 53,
    "start": 35.02,
    "end": 35.48,
    "text": "Maryam: I know."
   },
   {
-   "first": 61,
-   "last": 68,
+   "first": 54,
+   "last": 61,
    "start": 35.72,
    "end": 38.22,
    "text": "I heard around 70 of them are alive."
   },
   {
-   "first": 69,
-   "last": 69,
+   "first": 62,
+   "last": 62,
    "start": 38.46,
    "end": 38.74,
    "text": "Yes?"
   },
   {
-   "first": 70,
-   "last": 70,
+   "first": 63,
+   "last": 63,
    "start": null,
    "end": null,
    "text": "Mr."
   },
   {
-   "first": 71,
-   "last": 77,
+   "first": 64,
+   "last": 70,
    "start": 39.18,
    "end": 41.1,
    "text": "Razavi: Right, but the number will increase."
   },
   {
-   "first": 78,
-   "last": 79,
+   "first": 71,
+   "last": 72,
    "start": 41.78,
    "end": 42.18,
    "text": "Maryam: Really?!"
   },
   {
-   "first": 80,
-   "last": 80,
+   "first": 73,
+   "last": 73,
    "start": 42.44,
    "end": 42.76,
    "text": "How?"
   },
   {
-   "first": 81,
-   "last": 81,
+   "first": 74,
+   "last": 74,
    "start": null,
    "end": null,
    "text": "Mr."
   },
   {
-   "first": 82,
-   "last": 87,
+   "first": 75,
+   "last": 80,
    "start": 43.22,
    "end": 44.62,
    "text": "Razavi: Well, we have some plans."
   },
   {
-   "first": 88,
-   "last": 113,
+   "first": 81,
+   "last": 106,
    "start": 45.0,
    "end": 52.4,
    "text": "For example, we are going to protect their homes, to make movies about their life, and to teach people how to take more care of them."
-  },
-  {
-   "first": 114,
-   "last": 118,
-   "start": null,
-   "end": null,
-   "text": "Answer the following questions orally."
-  },
-  {
-   "first": 119,
-   "last": 119,
-   "start": null,
-   "end": null,
-   "text": "1."
-  },
-  {
-   "first": 120,
-   "last": 123,
-   "start": null,
-   "end": null,
-   "text": "Where are they talking?"
-  },
-  {
-   "first": 124,
-   "last": 124,
-   "start": null,
-   "end": null,
-   "text": "2."
-  },
-  {
-   "first": 125,
-   "last": 129,
-   "start": null,
-   "end": null,
-   "text": "Are there many cheetahs alive?"
-  },
-  {
-   "first": 130,
-   "last": 130,
-   "start": null,
-   "end": null,
-   "text": "3."
-  },
-  {
-   "first": 131,
-   "last": 136,
-   "start": null,
-   "end": null,
-   "text": "Do you take care of animals?"
   }
  ],
  "unspokenAudio": [
   {
    "start": 3.18,
-   "end": 5.78,
-   "transcript": " Lesson  1  Saving"
-  },
-  {
-   "start": 5.78,
    "end": 9.38,
-   "transcript": " Nature  Conversation"
+   "transcript": " Lesson  1  Saving  Nature  Conversation"
   }
  ]
 }

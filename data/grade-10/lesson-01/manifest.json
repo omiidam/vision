@@ -37,7 +37,7 @@
    "audio": "audio/grade-10/lesson-01/conversation.mp3",
    "duration": 62.589,
    "sync": "data/grade-10/lesson-01/synchronization/conversation.sync.json",
-   "syncConfidence": 0.9752,
+   "syncConfidence": 0.9703,
    "syncStatus": "confirmed"
   },
   {
