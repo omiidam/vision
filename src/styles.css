@@ -370,22 +370,48 @@ input::placeholder { color: var(--muted); opacity: 1; }
    textbook's read the same way. */
 .word.target-word { color: var(--target-word); font-weight: 600; }
 
-/* The vocabulary page is printed as separate items - a picture caption, or a headword
-   with the example under it - so each one is set apart from the next: it takes its own
-   line, keeps the rows the book printed in their own lines, and is divided from the
-   item after it.  The target word stays in the book's colour wherever it sits, so the
-   eye finds the word and then reads the sentence it belongs to. */
+/* The vocabulary page is printed in parts, and the book lays each part out its own way.
+   A part of pictures is a grid: the items fill it left to right and then start the next
+   row, as the page of photographs does.  A part of headwords gives every entry a row of
+   its own, so it is a single column down the page and is never a grid.  Both are marked
+   with the class the layout carries, so the reader follows the book rather than deciding
+   for itself which parts have two columns. */
+.reader-grouped .vocab-part-body {
+  margin-block: 0 1.1em;
+  padding-block: 0.4em;
+  border-block-start: 1px solid var(--line-soft);
+}
+/* The grid: as many columns as the book prints the part in.  `grid-auto-flow: row` is the
+   default, so the items fill each row left to right and start the next one below, which
+   is the order the book prints them in. */
+.reader-grouped .vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--part-columns, 2), minmax(0, 1fr));
+  column-gap: 1.4rem;
+  row-gap: 0.2rem;
+  align-items: start;
+}
+/* The list: one entry under the next, in one column, each a block of its own. */
+.reader-grouped .vocab-part-body:not(.vocab-grid) .paragraph.item {
+  margin-block: 0;
+}
+
 .reader-grouped .paragraph.block-part-heading {
-  margin-block: 1.6em 0.6em;
+  margin-block: 1.5em 0.7em;
+  padding-block: 0 0 0.35em;
   font-weight: 600;
   color: var(--muted);
+  border-block-end: 1px solid var(--line);
 }
+/* An item is set apart from the next: it keeps the rows the book printed in their own
+   lines, and it is divided from the item after it.  In the grid that is a rule under each
+   caption; in the list it is the same rule between one entry and the next. */
 .reader-grouped .paragraph.block-example {
   margin-block: 0;
-  padding-block: 0.55em;
+  padding-block: 0.6em;
   border-block-end: 1px solid var(--line-soft);
 }
-.reader-grouped .paragraph.block-example:last-child { border-block-end: none; }
+.reader-grouped .vocab-part-body > .paragraph:last-child { border-block-end: none; }
 .reader-grouped .paragraph.item { border-inline-start-color: var(--line-soft); }
 /* The rows the book wrapped onto the next line keep their own line here, so a caption
    reads as the block of text it is printed as. */

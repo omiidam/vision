@@ -16,42 +16,60 @@
    "lines": [
     "A. Look, Read and Practice."
    ],
-   "kind": "part-heading"
+   "kind": "part-heading",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 20,
    "lines": [
     "We live on Earth."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 20,
    "lines": [
     "A tiger is a wild animal."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 20,
    "lines": [
     "I went to Golestan Forest last year."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 20,
    "lines": [
     "They are destroying the jungle."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 20,
    "lines": [
     "The Persian lion died out about 75 years ago."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 21,
@@ -59,7 +77,10 @@
     "Pay attention!",
     "Don't swim here."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 21,
@@ -67,7 +88,10 @@
     "Tooran is the natural home",
     "of the Persian zebra."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 21,
@@ -75,7 +99,10 @@
     "Moghan Plain is a nice place in",
     "the north-west of Iran."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 21,
@@ -83,14 +110,20 @@
     "They hope to save the",
     "injured animal."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 21,
    "lines": [
     "B. Read and Practice."
    ],
-   "kind": "part-heading"
+   "kind": "part-heading",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 21,
@@ -98,7 +131,10 @@
     "a few: not many; a small number of things or people",
     "There are a few Iranian cheetahs."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 21,
@@ -106,7 +142,10 @@
     "human: a person",
     "All humans must take care of nature."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 21,
@@ -114,7 +153,10 @@
     "instead: in place of someone or something else",
     "There's no coffee. Would you like a cup of tea instead?"
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 21,
@@ -122,7 +164,10 @@
     "future: the time after now",
     "Everyone needs to plan for the future."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   }
  ],
  "text": "A. Look, Read and Practice.\nWe live on Earth.\nA tiger is a wild animal.\nI went to Golestan Forest last year.\nThey are destroying the jungle.\nThe Persian lion died out about 75 years ago.\nPay attention! Don't swim here.\nTooran is the natural home of the Persian zebra.\nMoghan Plain is a nice place in the north-west of Iran.\nThey hope to save the injured animal.\nB. Read and Practice.\na few: not many; a small number of things or people There are a few Iranian cheetahs.\nhuman: a person All humans must take care of nature.\ninstead: in place of someone or something else There's no coffee. Would you like a cup of tea instead?\nfuture: the time after now Everyone needs to plan for the future.",

@@ -53,6 +53,19 @@ export interface TextBlock {
    * example apart without reading the text to work out where one stops.
    */
   kind?: 'part-heading' | 'example'
+  /**
+   * Which part of the vocabulary page the block belongs to, by the letter the book heads
+   * it with.  Blocks of a part are laid out together, the way the book sets that part out.
+   */
+  part?: string
+  /**
+   * How the book prints this part: `grid` for the parts it sets side by side, `list` for
+   * the parts that give each entry a row of its own.  Read off the page during the build,
+   * so the reader lays a part out the way the book prints it.
+   */
+  layout?: 'grid' | 'list'
+  /** How many items the book prints side by side in this part. */
+  columns?: number
 }
 
 /**

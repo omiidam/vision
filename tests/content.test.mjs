@@ -273,6 +273,103 @@ test('every block of the New Words page says what the book prints it as', () => 
   }
 })
 
+test('a part the book prints side by side is a grid, and one it prints in rows is a list', () => {
+  // The book lays the parts of its vocabulary page out differently, and which way a part
+  // goes is read off the page: the parts printed as pictures set two captions on the same
+  // printed row, and the parts printed as headwords give every entry a row of its own.
+  // Nothing here names a part, so a lesson printed differently needs no change.
+  for (const lessonId of readJson(path.join(DATA, 'manifest.json')).lessons.map((l) => l.id)) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    const parts = new Map()
+    for (const block of data.blocks) {
+      assert.ok(block.part, `${lessonId}: a block names no part`)
+      assert.ok(['grid', 'list'].includes(block.layout), `${lessonId}: "${block.layout}" is not a layout`)
+      assert.equal(
+        block.layout,
+        block.columns > 1 ? 'grid' : 'list',
+        `${lessonId}: part ${block.part} says ${block.layout} for ${block.columns} columns`,
+      )
+      parts.set(block.part, block.layout)
+    }
+    // A part is one run of blocks: the book prints it in one place, so its blocks are
+    // never split up by another part coming between them.
+    const runs = []
+    for (const block of data.blocks) {
+      if (runs[runs.length - 1] !== block.part) runs.push(block.part)
+    }
+    assert.equal(new Set(runs).size, runs.length, `${lessonId}: a part is printed in pieces`)
+
+    // A part printed side by side is two columns wide; one printed in rows is one column.
+    for (const [part, layout] of parts) {
+      const blocks = data.blocks.filter((block) => block.part === part)
+      const columns = blocks[0].columns
+      if (layout === 'grid') {
+        assert.ok(columns >= 2, `${lessonId}: part ${part} is a grid of ${columns} columns`)
+      } else {
+        assert.equal(columns, 1, `${lessonId}: part ${part} is a list of ${columns} columns`)
+      }
+    }
+  }
+})
+
+test('the items of a grid part are printed in the order they are read left to right', () => {
+  // A grid fills each row left to right and starts the next row below, so the blocks of a
+  // grid part are in reading order with no gaps and nothing doubled.  The blocks are read
+  // from the page in that order and never sorted, so this is the order the book prints.
+  for (const lessonId of readJson(path.join(DATA, 'manifest.json')).lessons.map((l) => l.id)) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    for (const part of new Set(data.blocks.map((block) => block.part))) {
+      const items = data.blocks.filter(
+        (block) => block.part === part && block.kind === 'example',
+      )
+      const texts = items.map((block) => block.lines.join(' '))
+      assert.equal(
+        new Set(texts).size,
+        texts.length,
+        `${lessonId}: part ${part} prints the same item twice`,
+      )
+      // Every line of the page is still there, in the order it was printed: a layout
+      // describes where an item goes, never which items there are or what they say.  The
+      // page's own text is the blocks joined, so that is what they are checked against.
+      const shown = data.blocks.flatMap((block) => block.lines.join(' '))
+      assert.deepEqual(
+        shown,
+        data.text.split('\n'),
+        `${lessonId}: part ${part} reordered or changed the printed lines`,
+      )
+    }
+  }
+})
+
+test('the reader lays each part out the way the book prints it', () => {
+  // The layout is carried on each block, so the reader does not decide for itself which
+  // parts have two columns: a part the book prints side by side becomes a grid as wide as
+  // the page sets it, and a part it prints in rows stays a single column.  Nothing here
+  // names a part, so a part printed another way needs no change here either.
+  const source = fs.readFileSync(path.join(ROOT, 'src', 'views', 'lesson.ts'), 'utf8')
+  const render = source.slice(source.indexOf('private partContainer'))
+  assert.match(render, /block\.layout === 'grid'/)
+  assert.match(render, /vocab-grid/)
+  assert.match(render, /--part-columns/)
+  assert.match(render, /block\.columns \?\? 2/)
+  // A heading is not an item: it stands on its own above its part rather than taking a
+  // cell in the grid, which would push every item along by one.
+  assert.match(
+    source,
+    /block\.kind === 'example'\s*\n\s*\? this\.partContainer/,
+    'the heading of a part is being laid out as one of its items',
+  )
+  // The grid fills each row left to right and starts the next row below, which is the
+  // order the book prints its items in, and the order the blocks arrive in.
+  const css = fs.readFileSync(path.join(ROOT, 'src', 'styles.css'), 'utf8')
+  assert.match(css, /\.vocab-grid\s*\{[\s\S]*?display: grid;/)
+  assert.match(css, /grid-template-columns: repeat\(var\(--part-columns, 2\)/)
+  // The list is one column.  It is styled as the absence of a grid, so a part that is not
+  // printed side by side can never come out as a two-column table.
+  assert.match(css, /:not\(\.vocab-grid\)/)
+  assert.doesNotMatch(css, /vocab-grid[^{]*\{[^}]*grid-template-columns: repeat\(var\(--part-columns, 2\)[^}]*\}[\s\S]*?vocab-list[^{]*\{[^}]*display: grid/)
+})
+
 test('the New Words page shows the parts the book prints and no pointer to the workbook', () => {
   for (const lessonId of ['lesson-01', 'lesson-02']) {
     const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))

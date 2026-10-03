@@ -105,6 +105,15 @@ CAPTION_GAP = 30.0
 #: much further away than this, so the two are never mistaken for one.
 CAPTION_INDENT = 60.0
 
+#: How far apart two rows may sit and still be one printed row.  A page of pictures sets
+#: the captions beside each other on the same row, so this is the whole of the difference
+#: between a row the book prints two items on and the next row down.
+SAME_ROW_GAP = 6.0
+
+#: The two ways the book lays out the parts of a vocabulary page.
+GRID = "grid"
+LIST = "list"
+
 
 @dataclass(order=True)
 class Span:
@@ -423,6 +432,29 @@ def part_groups(part: Part) -> list[list[Line]]:
     return caption_groups(part.lines)
 
 
+def part_columns(part: Part) -> int:
+    """How many items the book prints side by side in this part.
+
+    Read off the page rather than assumed.  The book prints a part of pictures as a grid:
+    two captions share a printed row, one in each column, and the next row of two follows
+    below.  A part printed as headwords gives every entry a row of its own, so the most
+    items sharing any one row of it is one.  That count is the number of columns the
+    reader lays the part out in, which is why a page of pictures comes out as two columns
+    and a list of words as one without either being named here.
+    """
+    groups = part_groups(part)
+    rows: list[list[list[Line]]] = []
+    for group in groups:
+        top = group[0].y
+        for row in rows:
+            if abs(row[0][0].y - top) <= SAME_ROW_GAP:
+                row.append(group)
+                break
+        else:
+            rows.append([group])
+    return max((len(row) for row in rows), default=1)
+
+
 def _group_text(group: list[Line]) -> str:
     """A block as one line of running text, its printed rows joined in order."""
     return " ".join(line.text for line in group)
@@ -567,15 +599,31 @@ def vocabulary_page_view(
     blocks: list[dict] = []
     for part in parts:
         page = part.lines[0].page if part.lines else None
+        # How the book lays this part out: a grid of the width it prints, or a list when
+        # it gives every entry a row of its own.  Both are properties of the page, so the
+        # reader lays a part out the way the book does without naming a part.
+        columns = part_columns(part)
+        layout = GRID if columns > 1 else LIST
         if part.heading and page is not None:
             lines.append(Line(page=page, text=part.heading))
-            blocks.append({"page": page, "lines": [part.heading], "kind": "part-heading"})
+            blocks.append({
+                "page": page,
+                "lines": [part.heading],
+                "kind": "part-heading",
+                "part": part.key,
+                "layout": layout,
+                "columns": columns,
+            })
         for group in part_groups(part):
             lines.extend(group)
-            blocks.append(
-                {"page": group[0].page, "lines": [line.text for line in group],
-                 "kind": "example"}
-            )
+            blocks.append({
+                "page": group[0].page,
+                "lines": [line.text for line in group],
+                "kind": "example",
+                "part": part.key,
+                "layout": layout,
+                "columns": columns,
+            })
     return lines, blocks
 
 

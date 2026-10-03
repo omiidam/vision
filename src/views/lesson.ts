@@ -1,7 +1,15 @@
 import { loadLesson, loadSectionText, loadSync, loadVocabulary, assetUrl } from '../content'
 import { AudioPlayer, PLAYBACK_RATES, formatRate } from '../player'
 import { SyncEngine } from '../sync'
-import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary, VocabularyEntry } from '../types'
+import type {
+  LessonManifest,
+  SectionEntry,
+  SectionText,
+  SyncData,
+  TextBlock,
+  Vocabulary,
+  VocabularyEntry,
+} from '../types'
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
 import { formatPageRange } from '../pages'
 import { isPlaceholder } from '../placeholder'
@@ -216,10 +224,19 @@ export class LessonView {
     let pending = targets
 
     for (const block of text.blocks) {
+      // Where a block goes on the page.  The vocabulary page is printed in parts, and
+      // the book lays each part out its own way: a part of pictures is a grid of the
+      // width it prints, and a part of headwords is one entry under the next.  That is
+      // read off the page and carried on the block, so the parts are laid out the way
+      // the book sets them out rather than by naming a part here.
+      const part = grouped && block.kind === 'example'
+        ? this.partContainer(body, block)
+        : null
       const paragraph = document.createElement('p')
       paragraph.className = block.kind
         ? `paragraph block-${block.kind}`
         : 'paragraph'
+      if (part) paragraph.classList.add('item')
       paragraph.dataset.page = String(block.page)
       // The textbook text is English; tag it from the block's own text so a block that
       // ever carries Persian is laid out right-to-left by itself.
@@ -246,12 +263,10 @@ export class LessonView {
       // Nothing is renumbered to do it.  The words still run in the block's own order and
       // the marks are still positions in that list, so `rowEnds` holds the index of the
       // first word of the row after each row, and `row` is the element the words of the
-      // current row go into.  A block with no rows of its own puts its words straight into
-      // the paragraph, as it always did.
+      // current row go into.
       let row: HTMLElement = paragraph
       const rowEnds: number[] = []
       if (grouped && block.kind === 'example') {
-        paragraph.classList.add('item')
         let counted = 0
         for (const line of block.lines) {
           counted += line.split(/\s+/).filter(Boolean).length
@@ -305,7 +320,9 @@ export class LessonView {
           paragraph.append(row)
         }
       }
-      body.append(paragraph)
+      // A grid item is placed by the grid; a list item, and all running text, is appended
+      // to the page itself.
+      ;(part ?? body).append(paragraph)
     }
 
     body.addEventListener('click', (event) => {
@@ -320,6 +337,38 @@ export class LessonView {
       event.preventDefault()
       this.seekTo(Number(target.dataset.start))
     })
+  }
+
+  /**
+   * The element a vocabulary item is rendered into, opening its part if this is the first
+   * item of it.
+   *
+   * The heading of a part is not an item and is not rendered here: it stands on its own
+   * above the part.  The items then go into the layout the book prints that part in - a
+   * grid as wide as the page sets it, so the items fill it left to right and then start
+   * the next row, or a single column where the book gives each entry a row of its own.
+   * Either way the items stay in the order the book prints them: the layout is only how
+   * they are set out on screen, never which item comes next.
+   */
+  private partContainer(body: HTMLElement, block: TextBlock): HTMLElement {
+    // The part is named by its letter and the layout the book prints it in, so a part is
+    // found again by the blocks that follow it rather than by counting.
+    const key = `${block.part ?? ''}:${block.layout ?? 'list'}`
+    const found = [...body.querySelectorAll<HTMLElement>(':scope > [data-part-key]')]
+      .find((section) => section.dataset.partKey === key)
+    if (found) return found
+    const host = document.createElement('section')
+    host.className = 'vocab-part-body'
+    host.dataset.partKey = key
+    if (block.layout === 'grid') {
+      host.classList.add('vocab-grid')
+      // The width the book prints the part in, so a part printed in two columns is two
+      // columns here and one printed in one is one.
+      host.style.setProperty('--part-columns', String(block.columns ?? 2))
+    }
+    // Appended after the heading, so the part reads as the book sets it out.
+    body.append(host)
+    return host
   }
 
   private renderTransport(section?: SectionEntry | null, sync?: SyncData | null): void {

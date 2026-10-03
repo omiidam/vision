@@ -16,14 +16,20 @@
    "lines": [
     "A. Look, Read and Practice."
    ],
-   "kind": "part-heading"
+   "kind": "part-heading",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
    "lines": [
     "Water is a type of liquid."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
@@ -31,14 +37,20 @@
     "There are some drops of",
     "paint on his shirt."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
    "lines": [
     "Blood cells are red and white."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
@@ -46,7 +58,10 @@
     "About one thousand",
     "people live in this village."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
@@ -54,7 +69,10 @@
     "There are many different",
     "types of microbes."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 48,
@@ -62,7 +80,10 @@
     "Doing daily exercise is",
     "useful for everyone."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 49,
@@ -70,7 +91,10 @@
     "Gahar Lake is famous for its",
     "clear water."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 49,
@@ -78,14 +102,20 @@
     "The heart pumps blood",
     "round the body."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "a",
+   "layout": "grid",
+   "columns": 2
   },
   {
    "page": 49,
    "lines": [
     "B. Read and Practice."
    ],
-   "kind": "part-heading"
+   "kind": "part-heading",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 49,
@@ -95,7 +125,10 @@
     "2. good for your body",
     "A healthy breakfast can give you more energy."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 49,
@@ -103,7 +136,10 @@
     "defend: to protect someone or something from danger",
     "The brave soldiers defended our country."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 49,
@@ -111,7 +147,10 @@
     "carry: to move someone or something from one place to another",
     "Monkeys carry their babies all day long."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 49,
@@ -119,7 +158,10 @@
     "collect: to go and get someone or something",
     "The school bus collects the children each morning."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   },
   {
    "page": 49,
@@ -127,7 +169,10 @@
     "fact: things that are true or that really happened",
     "It's a fact that Earth goes around the Sun."
    ],
-   "kind": "example"
+   "kind": "example",
+   "part": "b",
+   "layout": "list",
+   "columns": 1
   }
  ],
  "text": "A. Look, Read and Practice.\nWater is a type of liquid.\nThere are some drops of paint on his shirt.\nBlood cells are red and white.\nAbout one thousand people live in this village.\nThere are many different types of microbes.\nDoing daily exercise is useful for everyone.\nGahar Lake is famous for its clear water.\nThe heart pumps blood round the body.\nB. Read and Practice.\nhealthy: 1. strong and well He is a healthy boy. 2. good for your body A healthy breakfast can give you more energy.\ndefend: to protect someone or something from danger The brave soldiers defended our country.\ncarry: to move someone or something from one place to another Monkeys carry their babies all day long.\ncollect: to go and get someone or something The school bus collects the children each morning.\nfact: things that are true or that really happened It's a fact that Earth goes around the Sun.",

@@ -321,8 +321,16 @@ def build() -> dict:
                     "label": section.label,
                     "title": section.description or section.label,
                     "source": {"pdf": "10th-class/" + book.BOOK_FILENAME, "pages": list(section.pages)},
+                    # A block carries what it is and where it sits on the page: the part
+                    # of the vocabulary page it belongs to, and the layout that part is
+                    # printed in.  The reader lays each part out the way the book does
+                    # rather than deciding for itself which parts are two-column.
                     "blocks": [
-                        {k: b[k] for k in ("page", "lines", "kind") if k in b}
+                        {
+                            k: b[k]
+                            for k in ("page", "lines", "kind", "part", "layout", "columns")
+                            if k in b
+                        }
                         for b in data["blocks"]
                     ],
                     "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),
