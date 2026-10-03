@@ -20,6 +20,13 @@
      goes the other way and stays legible over the pill in either theme. */
   --tab-active: #8f8f8f;
   --tab-active-ink: #16181d;
+  /* The player's own accent: the filled controls of the audio player - play, the played
+     part of the track, the rate that is on - share one neutral, so a control that is live
+     is told by being filled rather than by carrying the app's action colour.  One value
+     for both themes, with a dark label: grey is too light to take white text on, and the
+     glyph on the play button and the rate on its button both have to stay legible. */
+  --player-accent: #8f8f8f;
+  --on-player-accent: #16181d;
   --error: #b42318;
   --untimed: #6b7280;
   --active-bg: #fbfcff;
@@ -66,6 +73,10 @@
      enough for grey is the one that stays readable here too. */
   --tab-active: #8f8f8f;
   --tab-active-ink: #16181d;
+  /* The same neutral in the dark theme: the transport is a control surface, and the dark
+     label is the one that stays readable over this grey here too. */
+  --player-accent: #8f8f8f;
+  --on-player-accent: #16181d;
   --error: #ff9d94;
   --untimed: #b0b5bc;
   --active-bg: #4a4d4d;
@@ -319,8 +330,8 @@ input[type='search'] {
   width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid transparent;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--player-accent);
+  color: var(--on-player-accent);
   box-shadow: var(--glass-shadow), var(--glass-sheen);
   font-size: 1rem;
   cursor: pointer;
@@ -339,7 +350,7 @@ input[type='search'] {
   border-radius: 999px;
   cursor: pointer;
 }
-.track-fill { height: 100%; width: 0; background: var(--accent); border-radius: 999px; }
+.track-fill { height: 100%; width: 0; background: var(--player-accent); border-radius: 999px; }
 .time { font-variant-numeric: tabular-nums; font-size: 0.85rem; color: var(--muted); flex: 0 0 auto; }
 
 /* The speed buttons are laid out inline like the rest of the transport, so they follow
@@ -355,7 +366,7 @@ input[type='search'] {
   transition: color 0.15s ease, box-shadow 0.15s ease;
 }
 .rate-option:hover { color: var(--ink); }
-.rate-option.active { background: var(--accent); border-color: transparent; color: var(--on-accent); font-weight: 600; }
+.rate-option.active { background: var(--player-accent); border-color: transparent; color: var(--on-player-accent); font-weight: 600; }
 
 .pager { display: flex; justify-content: space-between; gap: 10px; }
 

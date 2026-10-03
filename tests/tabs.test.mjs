@@ -78,11 +78,12 @@ test('the unselected tabs keep their own colours', () => {
   assert.match(CSS, /\.tab:hover \{ color: var\(--ink\); \}/)
 })
 
-test('the other filled controls stay on the accent', () => {
-  // Only the tab bar moved to the grey.  The play button, the progress bar and the rate
-  // options are actions, and they read as the accent.
-  assert.match(rule('.track-fill'), /background:\s*var\(--accent\)/)
-  assert.match(rule('.rate-option.active'), /background:\s*var\(--accent\)/)
+test('the accent itself is untouched, and the tab keeps its own fill', () => {
+  // The tab bar is not the only surface that is a neutral rather than the action colour
+  // - the audio player's filled controls are one too, and each carries its own token.
+  // The accent itself is still the app's action colour, for buttons and focus.
   assert.match(CSS, /--accent:\s*#2f6df6;/)
   assert.match(CSS, /--accent:\s*#7aa2ff;/)
+  assert.match(CSS, /--tab-active:\s*#8f8f8f;/)
+  assert.doesNotMatch(rule('.tab.active'), /--player-accent/)
 })
