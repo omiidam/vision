@@ -8,29 +8,19 @@
   --muted: #6b7280;
   --line: #e3e6ea;
   --line-soft: #f1f2f4;
-  --accent: #2f6df6;
-  --accent-soft: #e8efff;
+  --accent: #8f8f8f;
+  --accent-soft: #ededed;
   /* Accent used as text on the page or on a soft fill, where it needs enough contrast;
-     the solid --accent is reserved for filled surfaces, where the label sits on it. */
-  --accent-ink: #1f57d6;
-  --on-accent: #ffffff;
-  /* The lesson section tabs have their own fill, so the open section is told from the
-     accent the rest of the app uses for actions.  One neutral grey for every theme, with
-     a dark label: grey carries too little contrast to take white text on, so the label
-     goes the other way and stays legible over the pill in either theme. */
-  --tab-active: #8f8f8f;
-  --tab-active-ink: #16181d;
-  /* The player's own accent: the filled controls of the audio player - play, the played
-     part of the track, the rate that is on - share one neutral, so a control that is live
-     is told by being filled rather than by carrying the app's action colour.  One value
-     for both themes, with a dark label: grey is too light to take white text on, and the
-     glyph on the play button and the rate on its button both have to stay legible. */
-  --player-accent: #8f8f8f;
-  --on-player-accent: #16181d;
+     the solid --accent is reserved for filled surfaces, where the label sits on it.
+     A neutral has no room for contrast inside itself - the grey a link is drawn in is
+     2.9:1 on a white card - so the ink is the same neutral taken far enough down the
+     greys to be read as text.  One hue, two jobs: the fill and the text that names it. */
+  --accent-ink: #5b5f63;
+  --on-accent: #16181d;
   --error: #b42318;
   --untimed: #6b7280;
-  --active-bg: #fbfcff;
-  --active-line: #c3d6fb;
+  --active-bg: #fbfbfb;
+  --active-line: #a9a9a9;
   /* The colour the textbook sets a new word in, kept for the same words in the reader.
      It is a hue the themes do not otherwise use, so a target word is told from the
      running text and from the accent at a glance without being shouted about. */
@@ -54,7 +44,7 @@
   --glass-blur-strong: 20px;
   /* The page behind the glass.  A flat fill gives a blur nothing to do, so the page is a
      soft tint that the glass picks up; it is the same colour family as --bg. */
-  --page-glow: rgba(47, 109, 246, 0.1);
+  --page-glow: rgba(143, 143, 143, 0.1);
   --page-glow-2: rgba(120, 87, 214, 0.08);
 }
 
@@ -65,22 +55,17 @@
   --muted: #b3b7bd;
   --line: #6a6d6d;
   --line-soft: #565959;
-  --accent: #7aa2ff;
-  --accent-soft: #33405e;
-  --accent-ink: #a8c6ff;
+  --accent: #8f8f8f;
+  --accent-soft: #3c3c3c;
+  /* The same accent as the light theme, and the same rule for its ink: on a dark card a
+     link is read from a grey light enough to stand off the surface, never from the fill
+     grey itself, which would disappear into it. */
+  --accent-ink: #d7dadf;
   --on-accent: #16181d;
-  /* The same pill in the dark theme: the tab bar is a neutral strip, and a label dark
-     enough for grey is the one that stays readable here too. */
-  --tab-active: #8f8f8f;
-  --tab-active-ink: #16181d;
-  /* The same neutral in the dark theme: the transport is a control surface, and the dark
-     label is the one that stays readable over this grey here too. */
-  --player-accent: #8f8f8f;
-  --on-player-accent: #16181d;
   --error: #ff9d94;
   --untimed: #b0b5bc;
-  --active-bg: #4a4d4d;
-  --active-line: #7aa2ff;
+  --active-bg: #4a4a4a;
+  --active-line: #9c9c9c;
   /* The book's red darkened for this theme: the printed value has too little contrast
      against a dark card, so it is lightened rather than reused unchanged. */
   --target-word: #f08a8c;
@@ -100,7 +85,7 @@
   --glass-shadow-hover: 0 2px 5px rgba(0, 0, 0, 0.32), 0 14px 34px rgba(0, 0, 0, 0.36);
   --glass-blur: 14px;
   --glass-blur-strong: 20px;
-  --page-glow: rgba(122, 162, 255, 0.09);
+  --page-glow: rgba(143, 143, 143, 0.09);
   --page-glow-2: rgba(150, 120, 220, 0.07);
 }
 
@@ -285,9 +270,9 @@ input[type='search'] {
    glance and in either theme.  Every section tab is the same element, so this one rule
    covers every section of every lesson. */
 .tab.active {
-  background: var(--tab-active);
+  background: var(--accent);
   border-color: transparent;
-  color: var(--tab-active-ink);
+  color: var(--on-accent);
   box-shadow: var(--glass-shadow), var(--glass-sheen);
 }
 
@@ -330,8 +315,8 @@ input[type='search'] {
   width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid transparent;
-  background: var(--player-accent);
-  color: var(--on-player-accent);
+  background: var(--accent);
+  color: var(--on-accent);
   box-shadow: var(--glass-shadow), var(--glass-sheen);
   font-size: 1rem;
   cursor: pointer;
@@ -350,7 +335,7 @@ input[type='search'] {
   border-radius: 999px;
   cursor: pointer;
 }
-.track-fill { height: 100%; width: 0; background: var(--player-accent); border-radius: 999px; }
+.track-fill { height: 100%; width: 0; background: var(--accent); border-radius: 999px; }
 .time { font-variant-numeric: tabular-nums; font-size: 0.85rem; color: var(--muted); flex: 0 0 auto; }
 
 /* The speed buttons are laid out inline like the rest of the transport, so they follow
@@ -366,7 +351,7 @@ input[type='search'] {
   transition: color 0.15s ease, box-shadow 0.15s ease;
 }
 .rate-option:hover { color: var(--ink); }
-.rate-option.active { background: var(--player-accent); border-color: transparent; color: var(--on-player-accent); font-weight: 600; }
+.rate-option.active { background: var(--accent); border-color: transparent; color: var(--on-accent); font-weight: 600; }
 
 .pager { display: flex; justify-content: space-between; gap: 10px; }
 

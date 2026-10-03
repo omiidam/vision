@@ -34,15 +34,16 @@ test('every section tab is the same anchor, so one rule styles them all', () => 
   assert.doesNotMatch(LESSON, /tab-active|8f8f8f/i)
 })
 
-test('the selected section is filled with the neutral grey in both themes', () => {
+test('the selected section is filled with the app accent', () => {
   const active = rule('.tab.active')
-  assert.match(active, /background:\s*var\(--tab-active\)/)
-  assert.match(active, /color:\s*var\(--tab-active-ink\)/)
-  // The accent is for actions; the selected tab is told apart from it.
-  assert.doesNotMatch(active, /--accent/)
+  // One accent for the whole app: the selected tab is filled with the same colour as
+  // every other filled surface, so it can never drift from them.
+  assert.match(active, /background:\s*var\(--accent\)/)
+  assert.match(active, /color:\s*var\(--on-accent\)/)
+  assert.doesNotMatch(CSS, /--tab-active/, 'the tab carries a colour of its own')
 
   for (const name of ['light', 'dark']) {
-    const fill = themeBlock(name).match(/--tab-active:\s*(#[0-9a-f]{6});/i)?.[1]
+    const fill = themeBlock(name).match(/--accent:\s*(#[0-9a-f]{6});/i)?.[1]
     assert.equal(fill?.toLowerCase(), '#8f8f8f', `${name}: the selected tab is ${fill}`)
   }
 })
@@ -64,8 +65,8 @@ test('the label on the grey pill stays readable in both themes', () => {
 
   for (const name of ['light', 'dark']) {
     const block = themeBlock(name)
-    const fill = parse(block.match(/--tab-active:\s*(#[0-9a-f]{6});/i)[1])
-    const ink = parse(block.match(/--tab-active-ink:\s*(#[0-9a-f]{6});/i)[1])
+    const fill = parse(block.match(/--accent:\s*(#[0-9a-f]{6});/i)[1])
+    const ink = parse(block.match(/--on-accent:\s*(#[0-9a-f]{6});/i)[1])
     const ratio = contrast(fill, ink)
     assert.ok(ratio >= 4.5, `${name}: the tab label is ${ratio.toFixed(2)}:1 on the grey`)
   }
@@ -78,12 +79,14 @@ test('the unselected tabs keep their own colours', () => {
   assert.match(CSS, /\.tab:hover \{ color: var\(--ink\); \}/)
 })
 
-test('the accent itself is untouched, and the tab keeps its own fill', () => {
-  // The tab bar is not the only surface that is a neutral rather than the action colour
-  // - the audio player's filled controls are one too, and each carries its own token.
-  // The accent itself is still the app's action colour, for buttons and focus.
-  assert.match(CSS, /--accent:\s*#2f6df6;/)
-  assert.match(CSS, /--accent:\s*#7aa2ff;/)
-  assert.match(CSS, /--tab-active:\s*#8f8f8f;/)
-  assert.doesNotMatch(rule('.tab.active'), /--player-accent/)
+test('the tab and the app share one accent', () => {
+  // The tab is a filled surface like any other, so it reads the app's accent rather than
+  // a colour of its own.  Nothing here restates the accent, which is what makes a future
+  // filled surface pick it up without being told.
+  assert.match(CSS, /--accent:\s*#8f8f8f;/)
+  assert.doesNotMatch(CSS, /--tab-active|--player-accent/)
+  const filled = ['.button:not(.ghost)', '.tab.active', '.play', '.track-fill', '.rate-option.active']
+  for (const selector of filled) {
+    assert.match(rule(selector), /var\(--accent\)/, `${selector} does not use the accent`)
+  }
 })

@@ -30,7 +30,7 @@ const themeBlock = (name) => {
 
 test('the player has one accent, and it is the neutral grey in both themes', () => {
   for (const name of ['light', 'dark']) {
-    const fill = themeBlock(name).match(/--player-accent:\s*(#[0-9a-f]{6});/i)?.[1]
+    const fill = themeBlock(name).match(/--accent:\s*(#[0-9a-f]{6});/i)?.[1]
     assert.equal(fill?.toLowerCase(), '#8f8f8f', `${name}: the player accent is ${fill}`)
   }
 })
@@ -52,8 +52,8 @@ test('the glyph on the play button and the rate stay readable on it', () => {
 
   for (const name of ['light', 'dark']) {
     const block = themeBlock(name)
-    const fill = parse(block.match(/--player-accent:\s*(#[0-9a-f]{6});/i)[1])
-    const ink = parse(block.match(/--on-player-accent:\s*(#[0-9a-f]{6});/i)[1])
+    const fill = parse(block.match(/--accent:\s*(#[0-9a-f]{6});/i)[1])
+    const ink = parse(block.match(/--on-accent:\s*(#[0-9a-f]{6});/i)[1])
     const ratio = contrast(fill, ink)
     assert.ok(ratio >= 4.5, `${name}: the player label is ${ratio.toFixed(2)}:1 on the grey`)
   }
@@ -61,16 +61,14 @@ test('the glyph on the play button and the rate stay readable on it', () => {
 
 test('every filled control of the player takes the shared colour', () => {
   // The play button, the played part of the track, and the rate that is on.  These are
-  // the whole of the player's active state, and each one reads the token rather than a
-  // colour of its own, so one edit moves all of them.
-  assert.match(rule('.play'), /background:\s*var\(--player-accent\)/)
-  assert.match(rule('.play'), /color:\s*var\(--on-player-accent\)/)
-  assert.match(rule('.track-fill'), /background:\s*var\(--player-accent\)/)
-  assert.match(rule('.rate-option.active'), /background:\s*var\(--player-accent\)/)
-  assert.match(rule('.rate-option.active'), /color:\s*var\(--on-player-accent\)/)
+  // the whole of the player's active state, and each one reads the app's one accent
+  // rather than a colour of its own, so one edit moves all of them.
   for (const selector of ['.play', '.track-fill', '.rate-option.active']) {
-    assert.doesNotMatch(rule(selector), /--accent\b/, `${selector} still uses the app accent`)
+    assert.match(rule(selector), /var\(--accent\)/, `${selector} does not use the accent`)
   }
+  assert.match(rule('.play'), /color:\s*var\(--on-accent\)/)
+  assert.match(rule('.rate-option.active'), /color:\s*var\(--on-accent\)/)
+  assert.doesNotMatch(CSS, /--player-accent|--tab-active/, 'the player carries its own colour')
 })
 
 test('the player keeps its shape, its hover, and its inactive controls', () => {
@@ -85,7 +83,7 @@ test('the player keeps its shape, its hover, and its inactive controls', () => {
   assert.match(rate, /color:\s*var\(--muted\)/)
   assert.doesNotMatch(rate, /background/)
   // The track itself is still the unfilled part of the bar.
-  assert.doesNotMatch(rule('.track'), /--player-accent/)
+  assert.doesNotMatch(rule('.track'), /--accent/)
 })
 
 test('every section with a recording gets the same player', () => {
