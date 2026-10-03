@@ -45,6 +45,9 @@ BOOK_SHA = None  # filled in at runtime
 #: The section whose pages are laid out as a dialogue rather than as running text.
 CONVERSATION_SECTION_ID = "conversation"
 
+#: The section the book divides into parts, each with its own exercise.
+GET_READY_SECTION_ID = "get-ready"
+
 
 def write_json(path: Path, payload) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -198,6 +201,15 @@ def build() -> dict:
             # marks them, so any other section has none.
             targets: list[str] = []
             blocks: list[dict] | None = None
+            if section.section_id == GET_READY_SECTION_ID:
+                # The Get Ready page is printed as a number of parts, each with its own
+                # heading and its own exercise.  The parts are read off the page and
+                # carried on the blocks, so the reader gives each part its own heading
+                # and its own container.  How many parts there are, what they are called
+                # and what each one holds are all the book's.
+                view = book.get_ready_page_view(doc, tuple(section.pages))
+                if view:
+                    lines, blocks = view
             if section.section_id == vocabulary.NEW_WORDS_SECTION_ID:
                 # The vocabulary page shows the parts that teach words.  The same parts
                 # decide the vocabulary below, so the two cannot disagree.

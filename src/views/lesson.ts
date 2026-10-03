@@ -206,6 +206,12 @@ export class LessonView {
    * as running text.  There the blocks come from the page, so each one is shown as the
    * item it is: the target word where the book sets it, the example the book prints with
    * it directly underneath, and a rule between one item and the next.
+   *
+   * A page the book divides into parts - the Get Ready exercises - is `parted` instead.
+   * There the part a block is printed in is read off the page, so each part is given its
+   * own heading and its own container and the exercises of one part can never be read as
+   * belonging to the next.  The count, the names and the contents of the parts are all
+   * the book's; nothing is named or counted here.
    */
   private renderText(
     body: HTMLElement,
@@ -214,8 +220,15 @@ export class LessonView {
     grouped = false,
   ): void {
     body.innerHTML = ''
+    // Whether the book prints this page in parts.  A page it does not keeps the reading
+    // order it is given, with no containers invented for it.
+    const parted = !grouped && text.blocks.some((block) => block.kind === 'part-heading')
     body.classList.toggle('reader-grouped', grouped)
+    body.classList.toggle('reader-parted', parted)
     let wordIndex = 0
+    // The part currently open, if the page is printed in parts.  A block with no part of
+    // its own - the opening quotation of a Get Ready page - is left on the page itself.
+    let openPart: HTMLElement | null = null
 
     // The words the book sets as new inside this text.  They are matched against the
     // running text rather than replaced, so the textbook's own wording and its order are
@@ -232,11 +245,27 @@ export class LessonView {
       const part = grouped && block.kind === 'example'
         ? this.partContainer(body, block)
         : null
-      const paragraph = document.createElement('p')
-      paragraph.className = block.kind
-        ? `paragraph block-${block.kind}`
-        : 'paragraph'
-      if (part) paragraph.classList.add('item')
+      // The heading of a part opens that part: a container of its own with the name the
+      // book gives it, so the exercise below it is read as this part and not the next.
+      const isPartHeading = parted && block.kind === 'part-heading'
+      if (isPartHeading) {
+        const host = document.createElement('section')
+        host.className = 'reader-part'
+        host.dataset.part = block.part ?? ''
+        host.lang = 'en'
+        host.dir = 'ltr'
+        body.append(host)
+        openPart = host
+      }
+      const paragraph = document.createElement(isPartHeading ? 'h4' : 'p')
+      if (isPartHeading) {
+        paragraph.className = 'reader-part-heading'
+      } else {
+        paragraph.className = block.kind
+          ? `paragraph block-${block.kind}`
+          : 'paragraph'
+        if (part) paragraph.classList.add('item')
+      }
       paragraph.dataset.page = String(block.page)
       // The textbook text is English; tag it from the block's own text so a block that
       // ever carries Persian is laid out right-to-left by itself.
@@ -321,8 +350,9 @@ export class LessonView {
         }
       }
       // A grid item is placed by the grid; a list item, and all running text, is appended
-      // to the page itself.
-      ;(part ?? body).append(paragraph)
+      // to the page itself.  On a page printed in parts, everything after a heading goes
+      // into the part that heading opened, until the next heading opens the next part.
+      ;(part ?? openPart ?? body).append(paragraph)
     }
 
     body.addEventListener('click', (event) => {

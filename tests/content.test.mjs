@@ -263,11 +263,27 @@ test('every block of the New Words page says what the book prints it as', () => 
     }
     // The reader groups the page and only the page, so no other section's blocks carry a
     // kind: a lesson whose text is grouped elsewhere would otherwise lose that grouping.
+    // Get Ready is the one page the book also divides into parts, so its blocks are
+    // marked too - by the name of the part they are printed in, which is what the reader
+    // builds a heading and a container from.
     for (const section of readJson(path.join(DATA, lessonId, 'manifest.json')).sections) {
       if (section.id === 'new-words-and-expressions') continue
       const other = readJson(path.join(ROOT, section.text))
+      let part = null
       for (const block of other.blocks) {
+        if (section.id === 'get-ready') {
+          // A block printed before the first part heading is the page's own opening
+          // lines; every block after a heading is printed in that part.
+          if (block.kind === 'part-heading') part = block.part ?? null
+          assert.equal(
+            block.part ?? null,
+            part,
+            `${lessonId}/${section.id}: "${block.lines.join(' ')}" is in the wrong part`,
+          )
+          continue
+        }
         assert.equal(block.kind, undefined, `${lessonId}/${section.id}: block is marked`)
+        assert.equal(block.part, undefined, `${lessonId}/${section.id}: block names a part`)
       }
     }
   }

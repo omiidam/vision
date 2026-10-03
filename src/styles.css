@@ -439,6 +439,24 @@ input::placeholder { color: var(--muted); opacity: 1; }
 /* Each part of the vocabulary page is its own block, in the order the book prints them. */
 .vocab-part { margin-block: 16px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
 .vocab-part h4 { margin-block: 0 8px; font-size: 0.92rem; }
+
+/* A part of a page the book divides into parts - the exercises of Get Ready.  It is the
+   same shape as a part of the vocabulary page: a rule above it, the name the book gives
+   it, and the exercise in its own container, so one part can never be read as part of
+   the next. */
+.reader-part {
+  margin-block: 22px 0;
+  padding-block-start: 14px;
+  border-block-start: 1px solid var(--line);
+}
+.reader-part-heading { margin-block: 0 10px; font-size: 0.95rem; font-weight: 600; }
+/* The opening lines of the page stand above the first part, so they get a matching gap
+   without a rule of their own. */
+.reader-parted > .paragraph:first-child { margin-block-start: 14px; }
+/* The exercise itself: each printed item on a row of its own, kept close to the part it
+   belongs to rather than spread down the page. */
+.reader-part > .paragraph { margin-block: 0 0 .55em; }
+.reader-part > .paragraph:last-child { margin-block-end: 0; }
 .vocab-item {
   display: flex;
   align-items: baseline;

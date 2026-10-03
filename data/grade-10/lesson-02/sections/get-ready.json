@@ -15,172 +15,181 @@
    "page": 45,
    "lines": [
     "Part One"
-   ]
+   ],
+   "kind": "part-heading",
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "A. Match the pictures with the sentences."
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "a"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "b"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "c"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "d"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Planets go around the Sun."
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Ants are amazing animals."
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
-    "Our body is a wonderful"
-   ]
+    "Our body is a wonderful system."
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
-    "Camels can live without"
-   ]
+    "Camels can live without water for a long time."
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
-    "system."
-   ]
-  },
-  {
-   "page": 45,
-   "lines": [
-    "water for a long time."
-   ]
-  },
-  {
-   "page": 45,
-   "lines": [
-    "B. Which one is more interesting for you? Order the words based on"
-   ]
-  },
-  {
-   "page": 45,
-   "lines": [
-    "your interest."
-   ]
+    "B. Which one is more interesting for you? Order the words based on your interest."
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Camels"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Ants"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Planets"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 45,
    "lines": [
     "Body"
-   ]
+   ],
+   "part": "Part One"
   },
   {
    "page": 46,
    "lines": [
     "Part Two"
-   ]
+   ],
+   "kind": "part-heading",
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "A. Match the pictures with the words."
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "ring"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "heart"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "blood"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "moon"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "observatory"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "telescope"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "microscope"
-   ]
+   ],
+   "part": "Part Two"
   },
   {
    "page": 46,
    "lines": [
     "B. Put the above words into the following groups."
-   ]
+   ],
+   "part": "Part Two"
   }
  ],
- "text": "Part One\nA. Match the pictures with the sentences.\na\nb\nc\nd\nPlanets go around the Sun.\nAnts are amazing animals.\nOur body is a wonderful\nCamels can live without\nsystem.\nwater for a long time.\nB. Which one is more interesting for you? Order the words based on\nyour interest.\nCamels\nAnts\nPlanets\nBody\nPart Two\nA. Match the pictures with the words.\nring\nheart\nblood\nmoon\nobservatory\ntelescope\nmicroscope\nB. Put the above words into the following groups.",
+ "text": "Part One\nA. Match the pictures with the sentences.\na\nb\nc\nd\nPlanets go around the Sun.\nAnts are amazing animals.\nOur body is a wonderful system.\nCamels can live without water for a long time.\nB. Which one is more interesting for you? Order the words based on your interest.\nCamels\nAnts\nPlanets\nBody\nPart Two\nA. Match the pictures with the words.\nring\nheart\nblood\nmoon\nobservatory\ntelescope\nmicroscope\nB. Put the above words into the following groups.",
  "targets": [],
  "vocabulary": []
 }

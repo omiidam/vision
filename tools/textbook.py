@@ -214,6 +214,26 @@ SPEAKER_RE = re.compile(r"^[A-Z][A-Za-z.]{1,24}(?:\s[A-Z][A-Za-z.]{1,24})*:\s*$"
 #: The instruction a conversation page closes with, above the questions it asks.
 _EXERCISE_RE = re.compile(r"^Answer the following questions\b", re.I)
 
+#: A heading that divides an exercise page into parts: "Part One", "Part II", "Part 3".
+#: The book names a part in words or in numerals and always on a line of its own.
+PART_HEADING_RE = re.compile(r"^Part\s+(?:[A-Za-z]+|\d+|[IVXLCDM]+)$")
+
+#: The gap, in printed points, between two rows the book prints as one item wrapped onto
+#: the next row.  A wrapped row sits about 16pt below the row above it; the next item of a
+#: column starts at least 24pt below, so anything under this gap is a wrap and anything
+#: over it is a new item.
+WRAP_GAP = 20.0
+
+#: The shortest row, in characters, the book prints as running text rather than as one
+#: label of the grid.  A grid of words beside one another is a row of short labels, and a
+#: label is an item whole; a sentence the book broke across two rows is only a fragment
+#: until its second row is joined back onto it.
+MIN_RUNNING_TEXT = 20
+
+#: How much of a row has to sit over the item it would continue.  A wrapped row runs under
+#: the text it continues; the next label of a grid is set beside it, not under it.
+OVERLAP = 0.4
+
 
 def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[dict]]]:
     """Return each visible line of a printed page with the spans it was built from.
@@ -332,6 +352,110 @@ def _is_word_bank(spans: list[dict]) -> bool:
 def page_lines(doc: pymupdf.Document, printed_page: int) -> list[str]:
     """Return the visible lines of a printed page in reading order."""
     return [text for text, _ in page_rows(doc, printed_page)]
+
+
+# --------------------------------------------------------------------------- Get Ready
+
+
+def _printed_lines(
+    doc: pymupdf.Document, printed_page: int
+) -> list[tuple[float, float, float, str]]:
+    """Every visible line of a page with the box it was printed in, in reading order."""
+    page = doc[printed_page - 1]
+    collected: list[tuple[float, float, float, str]] = []
+    for block in page.get_text("dict")["blocks"]:
+        if block.get("type") != 0:
+            continue
+        for line in block["lines"]:
+            text = normalize("".join(span["text"] for span in line["spans"]))
+            if not text or _is_running_furniture(text):
+                continue
+            x0, y0, x1, _ = line["bbox"]
+            if x1 < 40 or x0 > 580:
+                continue
+            collected.append((round(y0, 1), round(x0, 1), round(x1, 1), text))
+    collected.sort(key=lambda item: (item[0], item[1]))
+    return collected
+
+
+def _ends_a_sentence(text: str) -> bool:
+    """True for a row the book finishes with, which nothing is printed under."""
+    return bool(re.search(r"[.?!…:]$", text.strip()))
+
+
+def get_ready_items(doc: pymupdf.Document, printed_page: int) -> list[str]:
+    """The items printed on a Get Ready page, in the order the book prints them.
+
+    An exercise page is a grid of short items, several of them side by side, and any one
+    of them may be wrapped onto a second row.  Reading such a page row by row would join
+    two columns of items into one line and cut a wrapped item in half, so the rows are
+    put back into the items the book prints.
+
+    A row belongs to the item above it only when the book wrapped it: it sits just below
+    that item's last row, running under the text it continues, and the row above is
+    running text the book had not finished.  Everything else - an item printed beside
+    another item, or the next label of the grid directly below this one - is an item of
+    its own.
+    """
+    open_items: list[dict] = []
+    for y0, x0, x1, text in _printed_lines(doc, printed_page):
+        wrapped = None
+        for item in open_items:
+            gap = y0 - item["y"]
+            if not 0 < gap <= WRAP_GAP:
+                continue
+            if _ends_a_sentence(item["text"]):
+                continue
+            # A label of the grid is an item whole, however long its neighbours are.
+            if len(item["text"]) < MIN_RUNNING_TEXT:
+                continue
+            # The wrapped row runs under the text it continues.
+            overlap = min(x1, item["x1"]) - max(x0, item["x0"])
+            if overlap < OVERLAP * min(x1 - x0, item["x1"] - item["x0"]):
+                continue
+            if wrapped is None or item["y"] > wrapped["y"]:
+                wrapped = item
+        if wrapped is None:
+            open_items.append({"y": y0, "x0": x0, "x1": x1, "text": text})
+        else:
+            wrapped["text"] += " " + text
+            wrapped["y"] = y0
+    return [item["text"] for item in open_items]
+
+
+def get_ready_page_view(
+    doc: pymupdf.Document, page_range: tuple[int, int]
+) -> tuple[list[tuple[int, str]], list[dict]] | None:
+    """The lines and the blocks of a Get Ready page, divided into the book's parts.
+
+    The book prints this page as a number of parts, each headed by its own line and each
+    holding its own exercise.  The part a line is printed in is read off the page and
+    travels with the block, so the reader can give every part its own heading and its own
+    container instead of deciding for itself where one part ends and the next begins.
+    The count and the names of the parts come from the book, never from here.
+
+    ``None`` is returned when the page is not divided into parts, so a page without them
+    is read the ordinary way.
+    """
+    lines: list[tuple[int, str]] = []
+    blocks: list[dict] = []
+    part: str | None = None
+    for printed_page in range(page_range[0], page_range[1] + 1):
+        for item in get_ready_items(doc, printed_page):
+            lines.append((printed_page, item))
+            if PART_HEADING_RE.match(item):
+                part = item
+                blocks.append({
+                    "page": printed_page,
+                    "lines": [item],
+                    "kind": "part-heading",
+                    "part": part,
+                })
+            elif part is not None:
+                blocks.append({"page": printed_page, "lines": [item], "part": part})
+            else:
+                blocks.append({"page": printed_page, "lines": [item]})
+    return (lines, blocks) if part is not None else None
 
 
 def load_textbook(source_dir: str) -> tuple[pymupdf.Document, list[LessonInfo]]:
