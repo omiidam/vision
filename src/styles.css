@@ -14,6 +14,12 @@
      the solid --accent is reserved for filled surfaces, where the label sits on it. */
   --accent-ink: #1f57d6;
   --on-accent: #ffffff;
+  /* The lesson section tabs have their own fill, so the open section is told from the
+     accent the rest of the app uses for actions.  One neutral grey for every theme, with
+     a dark label: grey carries too little contrast to take white text on, so the label
+     goes the other way and stays legible over the pill in either theme. */
+  --tab-active: #8f8f8f;
+  --tab-active-ink: #16181d;
   --error: #b42318;
   --untimed: #6b7280;
   --active-bg: #fbfcff;
@@ -56,6 +62,10 @@
   --accent-soft: #33405e;
   --accent-ink: #a8c6ff;
   --on-accent: #16181d;
+  /* The same pill in the dark theme: the tab bar is a neutral strip, and a label dark
+     enough for grey is the one that stays readable here too. */
+  --tab-active: #8f8f8f;
+  --tab-active-ink: #16181d;
   --error: #ff9d94;
   --untimed: #b0b5bc;
   --active-bg: #4a4d4d;
@@ -257,11 +267,12 @@ input[type='search'] {
 }
 .tab:hover { color: var(--ink); }
 /* The open tab is filled rather than tinted, so the current section is unmistakable at a
-   glance and in either theme. */
+   glance and in either theme.  Every section tab is the same element, so this one rule
+   covers every section of every lesson. */
 .tab.active {
-  background: var(--accent);
+  background: var(--tab-active);
   border-color: transparent;
-  color: var(--on-accent);
+  color: var(--tab-active-ink);
   box-shadow: var(--glass-shadow), var(--glass-sheen);
 }
 
