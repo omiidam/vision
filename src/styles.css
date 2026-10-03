@@ -212,7 +212,11 @@ input[type='search'] {
 
 .card {
   border-radius: 14px;
-  padding: 16px;
+  /* The text is set to the measure of a page, not to the width of a panel, so it is given
+     a proper margin inside the card: a comfortable, equal distance from both edges in
+     either writing direction.  Block padding is left as it was - only the inline measure
+     is the thing that was too tight. */
+  padding: 16px 24px;
   margin-block-end: 16px;
 }
 .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
@@ -285,8 +289,9 @@ input[type='search'] {
   max-height: 52vh;
   overflow-y: auto;
   padding-block: 4px;
-  /* Room for the scrollbar, which sits on the inline-end side in both directions. */
-  padding-inline-end: 8px;
+  /* Room for the scrollbar, which sits on the inline-end side in both directions, and
+     the same room at the start so the text is not closer to one edge than the other. */
+  padding-inline: 8px;
   /* The text itself is the one thing that must not be read through a blur, so the panel
      behind it is the solid card colour; the card around it carries the glass. */
   border-block: 1px solid var(--glass-hairline);
@@ -459,6 +464,9 @@ input::placeholder { color: var(--muted); opacity: 1; }
 @media (max-width: 640px) {
   #app { padding-block: 12px 40px; padding-inline: 10px; }
   .reader-body { max-height: 46vh; font-size: 1rem; line-height: 1.95; }
+  /* A phone has less width to spend, so the margin inside the card comes down a little
+     rather than taking a third of the line. */
+  .card { padding-inline: 18px; }
   /* The row wraps rather than scrolling sideways, so a phone gets a slightly tighter
    pill and still as many words per row as it can hold. */
   .vocab { gap: 6px; }
