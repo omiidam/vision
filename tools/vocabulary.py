@@ -448,20 +448,37 @@ def vocabulary_page_lines(
     doc,
     page_range: tuple[int, int],
     section_id: str,
-) -> list[tuple[int, str]] | None:
+) -> list[Line] | None:
     """The lines of the vocabulary page the reader shows.
 
     The same parts that teach words decide this: everything up to the last part that
     teaches something is kept, and a part that only points elsewhere is not shown.  The
     printed text stays in the textbook and in the provenance record.
+
+    Each line keeps the words the book points at, so the reader can set those in the
+    colour the book prints them rather than deciding for itself which words are new.
     """
     parts = vocabulary_page_parts(doc, page_range, section_id)
     if not parts:
         return None
-    shown: list[tuple[int, str]] = []
+    shown: list[Line] = []
     for part in parts:
         page = part.lines[0].page if part.lines else None
         if page is not None:
-            shown.append((page, part.heading))
-        shown.extend(line.as_text() for line in part.lines)
+            shown.append(Line(page=page, text=part.heading))
+        shown.extend(part.lines)
     return shown
+
+
+def line_targets(lines: list[Line]) -> list[str]:
+    """Every word the book points at across these lines, in the order they are printed.
+
+    The headings of the parts are not words the lesson teaches, so what they point at is
+    left out: the letter is what the heading is.
+    """
+    targets: list[str] = []
+    for line in lines:
+        if _PART_MARKER_RE.match(line.text):
+            continue
+        targets.extend(line.highlights)
+    return targets

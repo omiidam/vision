@@ -95,6 +95,11 @@ export interface SectionText {
   source: { pdf: string; pages: [number, number] }
   blocks: TextBlock[]
   text: string
+  /**
+   * The words the book itself sets as new inside this text, in printed order.  Only the
+   * New Words page marks them; every other section has none.
+   */
+  targets: string[]
   /** Vocabulary this section teaches. Separate from the text, which is never altered. */
   vocabulary: SectionVocabularyEntry[]
 }

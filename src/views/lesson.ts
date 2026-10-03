@@ -5,6 +5,7 @@ import type { LessonManifest, SectionEntry, SectionText, SyncData, Vocabulary, V
 import { applyLanguage, arrow, bdi, documentDirection, escapeHtml } from '../direction'
 import { formatPageRange } from '../pages'
 import { isPlaceholder } from '../placeholder'
+import { markTargets } from '../targets'
 
 export interface ReaderHandlers {
   /** Called every animation frame while the recording is playing. */
@@ -195,6 +196,12 @@ export class LessonView {
     body.innerHTML = ''
     let wordIndex = 0
 
+    // The words the book sets as new inside this text.  They are matched against the
+    // running text rather than replaced, so the textbook's own wording and its order are
+    // exactly what is shown.
+    const targets = text.targets ?? []
+    let pending = targets
+
     for (const block of text.blocks) {
       const paragraph = document.createElement('p')
       paragraph.className = 'paragraph'
@@ -204,7 +211,21 @@ export class LessonView {
       applyLanguage(paragraph, block.lines.join(' '))
 
       const tokens = block.lines.join(' ').split(/\s+/).filter(Boolean)
+      // A target is claimed by the block that prints it, and what is left over is carried
+      // to the next block, so nothing is claimed twice across the page.  The marks come
+      // back as positions in this block, so a word that is only part of a longer target
+      // is set where the book prints it and nowhere else in the passage.
+      const found = markTargets(block.lines.join(' '), pending)
+      pending = found.pending
+      const targetAt = new Set(found.positions)
+      let tokenAt = 0
       for (const token of tokens) {
+        // Where this token sits in the block, whether or not it is rendered.  The marks
+        // are positions in this same list of tokens, so the count has to keep step with
+        // it over every token, or a word after a blank would be looked for in the wrong
+        // place.
+        const here = tokenAt
+        tokenAt += 1
         // The printed fill-in-the-blank rule.  This has to be exactly the rule the
         // content pipeline uses when it tokenises a line (text.is_placeholder): a run of
         // dots and underscores of any length.  A narrower rule here would render a word
@@ -216,6 +237,7 @@ export class LessonView {
         span.className = 'word'
         span.textContent = token
         applyLanguage(span, token)
+        if (targetAt.has(here)) span.classList.add('target-word')
         if (timed && timed.start !== null) {
           span.dataset.start = String(timed.start)
           span.dataset.index = String(wordIndex)
@@ -441,6 +463,12 @@ export class LessonView {
       group.items.push(item)
     }
 
+    // The lettered parts are already shown as the textbook prints them, in the text
+    // above, so listing them again here would read the page twice.  The word bank is the
+    // one list here that the text does not contain: it is printed beside the conversation
+    // and other sections, not on this page, so it has nowhere else to be read.
+    const bank = groups.filter((group) => !/^[a-z]$/.test(group.key))
+
     const itemHtml = (item: VocabularyEntry) => {
       const headword = escapeHtml(item.word)
       // The Persian gloss is empty in the source book, so it is only rendered when
@@ -448,13 +476,12 @@ export class LessonView {
       const persian = item.meaningFa
         ? `<span class="meaning-fa" lang="fa" dir="rtl">${escapeHtml(item.meaningFa)}</span>`
         : ''
-      // A word the book points at rather than defines has no definition to show, and
-      // saying so would read as a gap in the book.
+      // A word the book lists without defining it has no definition to show.  Saying so
+      // would read as a gap in the book, so nothing is shown in its place and the word
+      // stands on its own.
       const meaning = item.meaningEn
         ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>`
-        : item.source === 'practice'
-          ? ''
-          : '<span class="muted">not given in the book</span>'
+        : ''
       return `
       <div class="vocab-item">
         <dt lang="en" dir="ltr">${headword}</dt>
@@ -467,8 +494,7 @@ export class LessonView {
     }
 
     host.innerHTML = `
-      <h3>New Words &amp; Expressions <span class="muted small">${bdi(`page ${vocabulary.source.definitionPages[0]}`)}</span></h3>
-      ${groups
+      ${bank
         .map(
           (group) => `
         <section class="vocab-part" data-part="${escapeHtml(group.key)}">

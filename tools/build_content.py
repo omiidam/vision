@@ -194,12 +194,18 @@ def build() -> dict:
         sections[lesson.lesson_id] = {}
         for section in lesson.sections:
             lines = section_lines(doc, section)
+            # The words the book itself points at on this page.  Only the vocabulary page
+            # marks them, so any other section has none.
+            targets: list[str] = []
             if section.section_id == vocabulary.NEW_WORDS_SECTION_ID:
                 # The vocabulary page shows the parts that teach words.  The same parts
                 # decide the vocabulary below, so the two cannot disagree.
-                lines = vocabulary.vocabulary_page_lines(
+                page_lines = vocabulary.vocabulary_page_lines(
                     doc, tuple(section.pages), section.section_id
-                ) or lines
+                )
+                if page_lines:
+                    lines = [line.as_text() for line in page_lines]
+                    targets = vocabulary.line_targets(page_lines)
             blocks, flat = textmod.build_blocks(
                 lines, conversation=section.section_id == CONVERSATION_SECTION_ID
             )
@@ -208,6 +214,7 @@ def build() -> dict:
                 "lines": lines,
                 "blocks": blocks,
                 "words": flat,
+                "targets": targets,
             }
 
     # ---- 2. audio inventory + mapping ------------------------------------------
@@ -309,6 +316,10 @@ def build() -> dict:
                         for b in data["blocks"]
                     ],
                     "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),
+                    # The words the book points at inside this text.  Kept beside it, as
+                    # the vocabulary is: the reader picks them out of the running text by
+                    # these words, so what it shows as new is what the book set as new.
+                    "targets": data["targets"],
                     # The vocabulary listed on this page.  Kept beside the text, not
                     # inside it: the text stays exactly as printed, word banks included,
                     # and a word bank is never repeated here as a vocabulary item.

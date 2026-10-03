@@ -18,6 +18,10 @@
   --untimed: #6b7280;
   --active-bg: #fbfcff;
   --active-line: #c3d6fb;
+  /* The colour the textbook sets a new word in, kept for the same words in the reader.
+     It is a hue the themes do not otherwise use, so a target word is told from the
+     running text and from the accent at a glance without being shouted about. */
+  --target-word: #c2262c;
   --word-bg: #ffe08a;
   --word-ink: #241a00;
   color-scheme: light;
@@ -56,6 +60,9 @@
   --untimed: #b0b5bc;
   --active-bg: #4a4d4d;
   --active-line: #7aa2ff;
+  /* The book's red darkened for this theme: the printed value has too little contrast
+     against a dark card, so it is lightened rather than reused unchanged. */
+  --target-word: #f08a8c;
   --word-bg: #b98900;
   --word-ink: #1a1400;
   color-scheme: dark;
@@ -357,6 +364,11 @@ input::placeholder { color: var(--muted); opacity: 1; }
 
 .vocab { margin-block: 0 0; }
 .vocab h3 { margin-block: 0 8px; font-size: 1rem; }
+
+/* A word the textbook prints as new.  It is set in the book's own colour and kept
+   bold, which is the weight the book gives it too, so the reader's page and the
+   textbook's read the same way. */
+.word.target-word { color: var(--target-word); font-weight: 600; }
 
 /* Each part of the vocabulary page is its own block, in the order the book prints them. */
 .vocab-part { margin-block: 16px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
