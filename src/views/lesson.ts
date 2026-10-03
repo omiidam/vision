@@ -396,22 +396,12 @@ export class LessonView {
           `).join('')}
         </div>
       </div>
-      <p class="muted small" id="sync-note" lang="en" dir="ltr"></p>
     `
     this.player.load(assetUrl(entry.audio))
     if (badge) {
       badge.innerHTML = `${bdi(`${Math.round((this.engine?.timedRatio ?? 0) * 100)}%`)} word-timed`
       badge.title = `Alignment confidence ${(sync?.confidence ?? 0).toFixed(2)}`
     }
-    const note = host.querySelector<HTMLElement>('#sync-note')
-    if (note) {
-      // The file name and the mapping notes are the mixed runs here: a name like
-      // "Listening & Speaking2.mp3" must not be reordered inside right-to-left text.
-      note.innerHTML = entry.syncStatus === 'confirmed'
-        ? `Recorded file: ${bdi(sync?.sourceAudioFile ?? '')}`
-        : `Mapping is ${bdi(entry.syncStatus)} - ${bdi(sync?.mapping.notes.join('; ') || 'see data/audio-mapping.json')}`
-    }
-
     host.querySelector<HTMLButtonElement>('#play')!.addEventListener('click', () => this.player.toggle())
     host.querySelectorAll<HTMLButtonElement>('.rate-option').forEach((option) => {
       option.addEventListener('click', () => this.player.setRate(Number(option.dataset.rate)))
