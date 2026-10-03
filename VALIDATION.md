@@ -26,7 +26,6 @@ exactly Lesson 1 and Lesson 2.
 | lesson-01 | Grammar | 24-29 | Future tense (will) / See Also (be going to) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-01 | Listening & Speaking | 30-31 | Talking about Schedules/Plans | 245 | 87 | 79 | 8 | 75.6s | confirmed |
 | lesson-01 | Writing | 34-39 | Noun Singular & Plural Types of Nouns Noun Markers | 0 | 0 | 0 | 0 | 0.0s | - |
-| lesson-01 | What You Learned | 40-41 | Reviewing Lesson 1 | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Get Ready | 44-46 | Introduction to the Lesson | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Conversation | 47 | Visiting Iranian National Observatory | 165 | 153 | 151 | 2 | 86.3s | confirmed |
 | lesson-02 | New Words & Expressions | 48-49 | Learning Vocabulary of Reading | 156 | 106 | 102 | 4 | 76.2s | confirmed |
@@ -34,7 +33,6 @@ exactly Lesson 1 and Lesson 2.
 | lesson-02 | Grammar | 52-57 | See Also (comparative and / Adjectives / superlative adjectives) | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Listening & Speaking | 58-59 | Asking about Details | 242 | 79 | 67 | 12 | 85.2s | confirmed |
 | lesson-02 | Writing | 62-67 | Adjective Kinds of Adjectives Place of Adjectives Spelling Hints | 0 | 0 | 0 | 0 | 0.0s | - |
-| lesson-02 | What You Learned | 68-69 | Reviewing Lesson 2 | 0 | 0 | 0 | 0 | 0.0s | - |
 
 Text for every section is extracted verbatim from the printed pages. `exact` counts words
 whose recognised form matched the printed word character for character; `fuzzy` counts words

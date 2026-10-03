@@ -114,21 +114,6 @@
    "sync": null,
    "syncConfidence": null,
    "syncStatus": "no-audio"
-  },
-  {
-   "id": "what-you-learned",
-   "label": "What You Learned",
-   "title": "Reviewing Lesson 1",
-   "pages": [
-    40,
-    41
-   ],
-   "text": "data/grade-10/lesson-01/sections/what-you-learned.json",
-   "audio": null,
-   "duration": 0.0,
-   "sync": null,
-   "syncConfidence": null,
-   "syncStatus": "no-audio"
   }
  ],
  "vocabulary": "data/grade-10/lesson-01/vocabulary.json"

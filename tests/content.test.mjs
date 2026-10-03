@@ -49,11 +49,28 @@ test('grade manifest exposes exactly lessons 1 and 2', () => {
 })
 
 test('every section of both lessons exists and has real textbook text', () => {
+  // How many sections a lesson publishes follows from what the generator withdraws, so
+  // the count is read from the book rather than written down here.
+  const textbook = fs.readFileSync(path.join(ROOT, 'tools', 'textbook.py'), 'utf8')
+  const all = [...textbook.match(/SECTION_IDS = \[([^\]]*)\]/s)[1].matchAll(/"([^"]+)"/g)].map(
+    ([, id]) => id,
+  )
+  const withdrawn = new Set(
+    [...textbook.match(/WITHDRAWN_SECTION_IDS = frozenset\(\{([^}]*)\}\)/s)[1].matchAll(/"([^"]+)"/g)].map(
+      ([, id]) => id,
+    ),
+  )
+  const publishedCount = all.filter((id) => !withdrawn.has(id)).length
+  assert.ok(publishedCount > 0, 'the book publishes no sections at all')
   for (const lessonId of ['lesson-01', 'lesson-02']) {
     const lesson = readJson(path.join(DATA, lessonId, 'manifest.json'))
-    // The pronunciation section is withdrawn from the reader, so eight are published.
-    assert.equal(lesson.sections.length, 8, `${lessonId} should expose every published section`)
+    assert.equal(
+      lesson.sections.length,
+      publishedCount,
+      `${lessonId} should expose every published section`,
+    )
     for (const section of lesson.sections) {
+      assert.ok(!withdrawn.has(section.id), `${lessonId} publishes the withdrawn ${section.id}`)
       const text = readJson(path.join(ROOT, section.text))
       assert.ok(text.blocks.length > 0, `${lessonId}/${section.id} has no blocks`)
       assert.ok(text.text.length > 20, `${lessonId}/${section.id} text is suspiciously short`)

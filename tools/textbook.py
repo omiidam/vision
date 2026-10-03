@@ -35,8 +35,10 @@ SECTION_IDS = [
 
 # Sections the book contains but the reader does not publish.  Parsing still reads every
 # section off the contents page (so the extraction stays verified against the book), and
-# only these are left out of the generated data tree.
-WITHDRAWN_SECTION_IDS = frozenset({"pronunciation"})
+# only these are left out of the generated data tree.  Being listed here is what withdraws
+# a section: nothing anywhere else decides, so a lesson added later cannot publish one of
+# these either, and no manifest, tab or page of text is ever written for it.
+WITHDRAWN_SECTION_IDS = frozenset({"pronunciation", "what-you-learned"})
 
 # The sections the reader publishes, in book order.
 PUBLISHED_SECTION_IDS = [s for s in SECTION_IDS if s not in WITHDRAWN_SECTION_IDS]

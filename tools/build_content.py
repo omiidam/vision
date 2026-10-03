@@ -167,6 +167,20 @@ def build_sync(words, speech, duration, mapping, section, lesson_id) -> dict:
     }
 
 
+def _prune_withdrawn(lesson_dir: Path, lesson) -> None:
+    """Delete the files of a lesson's sections the reader no longer publishes.
+
+    Withdrawing a section stops it being written; this stops it being left over.  Only a
+    file this build would no longer write is removed, and only from a lesson's own
+    generated folders, so no other content can be caught by it.
+    """
+    kept = {s.section_id for s in lesson.sections if s.section_id not in book.WITHDRAWN_SECTION_IDS}
+    for folder in ("sections", "synchronization"):
+        for path in (lesson_dir / folder).glob("*.json"):
+            if path.stem not in kept:
+                path.unlink()
+
+
 def build() -> dict:
     source_dir = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT.parent / "10th-class")
     doc, lessons = book.load_textbook(str(source_dir))
@@ -248,6 +262,11 @@ def build() -> dict:
     for lesson in lessons:
         lesson_id = lesson.lesson_id
         published = [s for s in lesson.sections if s.section_id not in book.WITHDRAWN_SECTION_IDS]
+
+        # A section that was published and is now withdrawn leaves its file behind, and
+        # nothing reads the manifest to find that.  It is deleted here instead, so the
+        # text of a withdrawn section cannot survive a rebuild or be served by accident.
+        _prune_withdrawn(DATA / lesson_id, lesson)
 
         # What each section lists, worked out for the whole lesson before anything is
         # written: the word banks are printed beside other sections' text but belong to
