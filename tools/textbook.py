@@ -234,6 +234,11 @@ MIN_RUNNING_TEXT = 20
 #: the text it continues; the next label of a grid is set beside it, not under it.
 OVERLAP = 0.4
 
+#: A heading is set in a noticeably larger size than the body text of the same page: the
+#: title of a reading is 24pt over 11.5pt of running text.  Anything this much larger than
+#: the page's own body size is a heading rather than a line of the passage.
+HEADING_RATIO = 1.4
+
 
 def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[dict]]]:
     """Return each visible line of a printed page with the spans it was built from.
@@ -381,6 +386,108 @@ def _printed_lines(
 def _ends_a_sentence(text: str) -> bool:
     """True for a row the book finishes with, which nothing is printed under."""
     return bool(re.search(r"[.?!…:]$", text.strip()))
+
+
+# -------------------------------------------------------------------------- Reading
+
+
+def _printed_blocks(doc: pymupdf.Document, printed_page: int) -> list[dict]:
+    """Each block of text a printed page carries, with the rows it is printed in.
+
+    A block is one thing the book sets together: a heading, or a paragraph.  The rows are
+    the lines of that thing, top to bottom, and the size is the largest set in them, which
+    is what tells a heading from the body text under it.
+    """
+    page = doc[printed_page - 1]
+    blocks: list[dict] = []
+    for block in page.get_text("dict")["blocks"]:
+        if block.get("type") != 0:
+            continue
+        rows: list[tuple[float, float, float, str, float]] = []
+        for line in block["lines"]:
+            text = normalize("".join(span["text"] for span in line["spans"]))
+            if not text or _is_running_furniture(text):
+                continue
+            x0, y0, x1, _ = line["bbox"]
+            if x1 < 40 or x0 > 580:
+                continue
+            rows.append((round(y0, 1), round(x0, 1), round(x1, 1), text,
+                         max(span["size"] for span in line["spans"])))
+        if not rows:
+            continue
+        rows.sort(key=lambda row: (row[0], row[1]))
+        blocks.append({
+            "y": rows[0][0],
+            "x0": min(row[1] for row in rows),
+            "x1": max(row[2] for row in rows),
+            "size": max(row[4] for row in rows),
+            "rows": rows,
+        })
+    blocks.sort(key=lambda block: (block["y"], block["x0"]))
+    return blocks
+
+
+def reading_page_view(
+    doc: pymupdf.Document, page_range: tuple[int, int]
+) -> tuple[list[tuple[int, str]], list[dict]]:
+    """The lines and the blocks of a reading page, one block per printed paragraph.
+
+    A reading passage is running text, and the book sets each of its paragraphs as a block
+    of its own: the paragraph is what the book broke, not how long each of its rows
+    happens to be.  Reading such a page by the length of its rows splits one paragraph
+    into several and can run the heading into the first sentence, so the paragraphs are
+    read from the page instead.
+
+    The title is kept as its own block, marked as the heading it is, so it stands above
+    the passage rather than opening it.  Two blocks are only one paragraph where the book
+    broke one across them: the first does not end a sentence, and the second starts just
+    below it in the same column.
+    """
+    paragraphs: list[dict] = []
+    body_size = 0.0
+    sizes: list[float] = []
+    for printed_page in range(page_range[0], page_range[1] + 1):
+        for block in _printed_blocks(doc, printed_page):
+            sizes.extend(row[4] for row in block["rows"])
+            block["page"] = printed_page
+    if sizes:
+        # The size most of the page is set in is the size of its running text.
+        body_size = max(set(sizes), key=sizes.count)
+
+    for printed_page in range(page_range[0], page_range[1] + 1):
+        for block in _printed_blocks(doc, printed_page):
+            text = " ".join(row[3] for row in block["rows"])
+            heading = body_size and block["size"] >= HEADING_RATIO * body_size
+            merged = False
+            if paragraphs and not paragraphs[-1]["heading"]:
+                previous = paragraphs[-1]
+                gap = block["y"] - previous["y"]
+                overlaps = block["x0"] < previous["x1"] and previous["x0"] < block["x1"]
+                if 0 < gap <= WRAP_GAP and overlaps and not _ends_a_sentence(previous["text"]):
+                    previous["text"] += " " + text
+                    previous["y"] = block["y"]
+                    previous["x1"] = max(previous["x1"], block["x1"])
+                    merged = True
+            if merged:
+                continue
+            paragraphs.append({
+                "page": printed_page,
+                "y": block["y"],
+                "x0": block["x0"],
+                "x1": block["x1"],
+                "heading": bool(heading),
+                "text": text,
+            })
+
+    lines: list[tuple[int, str]] = []
+    blocks: list[dict] = []
+    for paragraph in paragraphs:
+        lines.append((paragraph["page"], paragraph["text"]))
+        block = {"page": paragraph["page"], "lines": [paragraph["text"]]}
+        if paragraph["heading"]:
+            block["kind"] = "reading-title"
+        blocks.append(block)
+    return lines, blocks
 
 
 def get_ready_items(doc: pymupdf.Document, printed_page: int) -> list[str]:

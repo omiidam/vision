@@ -48,6 +48,9 @@ CONVERSATION_SECTION_ID = "conversation"
 #: The section the book divides into parts, each with its own exercise.
 GET_READY_SECTION_ID = "get-ready"
 
+#: The section that is a passage of running text, printed as paragraphs.
+READING_SECTION_ID = "reading"
+
 
 def write_json(path: Path, payload) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -210,6 +213,12 @@ def build() -> dict:
                 view = book.get_ready_page_view(doc, tuple(section.pages))
                 if view:
                     lines, blocks = view
+            if section.section_id == READING_SECTION_ID:
+                # A reading is a passage, and the book sets each of its paragraphs as one
+                # block of its own.  Grouping the rows by how long they are splits a
+                # paragraph in half and runs the title into the first sentence, so the
+                # paragraphs - and the title above them - are read off the page instead.
+                lines, blocks = book.reading_page_view(doc, tuple(section.pages))
             if section.section_id == vocabulary.NEW_WORDS_SECTION_ID:
                 # The vocabulary page shows the parts that teach words.  The same parts
                 # decide the vocabulary below, so the two cannot disagree.

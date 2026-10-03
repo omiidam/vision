@@ -303,6 +303,9 @@ input[type='search'] {
   transition: background-color 0.2s, border-color 0.2s;
 }
 .paragraph.active { background: var(--active-bg); border-inline-start-color: var(--active-line); }
+/* The title of a reading passage is the book's own heading for it: it stands above the
+   passage as a heading rather than opening the first paragraph. */
+.paragraph.block-reading-title { margin-block: 0 .5em; font-size: 1.3rem; font-weight: 600; }
 
 .word { border-radius: 4px; padding: 1px 1px; }
 .word.timed { cursor: pointer; }
