@@ -370,6 +370,27 @@ input::placeholder { color: var(--muted); opacity: 1; }
    textbook's read the same way. */
 .word.target-word { color: var(--target-word); font-weight: 600; }
 
+/* The vocabulary page is printed as separate items - a picture caption, or a headword
+   with the example under it - so each one is set apart from the next: it takes its own
+   line, keeps the rows the book printed in their own lines, and is divided from the
+   item after it.  The target word stays in the book's colour wherever it sits, so the
+   eye finds the word and then reads the sentence it belongs to. */
+.reader-grouped .paragraph.block-part-heading {
+  margin-block: 1.6em 0.6em;
+  font-weight: 600;
+  color: var(--muted);
+}
+.reader-grouped .paragraph.block-example {
+  margin-block: 0;
+  padding-block: 0.55em;
+  border-block-end: 1px solid var(--line-soft);
+}
+.reader-grouped .paragraph.block-example:last-child { border-block-end: none; }
+.reader-grouped .paragraph.item { border-inline-start-color: var(--line-soft); }
+/* The rows the book wrapped onto the next line keep their own line here, so a caption
+   reads as the block of text it is printed as. */
+.reader-grouped .paragraph.item .line { display: block; }
+
 /* Each part of the vocabulary page is its own block, in the order the book prints them. */
 .vocab-part { margin-block: 16px 0; border-block-start: 1px solid var(--line); padding-block-start: 12px; }
 .vocab-part h4 { margin-block: 0 8px; font-size: 0.92rem; }

@@ -15,157 +15,132 @@
    "page": 48,
    "lines": [
     "A. Look, Read and Practice."
-   ]
+   ],
+   "kind": "part-heading"
   },
   {
    "page": 48,
    "lines": [
     "Water is a type of liquid."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 48,
    "lines": [
-    "There are some drops of"
-   ]
-  },
-  {
-   "page": 48,
-   "lines": [
+    "There are some drops of",
     "paint on his shirt."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 48,
    "lines": [
     "Blood cells are red and white."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 48,
    "lines": [
-    "About one thousand"
-   ]
-  },
-  {
-   "page": 48,
-   "lines": [
+    "About one thousand",
     "people live in this village."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 48,
    "lines": [
-    "There are many different"
-   ]
-  },
-  {
-   "page": 48,
-   "lines": [
-    "Doing daily exercise is"
-   ]
-  },
-  {
-   "page": 48,
-   "lines": [
+    "There are many different",
     "types of microbes."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 48,
    "lines": [
+    "Doing daily exercise is",
     "useful for everyone."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
-    "Gahar Lake is famous for its"
-   ]
-  },
-  {
-   "page": 49,
-   "lines": [
-    "The heart pumps blood"
-   ]
-  },
-  {
-   "page": 49,
-   "lines": [
+    "Gahar Lake is famous for its",
     "clear water."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
+    "The heart pumps blood",
     "round the body."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
     "B. Read and Practice."
-   ]
+   ],
+   "kind": "part-heading"
   },
   {
    "page": 49,
    "lines": [
-    "healthy: 1. strong and well"
-   ]
-  },
-  {
-   "page": 49,
-   "lines": [
-    "He is a healthy boy."
-   ]
-  },
-  {
-   "page": 49,
-   "lines": [
+    "healthy: 1. strong and well",
+    "He is a healthy boy.",
     "2. good for your body",
-    "A healthy breakfast can give you more energy.",
-    "defend: to protect someone or something from danger"
-   ]
+    "A healthy breakfast can give you more energy."
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
-    "The brave soldiers defended our country.",
-    "carry: to move someone or something from one place to another"
-   ]
+    "defend: to protect someone or something from danger",
+    "The brave soldiers defended our country."
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
+    "carry: to move someone or something from one place to another",
     "Monkeys carry their babies all day long."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
     "collect: to go and get someone or something",
-    "The school bus collects the children each morning.",
-    "fact: things that are true or that really happened"
-   ]
+    "The school bus collects the children each morning."
+   ],
+   "kind": "example"
   },
   {
    "page": 49,
    "lines": [
+    "fact: things that are true or that really happened",
     "It's a fact that Earth goes around the Sun."
-   ]
+   ],
+   "kind": "example"
   }
  ],
- "text": "A. Look, Read and Practice.\nWater is a type of liquid.\nThere are some drops of\npaint on his shirt.\nBlood cells are red and white.\nAbout one thousand\npeople live in this village.\nThere are many different\nDoing daily exercise is\ntypes of microbes.\nuseful for everyone.\nGahar Lake is famous for its\nThe heart pumps blood\nclear water.\nround the body.\nB. Read and Practice.\nhealthy: 1. strong and well\nHe is a healthy boy.\n2. good for your body A healthy breakfast can give you more energy. defend: to protect someone or something from danger\nThe brave soldiers defended our country. carry: to move someone or something from one place to another\nMonkeys carry their babies all day long.\ncollect: to go and get someone or something The school bus collects the children each morning. fact: things that are true or that really happened\nIt's a fact that Earth goes around the Sun.",
+ "text": "A. Look, Read and Practice.\nWater is a type of liquid.\nThere are some drops of paint on his shirt.\nBlood cells are red and white.\nAbout one thousand people live in this village.\nThere are many different types of microbes.\nDoing daily exercise is useful for everyone.\nGahar Lake is famous for its clear water.\nThe heart pumps blood round the body.\nB. Read and Practice.\nhealthy: 1. strong and well He is a healthy boy. 2. good for your body A healthy breakfast can give you more energy.\ndefend: to protect someone or something from danger The brave soldiers defended our country.\ncarry: to move someone or something from one place to another Monkeys carry their babies all day long.\ncollect: to go and get someone or something The school bus collects the children each morning.\nfact: things that are true or that really happened It's a fact that Earth goes around the Sun.",
  "targets": [
   "liquid",
   "drops",
   "cells",
   "thousand",
+  "microbes",
   "Doing",
   "exercise",
-  "microbes",
-  "pumps",
   "clear",
+  "pumps",
   "healthy",
   "defend",
   "carry",
@@ -187,7 +162,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Water is a type of liquid."
+   ],
    "audio": null
   },
   {
@@ -204,7 +181,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "There are some drops of paint on his shirt."
+   ],
    "audio": null
   },
   {
@@ -221,7 +200,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Blood cells are red and white."
+   ],
    "audio": null
   },
   {
@@ -238,11 +219,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "About one thousand people live in this village."
+   ],
    "audio": null
   },
   {
-   "word": "Doing",
+   "word": "microbes",
    "grade": 10,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
@@ -255,11 +238,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "There are many different types of microbes."
+   ],
    "audio": null
   },
   {
-   "word": "exercise",
+   "word": "Doing",
    "grade": 10,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
@@ -272,11 +257,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Doing daily exercise is useful for everyone."
+   ],
    "audio": null
   },
   {
-   "word": "microbes",
+   "word": "exercise",
    "grade": 10,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
@@ -289,11 +276,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Doing daily exercise is useful for everyone."
+   ],
    "audio": null
   },
   {
-   "word": "pumps",
+   "word": "clear",
    "grade": 10,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
@@ -306,11 +295,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Gahar Lake is famous for its clear water."
+   ],
    "audio": null
   },
   {
-   "word": "clear",
+   "word": "pumps",
    "grade": 10,
    "lessonId": "lesson-02",
    "sectionId": "new-words-and-expressions",
@@ -323,7 +314,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "The heart pumps blood round the body."
+   ],
    "audio": null
   },
   {

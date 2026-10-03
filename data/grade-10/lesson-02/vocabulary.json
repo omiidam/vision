@@ -20,7 +20,9 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "Water is a type of liquid."
+   ],
    "audio": null,
    "page": 48,
    "source": "practice",
@@ -33,7 +35,9 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "There are some drops of paint on his shirt."
+   ],
    "audio": null,
    "page": 48,
    "source": "practice",
@@ -46,7 +50,9 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "Blood cells are red and white."
+   ],
    "audio": null,
    "page": 48,
    "source": "practice",
@@ -59,33 +65,9 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
-   "audio": null,
-   "page": 48,
-   "source": "practice",
-   "sectionId": "new-words-and-expressions",
-   "part": "a",
-   "partTitle": "Look, Read and Practice."
-  },
-  {
-   "word": "Doing",
-   "pronunciation": "",
-   "meaningEn": "",
-   "meaningFa": "",
-   "examples": [],
-   "audio": null,
-   "page": 48,
-   "source": "practice",
-   "sectionId": "new-words-and-expressions",
-   "part": "a",
-   "partTitle": "Look, Read and Practice."
-  },
-  {
-   "word": "exercise",
-   "pronunciation": "",
-   "meaningEn": "",
-   "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "About one thousand people live in this village."
+   ],
    "audio": null,
    "page": 48,
    "source": "practice",
@@ -98,7 +80,9 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "There are many different types of microbes."
+   ],
    "audio": null,
    "page": 48,
    "source": "practice",
@@ -107,13 +91,30 @@
    "partTitle": "Look, Read and Practice."
   },
   {
-   "word": "pumps",
+   "word": "Doing",
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "Doing daily exercise is useful for everyone."
+   ],
    "audio": null,
-   "page": 49,
+   "page": 48,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "exercise",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [
+    "Doing daily exercise is useful for everyone."
+   ],
+   "audio": null,
+   "page": 48,
    "source": "practice",
    "sectionId": "new-words-and-expressions",
    "part": "a",
@@ -124,7 +125,24 @@
    "pronunciation": "",
    "meaningEn": "",
    "meaningFa": "",
-   "examples": [],
+   "examples": [
+    "Gahar Lake is famous for its clear water."
+   ],
+   "audio": null,
+   "page": 49,
+   "source": "practice",
+   "sectionId": "new-words-and-expressions",
+   "part": "a",
+   "partTitle": "Look, Read and Practice."
+  },
+  {
+   "word": "pumps",
+   "pronunciation": "",
+   "meaningEn": "",
+   "meaningFa": "",
+   "examples": [
+    "The heart pumps blood round the body."
+   ],
    "audio": null,
    "page": 49,
    "source": "practice",

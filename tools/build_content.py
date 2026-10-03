@@ -197,18 +197,28 @@ def build() -> dict:
             # The words the book itself points at on this page.  Only the vocabulary page
             # marks them, so any other section has none.
             targets: list[str] = []
+            blocks: list[dict] | None = None
             if section.section_id == vocabulary.NEW_WORDS_SECTION_ID:
                 # The vocabulary page shows the parts that teach words.  The same parts
                 # decide the vocabulary below, so the two cannot disagree.
-                page_lines = vocabulary.vocabulary_page_lines(
+                #
+                # The blocks come from the page too.  A block there is what the book
+                # prints as one thing - a picture caption, however many rows it wraps
+                # onto, or a headword with the lines under it - so a target word is never
+                # shown apart from the example it is printed in.  Reading the blocks by
+                # the length of a line would do exactly that, so this page is not.
+                view = vocabulary.vocabulary_page_view(
                     doc, tuple(section.pages), section.section_id
                 )
-                if page_lines:
+                if view:
+                    page_lines, blocks = view
                     lines = [line.as_text() for line in page_lines]
                     targets = vocabulary.line_targets(page_lines)
-            blocks, flat = textmod.build_blocks(
+            built, flat = textmod.build_blocks(
                 lines, conversation=section.section_id == CONVERSATION_SECTION_ID
             )
+            if blocks is None:
+                blocks = built
             sections[lesson.lesson_id][section.section_id] = {
                 "meta": section,
                 "lines": lines,
@@ -312,7 +322,7 @@ def build() -> dict:
                     "title": section.description or section.label,
                     "source": {"pdf": "10th-class/" + book.BOOK_FILENAME, "pages": list(section.pages)},
                     "blocks": [
-                        {"page": b["page"], "lines": b["lines"]}
+                        {k: b[k] for k in ("page", "lines", "kind") if k in b}
                         for b in data["blocks"]
                     ],
                     "text": "\n".join(" ".join(b["lines"]) for b in data["blocks"]),

@@ -243,6 +243,36 @@ test('each part is headed by the letter and title the book prints for it', () =>
   assert.match(render, /group\.items\.map\(itemHtml\)\.join\(''\)/)
 })
 
+test('every block of the New Words page says what the book prints it as', () => {
+  // The reader lays the page out from this, so a block of it has to say whether it is a
+  // part heading or one printed item, and every block the reader groups has to be one the
+  // content pipeline marked.  The blocks of any other section are running text and are
+  // left unmarked, which is what tells the two apart without naming a section.
+  for (const lessonId of readJson(path.join(DATA, 'manifest.json')).lessons.map((l) => l.id)) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    const kinds = new Set(data.blocks.map((block) => block.kind))
+    assert.deepEqual([...kinds].sort(), ['example', 'part-heading'], `${lessonId}: unmarked blocks`)
+    const headings = data.blocks.filter((block) => block.kind === 'part-heading')
+    assert.ok(headings.length > 0, `${lessonId}: the page prints no part heading`)
+    for (const heading of headings) {
+      assert.ok(
+        /^[A-Z]\.\s.+[.!?]$/.test(heading.lines.join(' ')),
+        `${lessonId}: "${heading.lines.join(' ')}" is not printed as a part heading`,
+      )
+      assert.equal(heading.lines.length, 1, `${lessonId}: a part heading wraps onto another row`)
+    }
+    // The reader groups the page and only the page, so no other section's blocks carry a
+    // kind: a lesson whose text is grouped elsewhere would otherwise lose that grouping.
+    for (const section of readJson(path.join(DATA, lessonId, 'manifest.json')).sections) {
+      if (section.id === 'new-words-and-expressions') continue
+      const other = readJson(path.join(ROOT, section.text))
+      for (const block of other.blocks) {
+        assert.equal(block.kind, undefined, `${lessonId}/${section.id}: block is marked`)
+      }
+    }
+  }
+})
+
 test('the New Words page shows the parts the book prints and no pointer to the workbook', () => {
   for (const lessonId of ['lesson-01', 'lesson-02']) {
     const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))

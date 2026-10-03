@@ -15,128 +15,124 @@
    "page": 20,
    "lines": [
     "A. Look, Read and Practice."
-   ]
+   ],
+   "kind": "part-heading"
   },
   {
    "page": 20,
    "lines": [
     "We live on Earth."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 20,
    "lines": [
     "A tiger is a wild animal."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 20,
    "lines": [
     "I went to Golestan Forest last year."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 20,
    "lines": [
-    "They are destroying the jungle.",
+    "They are destroying the jungle."
+   ],
+   "kind": "example"
+  },
+  {
+   "page": 20,
+   "lines": [
     "The Persian lion died out about 75 years ago."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "Pay attention!"
-   ]
-  },
-  {
-   "page": 21,
-   "lines": [
-    "Tooran is the natural home"
-   ]
-  },
-  {
-   "page": 21,
-   "lines": [
+    "Pay attention!",
     "Don't swim here."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
+    "Tooran is the natural home",
     "of the Persian zebra."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "Moghan Plain is a nice place in"
-   ]
-  },
-  {
-   "page": 21,
-   "lines": [
-    "They hope to save the"
-   ]
-  },
-  {
-   "page": 21,
-   "lines": [
+    "Moghan Plain is a nice place in",
     "the north-west of Iran."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
+    "They hope to save the",
     "injured animal."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "B. Read and Practice.",
-    "a few: not many; a small number of things or people"
-   ]
+    "B. Read and Practice."
+   ],
+   "kind": "part-heading"
   },
   {
    "page": 21,
    "lines": [
+    "a few: not many; a small number of things or people",
     "There are a few Iranian cheetahs."
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "human: a person"
-   ]
+    "human: a person",
+    "All humans must take care of nature."
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "All humans must take care of nature.",
     "instead: in place of someone or something else",
     "There's no coffee. Would you like a cup of tea instead?"
-   ]
+   ],
+   "kind": "example"
   },
   {
    "page": 21,
    "lines": [
-    "future: the time after now"
-   ]
-  },
-  {
-   "page": 21,
-   "lines": [
+    "future: the time after now",
     "Everyone needs to plan for the future."
-   ]
+   ],
+   "kind": "example"
   }
  ],
- "text": "A. Look, Read and Practice.\nWe live on Earth.\nA tiger is a wild animal.\nI went to Golestan Forest last year.\nThey are destroying the jungle. The Persian lion died out about 75 years ago.\nPay attention!\nTooran is the natural home\nDon't swim here.\nof the Persian zebra.\nMoghan Plain is a nice place in\nThey hope to save the\nthe north-west of Iran.\ninjured animal.\nB. Read and Practice. a few: not many; a small number of things or people\nThere are a few Iranian cheetahs.\nhuman: a person\nAll humans must take care of nature. instead: in place of someone or something else There's no coffee. Would you like a cup of tea instead?\nfuture: the time after now\nEveryone needs to plan for the future.",
+ "text": "A. Look, Read and Practice.\nWe live on Earth.\nA tiger is a wild animal.\nI went to Golestan Forest last year.\nThey are destroying the jungle.\nThe Persian lion died out about 75 years ago.\nPay attention! Don't swim here.\nTooran is the natural home of the Persian zebra.\nMoghan Plain is a nice place in the north-west of Iran.\nThey hope to save the injured animal.\nB. Read and Practice.\na few: not many; a small number of things or people There are a few Iranian cheetahs.\nhuman: a person All humans must take care of nature.\ninstead: in place of someone or something else There's no coffee. Would you like a cup of tea instead?\nfuture: the time after now Everyone needs to plan for the future.",
  "targets": [
   "Earth",
   "tiger",
   "Forest",
   "destroying",
   "died out",
+  "Pay attention",
   "natural",
   "Plain",
   "hope",
@@ -160,7 +156,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "We live on Earth."
+   ],
    "audio": null
   },
   {
@@ -177,7 +175,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "A tiger is a wild animal."
+   ],
    "audio": null
   },
   {
@@ -194,7 +194,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "I went to Golestan Forest last year."
+   ],
    "audio": null
   },
   {
@@ -211,7 +213,9 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "They are destroying the jungle."
+   ],
    "audio": null
   },
   {
@@ -228,11 +232,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "The Persian lion died out about 75 years ago."
+   ],
    "audio": null
   },
   {
-   "word": "natural",
+   "word": "Pay attention",
    "grade": 10,
    "lessonId": "lesson-01",
    "sectionId": "new-words-and-expressions",
@@ -245,11 +251,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Pay attention! Don't swim here."
+   ],
    "audio": null
   },
   {
-   "word": "Plain",
+   "word": "natural",
    "grade": 10,
    "lessonId": "lesson-01",
    "sectionId": "new-words-and-expressions",
@@ -262,11 +270,13 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Tooran is the natural home of the Persian zebra."
+   ],
    "audio": null
   },
   {
-   "word": "hope",
+   "word": "Plain",
    "grade": 10,
    "lessonId": "lesson-01",
    "sectionId": "new-words-and-expressions",
@@ -279,7 +289,28 @@
    "meaningEn": "",
    "meaningFa": "",
    "pronunciation": "",
-   "examples": [],
+   "examples": [
+    "Moghan Plain is a nice place in the north-west of Iran."
+   ],
+   "audio": null
+  },
+  {
+   "word": "hope",
+   "grade": 10,
+   "lessonId": "lesson-01",
+   "sectionId": "new-words-and-expressions",
+   "listedIn": "new-words-and-expressions",
+   "page": 21,
+   "position": 8,
+   "source": "practice",
+   "part": "a",
+   "partTitle": "Look, Read and Practice.",
+   "meaningEn": "",
+   "meaningFa": "",
+   "pronunciation": "",
+   "examples": [
+    "They hope to save the injured animal."
+   ],
    "audio": null
   },
   {
@@ -289,7 +320,7 @@
    "sectionId": "new-words-and-expressions",
    "listedIn": "new-words-and-expressions",
    "page": 21,
-   "position": 8,
+   "position": 9,
    "source": "glossary",
    "part": "b",
    "partTitle": "Read and Practice.",
@@ -308,7 +339,7 @@
    "sectionId": "new-words-and-expressions",
    "listedIn": "new-words-and-expressions",
    "page": 21,
-   "position": 9,
+   "position": 10,
    "source": "glossary",
    "part": "b",
    "partTitle": "Read and Practice.",
@@ -327,7 +358,7 @@
    "sectionId": "new-words-and-expressions",
    "listedIn": "new-words-and-expressions",
    "page": 21,
-   "position": 10,
+   "position": 11,
    "source": "glossary",
    "part": "b",
    "partTitle": "Read and Practice.",
@@ -346,7 +377,7 @@
    "sectionId": "new-words-and-expressions",
    "listedIn": "new-words-and-expressions",
    "page": 21,
-   "position": 11,
+   "position": 12,
    "source": "glossary",
    "part": "b",
    "partTitle": "Read and Practice.",
@@ -365,7 +396,7 @@
    "sectionId": "conversation",
    "listedIn": "new-words-and-expressions",
    "page": 19,
-   "position": 12,
+   "position": 13,
    "source": "word-bank",
    "part": "word-bank",
    "partTitle": "Word Bank",
@@ -382,7 +413,7 @@
    "sectionId": "conversation",
    "listedIn": "new-words-and-expressions",
    "page": 19,
-   "position": 13,
+   "position": 14,
    "source": "word-bank",
    "part": "word-bank",
    "partTitle": "Word Bank",
@@ -399,7 +430,7 @@
    "sectionId": "conversation",
    "listedIn": "new-words-and-expressions",
    "page": 19,
-   "position": 14,
+   "position": 15,
    "source": "word-bank",
    "part": "word-bank",
    "partTitle": "Word Bank",
@@ -416,7 +447,7 @@
    "sectionId": "conversation",
    "listedIn": "new-words-and-expressions",
    "page": 19,
-   "position": 15,
+   "position": 16,
    "source": "word-bank",
    "part": "word-bank",
    "partTitle": "Word Bank",
@@ -433,7 +464,7 @@
    "sectionId": "conversation",
    "listedIn": "new-words-and-expressions",
    "page": 19,
-   "position": 16,
+   "position": 17,
    "source": "word-bank",
    "part": "word-bank",
    "partTitle": "Word Bank",

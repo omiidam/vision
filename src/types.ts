@@ -46,6 +46,13 @@ export interface SectionEntry {
 export interface TextBlock {
   page: number
   lines: string[]
+  /**
+   * What the book prints this block as, where the layout says so.  On the vocabulary
+   * page a block is either the heading of a part or one printed item - a picture caption
+   * or a headword with the lines under it - so the reader can set the target and its
+   * example apart without reading the text to work out where one stops.
+   */
+  kind?: 'part-heading' | 'example'
 }
 
 /**

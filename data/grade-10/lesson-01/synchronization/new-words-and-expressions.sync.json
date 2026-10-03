@@ -5,7 +5,7 @@
  "sourceAudioFile": "new words and expressions1.mp3",
  "duration": 74.736,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.7538,
+ "confidence": 0.8077,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-01' + file name 'new words and expressions' (match 1.00)",
@@ -323,6 +323,30 @@
    "spokenAs": " attention,"
   },
   {
+   "word": "Don't",
+   "start": 27.82,
+   "end": 28.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " don't"
+  },
+  {
+   "word": "swim",
+   "start": 28.22,
+   "end": 28.52,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " swim"
+  },
+  {
+   "word": "here.",
+   "start": 28.52,
+   "end": 29.3,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " here"
+  },
+  {
    "word": "Tooran",
    "start": 30.38,
    "end": 31.06,
@@ -361,30 +385,6 @@
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " home"
-  },
-  {
-   "word": "Don't",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "swim",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "here.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   },
   {
    "word": "of",
@@ -475,6 +475,38 @@
    "spokenAs": " in"
   },
   {
+   "word": "the",
+   "start": 36.42,
+   "end": 36.56,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " the"
+  },
+  {
+   "word": "north-west",
+   "start": 36.56,
+   "end": 36.86,
+   "match": "fuzzy",
+   "similarity": 0.947,
+   "spokenAs": " northwest"
+  },
+  {
+   "word": "of",
+   "start": 36.86,
+   "end": 37.22,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " of"
+  },
+  {
+   "word": "Iran.",
+   "start": 37.22,
+   "end": 37.58,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " Iran"
+  },
+  {
    "word": "They",
    "start": 37.58,
    "end": 38.82,
@@ -508,43 +540,11 @@
   },
   {
    "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
    "start": 39.52,
    "end": 39.74,
    "match": "exact",
    "similarity": 1.0,
    "spokenAs": " the"
-  },
-  {
-   "word": "north-west",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "of",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Iran.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
   },
   {
    "word": "injured",
@@ -1118,31 +1118,31 @@
   },
   {
    "first": 38,
-   "last": 45,
-   "start": 30.38,
-   "end": 31.98,
-   "text": "Tooran is the natural home Don't swim here."
+   "last": 40,
+   "start": 27.82,
+   "end": 29.3,
+   "text": "Don't swim here."
   },
   {
-   "first": 46,
+   "first": 41,
    "last": 49,
-   "start": 31.98,
+   "start": 30.38,
    "end": 33.36,
-   "text": "of the Persian zebra."
+   "text": "Tooran is the natural home of the Persian zebra."
   },
   {
    "first": 50,
-   "last": 65,
+   "last": 60,
    "start": 34.44,
-   "end": 39.74,
-   "text": "Moghan Plain is a nice place in They hope to save the the north-west of Iran."
+   "end": 37.58,
+   "text": "Moghan Plain is a nice place in the north-west of Iran."
   },
   {
-   "first": 66,
+   "first": 61,
    "last": 67,
-   "start": 39.74,
+   "start": 37.58,
    "end": 41.1,
-   "text": "injured animal."
+   "text": "They hope to save the injured animal."
   },
   {
    "first": 68,
@@ -1199,16 +1199,6 @@
    "start": 1.92,
    "end": 3.92,
    "transcript": " New  words  and  expressions"
-  },
-  {
-   "start": 27.82,
-   "end": 29.3,
-   "transcript": " don't  swim  here"
-  },
-  {
-   "start": 36.42,
-   "end": 37.58,
-   "transcript": " the  northwest  of  Iran"
   }
  ]
 }

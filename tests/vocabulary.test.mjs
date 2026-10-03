@@ -173,10 +173,17 @@ def describe(parts):
                                   for e in V.part_entries(p, SECTION_ID)]]
             for p in parts]
 
+def blocks_of(case):
+    """The blocks the extractor prints the given lines in, as the reader sees them."""
+    part = V.split_parts(lines_of(case))[0]
+    return [[line.text for line in group] for group in V.part_groups(part)]
+
 cases = json.loads(sys.argv[2])
 parts = {name: V.split_parts(lines_of(case)) for name, case in cases.items()}
 pages = json.loads(sys.argv[3])
 printed = V.split_parts(V.page_lines(doc, tuple(pages)))
+page_lines, page_blocks = V.vocabulary_page_view(doc, tuple(pages), SECTION_ID)
+page_view = [[line.text for line in page_lines], page_blocks]
 print(json.dumps({
     "banks": [V.word_bank_items(x) for x in json.loads(sys.argv[1])],
     "cases": {name: describe(found) for name, found in parts.items()},
@@ -185,6 +192,8 @@ print(json.dumps({
     "printed": describe(printed),
     "shown": [p.letter for p in V.vocabulary_page_parts(doc, tuple(pages), SECTION_ID)],
     "lines": [[line.text, line.highlights] for line in V.page_lines(doc, tuple(pages))],
+    "pageView": page_view,
+    "grouped": {name: blocks_of(case) for name, case in cases.items()},
 }))
 `,
   JSON.stringify(BANKS),
@@ -549,6 +558,64 @@ test('a label that introduces the text is not registered as a word', () => {
   }
 })
 
+test('every word a practice part points at keeps the caption it is printed in', () => {
+  // The example is not a paraphrase and not a fragment: it is the block the book prints
+  // the word in, so a reader can find that word on the page and see the same sentence.
+  for (const lessonId of LESSON_IDS) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    const blocks = data.blocks.map((block) => block.lines.join(' '))
+    const practice = data.vocabulary.filter((entry) => entry.source === 'practice')
+    assert.ok(practice.length > 0, `${lessonId}: the page points at no words`)
+    for (const entry of practice) {
+      assert.equal(
+        entry.examples.length,
+        1,
+        `${lessonId}/${entry.word}: a practice word must keep one caption as its example`,
+      )
+      assert.ok(
+        blocks.includes(entry.examples[0]),
+        `${lessonId}/${entry.word}: its example is not a block of the page: ${entry.examples[0]}`,
+      )
+      // And the word is in it, which is what makes it that word's example.
+      for (const word of entry.word.toLowerCase().match(/[a-z][a-z'-]*/g) ?? []) {
+        assert.ok(
+          new RegExp(`\\b${word}\\b`).test(entry.examples[0].toLowerCase()),
+          `${lessonId}/${entry.word}: its example does not contain the word`,
+        )
+      }
+    }
+  }
+})
+
+test('each printed caption is one block, and no example sentence became a word', () => {
+  for (const lessonId of LESSON_IDS) {
+    const data = readJson(path.join(DATA, lessonId, 'sections', 'new-words-and-expressions.json'))
+    // A block is either a part heading or one printed item; an item is never split, and
+    // a line the book wrapped onto the next row is never left as a block of its own.
+    const items = data.blocks.filter((block) => block.kind !== 'part-heading')
+    for (const block of items) {
+      assert.ok(
+        block.lines.length >= 1,
+        `${lessonId}: a block of the vocabulary page holds no printed line`,
+      )
+      assert.ok(
+        block.lines.every((line) => line.trim().length > 0),
+        `${lessonId}: a block of the vocabulary page holds an empty line`,
+      )
+    }
+    // The reader shows each printed row once: no row of the page is a whole item, which
+    // is what would happen if a caption's own words were listed as separate items.
+    for (const entry of data.vocabulary) {
+      if (entry.source !== 'practice') continue
+      assert.notEqual(
+        entry.word,
+        entry.examples[0],
+        `${lessonId}: "${entry.word}" is listed as its own sentence`,
+      )
+    }
+  }
+})
+
 test('vocabulary lives beside the text, never inside it', () => {
   for (const { lessonId, section, file } of sectionFiles) {
     const data = readJson(file)
@@ -601,13 +668,77 @@ fromBook('a part that prints headwords is read as a glossary, with its examples'
 })
 
 fromBook('a part that only prints sentences is read as a practice part', () => {
-  // One entry per word the book points at, in the order it prints them.
+  // One entry per word the book points at, in the order it prints them, and each keeps
+  // the sentence it is printed in as its example: the sentence is the book's own context
+  // for the word, so it travels with the word rather than being dropped.
   assert.deepEqual(EXTRACTED.cases.practice, [
     ['A', 'Look, Read and Practice.', [
-      ['Earth', 'practice', 'a', '', []],
-      ['died out', 'practice', 'a', '', []],
+      ['Earth', 'practice', 'a', '', ['The Earth is our only home.']],
+      ['died out', 'practice', 'a', '', ['Many animals died out there.']],
     ]],
   ])
+})
+
+fromBook('the rows the book wraps one caption onto stay one block', () => {
+  // The book prints a caption as a block of rows under a picture, sometimes wrapping it
+  // onto a second row.  Where the second row begins decides what belongs to what, and
+  // that is a property of the printed page: the sentence keeps its caption and the
+  // caption beside it is not joined to it.
+  assert.deepEqual(EXTRACTED.grouped.practice, [
+    ['The Earth is our only home.'],
+    ['Many animals died out there.'],
+  ])
+  // The glossary groups the same way, but by the headword the book prints, which is the
+  // mark that opens an entry there: the headword keeps the lines printed under it.
+  assert.deepEqual(EXTRACTED.grouped.glossary, [
+    ['human: a person', 'All humans must take care of nature.'],
+  ])
+})
+
+fromBook('the page is printed as the blocks the book prints it in', () => {
+  // Straight from the book: the reader is shown one block per picture caption, and the
+  // captions of Lesson 1's page 21 are the four the book prints beside the pictures.
+  const captions = EXTRACTED.pageView[1]
+    .filter((block) => block.kind === 'example')
+    .map((block) => block.lines)
+    .filter((lines) => lines.length > 1)
+  assert.ok(
+    captions.some((lines) => lines.join(' ') === "Pay attention! Don't swim here."),
+    'the "Pay attention!" caption and the sentence under it were separated',
+  )
+  assert.ok(
+    captions.some((lines) => lines.join(' ') === 'Tooran is the natural home of the Persian zebra.'),
+    'the Tooran caption and the sentence under it were separated',
+  )
+  assert.ok(
+    captions.some(
+      (lines) => lines.join(' ') === 'Moghan Plain is a nice place in the north-west of Iran.',
+    ),
+    'the Moghan Plain caption and the sentence under it were separated',
+  )
+  assert.ok(
+    captions.some((lines) => lines.join(' ') === 'They hope to save the injured animal.'),
+    'the "They hope" caption and the sentence under it were separated',
+  )
+  // Grouping the rows of a caption must not add, drop or move a line.  The rows the
+  // reader is shown are exactly the rows the page is read as, in the same order, and the
+  // blocks are those rows cut into the groups the book prints them in - the captions of
+  // two columns are shown side by side, which is the grouping, not a reordering.
+  const shown = EXTRACTED.pageView[0]
+  assert.deepEqual(
+    EXTRACTED.pageView[1].flatMap((block) => block.lines),
+    shown,
+    'the blocks do not hold exactly the rows the page is read as',
+  )
+  for (const line of shown) {
+    const printed = EXTRACTED.lines.filter(([text]) => text === line)
+    const used = EXTRACTED.pageView[1].flatMap((block) => block.lines).filter((t) => t === line)
+    assert.equal(
+      used.length,
+      printed.length,
+      `"${line}" is shown ${used.length} times but the page prints it ${printed.length} times`,
+    )
+  }
 })
 
 fromBook('a part heading is never read as a word of the lesson', () => {

@@ -176,7 +176,7 @@ export class LessonView {
     }
 
     this.engine = sync ? new SyncEngine(sync) : null
-    this.renderText(body, text, sync)
+    this.renderText(body, text, sync, section.id === VOCABULARY_SECTION_ID)
     this.renderTransport(section, sync)
     this.updateProgress(0)
 
@@ -191,9 +191,22 @@ export class LessonView {
     }
   }
 
-  /** Render the canonical textbook text with one element per word. */
-  private renderText(body: HTMLElement, text: SectionText, sync: SyncData | null): void {
+  /**
+   * Render the canonical textbook text with one element per word.
+   *
+   * `grouped` is the vocabulary page, which the book prints as separate items rather than
+   * as running text.  There the blocks come from the page, so each one is shown as the
+   * item it is: the target word where the book sets it, the example the book prints with
+   * it directly underneath, and a rule between one item and the next.
+   */
+  private renderText(
+    body: HTMLElement,
+    text: SectionText,
+    sync: SyncData | null,
+    grouped = false,
+  ): void {
     body.innerHTML = ''
+    body.classList.toggle('reader-grouped', grouped)
     let wordIndex = 0
 
     // The words the book sets as new inside this text.  They are matched against the
@@ -204,12 +217,18 @@ export class LessonView {
 
     for (const block of text.blocks) {
       const paragraph = document.createElement('p')
-      paragraph.className = 'paragraph'
+      paragraph.className = block.kind
+        ? `paragraph block-${block.kind}`
+        : 'paragraph'
       paragraph.dataset.page = String(block.page)
       // The textbook text is English; tag it from the block's own text so a block that
       // ever carries Persian is laid out right-to-left by itself.
       applyLanguage(paragraph, block.lines.join(' '))
 
+      // On the vocabulary page the rows the book wrapped onto the next line are kept on
+      // their own line, as it prints them: joining them would read as one run and lose
+      // where the caption begins and ends.  Everywhere else the block is running text
+      // and is joined as before.
       const tokens = block.lines.join(' ').split(/\s+/).filter(Boolean)
       // A target is claimed by the block that prints it, and what is left over is carried
       // to the next block, so nothing is claimed twice across the page.  The marks come
@@ -219,6 +238,30 @@ export class LessonView {
       pending = found.pending
       const targetAt = new Set(found.positions)
       let tokenAt = 0
+      // A grouped block is a set of printed rows, and the book wraps a caption onto a
+      // second row now and then.  Those rows are kept on their own line so a caption
+      // reads as the block of text it is printed as; running text elsewhere is one
+      // paragraph and is joined as it always was.
+      //
+      // Nothing is renumbered to do it.  The words still run in the block's own order and
+      // the marks are still positions in that list, so `rowEnds` holds the index of the
+      // first word of the row after each row, and `row` is the element the words of the
+      // current row go into.  A block with no rows of its own puts its words straight into
+      // the paragraph, as it always did.
+      let row: HTMLElement = paragraph
+      const rowEnds: number[] = []
+      if (grouped && block.kind === 'example') {
+        paragraph.classList.add('item')
+        let counted = 0
+        for (const line of block.lines) {
+          counted += line.split(/\s+/).filter(Boolean).length
+          rowEnds.push(counted)
+        }
+        row = document.createElement('span')
+        row.className = 'line'
+        paragraph.append(row)
+      }
+      let rowAt = 0
       for (const token of tokens) {
         // Where this token sits in the block, whether or not it is rendered.  The marks
         // are positions in this same list of tokens, so the count has to keep step with
@@ -250,8 +293,17 @@ export class LessonView {
         } else {
           span.classList.add('untimed')
         }
-        paragraph.append(span, document.createTextNode(' '))
+        row.append(span, document.createTextNode(' '))
         wordIndex += 1
+        // The book broke the line where the row ends here, so the next printed row starts
+        // a line of its own.  A row the book printed as nothing but a blank has already
+        // been passed, so the word after it still starts a line rather than a second one.
+        while (here + 1 >= rowEnds[rowAt] && rowAt < rowEnds.length - 1) {
+          rowAt += 1
+          row = document.createElement('span')
+          row.className = 'line'
+          paragraph.append(row)
+        }
       }
       body.append(paragraph)
     }

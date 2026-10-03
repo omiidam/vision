@@ -93,6 +93,18 @@ _NUMBERED_SENSE_RE = re.compile(r"^\d+\.\s")
 #: the word and the full stop in one go, so the stop belongs to the sentence.
 _TRAILING_PUNCTUATION = ".,;:!?"
 
+#: The rows of one picture caption stand about one line of leading apart, while the next
+#: picture of the page starts a whole caption lower down.  The gap between two rows of
+#: the same caption is therefore a printed line, and anything larger opens a new one.
+#: The gap is also never zero: the row printed beside this one in the other column sits
+#: on almost the same height, and the two are captions of their own.
+CAPTION_GAP = 30.0
+
+#: How far sideways a wrapped row may sit from the row it continues.  A caption is set
+#: in one column and its rows line up with it; the caption in the column beside it is
+#: much further away than this, so the two are never mistaken for one.
+CAPTION_INDENT = 60.0
+
 
 @dataclass(order=True)
 class Span:
@@ -111,11 +123,19 @@ class Span:
 
 @dataclass
 class Line:
-    """A printed line, with the words the book picks out inside it."""
+    """A printed line, with the words the book picks out inside it.
+
+    ``x`` and ``y`` are where the book prints it, in points from the top left of the
+    page.  They are what says which lines belong to the same picture caption, and that
+    is a fact about the printed page rather than about the words: a caption is a block
+    of rows, and the next caption is the picture below it.
+    """
 
     page: int
     text: str
     highlights: list[str] = field(default_factory=list)
+    x: float = 0.0
+    y: float = 0.0
 
     def as_text(self) -> tuple[int, str]:
         return (self.page, self.text)
@@ -268,27 +288,28 @@ def page_lines(doc, page_range: tuple[int, int]) -> list[Line]:
     The text is the reader's own page text, so filtering these lines keeps the audio
     alignment intact.
 
-    A picked-out word only counts when it sits inside a line of running text.  A line that
-    holds nothing else - a heading or an instruction such as "Pay attention!" - points at
-    the reader rather than naming a word.
+    Every word the book prints in its own colour is recorded, whether or not running text
+    sits beside it.  A caption can be a whole line of the new expression - the book's
+    "Pay attention!" over a picture is one - and that expression is the target of the
+    caption, exactly as a word picked out inside a sentence is.  What is not a word is
+    told apart where the words are collected, not here: a part heading opens a part and
+    the letter it is headed by is the heading's, so it is left out of that part's words.
     """
     lines: list[Line] = []
     for printed_page in range(page_range[0], page_range[1] + 1):
         for text, spans in book.page_rows(doc, printed_page):
-            marked = [s for s in spans if _is_highlight(s)]
-            running = [
-                s for s in spans
-                if not _is_highlight(s) and s["text"].strip() and s["color"] != CALLOUT_COLOR
-            ]
             lines.append(
                 Line(
                     page=printed_page,
                     text=text,
                     highlights=[
                         s["text"].strip().strip(_TRAILING_PUNCTUATION).strip()
-                        for s in marked
-                        if s["text"].strip().strip(_TRAILING_PUNCTUATION).strip()
-                    ] if running else [],
+                        for s in spans
+                        if _is_highlight(s)
+                        and s["text"].strip().strip(_TRAILING_PUNCTUATION).strip()
+                    ],
+                    x=min((s["bbox"][0] for s in spans), default=0.0),
+                    y=min((s["bbox"][1] for s in spans), default=0.0),
                 )
             )
     return lines
@@ -332,56 +353,135 @@ def _renumber(entries: list[VocabularyEntry]) -> list[VocabularyEntry]:
     return [replace(entry, position=index) for index, entry in enumerate(entries)]
 
 
+def _glossary_groups(lines: list[Line]) -> list[list[Line]]:
+    """The printed entries of a glossary part, each with the lines printed under it.
+
+    A ``headword: definition`` line opens an entry and every other line belongs to the
+    entry above it, so a definition the book wrapped onto the next row and the example
+    sentences under it stay with their headword.
+    """
+    groups: list[list[Line]] = []
+    for line in lines:
+        if _HEADWORD_RE.match(line.text) or not groups:
+            groups.append([line])
+        else:
+            groups[-1].append(line)
+    return groups
+
+
+def _continues_caption(previous: Line, line: Line) -> bool:
+    """True when ``line`` is the rest of the caption ``previous`` opens.
+
+    Both halves of that are printed facts.  The rows of one caption are a line of
+    leading apart and line up in one column; the caption printed beside it is in the
+    other column, and the caption printed below it is a whole picture lower down.
+    """
+    return (
+        previous.page == line.page
+        and 0 < line.y - previous.y <= CAPTION_GAP
+        and abs(line.x - previous.x) <= CAPTION_INDENT
+    )
+
+
+def caption_groups(lines: list[Line]) -> list[list[Line]]:
+    """The captions of a practice part, each with the rows the book wrapped it onto.
+
+    A page of pictures is printed in two columns, so the rows of the two captions beside
+    each other are one line apart and alternate in reading order.  Each row is therefore
+    matched against the caption it can continue - the nearest one above it in its own
+    column - rather than against the row printed just before it, which belongs to the
+    caption in the other column.
+    """
+    groups: list[list[Line]] = []
+    for line in lines:
+        joined: list[Line] | None = None
+        gap: float | None = None
+        for group in groups:
+            previous = group[-1]
+            if not _continues_caption(previous, line):
+                continue
+            distance = line.y - previous.y
+            if gap is None or distance < gap:
+                joined, gap = group, distance
+        if joined is None:
+            groups.append([line])
+        else:
+            joined.append(line)
+    return groups
+
+
+def part_groups(part: Part) -> list[list[Line]]:
+    """The blocks a part is printed in, in the order the book prints them.
+
+    A part that prints headwords is a list of entries, so one block is one entry with
+    the lines printed under it.  A part that only prints sentences is a page of
+    pictures, so one block is one picture's caption with the rows it wrapped onto: the
+    target word is inside its own example and never split away from it.
+    """
+    if any(_HEADWORD_RE.match(line.text) for line in part.lines):
+        return _glossary_groups(part.lines)
+    return caption_groups(part.lines)
+
+
+def _group_text(group: list[Line]) -> str:
+    """A block as one line of running text, its printed rows joined in order."""
+    return " ".join(line.text for line in group)
+
+
 def _glossary_entries(part: Part, section_id: str) -> list[VocabularyEntry]:
     """The ``headword: definition`` entries a part prints, with their example lines."""
-    entries: list[list] = []
-    for line in part.lines:
-        head = _HEADWORD_RE.match(line.text)
-        if head:
-            entries.append([line.page, head.group(1).strip(), head.group(2).strip(), []])
+    entries: list[VocabularyEntry] = []
+    for group in _glossary_groups(part.lines):
+        head = _HEADWORD_RE.match(group[0].text)
+        if not head:
             continue
-        if not entries or not line.text.strip():
-            continue
-        if _NUMBERED_SENSE_RE.match(line.text.strip()):
-            entries[-1][2] = (entries[-1][2] + " " + line.text.strip()).strip()
-        else:
-            entries[-1][3].append(line.text)
-    return [
-        VocabularyEntry(
-            word=word,
-            page=page,
-            source=GLOSSARY,
-            section_id=section_id,
-            part=part.key,
-            part_title=part.title,
-            meaning_en=meaning,
-            examples=examples,
+        meaning = head.group(2).strip()
+        examples: list[str] = []
+        for line in group[1:]:
+            if _NUMBERED_SENSE_RE.match(line.text.strip()):
+                meaning = (meaning + " " + line.text.strip()).strip()
+            else:
+                examples.append(line.text)
+        entries.append(
+            VocabularyEntry(
+                word=head.group(1).strip(),
+                page=group[0].page,
+                source=GLOSSARY,
+                section_id=section_id,
+                part=part.key,
+                part_title=part.title,
+                meaning_en=meaning,
+                examples=examples,
+            )
         )
-        for page, word, meaning, examples in entries
-    ]
+    return entries
 
 
 def _practice_entries(part: Part, section_id: str) -> list[VocabularyEntry]:
-    """The words a part points at inside its own sentences.
+    """The words a part points at, each keeping the caption it is printed in.
 
-    One entry per word, in the order the book prints them.  A line that opens a headword
-    entry is skipped: its bold word is the headword of a glossary, not a practice word.
+    One entry per word, in the order the book prints them.  Every word keeps the whole
+    caption it sits in as its example: the sentence is the book's own context for the
+    word, and it belongs with it whether the book wrapped it onto one row or two.
     """
     entries: list[VocabularyEntry] = []
-    for line in part.lines:
-        if _HEADWORD_RE.match(line.text) or _PART_MARKER_RE.match(line.text):
+    for group in caption_groups(part.lines):
+        if _HEADWORD_RE.match(group[0].text) or _PART_MARKER_RE.match(group[0].text):
             continue
-        for word in line.highlights:
-            entries.append(
-                VocabularyEntry(
-                    word=word,
-                    page=line.page,
-                    source=PRACTICE,
-                    section_id=section_id,
-                    part=part.key,
-                    part_title=part.title,
+        example = _group_text(group)
+        for line in group:
+            for word in line.highlights:
+                entries.append(
+                    VocabularyEntry(
+                        word=word,
+                        page=line.page,
+                        source=PRACTICE,
+                        section_id=section_id,
+                        part=part.key,
+                        part_title=part.title,
+                        examples=[example],
+                    )
                 )
-            )
     return entries
 
 
@@ -444,30 +544,39 @@ def entries_by_section(
     return listed
 
 
-def vocabulary_page_lines(
+def vocabulary_page_view(
     doc,
     page_range: tuple[int, int],
     section_id: str,
-) -> list[Line] | None:
-    """The lines of the vocabulary page the reader shows.
+) -> tuple[list[Line], list[dict]] | None:
+    """The vocabulary page as the reader shows it: its lines, and the blocks they are in.
 
-    The same parts that teach words decide this: everything up to the last part that
-    teaches something is kept, and a part that only points elsewhere is not shown.  The
-    printed text stays in the textbook and in the provenance record.
+    The blocks come from the page itself, not from the length of a line: a part heading
+    is a block of its own, a picture caption is one block however many rows the book
+    wrapped it onto, and a printed entry is its headword with the lines under it.  A
+    part that teaches no words is left out, and with it the lines it covers.
 
-    Each line keeps the words the book points at, so the reader can set those in the
-    colour the book prints them rather than deciding for itself which words are new.
+    The printed text is untouched: the lines are exactly what the book prints, in the
+    order it prints them, and a block only says which of those lines were printed
+    together.
     """
     parts = vocabulary_page_parts(doc, page_range, section_id)
     if not parts:
         return None
-    shown: list[Line] = []
+    lines: list[Line] = []
+    blocks: list[dict] = []
     for part in parts:
         page = part.lines[0].page if part.lines else None
-        if page is not None:
-            shown.append(Line(page=page, text=part.heading))
-        shown.extend(part.lines)
-    return shown
+        if part.heading and page is not None:
+            lines.append(Line(page=page, text=part.heading))
+            blocks.append({"page": page, "lines": [part.heading], "kind": "part-heading"})
+        for group in part_groups(part):
+            lines.extend(group)
+            blocks.append(
+                {"page": group[0].page, "lines": [line.text for line in group],
+                 "kind": "example"}
+            )
+    return lines, blocks
 
 
 def line_targets(lines: list[Line]) -> list[str]:
