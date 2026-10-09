@@ -59,8 +59,8 @@ def write_json(path: Path, payload) -> None:
         handle.write("\n")
 
 
-def section_lines(doc, section) -> list[tuple[int, str]]:
-    lines: list[tuple[int, str]] = []
+def section_lines(doc, section) -> list[tuple]:
+    lines: list[tuple] = []
     # A conversation is set out as speaker names beside what is said, and the page also
     # carries the lesson's word bank and the exercise it closes with.  The conversation
     # extractor keeps the dialogue itself, one line per turn, and leaves the other two
@@ -70,8 +70,15 @@ def section_lines(doc, section) -> list[tuple[int, str]]:
         conversation = book.conversation_page_lines(doc, tuple(section.pages))
         if conversation is not None:
             return conversation
+    # Every other page is read with the position of each row, so a paragraph the book
+    # wrapped over several rows is put back together and a row printed as something of
+    # its own - an exercise line, a table cell, a panel beside the text - is not folded
+    # into the one above it.
     for page in range(section.pages[0], section.pages[1] + 1):
-        lines.extend((page, text) for text in book.page_lines(doc, page))
+        lines.extend(
+            (page, text, top, left)
+            for text, top, left in book.page_lines_with_position(doc, page)
+        )
     return lines
 
 

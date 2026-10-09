@@ -142,19 +142,18 @@ input[type='search'] {
   select,
   input[type='text'],
   input[type='search'] {
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    backdrop-filter: blur(var(--glass-blur));
-    /* A translucent layer must not let what is behind it tint the text on top. */
-    -webkit-backdrop-saturate(1.4) brightness(1.06);
-    backdrop-saturate(1.4) brightness(1.06);
+    /* A translucent layer must not let what is behind it tint the text on top, so the
+       backdrop is brightened and re-saturated as it is blurred. */
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4) brightness(1.06);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.4) brightness(1.06);
   }
 
   /* The reader is the one surface large enough for the stronger blur to pay off, and the
      card it sits in needs it too so the two layers do not read as separate materials. */
   .card,
   .reader-body {
-    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
-    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(1.4) brightness(1.06);
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(1.4) brightness(1.06);
   }
 }
 
@@ -280,6 +279,19 @@ input[type='search'] {
 .reader-head h2 { margin: 0; }
 .reader-head p { margin: 2px 0 0; font-size: 0.85rem; }
 
+/* The card is wider than the eye can follow without losing the line, so everything the
+   reader holds is set to one reading measure and centred: the heading, the text, the
+   controls and the vocabulary share a column, so none of them lines up against an edge
+   the text does not use.  The measure is in rem rather than in characters, so it is the
+   same column for every one of them whatever type size each sets itself in, and it grows
+   with the reader's own text-size setting.  A phone has no line this long to give up, so
+   the measure never applies there and the text keeps the full width of the screen. */
+.reader { --reader-measure: 37rem; }
+.reader > * {
+  max-width: var(--reader-measure);
+  margin-inline: auto;
+}
+
 .reader-body {
   margin-block-start: 14px;
   max-height: 52vh;
@@ -302,6 +314,11 @@ input[type='search'] {
   border-inline-start: 3px solid transparent;
   transition: background-color 0.2s, border-color 0.2s;
 }
+/* The panel already spaces the text off its own edges, so the paragraph at either end
+   does not add a second margin where nothing follows it: the first line of a section and
+   the last line sit the same distance from the panel as the lines between them. */
+.reader-body > .paragraph:first-child { margin-block-start: 0; }
+.reader-body > .paragraph:last-child { margin-block-end: 0; }
 .paragraph.active { background: var(--active-bg); border-inline-start-color: var(--active-line); }
 /* The title of a reading passage is the book's own heading for it: it stands above the
    passage as a heading rather than opening the first paragraph. */

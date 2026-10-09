@@ -5,13 +5,13 @@
  "sourceAudioFile": "Listening & Speaking2.mp3",
  "duration": 85.238,
  "method": "whisper-word-timestamps + dynamic-programming forced alignment",
- "confidence": 0.3264,
+ "confidence": 0.3585,
  "mapping": {
   "status": "confirmed",
   "method": "lesson folder 'lesson-02' + file name 'listening and speaking' (match 0.90)",
-  "contentScore": 0.869,
+  "contentScore": 0.8655,
   "contentBest": {
-   "score": 0.869,
+   "score": 0.8655,
    "lessonId": "lesson-02",
    "sectionId": "listening-and-speaking"
   },
@@ -963,102 +963,6 @@
    "spokenAs": null
   },
   {
-   "word": "B.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Listen",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "following",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "conversations",
-   "start": 53.78,
-   "end": 54.4,
-   "match": "fuzzy",
-   "similarity": 0.96,
-   "spokenAs": " Conversation"
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "tick",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "what",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "speaker",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "is",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
    "word": "Pair",
    "start": null,
    "end": null,
@@ -1169,30 +1073,6 @@
    "match": null,
    "similarity": null,
    "spokenAs": null
-  },
-  {
-   "word": "going",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "do.",
-   "start": 55.74,
-   "end": 56.22,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " Do"
   },
   {
    "word": "and",
@@ -1411,102 +1291,6 @@
    "spokenAs": " Is"
   },
   {
-   "word": "B.",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "Listen",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": 61.24,
-   "end": 61.54,
-   "match": "exact",
-   "similarity": 1.0,
-   "spokenAs": " to"
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "following",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "conversations",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "and",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "tick",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "what",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "the",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "speaker",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "is",
-   "start": 63.44,
-   "end": 63.72,
-   "match": "fuzzy",
-   "similarity": 0.667,
-   "spokenAs": " it's"
-  },
-  {
    "word": "Pair",
    "start": null,
    "end": null,
@@ -1580,11 +1364,11 @@
   },
   {
    "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
+   "start": 61.24,
+   "end": 61.54,
+   "match": "exact",
+   "similarity": 1.0,
+   "spokenAs": " to"
   },
   {
    "word": "describe",
@@ -1604,30 +1388,6 @@
   },
   {
    "word": "places,",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "going",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "to",
-   "start": null,
-   "end": null,
-   "match": null,
-   "similarity": null,
-   "spokenAs": null
-  },
-  {
-   "word": "do.",
    "start": null,
    "end": null,
    "match": null,
@@ -2084,77 +1844,49 @@
   },
   {
    "first": 116,
-   "last": 118,
+   "last": 136,
    "start": 51.62,
-   "end": 52.02,
-   "text": "It was B."
+   "end": 55.02,
+   "text": "It was Pair up and add 2 turns to the conversation by asking about the size and quality of the dress."
   },
   {
-   "first": 119,
-   "last": 146,
-   "start": 53.78,
-   "end": 56.22,
-   "text": "Listen to the following conversations and tick what the speaker is Pair up and add 2 turns to the conversation by asking about the size going to do."
-  },
-  {
-   "first": 147,
-   "last": 151,
-   "start": null,
-   "end": null,
-   "text": "and quality of the dress."
-  },
-  {
-   "first": 152,
-   "last": 159,
+   "first": 137,
+   "last": 144,
    "start": 56.22,
    "end": 58.88,
    "text": "You may use the adjectives in the box."
   },
   {
-   "first": 160,
-   "last": 168,
+   "first": 145,
+   "last": 153,
    "start": null,
    "end": null,
    "text": "Size: long, large Quality: beautiful, nice Conversation 2 1."
   },
   {
-   "first": 169,
-   "last": 171,
+   "first": 154,
+   "last": 156,
    "start": 58.88,
    "end": 59.0,
    "text": "She likes 2."
   },
   {
-   "first": 172,
-   "last": 174,
+   "first": 157,
+   "last": 176,
    "start": 59.0,
-   "end": 60.76,
-   "text": "Cooking is B."
+   "end": 61.54,
+   "text": "Cooking is Pair up and choose 3 adjectives in box 2 to describe people, places, and fruits in box 1."
   },
   {
-   "first": 175,
-   "last": 201,
-   "start": 61.24,
-   "end": 63.72,
-   "text": "Listen to the following conversations and tick what the speaker is Pair up and choose 3 adjectives in box 2 to describe people, places, going to do."
-  },
-  {
-   "first": 202,
-   "last": 206,
-   "start": null,
-   "end": null,
-   "text": "and fruits in box 1."
-  },
-  {
-   "first": 207,
-   "last": 212,
+   "first": 177,
+   "last": 182,
    "start": 65.72,
    "end": 66.3,
    "text": "Compare your answers with your friend's."
   },
   {
-   "first": 213,
-   "last": 241,
+   "first": 183,
+   "last": 211,
    "start": 67.74,
    "end": 74.34,
    "text": "my best friend, apple, our school, small, green, yellow, medium, our English teacher, Boostan Park, fresh, red, kind, careful, neat, pepper nice, beautiful, long, helpful Box 1 Box 2"
@@ -2208,13 +1940,8 @@
   },
   {
    "start": 61.54,
-   "end": 63.44,
-   "transcript": " cook?  No,  actually"
-  },
-  {
-   "start": 63.72,
    "end": 65.72,
-   "transcript": " very  easy.  Who  helps"
+   "transcript": " cook?  No,  actually  it's  very  easy.  Who  helps"
   },
   {
    "start": 66.3,

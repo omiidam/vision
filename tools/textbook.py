@@ -239,6 +239,97 @@ OVERLAP = 0.4
 #: the page's own body size is a heading rather than a line of the passage.
 HEADING_RATIO = 1.4
 
+#: The resolution a page is looked at when telling the text it shows from the text a
+#: panel was printed over.  Fine enough to see the smallest print in the book.
+INK_DPI = 150
+
+#: How far a rendered pixel may differ from a line's own ink colour and still count as
+#: that ink.  Rendering is not exact, so the match is a tolerance rather than equality.
+INK_TOLERANCE = 60
+
+#: The share of a line's box its own ink has to cover to count as printed there.  Ink is
+#: thin strokes, so even large bold print covers only part of the box; this is the least
+#: that can be, enough to tell a printed line from one with no ink of that colour at all.
+MIN_INK_FRACTION = 0.004
+
+#: The share above which a colour is filling the box rather than ink in it.  An opaque
+#: panel that covers a line fills nearly the whole of the line's box, so a colour that
+#: covers this much is the panel drawn over the text and not the text itself - which is
+#: what tells a covered line from one printed in the panel's own colour.
+MAX_INK_FRACTION = 0.6
+
+
+class _PageInk:
+    """What a printed page shows, read back from the page as it renders.
+
+    Some pages carry two layers of text on top of one another.  The publisher drew one,
+    laid a coloured panel over it, and printed the other on the panel.  The covered layer
+    is still in the file's text layer, so reading the page by its text layer alone would
+    print words the book does not show, sitting among the words it does show.
+
+    A line is therefore taken as shown only when one of the colours it is set in appears
+    in its box as *ink* - thin strokes, part of the box - rather than as a fill.  A line
+    the page covers has none of its ink left: what is in its box is the panel, which fills
+    the box rather than drawing in it.  The ordinary case is untouched, because a box with
+    words printed on top of it has those words as ink in their own right.
+
+    This reads the file rather than trusting it: text can be drawn under a panel with the
+    same colour the panel is printed in, and then no draw order told from the file's text
+    layer would find it, but the picture still shows a filled box and no ink.
+    """
+
+    def __init__(self, page: pymupdf.Page):
+        self._pix = page.get_pixmap(dpi=INK_DPI)
+        self._scale = self._pix.width / page.rect.width if page.rect.width else 1.0
+        self._shown: dict[tuple, bool] = {}
+
+    def _line_colours(self, line: dict) -> list[tuple[int, int, int]]:
+        colours: list[tuple[int, int, int]] = []
+        for span in line.get("spans", []):
+            value = span.get("color")
+            if value is None:
+                continue
+            colours.append(((value >> 16) & 255, (value >> 8) & 255, value & 255))
+        return colours
+
+    def _ink_fraction(self, bbox, colour: tuple[int, int, int]) -> float:
+        r, g, b = colour
+        x0, y0, x1, y1 = bbox
+        px0 = max(0, int(x0 * self._scale))
+        py0 = max(0, int(y0 * self._scale))
+        px1 = min(self._pix.width, int(x1 * self._scale) + 1)
+        py1 = min(self._pix.height, int(y1 * self._scale) + 1)
+        total = max(1, (px1 - px0) * (py1 - py0))
+        found = 0
+        for y in range(py0, py1):
+            for x in range(px0, px1):
+                pixel = self._pix.pixel(x, y)
+                if (
+                    abs(pixel[0] - r) <= INK_TOLERANCE
+                    and abs(pixel[1] - g) <= INK_TOLERANCE
+                    and abs(pixel[2] - b) <= INK_TOLERANCE
+                ):
+                    found += 1
+        return found / total
+
+    def shows(self, line: dict) -> bool:
+        """True when the page shows this line: one of its inks is drawn in its box."""
+        key = tuple(round(value, 1) for value in line["bbox"])
+        cached = self._shown.get(key)
+        if cached is not None:
+            return cached
+        result = False
+        for colour in self._line_colours(line):
+            fraction = self._ink_fraction(line["bbox"], colour)
+            if MIN_INK_FRACTION <= fraction <= MAX_INK_FRACTION:
+                result = True
+                break
+        # A line with no colour recorded cannot be judged from the page; keep it.
+        if not self._line_colours(line):
+            result = True
+        self._shown[key] = result
+        return result
+
 
 def page_rows(doc: pymupdf.Document, printed_page: int) -> list[tuple[str, list[dict]]]:
     """Return each visible line of a printed page with the spans it was built from.
@@ -268,16 +359,18 @@ def page_geometry_rows(
     ]
 
 
-def _visual_rows(
+def _visual_bands(
     doc: pymupdf.Document, printed_page: int
-) -> list[list[tuple[float, str, list[dict]]]]:
-    """The page's visible lines banded into visual rows, each ordered left to right.
+) -> list[list[tuple[float, float, str, list[dict]]]]:
+    """The page's visible lines banded into visual rows, in reading order.
 
     Text drawn a couple of points apart on the same row - this book sets a speaker's
-    name beside what they say that way - shares one row here.  Each entry of a row is
-    ``(left edge, text, spans)``.
+    name beside what they say that way - shares one band here.  Each entry keeps its own
+    top edge and left edge, which is what tells a row the book wrapped onto the next line
+    from a row it printed beside the one above.
     """
     page = doc[printed_page - 1]
+    ink = _PageInk(page)
     collected: list[tuple[float, float, str, list[dict]]] = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
@@ -290,17 +383,50 @@ def _visual_rows(
             # drop lines that are mostly outside the printable text column
             if x1 < 40 or x0 > 580:
                 continue
+            # drop text an opaque panel is printed over, which the page does not show
+            if not ink.shows(line):
+                continue
             collected.append((y0, x0, text, list(line["spans"])))
     collected.sort(key=lambda item: (item[0], item[1]))
-    rows: list[list[tuple[float, float, str, list[dict]]]] = []
+    bands: list[list[tuple[float, float, str, list[dict]]]] = []
     for item in collected:
-        if rows and item[0] - rows[-1][-1][0] < 6:
-            rows[-1].append(item)
+        if bands and item[0] - bands[-1][-1][0] < 6:
+            bands[-1].append(item)
         else:
-            rows.append([item])
+            bands.append([item])
+    return bands
+
+
+def page_lines_with_position(
+    doc: pymupdf.Document, printed_page: int
+) -> list[tuple[str, float, float]]:
+    """Each visible line of a printed page with the top and left edge it sits at.
+
+    The text is exactly what :func:`page_lines` returns, in the same order.  The position
+    travels with it so the block builder can tell a row the book wrapped onto the line
+    below - same edge, a few points down - from a row it printed as something of its own,
+    which sits further down or in another column.  Reading that off the page is what keeps
+    a paragraph the book set over five rows from becoming five paragraphs.
+    """
     return [
-        [(x0, text, spans) for _, x0, text, spans in sorted(row, key=lambda i: i[1])]
-        for row in rows
+        (text, y0, x0)
+        for band in _visual_bands(doc, printed_page)
+        for y0, x0, text, _spans in sorted(band, key=lambda item: item[1])
+    ]
+
+
+def _visual_rows(
+    doc: pymupdf.Document, printed_page: int
+) -> list[list[tuple[float, str, list[dict]]]]:
+    """The page's visible lines banded into visual rows, each ordered left to right.
+
+    Text drawn a couple of points apart on the same row - this book sets a speaker's
+    name beside what they say that way - shares one row here.  Each entry of a row is
+    ``(left edge, text, spans)``.
+    """
+    return [
+        [(x0, text, spans) for _, x0, text, spans in sorted(band, key=lambda i: i[1])]
+        for band in _visual_bands(doc, printed_page)
     ]
 
 
@@ -367,6 +493,7 @@ def _printed_lines(
 ) -> list[tuple[float, float, float, str]]:
     """Every visible line of a page with the box it was printed in, in reading order."""
     page = doc[printed_page - 1]
+    ink = _PageInk(page)
     collected: list[tuple[float, float, float, str]] = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
@@ -377,6 +504,8 @@ def _printed_lines(
                 continue
             x0, y0, x1, _ = line["bbox"]
             if x1 < 40 or x0 > 580:
+                continue
+            if not ink.shows(line):
                 continue
             collected.append((round(y0, 1), round(x0, 1), round(x1, 1), text))
     collected.sort(key=lambda item: (item[0], item[1]))
@@ -399,6 +528,7 @@ def _printed_blocks(doc: pymupdf.Document, printed_page: int) -> list[dict]:
     is what tells a heading from the body text under it.
     """
     page = doc[printed_page - 1]
+    ink = _PageInk(page)
     blocks: list[dict] = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
@@ -410,6 +540,8 @@ def _printed_blocks(doc: pymupdf.Document, printed_page: int) -> list[dict]:
                 continue
             x0, y0, x1, _ = line["bbox"]
             if x1 < 40 or x0 > 580:
+                continue
+            if not ink.shows(line):
                 continue
             rows.append((round(y0, 1), round(x0, 1), round(x1, 1), text,
                          max(span["size"] for span in line["spans"])))

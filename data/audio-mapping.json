@@ -98,11 +98,11 @@
    "lessonId": "lesson-02",
    "sectionId": "listening-and-speaking",
    "rule": "filename",
-   "contentScore": 0.869,
+   "contentScore": 0.8655,
    "status": "confirmed",
    "method": "lesson folder 'lesson-02' + file name 'listening and speaking' (match 0.90)",
    "contentBest": {
-    "score": 0.869,
+    "score": 0.8655,
     "lessonId": "lesson-02",
     "sectionId": "listening-and-speaking"
    },
