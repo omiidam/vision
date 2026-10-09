@@ -24,14 +24,14 @@ exactly Lesson 1 and Lesson 2.
 | lesson-01 | New Words & Expressions | 20-21 | Learning Vocabulary of Reading | 130 | 105 | 98 | 7 | 74.7s | confirmed |
 | lesson-01 | Reading | 22 | Reading Comprehension / Endangered Animals | 160 | 156 | 155 | 1 | 83.5s | confirmed |
 | lesson-01 | Grammar | 24-29 | Future tense (will) / See Also (be going to) | 0 | 0 | 0 | 0 | 0.0s | - |
-| lesson-01 | Listening & Speaking | 30-31 | Talking about Schedules/Plans | 245 | 87 | 79 | 8 | 75.6s | confirmed |
+| lesson-01 | Listening & Speaking | 30-31 | Talking about Schedules/Plans | 215 | 85 | 80 | 5 | 75.6s | confirmed |
 | lesson-01 | Writing | 34-39 | Noun Singular & Plural Types of Nouns Noun Markers | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Get Ready | 44-46 | Introduction to the Lesson | 0 | 0 | 0 | 0 | 0.0s | - |
 | lesson-02 | Conversation | 47 | Visiting Iranian National Observatory | 165 | 153 | 151 | 2 | 86.3s | confirmed |
 | lesson-02 | New Words & Expressions | 48-49 | Learning Vocabulary of Reading | 156 | 111 | 107 | 4 | 76.2s | confirmed |
 | lesson-02 | Reading | 50 | Reading Comprehension / A Wonderful Liquid | 171 | 168 | 165 | 3 | 87.3s | confirmed |
 | lesson-02 | Grammar | 52-57 | See Also (comparative and / Adjectives / superlative adjectives) | 0 | 0 | 0 | 0 | 0.0s | - |
-| lesson-02 | Listening & Speaking | 58-59 | Asking about Details | 242 | 79 | 67 | 12 | 85.2s | confirmed |
+| lesson-02 | Listening & Speaking | 58-59 | Asking about Details | 212 | 76 | 66 | 10 | 85.2s | confirmed |
 | lesson-02 | Writing | 62-67 | Adjective Kinds of Adjectives Place of Adjectives Spelling Hints | 0 | 0 | 0 | 0 | 0.0s | - |
 
 Text for every section is extracted verbatim from the printed pages. `exact` counts words
@@ -39,7 +39,7 @@ whose recognised form matched the printed word character for character; `fuzzy` 
 matched despite a recognition difference (for example the recording says "cut trees" where the
 book prints "cut down trees" - the book is displayed).
 
-Overall word-timing coverage across every section with audio: **954/1376 (69.3%)**.
+Overall word-timing coverage across every section with audio: **949/1316 (72.1%)**.
 
 ## Audio files detected and mapped
 
@@ -50,7 +50,7 @@ Overall word-timing coverage across every section with audio: **954/1376 (69.3%)
 | `new words and expressions1.mp3` | 74.7s | lesson-01 | new-words-and-expressions | confirmed | file name; transcript overlap 0.951 |
 | `reading1.mp3` | 83.5s | lesson-01 | reading | confirmed | file name; transcript overlap 0.991 |
 | `conversation2.mp3` | 86.3s | lesson-02 | conversation | confirmed | file name; transcript overlap 0.978 |
-| `Listening & Speaking2.mp3` | 85.2s | lesson-02 | listening-and-speaking | confirmed | file name; transcript overlap 0.869 |
+| `Listening & Speaking2.mp3` | 85.2s | lesson-02 | listening-and-speaking | confirmed | file name; transcript overlap 0.866 |
 | `New Words & Expressions2.mp3` | 76.2s | lesson-02 | new-words-and-expressions | confirmed | file name; transcript overlap 0.970 |
 | `reading2.mp3` | 87.3s | lesson-02 | reading | confirmed | file name; transcript overlap 0.994 |
 
