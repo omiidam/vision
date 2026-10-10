@@ -52,6 +52,8 @@ tools/                      ingestion pipeline (Python)
   transcribe.py             faster-whisper word-level timestamps
   audio_map.py              lesson-folder + file-name based audio -> section mapping
   align.py                  forced alignment of textbook words onto the audio timeline
+  meanings.py               the curated Persian glossary, and the checks that keep it honest
+  meanings_fa.json          the Persian meanings themselves (hand-written; see above)
   build_content.py          writes the whole data/ tree
   validate.py               regenerates the validation report
 
@@ -155,8 +157,16 @@ python tools/validate.py 10th-class       # rewrites VALIDATION.md
 
 `tools/build_content.py` never invents content: section titles come from the book's
 table of contents, section text comes from the book's pages, and vocabulary comes from the
-printed New Words & Expressions lists. Persian meanings are **not** in the PDF text layer,
-so `meaningFa` is deliberately empty rather than filled in.
+printed New Words & Expressions lists.
+
+Persian meanings are the one exception. The PDF has **no Persian text layer at all** - the
+vocabulary pages carry only the English words and their examples, in Times New Roman and
+Comic Sans, with no Arabic font anywhere in the document - so the Persian half of the
+printed page simply is not there to read. `tools/meanings_fa.json` supplies it instead: a
+curated glossary keyed by the words exactly as the book prints them, applied by
+`tools/meanings.py` and checked in both directions. A key the book no longer prints stops
+the build; a word the book prints with no key is reported so a gap is visible rather than
+silent. Everything else in `data/` is still lifted verbatim from the source.
 
 The Whisper model is downloaded once into `.work/models/` (git-ignored).
 

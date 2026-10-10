@@ -217,7 +217,15 @@ test('vocabulary comes from the book and invents no Persian text', () => {
     )
     for (const item of vocab.items) {
       assert.ok(item.word.length > 0)
-      assert.equal(item.meaningFa, '', 'Persian meanings are not in the source, so they stay empty')
+      // The PDF carries no Persian, so the meaning is the one field that is curated rather
+      // than extracted - and a glossary is only worth having if it covers every word the
+      // book teaches.  Written in Persian script, not transliterated Latin.
+      assert.ok(item.meaningFa.length > 0, `${item.word} has no Persian meaning`)
+      assert.match(
+        item.meaningFa,
+        /[\u0600-\u06FF]/,
+        `${item.word}: the Persian meaning is not in Persian script`,
+      )
       // The book defines the words of its New Words page and leaves a word bank word
       // undefined, so only a defined entry is held to having a meaning and an example.
       if (item.source === 'glossary') {
@@ -239,8 +247,12 @@ test('each part is headed by the letter and title the book prints for it', () =>
   assert.match(render, /item\.partTitle/)
   assert.match(render, /vocab-part/)
   // The words stay inside the part they are printed in: one section per group, in the
-  // order the data lists them, and nothing dropped between two groups.
-  assert.match(render, /group\.items\.map\(itemHtml\)\.join\(''\)/)
+  // order the data lists them, and nothing dropped between two groups.  A lettered part
+  // is rendered gloss-only, so every entry of a group goes through the same renderer.
+  assert.match(
+    render,
+    /group\.items\.map\(\(item\) => itemHtml\(item, lettered\(group\)\)\)\.join\(''\)/,
+  )
 })
 
 test('every block of the New Words page says what the book prints it as', () => {

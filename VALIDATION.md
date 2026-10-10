@@ -106,7 +106,7 @@ the textbook; it is reported as an unspoken stretch rather than being shown as b
 ## Files that could not be processed
 
 - `11th.pdf` and `12th.pdf` sit in the parent folder and were **not** processed: this version is Grade 10 only, as specified.
-- The Persian script in the PDF has no usable text layer, so Persian headings and Persian vocabulary glosses are not available. They are left empty rather than guessed, and `vocabulary.json` keeps empty `meaningFa` fields for that purpose.
+- The Persian script in the PDF has no usable text layer, so Persian headings are not available and are left out rather than guessed. The Persian vocabulary meanings are also absent from the PDF, so they come from the curated glossary in `tools/meanings_fa.json` instead: written by hand, keyed to the words as printed, and checked against the words the extractor actually found.
 - No file in the source folder failed to process.
 
 ## No placeholder content
@@ -114,5 +114,5 @@ the textbook; it is reported as an unspoken stretch rather than being shown as b
 * `npm test` fails the build if any section text is shorter than 20 characters or matches
   `TODO` / `Lorem ipsum` / `placeholder`.
 * It also fails if any vocabulary entry lacks a printed meaning or example, if any
-  `meaningFa` is non-empty (the source has none), if a section points at an audio file that
-  is not on disk, or if any recording is unmapped.
+  `meaningFa` is empty or is not written in Persian script, if a section points at an audio
+  file that is not on disk, or if any recording is unmapped.

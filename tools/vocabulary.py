@@ -171,10 +171,11 @@ class VocabularyEntry:
     """One word a lesson teaches.
 
     Only ``word``, ``page``, ``source`` and ``section_id`` come from the book, together
-    with the part of the page the word was found in.  The remaining fields are the slots
-    the reader will fill in later (Persian meaning, pronunciation, examples, audio); they
-    are written empty rather than omitted so that the shape of a section's vocabulary does
-    not change when they are filled.
+    with the part of the page the word was found in.  ``meaning_fa`` is the one field the
+    book does not supply: the PDF carries no Persian text layer, so it is looked up in the
+    curated glossary rather than extracted.  The rest (pronunciation, audio) are written
+    empty rather than omitted so that the shape of a section's vocabulary does not change
+    when they are filled.
     """
 
     word: str
@@ -185,6 +186,7 @@ class VocabularyEntry:
     part_title: str = WORD_BANK_PART_TITLE
     position: int = 0
     meaning_en: str = ""
+    meaning_fa: str = ""
     examples: list[str] = field(default_factory=list)
 
     def as_json(self, grade: int, lesson_id: str, listed_in: str) -> dict:
@@ -203,7 +205,7 @@ class VocabularyEntry:
             "part": self.part,
             "partTitle": self.part_title,
             "meaningEn": self.meaning_en,
-            "meaningFa": "",
+            "meaningFa": self.meaning_fa,
             "pronunciation": "",
             "examples": list(self.examples),
             "audio": None,
@@ -542,6 +544,7 @@ def vocabulary_page_parts(doc, page_range: tuple[int, int], section_id: str) -> 
 def entries_by_section(
     doc,
     section_pages: list[tuple[str, tuple[int, int]]],
+    meaning=None,
 ) -> dict[str, list[VocabularyEntry]]:
     """The vocabulary each section of a lesson lists, keyed by section id.
 
@@ -549,12 +552,23 @@ def entries_by_section(
     but those words are the lesson's vocabulary rather than that section's, so they are
     collected here and listed on the vocabulary page.  No other section repeats them: a
     section's own list holds only the words it teaches itself.
+
+    ``meaning`` is the Persian glossary applied to each word; without it the entries come
+    back with an empty ``meaning_fa``, which is only ever what a caller debugging the
+    extraction wants.
     """
+    gloss = (lambda word: "") if meaning is None else meaning
     word_bank: list[VocabularyEntry] = []
     for section_id, pages in section_pages:
         for page, word in word_bank_entries(doc, pages):
             word_bank.append(
-                VocabularyEntry(word=word, page=page, source=WORD_BANK, section_id=section_id)
+                VocabularyEntry(
+                    word=word,
+                    page=page,
+                    source=WORD_BANK,
+                    section_id=section_id,
+                    meaning_fa=gloss(word),
+                )
             )
 
     listed: dict[str, list[VocabularyEntry]] = {
@@ -568,9 +582,13 @@ def entries_by_section(
         return listed
 
     # The page's own parts come first, in the order they are printed, and the lesson's
-    # word bank words follow them, so the page reads as the book sets it out.
+    # word bank words follow them, so the page reads as the book sets it out.  The glossary
+    # is applied here rather than inside the page parser: the parser's job is to find the
+    # words the book printed, and the Persian beside them is not on the page at all.
     own: list[VocabularyEntry] = []
     for part in vocabulary_page_parts(doc, vocabulary_page, NEW_WORDS_SECTION_ID):
+        for entry in part.entries:
+            entry.meaning_fa = gloss(entry.word)
         own.extend(part.entries)
     listed[NEW_WORDS_SECTION_ID] = _renumber(own + word_bank)
     return listed

@@ -61,7 +61,10 @@ test('every word of every lesson is in the bank, in the book order', () => {
     // neither the order nor the count can drift.
     const render = LESSON.slice(LESSON.indexOf('private renderVocabulary'))
     const list = render.slice(render.indexOf('const itemHtml'))
-    assert.match(list, /group\.items\.map\(itemHtml\)\.join\(''\)/)
+    assert.match(
+      list,
+      /group\.items\.map\(\(item\) => itemHtml\(item, lettered\(group\)\)\)\.join\(''\)/,
+    )
     assert.match(list, /<div class="vocab-item">\s*<dt lang="en" dir="ltr">\$\{headword\}<\/dt>/)
     // No sorting anywhere: the bank is the book's order.
     assert.doesNotMatch(LESSON, /\.sort\(/)
@@ -74,16 +77,23 @@ test('every word of every lesson is in the bank, in the book order', () => {
 })
 
 test('the bank is its own section, apart from the parts of the New Words page', () => {
-  // The lettered parts are printed in the reader above; only the unlettered groups are
-  // listed here, so the bank never repeats Part A or Part B.
-  assert.match(LESSON, /const bank = groups\.filter\(\(group\) => !\/\^\[a-z\]\$\/\.test\(group\.key\)\)/)
+  // Every part is listed, but a lettered one is gloss-only: the book already prints its
+  // English definition and example above, in the text, and repeating those would read the
+  // page twice.  Only the Persian - which the PDF does not carry - is added.
+  assert.match(LESSON, /const lettered = \(group: \{ key: string \}\) => \/\^\[a-z\]\$\/\.test\(group\.key\)/)
   assert.match(LESSON, /<section class="vocab-part" data-part="\$\{escapeHtml\(group\.key\)\}">/)
-  // A word the book gives no gloss for is shown on its own; nothing is said about it.
+  // A gloss-only entry withholds the printed definition and the example, and keeps the
+  // Persian; a bank entry is not gloss-only, so it shows whatever the data carries.
+  assert.match(LESSON, /const meaning =\s*\n\s*!glossOnly && item\.meaningEn/)
+  assert.match(LESSON, /const examples = glossOnly\s*\n\s*\? ''/)
+  // A word the book gives no English gloss for is shown on its own; nothing is said about
+  // it in English.  The Persian beside it is supplied by the curated glossary, so unlike
+  // the printed definition it is expected to be there.
   assert.doesNotMatch(LESSON, /not given in the book/i)
   for (const lessonId of LESSONS) {
     for (const item of bank(lessonId)) {
       assert.equal(item.meaningEn, '', `${lessonId}: ${item.word} gained a definition`)
-      assert.equal(item.meaningFa, '')
+      assert.ok(item.meaningFa.length > 0, `${lessonId}: ${item.word} has no Persian meaning`)
     }
   }
 })

@@ -585,43 +585,54 @@ export class LessonView {
     }
 
     // The lettered parts are already shown as the textbook prints them, in the text
-    // above, so listing them again here would read the page twice.  The word bank is the
-    // one list here that the text does not contain: it is printed beside the conversation
-    // and other sections, not on this page, so it has nowhere else to be read.
-    const bank = groups.filter((group) => !/^[a-z]$/.test(group.key))
+    // above: their English definitions and example sentences are the book's own, and
+    // listing them again would read the page twice.  The Persian is different - the PDF
+    // carries none at all, so for those parts it appears nowhere above and there is
+    // nothing to repeat.  Every part is therefore listed, but a lettered one shows only
+    // its headword and its Persian gloss, and leaves the English to the text.
+    const lettered = (group: { key: string }) => /^[a-z]$/.test(group.key)
 
-    const itemHtml = (item: VocabularyEntry) => {
+    const itemHtml = (item: VocabularyEntry, glossOnly = false) => {
       const headword = escapeHtml(item.word)
-      // The Persian gloss is empty in the source book, so it is only rendered when
-      // there is something to show; it carries dir="rtl" and lang="fa" on its own.
+
+      // The Persian gloss is not in the PDF at all, so it is supplied by the curated
+      // glossary the pipeline applies; a word with no gloss still renders nothing.  It
+      // carries dir="rtl" and lang="fa" on its own, so it is right-to-left whichever way
+      // the page is set.
       const persian = item.meaningFa
         ? `<span class="meaning-fa" lang="fa" dir="rtl">${escapeHtml(item.meaningFa)}</span>`
         : ''
       // A word the book lists without defining it has no definition to show.  Saying so
       // would read as a gap in the book, so nothing is shown in its place and the word
       // stands on its own.
-      const meaning = item.meaningEn
-        ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>`
-        : ''
+      const meaning =
+        !glossOnly && item.meaningEn
+          ? `<span lang="en" dir="ltr">${escapeHtml(item.meaningEn)}</span>`
+          : ''
+      const examples = glossOnly
+        ? ''
+        : item.examples
+            .map((example) => `<span class="example" lang="en" dir="ltr">${escapeHtml(example)}</span>`)
+            .join('')
       return `
       <div class="vocab-item">
         <dt lang="en" dir="ltr">${headword}</dt>
         <dd>
           ${meaning}
           ${persian}
-          ${item.examples.map((example) => `<span class="example" lang="en" dir="ltr">${escapeHtml(example)}</span>`).join('')}
+          ${examples}
         </dd>
       </div>`
     }
 
     host.innerHTML = `
-      ${bank
+      ${groups
         .map(
           (group) => `
         <section class="vocab-part" data-part="${escapeHtml(group.key)}">
           <h4>${escapeHtml(group.title)}</h4>
           <dl class="vocab">
-            ${group.items.map(itemHtml).join('')}
+            ${group.items.map((item) => itemHtml(item, lettered(group))).join('')}
           </dl>
         </section>`,
         )

@@ -1,0 +1,59 @@
+{
+  "_about": [
+    "The Persian meanings of the vocabulary, written by hand.",
+    "",
+    "The PDF has no Persian text layer at all: the vocabulary pages carry only the English",
+    "words and their example sentences, in Times New Roman and Comic Sans, with no Arabic",
+    "font anywhere in the document.  The printed Iranian textbook shows the meaning beside",
+    "each word, but that half of the page is simply not in this file, so the meanings here",
+    "are supplied rather than extracted - the one part of the content tree that is not read",
+    "out of the book.",
+    "",
+    "The keys are the words exactly as the book prints them, including its capitalisation,",
+    "because that is what the extractor produces and what the reader matches on.  A key the",
+    "book no longer prints is a stale entry and fails the build; a word the book prints",
+    "without a key here is reported so the gap is visible rather than silent."
+  ],
+  "grade-10": {
+    "lesson-01": {
+      "Earth": "زمین",
+      "tiger": "ببر",
+      "Forest": "جنگل",
+      "destroying": "نابود کردن",
+      "died out": "منقرض شدن",
+      "Pay attention": "توجه کن",
+      "natural": "طبیعی",
+      "Plain": "دشت",
+      "hope": "امیدوار بودن",
+      "a few": "چند عدد؛ اندک",
+      "human": "انسان",
+      "instead": "به جای آن",
+      "future": "آینده",
+      "endangered": "در خطر انقراض",
+      "alive": "زنده",
+      "increase": "زیاد شدن؛ افزایش یافتن",
+      "hear": "شنیدن",
+      "protect": "محافظت کردن"
+    },
+    "lesson-02": {
+      "liquid": "مایع",
+      "drops": "چکه‌ها",
+      "cells": "سلول‌ها",
+      "thousand": "هزار",
+      "microbes": "میکروب‌ها",
+      "Doing": "انجام دادن",
+      "exercise": "ورزش کردن؛ تمرین",
+      "clear": "شفاف؛ روشن",
+      "pumps": "پمپاژ می‌کند",
+      "healthy": "سالم؛ تندرست",
+      "defend": "دفاع کردن",
+      "carry": "حمل کردن",
+      "collect": "جمع کردن",
+      "fact": "واقعیت",
+      "near": "نزدیک",
+      "rocky": "صخره‌ای",
+      "orbit": "مدار",
+      "powerful": "قدرتمند"
+    }
+  }
+}

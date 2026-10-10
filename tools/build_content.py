@@ -14,8 +14,9 @@ Output layout (committed to the repository; no lesson content is hardcoded in th
 
     audio/grade-10/lesson-01/<section-id>.mp3
 
-Every field is either lifted verbatim from the textbook PDF or derived from a transcript;
-nothing is written by hand.
+Every field is either lifted verbatim from the textbook PDF or derived from a transcript,
+except the Persian meanings: the PDF has no Persian text layer, so those come from the
+curated glossary in `meanings_fa.json` and are checked against the words the book prints.
 """
 
 from __future__ import annotations
@@ -28,6 +29,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import audio_map
+import meanings
 import text as textmod
 import textbook as book
 import transcribe
@@ -94,14 +96,15 @@ def vocabulary_items(entries: list[vocabulary.VocabularyEntry]) -> list[dict]:
 
     ``source``, ``sectionId`` and ``part`` travel with each entry, so a word can be told
     where it was printed and which part of the page it belongs to, instead of being shown
-    as if the book had left its definition out.
+    as if the book had left its definition out.  ``meaningFa`` is the Persian gloss the
+    book does not print in the PDF, carried through from the entry.
     """
     return [
         {
             "word": entry.word,
             "pronunciation": "",
             "meaningEn": entry.meaning_en,
-            "meaningFa": "",
+            "meaningFa": entry.meaning_fa,
             "examples": list(entry.examples),
             "audio": None,
             "page": entry.page,
@@ -319,7 +322,21 @@ def build() -> dict:
         listed = vocabulary.entries_by_section(
             doc,
             [(s.section_id, tuple(s.pages)) for s in published],
+            meaning=lambda word: meanings.meaning_for("grade-10", lesson_id, word),
         )
+        # The glossary is keyed by the words the book prints, so a key that no longer
+        # matches anything is a meaning attached to nothing and stops the build.  A word
+        # with no meaning is only a gap - a lesson added later may not have been glossed
+        # yet - so it is reported rather than fatal.
+        printed = [e.word for e in listed[vocabulary.NEW_WORDS_SECTION_ID]]
+        missing, stale = meanings.check("grade-10", lesson_id, printed)
+        if stale:
+            sys.exit(
+                f"{lesson_id}: meanings_fa.json glosses words the book does not print: "
+                + ", ".join(stale)
+            )
+        if missing:
+            print(f"  {lesson_id}: no Persian meaning yet for: {', '.join(missing)}")
         new_words_listing = listed.get(vocabulary.NEW_WORDS_SECTION_ID, [])
 
         lesson_sections = []

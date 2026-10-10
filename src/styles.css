@@ -492,8 +492,22 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .vocab-item dd { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: 0.92rem; }
 .example { display: block; color: var(--muted); font-style: italic; }
 /* A Persian gloss reads from the inline-start, which is where the definition column
-   already sits, so no extra offset is needed. */
-.meaning-fa { display: block; }
+   already sits, so no extra offset is needed.
+
+   It does need a face that can shape it.  The page's own stack is Latin-only, and the
+   generic fallback after `sans-serif` is a coin toss on whether it finds an Arabic face at
+   all, so the Persian is given one that is named here: Noto Naskh Arabic is what Android
+   and most Linux desktops ship, Geeza Pro and Damascus are Apple's, Tahoma is Windows'.
+   The size is above the English beside it because this script hangs well below the
+   baseline and stacks its dots - at 0.92rem the descenders of پ and ژ crowd the line under
+   them. */
+.meaning-fa {
+  display: block;
+  font-family: 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', 'Geeza Pro', 'Damascus', Tahoma,
+    system-ui, sans-serif;
+  font-size: 1.06em;
+  line-height: 1.9;
+}
 
 @media (max-width: 640px) {
   #app { padding-block: 12px 40px; padding-inline: 10px; }
